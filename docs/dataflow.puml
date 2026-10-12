@@ -1,0 +1,26 @@
+@startuml
+title 4. ábra – 0. szintű adatfolyam (saját szerkesztés)
+left to right direction
+rectangle "Szimulált fizikai folyamat\nautók, gyalogosok, parkolóhelyek" as process
+rectangle "Virtuális érzékelés\n0,1 s mintavétel" as measurement
+rectangle "MQTT-publikáló" as pub
+queue "MQTT-közvetítő\nyard/<run_id>/..." as broker
+rectangle "Központi feliratkozó\nés állapotértelmezés" as sub
+rectangle "Koordinációs döntés\nhely- és zónafoglalás" as decision
+rectangle "Fedélzeti vezérlő\nhelyi fékezés" as onboard
+rectangle "Kijelzés és napló" as view
+actor "Kezelő" as human
+process --> measurement : helyzet, sebesség, jelenlét
+measurement --> pub : telemetria és foglaltság
+measurement --> onboard : hatótávolságon belüli akadály
+pub --> broker : mérési JSON és kérelmek
+broker --> sub : üzenetek
+sub --> decision : ellenőrzött friss állapot
+decision --> broker : azonosított engedélyek
+broker --> onboard : parancs
+onboard --> process : mozgás / fékezés
+process --> pub : külön megjelenítési állapot
+broker --> view : snapshot, központi állapot, esemény
+human --> view : forgatókönyv
+view --> broker : kezelői parancs
+@enduml

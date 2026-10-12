@@ -1,0 +1,31 @@
+@startuml
+title Fogadott járműút archiválása és rögzített előzmény lekérdezése
+actor Kezelő
+participant "Szimulátor\nvirtuális helyzetérzékelő" as Sim
+queue "MQTT broker" as MQTT
+participant "Kijelző feliratkozó" as Display
+database "Futás SQLite-naplója" as DB
+participant "HTTP történeti API" as API
+participant "Böngésző\nkülön előzménytérkép" as UI
+loop minden ténylegesen fogadott telemetriaminta
+  Sim -> MQTT : telemetry/CAR001\nseq, sim_time, x, y, speed, state, wait_reason
+  MQTT -> Display : üzenet fogadása
+  Display -> DB : trip_samples + trip_cars\nfogadási UTC és hézagjelzés
+end
+Kezelő -> UI : futás és autó kiválasztása
+UI -> API : GET /api/car/history\nrun_id + car_id
+API -> DB : indexelt első lap és felső mintaazonosító
+DB --> API : tárolt minták, until_id, összegzés
+API --> UI : mentett futástérkép és első mintalap
+loop további lapok a rögzített until_id-ig
+  UI -> API : after + until_id
+  API -> DB : azonos autó és rögzített mintaprefix
+  DB --> UI : fogadott minták
+end
+Kezelő -> UI : időcsúszka / visszajátszás
+UI -> UI : tényleges minta kijelölése\nidő, pozíció, állapot, ok\nhézagon át nincs feltételezett mozgás
+note over DB, UI
+  Az élő futás és a korábbi autó előzménye elkülönül.
+  A korábban törölt régi minták nem állíthatók helyre.
+end note
+@enduml

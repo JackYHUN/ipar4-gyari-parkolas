@@ -1,0 +1,33 @@
+@startuml
+title Fizikai folyamat és adatút – 0. szintű áttekintés
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam defaultFontName "DejaVu Sans"
+skinparam defaultFontSize 14
+top to bottom direction
+rectangle "Szimulált fizikai folyamat\nAutó, gyalogos, parkolóhely" as process
+rectangle "Virtuális érzékelő és publikáló\n0,1 s névleges mintavétel" as measurement
+queue "MQTT-közvetítő\nyard/<run_id>/..." as broker
+rectangle "Feliratkozó és központi feldolgozás\nPayload, sorszám és frissesség ellenőrzése" as subscriber
+rectangle "Kiosztási döntés\nHely és konfliktuszóna" as decision
+rectangle "Helyi vezérlő\nMintából számolt fékezés" as local
+rectangle "Megfigyelő, archívum és műszerfal" as display
+actor "Kezelő" as operator
+process --> measurement : helyzet, sebesség, jelenlét
+measurement --> broker : telemetria és foglaltság
+process --> broker : kérelmek, események, külön snapshot
+broker --> subscriber : döntési bemeneti témák
+subscriber --> decision : ellenőrzött megfigyelés
+decision --> broker : azonosított engedély
+broker --> local : járműparancs
+measurement --> local : helyi akadálymegfigyelés
+local --> process : sebesség és fékezés
+broker --> display : megjelenítési adatág
+operator --> display : forgatókönyv és hibainjektálás
+display --> broker : kezelői parancs
+note right of display
+  A fogadott állapot megjelenítése
+  és a tartós bizonyíték megőrzése.
+  A snapshot nem koordinációs bemenet.
+end note
+@enduml

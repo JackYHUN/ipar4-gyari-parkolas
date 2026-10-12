@@ -1,0 +1,42 @@
+@startuml
+title A referencia-rendszer komponensei és felelősségei
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam componentStyle rectangle
+skinparam defaultFontName "DejaVu Sans"
+skinparam defaultFontSize 14
+top to bottom direction
+package "Szimulátorfolyamat" {
+  component "Fizikai folyamatmodell\nAutók, gyalogosok, parkolóhelyek" as world
+  component "Virtuális érzékelés\nMintavétel és korlátos zaj" as sensing
+  component "Helyi mozgásvezérlés\nSebesség, fékezés, engedélyek" as control
+  component "MQTT-kliens\nPublikálás / feliratkozás" as simclient
+  world --> sensing : referenciaállapot
+  sensing --> control : helyi megfigyelés
+  control --> world : mozgási beavatkozás
+  sensing --> simclient : telemetria és foglaltság
+  control --> simclient : kérelmek és események
+  simclient --> control : azonosított engedély
+}
+component "AMQTT-közvetítő\nTCP: 127.0.0.1:18883" as broker
+component "Központi koordinátor\nParkoló- és zónafoglalás" as coordinator
+component "Megfigyelő és naplózó\nFogadott állapot, SQLite-archívum" as observer
+component "HTTP-kiszolgáló\nBöngészős műszerfal" as ui
+actor "Kezelő" as user
+simclient <--> broker : MQTT 3.1.1
+broker --> coordinator : kérelem, érzékelés, esemény
+coordinator --> broker : parkoló- és zónaengedély
+broker --> observer : külön megjelenítési adatág
+observer --> ui : fogadott állapot és archívum
+user --> ui : forgatókönyv és hibainjektálás
+ui --> broker : kezelői parancs
+note right of coordinator
+  A teljes fizikai igazságállapotot
+  nem olvassa. Hiányos vagy elavult
+  adat nem igazol új kiosztást.
+end note
+note bottom of world
+  Referencia: 140 × 90 m, 6 autó,
+  16 parkolóhely, 2 zebra, 1 zóna.
+end note
+@enduml

@@ -1,0 +1,21 @@
+/* Live and archived sensor views share one visual language and renderer. */
+.perception-view .perception-grid{gap:14px;align-items:stretch}
+.perception-view .perception-card{padding:12px;border:1px solid #cbdce4;border-radius:14px;background:#fdfefe;box-shadow:0 4px 18px #1b405309}
+.perception-view .perception-card-heading{padding:1px 1px 10px;min-height:41px;gap:6px}
+.perception-view .perception-card-heading h4,.perception-view .perception-card-heading h5{font-size:12px;color:#284d62;letter-spacing:-.1px}
+.perception-view .perception-card-heading span{font-size:7px;color:#7793a2;letter-spacing:.6px;line-height:1.6}
+.perception-view .perception-card svg{border-radius:11px}
+.perception-view .perception-caption{font-size:9px;line-height:1.7;color:#648391;min-height:50px;padding-top:10px}
+.perception-view .perception-diagnostics>div{background:#fbfdfe;border-color:#d3e2e8;border-radius:10px}
+.perception-view .perception-diagnostics dt{font-size:9px;color:#718d9b}
+.perception-view .perception-diagnostics dd{font-size:11px;color:#335f75}
+.perception-view .perception-source-note{color:#708c99;font-size:9px}
+.perception-view.is-stale .perception-card{border-color:#d6c6a9}
+.perception-view.is-stale .perception-card-heading span{color:#a08960}
+.perception-view .camera-card{display:flex;flex-direction:column}
+.perception-view .camera-card svg{margin-block:auto}
+.perception-view .camera-card .perception-caption{margin-top:auto}
+.perception-view{container-type:inline-size}
+@container(max-width:640px){.perception-view .perception-grid{grid-template-columns:1fr}.perception-view .radar-card svg{max-width:340px;margin-inline:auto}.perception-view .camera-card svg{margin-block:0}.perception-view .perception-card-heading{min-height:0}.perception-view .perception-caption{min-height:0;font-size:9px}}
+@media(max-width:1050px){.perception-view .perception-grid{gap:10px}.perception-view .perception-card{padding:9px}.perception-view .perception-card-heading{min-height:47px}.perception-view .perception-card-heading h4,.perception-view .perception-card-heading h5{font-size:11px}.perception-view .perception-caption{font-size:8px;min-height:45px}}
+@media(max-width:560px){.perception-view .perception-grid{grid-template-columns:1fr;gap:12px}.perception-view .perception-card{padding:10px}.perception-view .perception-card-heading{min-height:0;align-items:center}.perception-view .perception-card-heading h4,.perception-view .perception-card-heading h5{font-size:12px}.perception-view .perception-card-heading span{font-size:6.5px}.perception-view .perception-caption{font-size:9px;min-height:0}.perception-view .perception-diagnostics dd{font-size:10px}.perception-view .camera-card svg{margin-block:0}}

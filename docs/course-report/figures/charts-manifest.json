@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "created_at_utc": "2026-10-12T07:39:42.255669+00:00",
+  "source_sha256": {
+    "experiments/course_charts.py": "c1fb34e79708e6d93ab88606c0e171a33a0aee82f0781d4ff7787b3d5c6b3804",
+    "results/course-comparison-v18/summary.json": "5a9ae51f0c641d0bde885faec4685940b178b8cb02e52c6bb84f3e76d692819e",
+    "results/course-comparison-v18/validation.json": "14f970b0925f8502d2243abbcd9c75020540ae96b2c116c072f35a49ba089a1f",
+    "results/course-comparison-v18/pairs.json": "dc3eddf0d1b28d672d6d1b6d4090e0c2038b9e7fda6d0ddeab961e97b1829e43"
+  },
+  "artifact_sha256": {
+    "docs/course-report/figures/ci_comparison.png": "877bbb7ad89a9ef091e773a83258747de8a6b02150d84c9ec8d128ab2abf5307",
+    "docs/course-report/figures/ci_comparison.svg": "773c9233202ea0f2db0070e61ad98d18440440c6b6bf3722dfcceca5cfcf0670",
+    "docs/course-report/figures/pair_differences.png": "bc4dd5ba02bfffba38416a5b6dfee1cf022247026bd528bdf107287ae1a73d9d",
+    "docs/course-report/figures/pair_differences.svg": "3366a3a02c080066a4645b4738a3bd1583559a2dc2186442dfc516765c21b105"
+  },
+  "scope": "Each scenario has 30 independent seed pairs; shared seed identities across scenarios do not represent independent cross-scenario samples. CI bars are paired-effect bootstrap intervals, not individual car dispersion. Zero reference is visible; per-pair dots are not additional independent car samples."
+}

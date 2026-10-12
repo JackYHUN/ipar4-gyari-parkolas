@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "method": "Locally composed Matplotlib diagrams based on own PUML semantic sources; not automatic PlantUML rendering",
+  "caption_source_hu": "Saját programmal szerkesztett ábra a megvalósítás alapján.",
+  "figure_width_inches": 5.87,
+  "png_dpi": 300,
+  "minimum_font_size_points": 10.0,
+  "font_family": "DejaVu Sans",
+  "matplotlib_version": "3.10.7",
+  "files": {
+    "experiments/course_diagrams.py": {
+      "sha256": "9414bf3c3920da34f439b7057b4cfbce0ef9274bbb4db89a1d81de3eca368aab",
+      "bytes": 17860
+    },
+    "docs/course-report/components.puml": {
+      "sha256": "902694630c2abef31a088a87cbcc1b3318a3f5b92533018a4a22d17e45194265",
+      "bytes": 1789
+    },
+    "docs/course-report/parking_sequence.puml": {
+      "sha256": "30d2320c5d95ce8147be506f4c68e5e27c25c013c4d9dacbe91966a0aeec3f71",
+      "bytes": 1689
+    },
+    "docs/course-report/car_states.puml": {
+      "sha256": "96f785c387f9aaff00e52677d0517afffacb4d4b8b5b317998c188d9a9a62292",
+      "bytes": 1592
+    },
+    "docs/course-report/dataflow.puml": {
+      "sha256": "5611bbc9e95988ef8bd4c71e4002a643556dbebda5ff7b4ff76df397f6c992a1",
+      "bytes": 1547
+    },
+    "docs/course-report/figures/components.png": {
+      "sha256": "a17b05f9d87ab552725d129cf55407442895a150554ce218d0ef40f3f3e6483d",
+      "bytes": 277074
+    },
+    "docs/course-report/figures/components.svg": {
+      "sha256": "c2d376ab458b4cc5a2fdca451778cf4db23134a08fffc8b9c5f59ed90b44f15c",
+      "bytes": 23450
+    },
+    "docs/course-report/figures/parking_sequence.png": {
+      "sha256": "e237dca31e26033296848d509f81719f4553a4d01c58339a21f0073b54385409",
+      "bytes": 219079
+    },
+    "docs/course-report/figures/parking_sequence.svg": {
+      "sha256": "49682ce3982a0e7db3f9e47829699be259465ae88bd8dbf595253c0560551179",
+      "bytes": 14020
+    },
+    "docs/course-report/figures/car_states.png": {
+      "sha256": "f896be1cedaf43f672a57fe5d488d75a8f39f7d57e9399825b2f2f2003504070",
+      "bytes": 224386
+    },
+    "docs/course-report/figures/car_states.svg": {
+      "sha256": "3ec7c0f581d208b4022460841eae46b2535a50212c48b276b37a20e9c86316d0",
+      "bytes": 17665
+    },
+    "docs/course-report/figures/dataflow.png": {
+      "sha256": "6d65ceaa2df750df6d1f4bb8c9f2431dc16095ae5500f5ffa182537c859cc0b6",
+      "bytes": 273102
+    },
+    "docs/course-report/figures/dataflow.svg": {
+      "sha256": "7d00cb748ff30859956022c5a29f1665a0ca3b0ce93761af4761f9ef0271f67d",
+      "bytes": 16995
+    },
+    "docs/course-report/figures/montage-architecture.png": {
+      "sha256": "dae713923388197bdec10ffce1a0d0598ff2ea9508250b79bf5af257a5ef7673",
+      "bytes": 635993
+    },
+    "docs/course-report/figures/montage-protocol.png": {
+      "sha256": "90ecbfadeb9ad67da394fe11d7886ba3e679721dfe465c65f90ca8d3d0dfb8a9",
+      "bytes": 527949
+    },
+    "docs/course-report/figures/montage-overview.png": {
+      "sha256": "0d6ba43d59d5486641fe4a3be4e92bedee760c09cdc419be8a5a712c67c048a9",
+      "bytes": 773634
+    }
+  },
+  "figures": {
+    "components": {
+      "png": "components.png",
+      "svg": "components.svg",
+      "png_size_px": [
+        1761,
+        2040
+      ]
+    },
+    "parking_sequence": {
+      "png": "parking_sequence.png",
+      "svg": "parking_sequence.svg",
+      "png_size_px": [
+        1761,
+        1935
+      ]
+    },
+    "car_states": {
+      "png": "car_states.png",
+      "svg": "car_states.svg",
+      "png_size_px": [
+        1761,
+        1800
+      ]
+    },
+    "dataflow": {
+      "png": "dataflow.png",
+      "svg": "dataflow.svg",
+      "png_size_px": [
+        1761,
+        1785
+      ]
+    }
+  },
+  "review_montages": [
+    "montage-architecture.png",
+    "montage-protocol.png",
+    "montage-overview.png"
+  ]
+}

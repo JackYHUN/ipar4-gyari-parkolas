@@ -1,0 +1,29 @@
+@startuml
+title 1. ábra – A gyári parkolórendszer komponensei (saját szerkesztés)
+skinparam componentStyle rectangle
+package "Szimulátorfolyamat" {
+  component "Fizikai mozgásmodell\n[szimulált autók és gyalogosok]" as world
+  component "Virtuális érzékelők\n[pozíció, akadály, foglaltság]" as sensors
+  component "Helyi járművezérlés\n[mozgás, fékezés, engedélyek]" as local
+  component "MQTT-publikáló / feliratkozó" as simbus
+}
+component "MQTT-közvetítő\nAMQTT / TCP loopback" as broker
+component "Központi koordinátor\n[parkolófoglalás, zónaengedély]" as coordinator
+component "Műszerfal és naplózó\n[HTTP + MQTT]" as dashboard
+actor "Kezelő" as operator
+world --> sensors : fizikai állapot
+sensors --> local : helyi akadálymérés
+local --> world : mozgási döntés
+sensors --> simbus : telemetria, foglaltság
+local --> simbus : kérelmek és események
+simbus <--> broker : MQTT 3.1.1
+broker <--> coordinator : mérések / engedélyek
+simbus --> broker : megjelenítési állapot
+broker --> dashboard : külön megjelenítési adatág
+operator --> dashboard : forgatókönyv és hibainjektálás
+dashboard --> broker : kezelői parancs
+note right of coordinator
+  Nincs hozzáférése a teljes
+  fizikai igazságállapothoz.
+end note
+@enduml

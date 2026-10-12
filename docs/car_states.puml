@@ -1,0 +1,26 @@
+@startuml
+title 3. ábra – A helyi járművezérlés állapotai (saját szerkesztés)
+[*] --> waiting : érkezés
+waiting --> driving : érvényes parkolóengedély
+driving --> waiting_zone : zónahatár, engedély nincs
+waiting_zone --> driving : érvényes zónaengedély
+driving --> pedestrian_stop : észlelt gyalogos
+pedestrian_stop --> driving : átkelő felszabadult
+driving --> sensor_stop : helyi érzékelési adat elavult
+sensor_stop --> driving : érzékelés helyreállt
+driving --> communication_stop : kommunikációkimaradás
+communication_stop --> driving : kapcsolat helyreállt
+driving --> parked : célhely elérése (numerikus tolerancia)
+driving --> frozen : kezelői megállítási kérés
+frozen --> driving : időzített hiba vége
+parked --> [*] : egyszerűsített kiadás
+note right of sensor_stop
+  A megállás fékezési folyamat;
+  a sebesség nem ugrik nullára.
+end note
+note right of parked
+  A fő átmenetek vázlata. Megállási okváltás a várakozó
+  állapotok között is lehetséges; külön parking állapot
+  az aktuális Python-modellben nincs.
+end note
+@enduml

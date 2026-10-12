@@ -1,0 +1,40 @@
+@startuml
+title V0.6 — fogadott észlelés és végrehajtott döntés visszakeresése
+participant "Szimulátor\nvirtuális érzékelők" as simulator
+queue "MQTT-közvetítő" as broker
+participant "Koordinátor" as coordinator
+participant "Kijelző\nMQTT-feliratkozó" as observer
+database "SQLite útarchívum" as archive
+participant "Böngészős nézet" as ui
+
+loop konfigurált mintavételi periódus, alapérték 0,1 szimulációs s
+  simulator -> simulator : környezet mintavételezése, eredeti mintaidő
+  simulator -> simulator : vezérlési korlátozás és mozgás egyszeri végrehajtása
+  simulator -> simulator : végrehajtott döntés rögzítése, külön döntési idő
+  alt működő érzékelő
+    simulator -> broker : telemetry/CARnnn, QoS 0\nsensors + control + járműállapot
+    broker -> coordinator : kapott helyzettelemetria
+    broker -> observer : kapott helyzettelemetria
+  else érzékelőhiba, működő MQTT-kapcsolat
+    simulator -> broker : diagnostics/perception/CARnnn, QoS 0\nrégi sensors + aktuális control\ncímkézett referenciahelyzet
+    broker -> observer : megfigyelői diagnosztika
+    note right of coordinator
+      Erre a témára nincs előfizetés.
+      A hibakori referenciahelyzet nem
+      válik új szenzorméréssé.
+    end note
+  end
+  observer -> archive : trip_samples: állapot, órák, forrás, control\ntrip_perception: teljes sensors, zlib
+  observer -> ui : élő MQTT-állapot és érzékelőcsomag
+end
+
+ui -> observer : futás + autó + rögzített mintahatár
+observer -> archive : időrendi minta és eredeti érzékelőcsomag lekérdezése
+archive --> observer : tényleges fogadott minta, vagy hiányzó sensors=null
+observer --> ui : sensors + control + elkülönített időbélyegek
+ui -> ui : radar és sematikus elölnézet\nelavultság/adatrés jelzése
+note over simulator,ui
+  MQTT-kiesés: nincs utólag kitalált megfigyelés.
+  A nézet nem kamerafelvétel, nincs takarásmodell.
+end note
+@enduml

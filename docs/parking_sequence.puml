@@ -1,0 +1,30 @@
+@startuml
+title 2. ábra – Parkolófoglalás és kiadás (saját szerkesztés)
+participant "Virtuális érzékelő / autó" as car
+participant "MQTT-közvetítő" as broker
+participant "Koordinátor" as c
+car -> broker : sensors/parking [seq]
+broker -> c : foglaltságminta
+car -> broker : requests/parking [car_id, request_id]
+broker -> c : parkolókérés
+c -> c : frissesség, szabad hely, foglalás
+c -> broker : commands/car_id [reservation_id, route]
+broker -> car : parking_grant
+loop útvonal követése
+  car -> broker : telemetry/car_id
+  broker -> c : pozíció, állapot, seq
+end
+car -> broker : events [parked]
+broker -> c : parkolás jelzése
+... egyszerűsített parkolási tartózkodás ...
+car -> broker : events [departed, reservation_id]
+broker -> c : azonosított kiadás
+c -> c : felszabadítás függőben
+car -> broker : sensors/parking [későbbi seq, occupied=false]
+broker -> c : új foglaltságminta
+c -> c : foglalás felszabadítása
+note over car,c
+  Időtúllépés önmagában nem elegendő.
+  Más foglalásazonosító nem igazol kiadást.
+end note
+@enduml

@@ -1,0 +1,35 @@
+@startuml
+title Virtuális érzékelőadatok és diagnosztikai útvonalvetítés
+skinparam backgroundColor #FFFFFF
+skinparam componentStyle rectangle
+component "Szimulált jármű és környezet\nFizikai referencia" as World
+component "Helyi mintavétel\nKözeli autók, gyalogosállapot" as Perception
+component "Virtuális saját helyzet\nKülön korlátos zaj" as Localization
+database "Kijelölt útvonal\nIsmert térképi referencia" as Route
+component "Útvonalvetítés\nOldal- és irányeltérés" as Guidance
+component "Helyi fékezési szabály\nKörnyezet + adatfrissesség" as Braking
+component "MQTT-publikáló" as Publisher
+queue "MQTT-közvetítő" as Broker
+component "Feliratkozó + napló" as Subscriber
+component "Érzékelőnézet\nMinta, kor, észlelés, eltérés" as Dashboard
+World --> Perception : mintavétel
+World --> Localization : mintavétel
+Perception --> Braking : meglévő észlelések
+Braking --> World : sebesség / fékezés
+Localization --> Guidance : becsült helyzet
+Route --> Guidance : szakaszgeometria
+Perception --> Publisher
+Localization --> Publisher
+Guidance --> Publisher
+Publisher --> Broker : telemetry / snapshot
+Broker --> Subscriber
+Subscriber --> Dashboard : fogadott adat
+note right of Guidance
+  Diagnosztika: jelenleg nem kormányoz.
+  A fizikai pálya idealizált vonallánc.
+end note
+note bottom of Dashboard
+  Saját szerkesztés a V05 adatút alapján.
+  Valós kamera/GNSS/IMU nincs integrálva.
+end note
+@enduml

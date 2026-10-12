@@ -1,0 +1,34 @@
+@startuml
+title Szerkeszthető telephely alkalmazása és bizonyítékai
+actor "Kezelő" as User
+participant "Böngésző\nforgatókönyv-szerkesztő" as UI
+participant "HTTP API" as API
+participant "Konfigurációfordító\nvalidálás + Dijkstra" as Compiler
+database "Futáskonfiguráció\nmetaadat + SQLite" as Journal
+participant "Szimulátor" as Sim
+queue "MQTT-közvetítő" as MQTT
+participant "Koordinátor" as Coord
+User -> UI: Darabszám, célterület, kezdő- és parkolópozíció
+UI -> API: GET /api/scenario?scenario=JSON
+API -> Compiler: Térkép, geometria és kapacitás ellenőrzése
+Compiler --> API: Normalizált paraméterek + útvonalak
+API --> UI: Elkülönített előnézet és mag szerinti foglaltság
+note over API,Coord: Az előnézet során az aktuális MQTT-futás folytatódik.
+User -> UI: Érvényes beállítások alkalmazása
+UI -> API: POST configure + seed + strategy
+API -> Compiler: Ugyanaz a validálás
+alt Hibás konfiguráció
+  API --> UI: HTTP 400, részletes indok
+else Érvényes konfiguráció
+  API -> Journal: Új run_id + tényleges config.json
+  API -> Sim: Új folyamat, rögzített konfiguráció
+  API -> Coord: Új folyamat, azonos konfiguráció
+  Sim -> MQTT: Érzékelés, telemetria, hely- és zónakérelem
+  MQTT -> Coord: Feliratkozás alapján kézbesítés
+  Coord -> MQTT: Parkoló- és zónaengedély, döntési bizonyíték
+  MQTT -> Sim: Engedély
+  MQTT -> API: Állapot és audit
+  API -> Journal: Fogadott mérési és döntési sorok
+  API --> UI: Élő térkép és napló
+end
+@enduml

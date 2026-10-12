@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="422.64pt" height="428.4pt" viewBox="0 0 422.64 428.4" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Local Matplotlib course diagram renderer</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 428.4 
+L 422.64 428.4 
+L 422.64 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 312.48 308.52 
+C 313.721151 308.52 314.911634 308.026886 315.78926 307.14926 
+C 316.666886 306.271634 317.16 305.081151 317.16 303.84 
+C 317.16 302.598849 316.666886 301.408366 315.78926 300.53074 
+C 314.911634 299.653114 313.721151 299.16 312.48 299.16 
+C 311.238849 299.16 310.048366 299.653114 309.17074 300.53074 
+C 308.293114 301.408366 307.8 302.598849 307.8 303.84 
+C 307.8 305.081151 308.293114 306.271634 309.17074 307.14926 
+C 310.048366 308.026886 311.238849 308.52 312.48 308.52 
+z
+" clip-path="url(#p7976a6dd31)" style="fill: #ffffff; stroke: #183548; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 312.48 308.88 
+L 312.48 321.84 
+" clip-path="url(#p7976a6dd31)" style="fill: none; stroke: #183548; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 305.28 313.92 
+L 319.68 313.92 
+" clip-path="url(#p7976a6dd31)" style="fill: none; stroke: #183548; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 312.48 321.84 
+L 305.28 329.76 
+" clip-path="url(#p7976a6dd31)" style="fill: none; stroke: #183548; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 312.48 321.84 
+L 319.68 329.76 
+" clip-path="url(#p7976a6dd31)" style="fill: none; stroke: #183548; stroke-linecap: square"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 158.4 58.32 
+Q 133.56 77.22 109.609764 95.443006 
+" clip-path="url(#p7976a6dd31)" style="fill: none; stroke: #637683; stroke-linecap: round"/>
+    <path d="M 114.443558 94.529533 
+L 109.609764 95.443006 
+L 111.779262 91.027887 
+z
+" clip-path="url(#p7976a6dd31)" style="fill: #637683; stroke: #637683; stroke-linecap: round"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 312.48 96.12 
+Q 289.08 77.22 266.549765 59.022502 
+" clip-path="url(#p7976a6dd31)" style="fill: none; stroke: #237c78; stroke-linecap: round"/>
+    <path d="M 268.590364 63.498656 
+L 266.549765 59.022502 
+L 271.355048 60.075715 
+z
+" clip-path="url(#p7976a6dd31)" style="fill: #237c78; stroke: #237c78; stroke-linecap: round"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 196.2 121.68 
+Q 210.78 121.68 224.241966 121.68 
+" clip-path="url(#p7976a6dd31)" style="fill: none; stroke: #237c78; stroke-linecap: round"/>
+    <path d="M 219.841966 119.48 
+L 224.241966 121.68 
+L 219.841966 123.88 
+z
+" clip-path="url(#p7976a6dd31)" style="fill: #237c78; stroke: #237c78; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 108.72 147.24 
+Q 108.72 171.54 108.72 194.721966 
+" clip-path="url(#p7976a6dd31)" style="fill: none; stroke: #637683; stroke-linecap: round"/>
+    <path d="M 110.92 190.321966 
+L 108.72 194.721966 
+L 106.52 190.321966 
+z
+" clip-path="url(#p7976a6dd31)" style="fill: #637683; stroke: #637683; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 197.318034 218.16 
+Q 210.78 218.16 224.241966 218.16 
+" clip-path="url(#p7976a6dd31)" style="fill: none; stroke: #637683; stroke-linecap: round"/>
+    <path d="M 201.718034 220.36 
+L 197.318034 218.16 
+L 201.718034 215.96 
+" clip-path="url(#p7976a6dd31)" style="fill: none; stroke: #637683; stroke-linecap: round"/>
+    <path d="M 219.841966 215.96 
+L 224.241966 218.16 
+L 219.841966 220.36 
+" clip-path="url(#p7976a6dd31)" style="fill: none; stroke: #637683; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 196.2 205.92 
+L 211.68 205.92 
+" clip-path="url(#p7976a6dd31)" style="fill: none; stroke: #637683; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 211.68 205.92 
+L 211.68 158.4 
+" clip-path="url(#p7976a6dd31)" style="fill: none; stroke: #637683; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 211.68 158.4 
+L 312.48 158.4 
+" clip-path="url(#p7976a6dd31)" style="fill: none; stroke: #637683; stroke-linecap: square"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 312.48 158.4 
+Q 312.48 152.82 312.48 148.358034 
+" clip-path="url(#p7976a6dd31)" style="fill: none; stroke: #637683; stroke-linecap: round"/>
+    <path d="M 310.28 152.758034 
+L 312.48 148.358034 
+L 314.68 152.758034 
+z
+" clip-path="url(#p7976a6dd31)" style="fill: #637683; stroke: #637683; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 108.72 240.48 
+Q 108.72 266.94 108.72 292.281966 
+" clip-path="url(#p7976a6dd31)" style="fill: none; stroke: #637683; stroke-linecap: round"/>
+    <path d="M 110.92 287.881966 
+L 108.72 292.281966 
+L 106.52 287.881966 
+z
+" clip-path="url(#p7976a6dd31)" style="fill: #637683; stroke: #637683; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 297.36 321.84 
+Q 246.78 321.84 197.318034 321.84 
+" clip-path="url(#p7976a6dd31)" style="fill: none; stroke: #637683; stroke-linecap: round"/>
+    <path d="M 201.718034 324.04 
+L 197.318034 321.84 
+L 201.718034 319.64 
+z
+" clip-path="url(#p7976a6dd31)" style="fill: #637683; stroke: #637683; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 21.24 321.12 
+L 8.64 321.12 
+" clip-path="url(#p7976a6dd31)" style="fill: none; stroke: #237c78; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_9">
+    <path d="M 8.64 321.12 
+L 8.64 218.16 
+" clip-path="url(#p7976a6dd31)" style="fill: none; stroke: #237c78; stroke-linecap: square"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 8.64 218.16 
+Q 14.94 218.16 20.121966 218.16 
+" clip-path="url(#p7976a6dd31)" style="fill: none; stroke: #237c78; stroke-linecap: round"/>
+    <path d="M 15.721966 215.96 
+L 20.121966 218.16 
+L 15.721966 220.36 
+z
+" clip-path="url(#p7976a6dd31)" style="fill: #237c78; stroke: #237c78; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_10">
+    <path d="M 102.96 34.56 
+L 11.52 34.56 
+" clip-path="url(#p7976a6dd31)" style="fill: none; stroke: #637683; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_11">
+    <path d="M 11.52 34.56 
+L 11.52 206.64 
+" clip-path="url(#p7976a6dd31)" style="fill: none; stroke: #637683; stroke-linecap: square"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 11.52 206.64 
+Q 16.38 206.64 20.121966 206.64 
+" clip-path="url(#p7976a6dd31)" style="fill: none; stroke: #637683; stroke-linecap: round"/>
+    <path d="M 15.721966 204.44 
+L 20.121966 206.64 
+L 15.721966 208.84 
+z
+" clip-path="url(#p7976a6dd31)" style="fill: #637683; stroke: #637683; stroke-linecap: round"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 110.16 59.04 
+L 313.2 59.04 
+Q 321.12 59.04 321.12 51.12 
+L 321.12 18 
+Q 321.12 10.08 313.2 10.08 
+L 110.16 10.08 
+Q 102.24 10.08 102.24 18 
+L 102.24 51.12 
+Q 102.24 59.04 110.16 59.04 
+z
+" clip-path="url(#p7976a6dd31)" style="fill: #eef5f9; stroke: #286587; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 28.44 147.96 
+L 189 147.96 
+Q 196.92 147.96 196.92 140.04 
+L 196.92 103.32 
+Q 196.92 95.4 189 95.4 
+L 28.44 95.4 
+Q 20.52 95.4 20.52 103.32 
+L 20.52 140.04 
+Q 20.52 147.96 28.44 147.96 
+z
+" clip-path="url(#p7976a6dd31)" style="fill: #eef7f5; stroke: #237c78; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 232.56 147.96 
+L 392.4 147.96 
+Q 400.32 147.96 400.32 140.04 
+L 400.32 103.32 
+Q 400.32 95.4 392.4 95.4 
+L 232.56 95.4 
+Q 224.64 95.4 224.64 103.32 
+L 224.64 140.04 
+Q 224.64 147.96 232.56 147.96 
+z
+" clip-path="url(#p7976a6dd31)" style="fill: #eef7f5; stroke: #237c78; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 28.44 241.2 
+L 189 241.2 
+Q 196.92 241.2 196.92 233.28 
+L 196.92 203.04 
+Q 196.92 195.12 189 195.12 
+L 28.44 195.12 
+Q 20.52 195.12 20.52 203.04 
+L 20.52 233.28 
+Q 20.52 241.2 28.44 241.2 
+z
+" clip-path="url(#p7976a6dd31)" style="fill: #eef5f9; stroke: #286587; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 232.56 241.2 
+L 392.4 241.2 
+Q 400.32 241.2 400.32 233.28 
+L 400.32 203.04 
+Q 400.32 195.12 392.4 195.12 
+L 232.56 195.12 
+Q 224.64 195.12 224.64 203.04 
+L 224.64 233.28 
+Q 224.64 241.2 232.56 241.2 
+z
+" clip-path="url(#p7976a6dd31)" style="fill: #eef5f9; stroke: #286587; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 28.44 349.56 
+L 189 349.56 
+Q 196.92 349.56 196.92 341.64 
+L 196.92 300.6 
+Q 196.92 292.68 189 292.68 
+L 28.44 292.68 
+Q 20.52 292.68 20.52 300.6 
+L 20.52 341.64 
+Q 20.52 349.56 28.44 349.56 
+z
+" clip-path="url(#p7976a6dd31)" style="fill: #f6f8fa; stroke: #637683; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; fill: #183548" transform="translate(145.785117 31.116574)">Szimulált fizikai folyamat</text>
+    <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; fill: #183548" transform="translate(146.429883 44.218113)">Autó · gyalogos · parkoló</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #183548" transform="translate(63.109062 111.961719)">Virtuális érzékelés</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #183548" transform="translate(78.834063 124.439375)">és publikáló</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #183548" transform="translate(49.168437 136.917031)">0,1 s névleges periódus</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #183548" transform="translate(277.454219 112.681719)">Helyi vezérlés</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #183548" transform="translate(259.919844 124.639375)">Érzékelésből számolt</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #183548" transform="translate(293.547188 136.597031)">fékezés</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; fill: #183548" transform="translate(68.378672 214.633559)">MQTT-közvetítő</text>
+    <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; fill: #183548" transform="translate(63.425625 227.189098)">yard/&lt;run_id&gt;/...</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; fill: #183548" transform="translate(258.480469 214.989574)">Központi feldolgozás</text>
+    <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; fill: #183548" transform="translate(255.082734 227.545113)">Ellenőrzés és kiosztás</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #183548" transform="translate(49.175469 311.861719)">Megfigyelő és archívum</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #183548" transform="translate(84.662969 323.819375)">Műszerfal</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #183548" transform="translate(67.884844 336.297031)">Fogadott állapot</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #183548" x="312.48" y="342.017344" transform="rotate(-0 312.48 342.017344)">Kezelő</text>
+   </g>
+   <g id="text_8">
+    <g id="patch_19">
+     <path d="M 68.94 76.679062 
+L 106.74 76.679062 
+L 106.74 63.000937 
+L 68.94 63.000937 
+z
+" style="fill: #ffffff"/>
+    </g>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #183548" x="87.84" y="72.799375" transform="rotate(-0 87.84 72.799375)">állapot</text>
+   </g>
+   <g id="text_9">
+    <g id="patch_20">
+     <path d="M 300.915156 75.759063 
+L 367.244844 75.759063 
+L 367.244844 62.480938 
+L 300.915156 62.480938 
+z
+" style="fill: #ffffff"/>
+    </g>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #183548" x="334.08" y="71.879375" transform="rotate(-0 334.08 71.879375)">beavatkozás</text>
+   </g>
+   <g id="text_10">
+    <g id="patch_21">
+     <path d="M 181.855781 102.399063 
+L 241.504219 102.399063 
+L 241.504219 89.120938 
+L 181.855781 89.120938 
+z
+" style="fill: #ffffff"/>
+    </g>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #183548" x="211.68" y="98.519375" transform="rotate(-0 211.68 98.519375)">helyi minta</text>
+   </g>
+   <g id="text_11">
+    <g id="patch_22">
+     <path d="M 75.010625 182.797891 
+L 142.429375 182.797891 
+L 142.429375 157.042109 
+L 75.010625 157.042109 
+z
+" style="fill: #ffffff"/>
+    </g>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #183548" transform="translate(82.802031 166.440547)">telemetria</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #183548" transform="translate(76.810625 178.918203)">és foglaltság</text>
+   </g>
+   <g id="text_12">
+    <g id="patch_23">
+     <path d="M 166.351094 200.519063 
+L 257.008906 200.519063 
+L 257.008906 186.840938 
+L 166.351094 186.840938 
+z
+" style="fill: #ffffff"/>
+    </g>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #183548" x="211.68" y="196.639375" transform="rotate(-0 211.68 196.639375)">mérés / engedély</text>
+   </g>
+   <g id="text_13">
+    <g id="patch_24">
+     <path d="M 237.459375 178.919063 
+L 309.740625 178.919063 
+L 309.740625 165.240938 
+L 237.459375 165.240938 
+z
+" style="fill: #ffffff"/>
+    </g>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #183548" x="273.6" y="175.039375" transform="rotate(-0 273.6 175.039375)">járműparancs</text>
+   </g>
+   <g id="text_14">
+    <g id="patch_25">
+     <path d="M 74.305156 274.679063 
+L 143.134844 274.679063 
+L 143.134844 261.000938 
+L 74.305156 261.000938 
+z
+" style="fill: #ffffff"/>
+    </g>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #183548" x="108.72" y="270.799375" transform="rotate(-0 108.72 270.799375)">külön adatág</text>
+   </g>
+   <g id="text_15">
+    <g id="patch_26">
+     <path d="M 216.57375 314.279063 
+L 285.98625 314.279063 
+L 285.98625 300.600938 
+L 216.57375 300.600938 
+z
+" style="fill: #ffffff"/>
+    </g>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #183548" x="251.28" y="310.399375" transform="rotate(-0 251.28 310.399375)">forgatókönyv</text>
+   </g>
+   <g id="text_16">
+    <g id="patch_27">
+     <path d="M 30.159531 298.457891 
+L 73.520469 298.457891 
+L 73.520469 273.222109 
+L 30.159531 273.222109 
+z
+" style="fill: #ffffff"/>
+    </g>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #183548" transform="translate(34.511094 282.620547)">kezelői</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #183548" transform="translate(31.959531 294.578203)">parancs</text>
+   </g>
+   <g id="text_17">
+    <g id="patch_28">
+     <path d="M 16.919062 189.377344 
+L 16.919063 48.222656 
+L 3.240938 48.222656 
+L 3.240937 189.377344 
+z
+" style="fill: #ffffff"/>
+    </g>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #183548" transform="translate(13.039375 187.577344) rotate(-90)">snapshot / kérés / esemény</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #183548" transform="translate(118.075312 390.560547)">A helyi fékezés saját mintából készül.</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #183548" transform="translate(86.8675 403.038203)">A snapshot csak a megjelenítési adatágat látja el.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p7976a6dd31">
+   <rect x="0" y="0" width="422.64" height="428.4"/>
+  </clipPath>
+ </defs>
+</svg>

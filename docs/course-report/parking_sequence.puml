@@ -1,0 +1,39 @@
+@startuml
+title Parkolófoglalás és igazolt felszabadítás
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam defaultFontName "DejaVu Sans"
+skinparam defaultFontSize 14
+hide footbox
+participant "Virtuális érzékelő\nés autóvezérlő" as car
+participant "MQTT-közvetítő" as broker
+participant "Koordinátor" as center
+car -> broker : sensors/parking [seq = n, teljes keret]
+broker -> center : fizikai foglaltság
+center -> center : payload, sorszám és frissesség ellenőrzése
+car -> broker : requests/parking [car_id, request_id]
+broker -> center : parkolókérés
+center -> center : hely kiválasztása; foglalás rögzítése
+center -> broker : parking_grant [slot_id, reservation_id, route]
+broker -> car : engedély
+group Azonos kérelem ismétlése
+  car -> broker : requests/parking [azonos request_id]
+  broker -> center : ismételt kérelem
+  center -> broker : azonos, még érvényes foglalás
+  broker -> car : engedély ismétlése
+end
+car -> broker : events [parked, reservation_id]
+broker -> center : parkolás jelzése
+... egyszerűsített parkolási tartózkodás ...
+car -> broker : events [departed, reservation_id]
+broker -> center : távozási esemény
+center -> center : egyező tulajdonos és azonosító;\nfelszabadítás függőben, aktuális seq = k
+car -> broker : sensors/parking [seq > k, occupied = false]
+broker -> center : későbbi, érvényes üres minta
+center -> center : logikai foglalás felszabadítása
+note over car,center
+  Időtúllépés vagy hibás foglalásazonosító önmagában
+  nem szabadíthatja fel a helyet. A tényleges távozás
+  útvonala az oktatási modellben nincs megvalósítva.
+end note
+@enduml

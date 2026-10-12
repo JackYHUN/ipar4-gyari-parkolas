@@ -1,0 +1,33 @@
+@startuml
+title A helyi mozgásvezérlés fontos állapotai
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam defaultFontName "DejaVu Sans"
+skinparam defaultFontSize 14
+hide empty description
+state "Parkolókérésre vár" as waiting
+state "Halad" as driving
+state "Zónaengedélyre vár" as waiting_zone
+state "Gyalogos miatt fékez / vár" as pedestrian_stop
+state "Érzékelőhiba miatt fékez / vár" as sensor_stop
+state "Kommunikációhiány miatt fékez / vár" as communication_stop
+state "Beparkolt" as parked
+[*] --> waiting : termelési felkínálás és beléptetés
+waiting --> driving : érvényes parkolóengedély és helyi minta
+driving --> waiting_zone : zónahatár; engedély nincs
+waiting_zone --> driving : érvényes engedély; továbbhaladás lehetséges
+driving --> pedestrian_stop : friss mintában megállást igénylő gyalogos
+pedestrian_stop --> driving : átkelő felszabadult; továbbhaladás lehetséges
+driving --> sensor_stop : hiányzó vagy elavult helyi minta
+sensor_stop --> driving : friss érzékelés; továbbhaladás lehetséges
+driving --> communication_stop : jelzett kapcsolatvesztés
+communication_stop --> driving : kapcsolat helyreállt; továbbhaladás lehetséges
+driving --> parked : célhely elérése; modellbeli tolerancia
+parked --> [*] : absztrakt kiadás
+note bottom of driving
+  Fő állapotok vázlata: az állapotváltás fékezési
+  célt jelöl, nem azonnali nulla sebességet.
+  Több megállási ok között közvetlen váltás is lehet.
+  Kezelői megállítás külön hibaforgatókönyv.
+end note
+@enduml
