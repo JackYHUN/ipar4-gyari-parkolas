@@ -1,0 +1,59 @@
+{
+  "status": "PASS",
+  "validated_at_utc": "2026-10-12T07:30:36.158103+00:00",
+  "scope": "120 raw runs, 60 run pairs, 720 vehicle records, all observed exogenous arrivals, terminal reservations; independent bootstrap recomputation",
+  "source_hashes_still_match": true,
+  "raw_runs": 120,
+  "independent_pairs": 60,
+  "vehicle_records": 720,
+  "validation_runner_sha256": "5112a80eaa4c5c0c17f423b74aa597d9dba2cc6e0a24a4ecda93158cb95d93da",
+  "observed_pedestrian_arrivals": 634,
+  "total_unfinished": 0,
+  "total_collisions": 0,
+  "computations": [
+    {
+      "scenario": "reference_9s",
+      "metric": "parking_time_s",
+      "n_independent_pairs": 30,
+      "independently_recomputed_mean": -7.978055555555557,
+      "independently_recomputed_ci95": [
+        -8.532777777777778,
+        -7.408055555555555
+      ]
+    },
+    {
+      "scenario": "reference_9s",
+      "metric": "distance_m",
+      "n_independent_pairs": 30,
+      "independently_recomputed_mean": -23.944444444444446,
+      "independently_recomputed_ci95": [
+        -25.61111111111111,
+        -22.22222222222222
+      ]
+    },
+    {
+      "scenario": "high_load_3s",
+      "metric": "parking_time_s",
+      "n_independent_pairs": 30,
+      "independently_recomputed_mean": -7.985833333333333,
+      "independently_recomputed_ci95": [
+        -8.542222222222222,
+        -7.41361111111111
+      ]
+    },
+    {
+      "scenario": "high_load_3s",
+      "metric": "distance_m",
+      "n_independent_pairs": 30,
+      "independently_recomputed_mean": -23.944444444444446,
+      "independently_recomputed_ci95": [
+        -25.61111111111111,
+        -22.22222222222222
+      ]
+    }
+  ],
+  "limitations": [
+    "Noise equality and tickwise invariants are assertions of the frozen runner; exports preserve their outcomes, not all telemetry/noise values.",
+    "This check validates model exports, not the actual MQTT application or industrial safety."
+  ]
+}

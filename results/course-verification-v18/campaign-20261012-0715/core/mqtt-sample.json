@@ -1,0 +1,2567 @@
+{
+  "kind": "deterministic_compact_sample",
+  "source_artifact": "campaign-20261012-0715/core/mqtt-correlation.jsonl",
+  "source_sha256": "42753b3014ae394b96b0386684f127da94ac284993bc4bfe550efef4d3db7aac",
+  "original_records": 2712,
+  "sample_records": 30,
+  "selection": "first15 + last15 protocol records; no interpolation or fabrication",
+  "records": [
+    {
+      "receipt_id": 2,
+      "received_ns": 25515754205900,
+      "received_utc": "2026-10-12T07:14:59.670Z",
+      "topic": "sensors/parking",
+      "payload": {
+        "sim_time": 0.05,
+        "seq": 1,
+        "source": "virtual_sensor",
+        "period_s": 0.1,
+        "nominal_period_s": 0.1,
+        "sample_interval_s": null,
+        "sampling": {
+          "policy": "first_integration_tick_at_or_after_nominal_deadline",
+          "period_kind": "fixed_step_quantized_interval",
+          "integration_step_s": 0.05,
+          "integration_step_source": "actual_step",
+          "maximum_observed_step_s": 0.05,
+          "bound_excludes_fault_outages": true,
+          "interpolated_samples": false
+        },
+        "slots": [
+          {
+            "id": "P01",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P02",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P03",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P04",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P05",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P06",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P07",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P08",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P09",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P10",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P11",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P12",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P13",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P14",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P15",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P16",
+            "occupied": true,
+            "blocked": false
+          }
+        ],
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25515753594900,
+        "producer": "simulator",
+        "producer_seq": 1,
+        "message_id": "6d682f18f3dc:simulator:1",
+        "received_utc": "2026-10-12T07:14:59.670Z"
+      }
+    },
+    {
+      "receipt_id": 3,
+      "received_ns": 25515754844400,
+      "received_utc": "2026-10-12T07:14:59.671Z",
+      "topic": "events",
+      "payload": {
+        "sim_time": 0.05,
+        "type": "production_exit",
+        "message": "Jármű érkezett a gyártósori kijárathoz",
+        "car_id": "CAR001",
+        "category": "lifecycle",
+        "level": "info",
+        "offered_at_s": 0.0,
+        "buffer_wait_s": 0.05,
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25515753688900,
+        "producer": "simulator",
+        "producer_seq": 2,
+        "message_id": "6d682f18f3dc:simulator:2",
+        "received_utc": "2026-10-12T07:14:59.671Z"
+      }
+    },
+    {
+      "receipt_id": 4,
+      "received_ns": 25515755107500,
+      "received_utc": "2026-10-12T07:14:59.671Z",
+      "topic": "events",
+      "payload": {
+        "sim_time": 0.05,
+        "type": "state_changed",
+        "message": "Járműállapot: várakozás; a jármű áll",
+        "car_id": "CAR001",
+        "category": "state",
+        "level": "info",
+        "from_state": null,
+        "to_state": "waiting",
+        "from_reason": null,
+        "reason": "Parkolóengedélyre vár",
+        "motion_phase": "stopped",
+        "request_id": "CAR001-parking",
+        "parking_request_id": "CAR001-parking",
+        "reservation_id": null,
+        "slot_id": null,
+        "zone_id": null,
+        "grant_id": null,
+        "speed_m_s": 0.0,
+        "position_m": [
+          14,
+          58
+        ],
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25515753733400,
+        "producer": "simulator",
+        "producer_seq": 3,
+        "message_id": "6d682f18f3dc:simulator:3",
+        "received_utc": "2026-10-12T07:14:59.671Z"
+      }
+    },
+    {
+      "receipt_id": 5,
+      "received_ns": 25515755441800,
+      "received_utc": "2026-10-12T07:14:59.671Z",
+      "topic": "audit",
+      "payload": {
+        "category": "transport",
+        "level": "info",
+        "event_type": "parking_observation_changed",
+        "message": "A virtuális parkolóérzékelő állapotváltozást jelentett",
+        "sim_time": 0.05,
+        "car_id": null,
+        "request_id": null,
+        "reservation_id": null,
+        "zone_id": null,
+        "reason": "fresh_increasing_sensor_frame",
+        "sensor_seq": 1,
+        "changes": [
+          {
+            "slot_id": "P01",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "slot_id": "P02",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "slot_id": "P03",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "slot_id": "P04",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "slot_id": "P05",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "slot_id": "P06",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "slot_id": "P07",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "slot_id": "P08",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "slot_id": "P09",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "slot_id": "P10",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "slot_id": "P11",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "slot_id": "P12",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "slot_id": "P13",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "slot_id": "P14",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "slot_id": "P15",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "slot_id": "P16",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": true,
+            "blocked": false
+          }
+        ],
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25515754287100,
+        "producer": "coordinator",
+        "producer_seq": 3,
+        "message_id": "6d682f18f3dc:coordinator:3",
+        "received_utc": "2026-10-12T07:14:59.671Z"
+      }
+    },
+    {
+      "receipt_id": 6,
+      "received_ns": 25515755653300,
+      "received_utc": "2026-10-12T07:14:59.671Z",
+      "topic": "requests/parking",
+      "payload": {
+        "sim_time": 0.05,
+        "car_id": "CAR001",
+        "request_id": "CAR001-parking",
+        "origin": [
+          14,
+          58
+        ],
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25515753771100,
+        "producer": "simulator",
+        "producer_seq": 4,
+        "message_id": "6d682f18f3dc:simulator:4",
+        "received_utc": "2026-10-12T07:14:59.671Z"
+      }
+    },
+    {
+      "receipt_id": 7,
+      "received_ns": 25515755900300,
+      "received_utc": "2026-10-12T07:14:59.671Z",
+      "topic": "audit",
+      "payload": {
+        "category": "transport",
+        "level": "info",
+        "event_type": "parking_sensor_fresh",
+        "message": "Friss parkolóérzékelés áll rendelkezésre",
+        "sim_time": 0.05,
+        "car_id": null,
+        "request_id": null,
+        "reservation_id": null,
+        "zone_id": null,
+        "reason": "first_frame",
+        "sensor_seq": 1,
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25515754367300,
+        "producer": "coordinator",
+        "producer_seq": 4,
+        "message_id": "6d682f18f3dc:coordinator:4",
+        "received_utc": "2026-10-12T07:14:59.671Z"
+      }
+    },
+    {
+      "receipt_id": 10,
+      "received_ns": 25515757185600,
+      "received_utc": "2026-10-12T07:14:59.673Z",
+      "topic": "commands/CAR001",
+      "payload": {
+        "kind": "parking_grant",
+        "car_id": "CAR001",
+        "request_id": "CAR001-parking",
+        "slot_id": "P08",
+        "reservation_id": "6d682f18f3dc-park-1",
+        "route": [
+          [
+            14,
+            58
+          ],
+          [
+            122,
+            58
+          ],
+          [
+            122,
+            24
+          ],
+          [
+            110,
+            24
+          ],
+          [
+            110,
+            12
+          ]
+        ],
+        "sim_time": 0.05,
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25515755678200,
+        "producer": "coordinator",
+        "producer_seq": 6,
+        "message_id": "6d682f18f3dc:coordinator:6",
+        "received_utc": "2026-10-12T07:14:59.673Z"
+      }
+    },
+    {
+      "receipt_id": 11,
+      "received_ns": 25515757503300,
+      "received_utc": "2026-10-12T07:14:59.673Z",
+      "topic": "audit",
+      "payload": {
+        "category": "decision",
+        "level": "info",
+        "event_type": "parking_granted",
+        "message": "Parkoló kijelölve: P08",
+        "sim_time": 0.05,
+        "car_id": "CAR001",
+        "request_id": "CAR001-parking",
+        "reservation_id": "6d682f18f3dc-park-1",
+        "zone_id": null,
+        "reason": "shortest_available_route_then_id",
+        "strategy": "nearest",
+        "slot_id": "P08",
+        "selected_route_length_m": 166.0,
+        "candidate_routes": [
+          {
+            "slot_id": "P01",
+            "route_length_m": 236.0
+          },
+          {
+            "slot_id": "P03",
+            "route_length_m": 216.0
+          },
+          {
+            "slot_id": "P04",
+            "route_length_m": 206.0
+          },
+          {
+            "slot_id": "P06",
+            "route_length_m": 186.0
+          },
+          {
+            "slot_id": "P07",
+            "route_length_m": 176.0
+          },
+          {
+            "slot_id": "P08",
+            "route_length_m": 166.0
+          },
+          {
+            "slot_id": "P09",
+            "route_length_m": 236.0
+          },
+          {
+            "slot_id": "P10",
+            "route_length_m": 226.0
+          },
+          {
+            "slot_id": "P11",
+            "route_length_m": 216.0
+          },
+          {
+            "slot_id": "P12",
+            "route_length_m": 206.0
+          },
+          {
+            "slot_id": "P14",
+            "route_length_m": 186.0
+          },
+          {
+            "slot_id": "P15",
+            "route_length_m": 176.0
+          }
+        ],
+        "sensor_seq": 1,
+        "sensor_age_s": 0.0014244,
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25515755735500,
+        "producer": "coordinator",
+        "producer_seq": 7,
+        "message_id": "6d682f18f3dc:coordinator:7",
+        "received_utc": "2026-10-12T07:14:59.673Z"
+      }
+    },
+    {
+      "receipt_id": 12,
+      "received_ns": 25515768217900,
+      "received_utc": "2026-10-12T07:14:59.683Z",
+      "topic": "events",
+      "payload": {
+        "sim_time": 0.05,
+        "type": "parking_assigned",
+        "message": "Parkoló kijelölve: P08",
+        "car_id": "CAR001",
+        "category": "decision",
+        "level": "info",
+        "slot_id": "P08",
+        "reservation_id": "6d682f18f3dc-park-1",
+        "route_length_m": 166.0,
+        "remaining_route_m": 166.0,
+        "route_source": "configured_polyline",
+        "upcoming_zones": [
+          "C1"
+        ],
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25515767376400,
+        "producer": "simulator",
+        "producer_seq": 7,
+        "message_id": "6d682f18f3dc:simulator:7",
+        "received_utc": "2026-10-12T07:14:59.683Z"
+      }
+    },
+    {
+      "receipt_id": 13,
+      "received_ns": 25515768391500,
+      "received_utc": "2026-10-12T07:14:59.683Z",
+      "topic": "events",
+      "payload": {
+        "sim_time": 0.05,
+        "type": "state_changed",
+        "message": "Járműállapot: haladás; a jármű áll",
+        "car_id": "CAR001",
+        "category": "state",
+        "level": "info",
+        "from_state": "waiting",
+        "to_state": "driving",
+        "from_reason": "Parkolóengedélyre vár",
+        "reason": "",
+        "motion_phase": "stopped",
+        "request_id": "CAR001-parking",
+        "parking_request_id": "CAR001-parking",
+        "reservation_id": "6d682f18f3dc-park-1",
+        "slot_id": "P08",
+        "zone_id": null,
+        "grant_id": null,
+        "speed_m_s": 0.0,
+        "position_m": [
+          14,
+          58
+        ],
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25515767476200,
+        "producer": "simulator",
+        "producer_seq": 8,
+        "message_id": "6d682f18f3dc:simulator:8",
+        "received_utc": "2026-10-12T07:14:59.683Z"
+      }
+    },
+    {
+      "receipt_id": 14,
+      "received_ns": 25515768755700,
+      "received_utc": "2026-10-12T07:14:59.685Z",
+      "topic": "events",
+      "payload": {
+        "sim_time": 0.1,
+        "type": "state_changed",
+        "message": "Járműállapot: haladás; a jármű még mozog",
+        "car_id": "CAR001",
+        "category": "state",
+        "level": "info",
+        "from_state": "driving",
+        "to_state": "driving",
+        "from_reason": "",
+        "reason": "Zónaengedély: C1",
+        "motion_phase": "moving",
+        "request_id": "CAR001-parking",
+        "parking_request_id": "CAR001-parking",
+        "reservation_id": "6d682f18f3dc-park-1",
+        "slot_id": "P08",
+        "zone_id": null,
+        "grant_id": null,
+        "speed_m_s": 0.05,
+        "position_m": [
+          14.00125,
+          58.0
+        ],
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25515767516400,
+        "producer": "simulator",
+        "producer_seq": 9,
+        "message_id": "6d682f18f3dc:simulator:9",
+        "received_utc": "2026-10-12T07:14:59.685Z"
+      }
+    },
+    {
+      "receipt_id": 15,
+      "received_ns": 25515768955700,
+      "received_utc": "2026-10-12T07:14:59.685Z",
+      "topic": "events",
+      "payload": {
+        "sim_time": 0.1,
+        "type": "vehicle_resumed",
+        "message": "A jármű mozgása megkezdődött vagy folytatódott",
+        "car_id": "CAR001",
+        "category": "state",
+        "level": "info",
+        "reason": "Zónaengedély: C1",
+        "motion_phase": "moving",
+        "request_id": "CAR001-parking",
+        "parking_request_id": "CAR001-parking",
+        "reservation_id": "6d682f18f3dc-park-1",
+        "slot_id": "P08",
+        "zone_id": null,
+        "grant_id": null,
+        "speed_m_s": 0.05,
+        "position_m": [
+          14.00125,
+          58.0
+        ],
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25515767547100,
+        "producer": "simulator",
+        "producer_seq": 10,
+        "message_id": "6d682f18f3dc:simulator:10",
+        "received_utc": "2026-10-12T07:14:59.685Z"
+      }
+    },
+    {
+      "receipt_id": 16,
+      "received_ns": 25515778354800,
+      "received_utc": "2026-10-12T07:14:59.694Z",
+      "topic": "sensors/parking",
+      "payload": {
+        "sim_time": 0.15,
+        "seq": 2,
+        "source": "virtual_sensor",
+        "period_s": 0.1,
+        "nominal_period_s": 0.1,
+        "sample_interval_s": 0.1,
+        "sampling": {
+          "policy": "first_integration_tick_at_or_after_nominal_deadline",
+          "period_kind": "fixed_step_quantized_interval",
+          "integration_step_s": 0.05,
+          "integration_step_source": "actual_step",
+          "maximum_observed_step_s": 0.05,
+          "bound_excludes_fault_outages": true,
+          "interpolated_samples": false
+        },
+        "slots": [
+          {
+            "id": "P01",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P02",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P03",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P04",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P05",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P06",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P07",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P08",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P09",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P10",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P11",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P12",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P13",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P14",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P15",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P16",
+            "occupied": true,
+            "blocked": false
+          }
+        ],
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25515777688500,
+        "producer": "simulator",
+        "producer_seq": 11,
+        "message_id": "6d682f18f3dc:simulator:11",
+        "received_utc": "2026-10-12T07:14:59.694Z"
+      }
+    },
+    {
+      "receipt_id": 17,
+      "received_ns": 25515803311900,
+      "received_utc": "2026-10-12T07:14:59.719Z",
+      "topic": "sensors/parking",
+      "payload": {
+        "sim_time": 0.25,
+        "seq": 3,
+        "source": "virtual_sensor",
+        "period_s": 0.1,
+        "nominal_period_s": 0.1,
+        "sample_interval_s": 0.1,
+        "sampling": {
+          "policy": "first_integration_tick_at_or_after_nominal_deadline",
+          "period_kind": "fixed_step_quantized_interval",
+          "integration_step_s": 0.05,
+          "integration_step_source": "actual_step",
+          "maximum_observed_step_s": 0.05,
+          "bound_excludes_fault_outages": true,
+          "interpolated_samples": false
+        },
+        "slots": [
+          {
+            "id": "P01",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P02",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P03",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P04",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P05",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P06",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P07",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P08",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P09",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P10",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P11",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P12",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P13",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P14",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P15",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P16",
+            "occupied": true,
+            "blocked": false
+          }
+        ],
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25515802555200,
+        "producer": "simulator",
+        "producer_seq": 13,
+        "message_id": "6d682f18f3dc:simulator:13",
+        "received_utc": "2026-10-12T07:14:59.719Z"
+      }
+    },
+    {
+      "receipt_id": 18,
+      "received_ns": 25515819957300,
+      "received_utc": "2026-10-12T07:14:59.735Z",
+      "topic": "sensors/parking",
+      "payload": {
+        "sim_time": 0.35,
+        "seq": 4,
+        "source": "virtual_sensor",
+        "period_s": 0.1,
+        "nominal_period_s": 0.1,
+        "sample_interval_s": 0.1,
+        "sampling": {
+          "policy": "first_integration_tick_at_or_after_nominal_deadline",
+          "period_kind": "fixed_step_quantized_interval",
+          "integration_step_s": 0.05,
+          "integration_step_source": "actual_step",
+          "maximum_observed_step_s": 0.05,
+          "bound_excludes_fault_outages": true,
+          "interpolated_samples": false
+        },
+        "slots": [
+          {
+            "id": "P01",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P02",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P03",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P04",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P05",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P06",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P07",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P08",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P09",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P10",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P11",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P12",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P13",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P14",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P15",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P16",
+            "occupied": true,
+            "blocked": false
+          }
+        ],
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25515817742000,
+        "producer": "simulator",
+        "producer_seq": 15,
+        "message_id": "6d682f18f3dc:simulator:15",
+        "received_utc": "2026-10-12T07:14:59.735Z"
+      }
+    },
+    {
+      "receipt_id": 3188,
+      "received_ns": 25543987394300,
+      "received_utc": "2026-10-12T07:15:27.903Z",
+      "topic": "sensors/parking",
+      "payload": {
+        "sim_time": 195.65,
+        "seq": 1717,
+        "source": "virtual_sensor",
+        "period_s": 0.1,
+        "nominal_period_s": 0.1,
+        "sample_interval_s": 0.1,
+        "sampling": {
+          "policy": "first_integration_tick_at_or_after_nominal_deadline",
+          "period_kind": "fixed_step_quantized_interval",
+          "integration_step_s": 0.05,
+          "integration_step_source": "actual_step",
+          "maximum_observed_step_s": 0.05,
+          "bound_excludes_fault_outages": true,
+          "interpolated_samples": false
+        },
+        "slots": [
+          {
+            "id": "P01",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P02",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P03",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P04",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P05",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P06",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P07",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P08",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P09",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P10",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P11",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P12",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P13",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P14",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P15",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P16",
+            "occupied": true,
+            "blocked": false
+          }
+        ],
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25543986339900,
+        "producer": "simulator",
+        "producer_seq": 12143,
+        "message_id": "6d682f18f3dc:simulator:12143",
+        "received_utc": "2026-10-12T07:15:27.903Z"
+      }
+    },
+    {
+      "receipt_id": 3189,
+      "received_ns": 25543998140300,
+      "received_utc": "2026-10-12T07:15:27.913Z",
+      "topic": "sensors/parking",
+      "payload": {
+        "sim_time": 195.75,
+        "seq": 1718,
+        "source": "virtual_sensor",
+        "period_s": 0.1,
+        "nominal_period_s": 0.1,
+        "sample_interval_s": 0.1,
+        "sampling": {
+          "policy": "first_integration_tick_at_or_after_nominal_deadline",
+          "period_kind": "fixed_step_quantized_interval",
+          "integration_step_s": 0.05,
+          "integration_step_source": "actual_step",
+          "maximum_observed_step_s": 0.05,
+          "bound_excludes_fault_outages": true,
+          "interpolated_samples": false
+        },
+        "slots": [
+          {
+            "id": "P01",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P02",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P03",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P04",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P05",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P06",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P07",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P08",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P09",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P10",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P11",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P12",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P13",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P14",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P15",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P16",
+            "occupied": true,
+            "blocked": false
+          }
+        ],
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25543996910800,
+        "producer": "simulator",
+        "producer_seq": 12150,
+        "message_id": "6d682f18f3dc:simulator:12150",
+        "received_utc": "2026-10-12T07:15:27.913Z"
+      }
+    },
+    {
+      "receipt_id": 3190,
+      "received_ns": 25544012713300,
+      "received_utc": "2026-10-12T07:15:27.928Z",
+      "topic": "sensors/parking",
+      "payload": {
+        "sim_time": 195.85,
+        "seq": 1719,
+        "source": "virtual_sensor",
+        "period_s": 0.1,
+        "nominal_period_s": 0.1,
+        "sample_interval_s": 0.1,
+        "sampling": {
+          "policy": "first_integration_tick_at_or_after_nominal_deadline",
+          "period_kind": "fixed_step_quantized_interval",
+          "integration_step_s": 0.05,
+          "integration_step_source": "actual_step",
+          "maximum_observed_step_s": 0.05,
+          "bound_excludes_fault_outages": true,
+          "interpolated_samples": false
+        },
+        "slots": [
+          {
+            "id": "P01",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P02",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P03",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P04",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P05",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P06",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P07",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P08",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P09",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P10",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P11",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P12",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P13",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P14",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P15",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P16",
+            "occupied": true,
+            "blocked": false
+          }
+        ],
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25544011419700,
+        "producer": "simulator",
+        "producer_seq": 12157,
+        "message_id": "6d682f18f3dc:simulator:12157",
+        "received_utc": "2026-10-12T07:15:27.928Z"
+      }
+    },
+    {
+      "receipt_id": 3192,
+      "received_ns": 25544027726000,
+      "received_utc": "2026-10-12T07:15:27.943Z",
+      "topic": "sensors/parking",
+      "payload": {
+        "sim_time": 195.95,
+        "seq": 1720,
+        "source": "virtual_sensor",
+        "period_s": 0.1,
+        "nominal_period_s": 0.1,
+        "sample_interval_s": 0.1,
+        "sampling": {
+          "policy": "first_integration_tick_at_or_after_nominal_deadline",
+          "period_kind": "fixed_step_quantized_interval",
+          "integration_step_s": 0.05,
+          "integration_step_source": "actual_step",
+          "maximum_observed_step_s": 0.05,
+          "bound_excludes_fault_outages": true,
+          "interpolated_samples": false
+        },
+        "slots": [
+          {
+            "id": "P01",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P02",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P03",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P04",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P05",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P06",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P07",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P08",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P09",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P10",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P11",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P12",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P13",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P14",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P15",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P16",
+            "occupied": true,
+            "blocked": false
+          }
+        ],
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25544025690200,
+        "producer": "simulator",
+        "producer_seq": 12165,
+        "message_id": "6d682f18f3dc:simulator:12165",
+        "received_utc": "2026-10-12T07:15:27.943Z"
+      }
+    },
+    {
+      "receipt_id": 3193,
+      "received_ns": 25544037207500,
+      "received_utc": "2026-10-12T07:15:27.953Z",
+      "topic": "sensors/parking",
+      "payload": {
+        "sim_time": 196.05,
+        "seq": 1721,
+        "source": "virtual_sensor",
+        "period_s": 0.1,
+        "nominal_period_s": 0.1,
+        "sample_interval_s": 0.1,
+        "sampling": {
+          "policy": "first_integration_tick_at_or_after_nominal_deadline",
+          "period_kind": "fixed_step_quantized_interval",
+          "integration_step_s": 0.05,
+          "integration_step_source": "actual_step",
+          "maximum_observed_step_s": 0.05,
+          "bound_excludes_fault_outages": true,
+          "interpolated_samples": false
+        },
+        "slots": [
+          {
+            "id": "P01",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P02",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P03",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P04",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P05",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P06",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P07",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P08",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P09",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P10",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P11",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P12",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P13",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P14",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P15",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P16",
+            "occupied": true,
+            "blocked": false
+          }
+        ],
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25544035308600,
+        "producer": "simulator",
+        "producer_seq": 12172,
+        "message_id": "6d682f18f3dc:simulator:12172",
+        "received_utc": "2026-10-12T07:15:27.953Z"
+      }
+    },
+    {
+      "receipt_id": 3195,
+      "received_ns": 25544046042300,
+      "received_utc": "2026-10-12T07:15:27.961Z",
+      "topic": "sensors/parking",
+      "payload": {
+        "sim_time": 196.15,
+        "seq": 1722,
+        "source": "virtual_sensor",
+        "period_s": 0.1,
+        "nominal_period_s": 0.1,
+        "sample_interval_s": 0.1,
+        "sampling": {
+          "policy": "first_integration_tick_at_or_after_nominal_deadline",
+          "period_kind": "fixed_step_quantized_interval",
+          "integration_step_s": 0.05,
+          "integration_step_source": "actual_step",
+          "maximum_observed_step_s": 0.05,
+          "bound_excludes_fault_outages": true,
+          "interpolated_samples": false
+        },
+        "slots": [
+          {
+            "id": "P01",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P02",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P03",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P04",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P05",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P06",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P07",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P08",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P09",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P10",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P11",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P12",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P13",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P14",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P15",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P16",
+            "occupied": true,
+            "blocked": false
+          }
+        ],
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25544044682400,
+        "producer": "simulator",
+        "producer_seq": 12179,
+        "message_id": "6d682f18f3dc:simulator:12179",
+        "received_utc": "2026-10-12T07:15:27.961Z"
+      }
+    },
+    {
+      "receipt_id": 3196,
+      "received_ns": 25544066664000,
+      "received_utc": "2026-10-12T07:15:27.982Z",
+      "topic": "sensors/parking",
+      "payload": {
+        "sim_time": 196.25,
+        "seq": 1723,
+        "source": "virtual_sensor",
+        "period_s": 0.1,
+        "nominal_period_s": 0.1,
+        "sample_interval_s": 0.1,
+        "sampling": {
+          "policy": "first_integration_tick_at_or_after_nominal_deadline",
+          "period_kind": "fixed_step_quantized_interval",
+          "integration_step_s": 0.05,
+          "integration_step_source": "actual_step",
+          "maximum_observed_step_s": 0.05,
+          "bound_excludes_fault_outages": true,
+          "interpolated_samples": false
+        },
+        "slots": [
+          {
+            "id": "P01",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P02",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P03",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P04",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P05",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P06",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P07",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P08",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P09",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P10",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P11",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P12",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P13",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P14",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P15",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P16",
+            "occupied": true,
+            "blocked": false
+          }
+        ],
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25544065158200,
+        "producer": "simulator",
+        "producer_seq": 12186,
+        "message_id": "6d682f18f3dc:simulator:12186",
+        "received_utc": "2026-10-12T07:15:27.982Z"
+      }
+    },
+    {
+      "receipt_id": 3197,
+      "received_ns": 25544075924900,
+      "received_utc": "2026-10-12T07:15:27.992Z",
+      "topic": "sensors/parking",
+      "payload": {
+        "sim_time": 196.35,
+        "seq": 1724,
+        "source": "virtual_sensor",
+        "period_s": 0.1,
+        "nominal_period_s": 0.1,
+        "sample_interval_s": 0.1,
+        "sampling": {
+          "policy": "first_integration_tick_at_or_after_nominal_deadline",
+          "period_kind": "fixed_step_quantized_interval",
+          "integration_step_s": 0.05,
+          "integration_step_source": "actual_step",
+          "maximum_observed_step_s": 0.05,
+          "bound_excludes_fault_outages": true,
+          "interpolated_samples": false
+        },
+        "slots": [
+          {
+            "id": "P01",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P02",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P03",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P04",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P05",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P06",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P07",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P08",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P09",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P10",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P11",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P12",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P13",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P14",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P15",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P16",
+            "occupied": true,
+            "blocked": false
+          }
+        ],
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25544074838500,
+        "producer": "simulator",
+        "producer_seq": 12193,
+        "message_id": "6d682f18f3dc:simulator:12193",
+        "received_utc": "2026-10-12T07:15:27.992Z"
+      }
+    },
+    {
+      "receipt_id": 3198,
+      "received_ns": 25544088333900,
+      "received_utc": "2026-10-12T07:15:28.004Z",
+      "topic": "sensors/parking",
+      "payload": {
+        "sim_time": 196.45,
+        "seq": 1725,
+        "source": "virtual_sensor",
+        "period_s": 0.1,
+        "nominal_period_s": 0.1,
+        "sample_interval_s": 0.1,
+        "sampling": {
+          "policy": "first_integration_tick_at_or_after_nominal_deadline",
+          "period_kind": "fixed_step_quantized_interval",
+          "integration_step_s": 0.05,
+          "integration_step_source": "actual_step",
+          "maximum_observed_step_s": 0.05,
+          "bound_excludes_fault_outages": true,
+          "interpolated_samples": false
+        },
+        "slots": [
+          {
+            "id": "P01",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P02",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P03",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P04",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P05",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P06",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P07",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P08",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P09",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P10",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P11",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P12",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P13",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P14",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P15",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P16",
+            "occupied": true,
+            "blocked": false
+          }
+        ],
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25544086892900,
+        "producer": "simulator",
+        "producer_seq": 12200,
+        "message_id": "6d682f18f3dc:simulator:12200",
+        "received_utc": "2026-10-12T07:15:28.004Z"
+      }
+    },
+    {
+      "receipt_id": 3199,
+      "received_ns": 25544099302900,
+      "received_utc": "2026-10-12T07:15:28.015Z",
+      "topic": "sensors/parking",
+      "payload": {
+        "sim_time": 196.55,
+        "seq": 1726,
+        "source": "virtual_sensor",
+        "period_s": 0.1,
+        "nominal_period_s": 0.1,
+        "sample_interval_s": 0.1,
+        "sampling": {
+          "policy": "first_integration_tick_at_or_after_nominal_deadline",
+          "period_kind": "fixed_step_quantized_interval",
+          "integration_step_s": 0.05,
+          "integration_step_source": "actual_step",
+          "maximum_observed_step_s": 0.05,
+          "bound_excludes_fault_outages": true,
+          "interpolated_samples": false
+        },
+        "slots": [
+          {
+            "id": "P01",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P02",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P03",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P04",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P05",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P06",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P07",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P08",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P09",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P10",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P11",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P12",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P13",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P14",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P15",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P16",
+            "occupied": true,
+            "blocked": false
+          }
+        ],
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25544097832500,
+        "producer": "simulator",
+        "producer_seq": 12207,
+        "message_id": "6d682f18f3dc:simulator:12207",
+        "received_utc": "2026-10-12T07:15:28.015Z"
+      }
+    },
+    {
+      "receipt_id": 3200,
+      "received_ns": 25544110968600,
+      "received_utc": "2026-10-12T07:15:28.026Z",
+      "topic": "sensors/parking",
+      "payload": {
+        "sim_time": 196.65,
+        "seq": 1727,
+        "source": "virtual_sensor",
+        "period_s": 0.1,
+        "nominal_period_s": 0.1,
+        "sample_interval_s": 0.1,
+        "sampling": {
+          "policy": "first_integration_tick_at_or_after_nominal_deadline",
+          "period_kind": "fixed_step_quantized_interval",
+          "integration_step_s": 0.05,
+          "integration_step_source": "actual_step",
+          "maximum_observed_step_s": 0.05,
+          "bound_excludes_fault_outages": true,
+          "interpolated_samples": false
+        },
+        "slots": [
+          {
+            "id": "P01",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P02",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P03",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P04",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P05",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P06",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P07",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P08",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P09",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P10",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P11",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P12",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P13",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P14",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P15",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P16",
+            "occupied": true,
+            "blocked": false
+          }
+        ],
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25544109468000,
+        "producer": "simulator",
+        "producer_seq": 12214,
+        "message_id": "6d682f18f3dc:simulator:12214",
+        "received_utc": "2026-10-12T07:15:28.026Z"
+      }
+    },
+    {
+      "receipt_id": 3202,
+      "received_ns": 25544134594400,
+      "received_utc": "2026-10-12T07:15:28.050Z",
+      "topic": "sensors/parking",
+      "payload": {
+        "sim_time": 196.75,
+        "seq": 1728,
+        "source": "virtual_sensor",
+        "period_s": 0.1,
+        "nominal_period_s": 0.1,
+        "sample_interval_s": 0.1,
+        "sampling": {
+          "policy": "first_integration_tick_at_or_after_nominal_deadline",
+          "period_kind": "fixed_step_quantized_interval",
+          "integration_step_s": 0.05,
+          "integration_step_source": "actual_step",
+          "maximum_observed_step_s": 0.05,
+          "bound_excludes_fault_outages": true,
+          "interpolated_samples": false
+        },
+        "slots": [
+          {
+            "id": "P01",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P02",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P03",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P04",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P05",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P06",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P07",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P08",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P09",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P10",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P11",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P12",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P13",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P14",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P15",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P16",
+            "occupied": true,
+            "blocked": false
+          }
+        ],
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25544127228800,
+        "producer": "simulator",
+        "producer_seq": 12222,
+        "message_id": "6d682f18f3dc:simulator:12222",
+        "received_utc": "2026-10-12T07:15:28.050Z"
+      }
+    },
+    {
+      "receipt_id": 3203,
+      "received_ns": 25544141044200,
+      "received_utc": "2026-10-12T07:15:28.056Z",
+      "topic": "sensors/parking",
+      "payload": {
+        "sim_time": 196.85,
+        "seq": 1729,
+        "source": "virtual_sensor",
+        "period_s": 0.1,
+        "nominal_period_s": 0.1,
+        "sample_interval_s": 0.1,
+        "sampling": {
+          "policy": "first_integration_tick_at_or_after_nominal_deadline",
+          "period_kind": "fixed_step_quantized_interval",
+          "integration_step_s": 0.05,
+          "integration_step_source": "actual_step",
+          "maximum_observed_step_s": 0.05,
+          "bound_excludes_fault_outages": true,
+          "interpolated_samples": false
+        },
+        "slots": [
+          {
+            "id": "P01",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P02",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P03",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P04",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P05",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P06",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P07",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P08",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P09",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P10",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P11",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P12",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P13",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P14",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P15",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P16",
+            "occupied": true,
+            "blocked": false
+          }
+        ],
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25544139745600,
+        "producer": "simulator",
+        "producer_seq": 12229,
+        "message_id": "6d682f18f3dc:simulator:12229",
+        "received_utc": "2026-10-12T07:15:28.056Z"
+      }
+    },
+    {
+      "receipt_id": 3204,
+      "received_ns": 25544156368500,
+      "received_utc": "2026-10-12T07:15:28.072Z",
+      "topic": "sensors/parking",
+      "payload": {
+        "sim_time": 196.95,
+        "seq": 1730,
+        "source": "virtual_sensor",
+        "period_s": 0.1,
+        "nominal_period_s": 0.1,
+        "sample_interval_s": 0.1,
+        "sampling": {
+          "policy": "first_integration_tick_at_or_after_nominal_deadline",
+          "period_kind": "fixed_step_quantized_interval",
+          "integration_step_s": 0.05,
+          "integration_step_source": "actual_step",
+          "maximum_observed_step_s": 0.05,
+          "bound_excludes_fault_outages": true,
+          "interpolated_samples": false
+        },
+        "slots": [
+          {
+            "id": "P01",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P02",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P03",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P04",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P05",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P06",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P07",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P08",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P09",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P10",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P11",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P12",
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "id": "P13",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P14",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P15",
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "id": "P16",
+            "occupied": true,
+            "blocked": false
+          }
+        ],
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25544154961500,
+        "producer": "simulator",
+        "producer_seq": 12236,
+        "message_id": "6d682f18f3dc:simulator:12236",
+        "received_utc": "2026-10-12T07:15:28.072Z"
+      }
+    },
+    {
+      "receipt_id": 3206,
+      "received_ns": 25544164271000,
+      "received_utc": "2026-10-12T07:15:28.080Z",
+      "topic": "events",
+      "payload": {
+        "category": "control",
+        "control_id": "f8a9b0a1ea3248db",
+        "car_id": null,
+        "action": "pause",
+        "sim_time": 196.95,
+        "parameters": {},
+        "recovery_request": {
+          "reason": "Friss MQTT-állapot érkezik, de a kijelzett állapot elavult. Csak szünet és 1× lassítás kérhető.",
+          "processed_snapshot_age_s": 3.9601039,
+          "callback_snapshot_age_s": 0.0245745,
+          "clock": "host_perf_counter_receipt",
+          "allowed_actions": "pause or speed=1 only"
+        },
+        "type": "control_applied",
+        "level": "info",
+        "message": "Kezelőparancs alkalmazva: pause",
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25544159896000,
+        "producer": "simulator",
+        "producer_seq": 12243,
+        "message_id": "6d682f18f3dc:simulator:12243",
+        "received_utc": "2026-10-12T07:15:28.080Z"
+      }
+    }
+  ]
+}

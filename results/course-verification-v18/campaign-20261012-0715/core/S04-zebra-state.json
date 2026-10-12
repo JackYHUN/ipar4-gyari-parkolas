@@ -1,0 +1,2046 @@
+{
+  "run_id": "6d682f18f3dc",
+  "sim_time": 11.3,
+  "connected": true,
+  "map": {
+    "width": 140,
+    "height": 90,
+    "network": null,
+    "parking_areas": [],
+    "production_exits": [],
+    "layout": {},
+    "roads": [
+      [
+        [
+          14,
+          58
+        ],
+        [
+          122,
+          58
+        ],
+        [
+          122,
+          24
+        ],
+        [
+          34,
+          24
+        ]
+      ]
+    ],
+    "buildings": [
+      {
+        "x": 2,
+        "y": 66,
+        "w": 30,
+        "h": 18,
+        "label": "Gyártósor"
+      }
+    ],
+    "crossings": [
+      {
+        "id": "ZEBRA1",
+        "x": 43,
+        "y": 58,
+        "axis": "vertical"
+      },
+      {
+        "id": "ZEBRA2",
+        "x": 122,
+        "y": 41,
+        "axis": "horizontal"
+      }
+    ],
+    "slots": [
+      {
+        "id": "P01",
+        "x": 40,
+        "y": 12,
+        "area_id": null,
+        "route": [
+          [
+            14,
+            58
+          ],
+          [
+            122,
+            58
+          ],
+          [
+            122,
+            24
+          ],
+          [
+            40,
+            24
+          ],
+          [
+            40,
+            12
+          ]
+        ]
+      },
+      {
+        "id": "P02",
+        "x": 50,
+        "y": 12,
+        "area_id": null,
+        "route": [
+          [
+            14,
+            58
+          ],
+          [
+            122,
+            58
+          ],
+          [
+            122,
+            24
+          ],
+          [
+            50,
+            24
+          ],
+          [
+            50,
+            12
+          ]
+        ]
+      },
+      {
+        "id": "P03",
+        "x": 60,
+        "y": 12,
+        "area_id": null,
+        "route": [
+          [
+            14,
+            58
+          ],
+          [
+            122,
+            58
+          ],
+          [
+            122,
+            24
+          ],
+          [
+            60,
+            24
+          ],
+          [
+            60,
+            12
+          ]
+        ]
+      },
+      {
+        "id": "P04",
+        "x": 70,
+        "y": 12,
+        "area_id": null,
+        "route": [
+          [
+            14,
+            58
+          ],
+          [
+            122,
+            58
+          ],
+          [
+            122,
+            24
+          ],
+          [
+            70,
+            24
+          ],
+          [
+            70,
+            12
+          ]
+        ]
+      },
+      {
+        "id": "P05",
+        "x": 80,
+        "y": 12,
+        "area_id": null,
+        "route": [
+          [
+            14,
+            58
+          ],
+          [
+            122,
+            58
+          ],
+          [
+            122,
+            24
+          ],
+          [
+            80,
+            24
+          ],
+          [
+            80,
+            12
+          ]
+        ]
+      },
+      {
+        "id": "P06",
+        "x": 90,
+        "y": 12,
+        "area_id": null,
+        "route": [
+          [
+            14,
+            58
+          ],
+          [
+            122,
+            58
+          ],
+          [
+            122,
+            24
+          ],
+          [
+            90,
+            24
+          ],
+          [
+            90,
+            12
+          ]
+        ]
+      },
+      {
+        "id": "P07",
+        "x": 100,
+        "y": 12,
+        "area_id": null,
+        "route": [
+          [
+            14,
+            58
+          ],
+          [
+            122,
+            58
+          ],
+          [
+            122,
+            24
+          ],
+          [
+            100,
+            24
+          ],
+          [
+            100,
+            12
+          ]
+        ]
+      },
+      {
+        "id": "P08",
+        "x": 110,
+        "y": 12,
+        "area_id": null,
+        "route": [
+          [
+            14,
+            58
+          ],
+          [
+            122,
+            58
+          ],
+          [
+            122,
+            24
+          ],
+          [
+            110,
+            24
+          ],
+          [
+            110,
+            12
+          ]
+        ]
+      },
+      {
+        "id": "P09",
+        "x": 40,
+        "y": 36,
+        "area_id": null,
+        "route": [
+          [
+            14,
+            58
+          ],
+          [
+            122,
+            58
+          ],
+          [
+            122,
+            24
+          ],
+          [
+            40,
+            24
+          ],
+          [
+            40,
+            36
+          ]
+        ]
+      },
+      {
+        "id": "P10",
+        "x": 50,
+        "y": 36,
+        "area_id": null,
+        "route": [
+          [
+            14,
+            58
+          ],
+          [
+            122,
+            58
+          ],
+          [
+            122,
+            24
+          ],
+          [
+            50,
+            24
+          ],
+          [
+            50,
+            36
+          ]
+        ]
+      },
+      {
+        "id": "P11",
+        "x": 60,
+        "y": 36,
+        "area_id": null,
+        "route": [
+          [
+            14,
+            58
+          ],
+          [
+            122,
+            58
+          ],
+          [
+            122,
+            24
+          ],
+          [
+            60,
+            24
+          ],
+          [
+            60,
+            36
+          ]
+        ]
+      },
+      {
+        "id": "P12",
+        "x": 70,
+        "y": 36,
+        "area_id": null,
+        "route": [
+          [
+            14,
+            58
+          ],
+          [
+            122,
+            58
+          ],
+          [
+            122,
+            24
+          ],
+          [
+            70,
+            24
+          ],
+          [
+            70,
+            36
+          ]
+        ]
+      },
+      {
+        "id": "P13",
+        "x": 80,
+        "y": 36,
+        "area_id": null,
+        "route": [
+          [
+            14,
+            58
+          ],
+          [
+            122,
+            58
+          ],
+          [
+            122,
+            24
+          ],
+          [
+            80,
+            24
+          ],
+          [
+            80,
+            36
+          ]
+        ]
+      },
+      {
+        "id": "P14",
+        "x": 90,
+        "y": 36,
+        "area_id": null,
+        "route": [
+          [
+            14,
+            58
+          ],
+          [
+            122,
+            58
+          ],
+          [
+            122,
+            24
+          ],
+          [
+            90,
+            24
+          ],
+          [
+            90,
+            36
+          ]
+        ]
+      },
+      {
+        "id": "P15",
+        "x": 100,
+        "y": 36,
+        "area_id": null,
+        "route": [
+          [
+            14,
+            58
+          ],
+          [
+            122,
+            58
+          ],
+          [
+            122,
+            24
+          ],
+          [
+            100,
+            24
+          ],
+          [
+            100,
+            36
+          ]
+        ]
+      },
+      {
+        "id": "P16",
+        "x": 110,
+        "y": 36,
+        "area_id": null,
+        "route": [
+          [
+            14,
+            58
+          ],
+          [
+            122,
+            58
+          ],
+          [
+            122,
+            24
+          ],
+          [
+            110,
+            24
+          ],
+          [
+            110,
+            36
+          ]
+        ]
+      }
+    ],
+    "zones": [
+      {
+        "id": "C1",
+        "x": 122,
+        "y": 58,
+        "w": 8,
+        "h": 8
+      }
+    ],
+    "vehicle_length": 4.4,
+    "vehicle_width": 1.8
+  },
+  "cars": [
+    {
+      "id": "CAR001",
+      "x": 39.1489,
+      "y": 58.0,
+      "heading": 0.0,
+      "speed": 0.0,
+      "state": "pedestrian_stop",
+      "slot_id": "P08",
+      "elapsed_s": 11.3,
+      "yard_elapsed_s": 11.25,
+      "sensor_age_s": 0.05,
+      "sensor_ok": true,
+      "control": {
+        "source": "ideal_route_controller",
+        "decision_sim_time_s": 11.3,
+        "motion_interval_s": 0.05,
+        "target_speed_m_s": 0.0,
+        "speed_before_m_s": 0.0,
+        "speed_after_m_s": 0.0,
+        "applied_acceleration_m_s2": 0.0,
+        "braking_distance_m": 0.0,
+        "reaction_allowance_m": 0.0,
+        "reaction_period_s": 0.1,
+        "nominal_period_s": 0.1,
+        "braking_deceleration_m_s2": 2.0,
+        "braking_assumption": "ideal_constant_deceleration_excluding_reaction_allowance",
+        "stop_limit_progress_m": 25.158579,
+        "stop_limit_remaining_m": 0.009653,
+        "stop_reason": "Gyalogos: ZEBRA1",
+        "target_state": "pedestrian_stop",
+        "result_state": "pedestrian_stop",
+        "sensor_sample_sim_time_s": 11.25,
+        "sensor_age_s": 0.05,
+        "connected": true,
+        "zone_grants": {}
+      },
+      "sensors": {
+        "schema_version": 1,
+        "source": "virtual_onboard_bundle",
+        "sample_sim_time_s": 11.25,
+        "sample_interval_s": 0.1,
+        "pose": {
+          "x_m": 39.0793,
+          "y_m": 57.950839,
+          "heading_deg": 359.936857,
+          "heading_uncertainty_deg": 1.0,
+          "source": "bounded_uniform_virtual_localization"
+        },
+        "reference_pose": {
+          "x_m": 39.148925,
+          "y_m": 58.0,
+          "heading_deg": 0.0,
+          "source": "sampled_simulation_reference"
+        },
+        "guidance": {
+          "available": true,
+          "source": "noisy_pose_projection_on_assigned_map_route",
+          "projected_x_m": 39.0793,
+          "projected_y_m": 58.0,
+          "segment_index": 0,
+          "progress_m": 25.0793,
+          "lateral_error_m": -0.049161,
+          "heading_error_deg": -0.063143,
+          "route_heading_deg": 0.0
+        },
+        "odometry": {
+          "speed_m_s": 0.0,
+          "distance_m": 25.148925,
+          "yaw_rate_deg_s": 0.0,
+          "source": "ideal_model_proxy"
+        },
+        "proximity": {
+          "schema_version": 1,
+          "source": "virtual_bumper_ray_fan",
+          "model": "oriented_rectangle_first_return",
+          "sample_sim_time_s": 11.25,
+          "sampled": true,
+          "range_m": 3.0,
+          "beam_half_angle_deg": 20.0,
+          "rays_per_channel": 9,
+          "thresholds_m": {
+            "close": 0.55,
+            "warning": 1.2
+          },
+          "vehicle": {
+            "length_m": 4.4,
+            "width_m": 1.8
+          },
+          "reference_pose": {
+            "x_m": 39.148925,
+            "y_m": 58.0,
+            "heading_deg": 0.0
+          },
+          "channels": [
+            {
+              "id": "front_left",
+              "label": "Elöl bal",
+              "bearing_deg": -35.0,
+              "origin_local_m": {
+                "forward": 2.2,
+                "right": -0.648
+              },
+              "origin_world_m": {
+                "x_m": 41.348925,
+                "y_m": 57.352
+              },
+              "range_m": 3.0,
+              "distance_m": null,
+              "status": "no_return",
+              "target": null,
+              "hit_bearing_deg": null,
+              "hit_world_m": null,
+              "beam_endpoints_world_m": [
+                {
+                  "x_m": 43.069655,
+                  "y_m": 54.894544
+                },
+                {
+                  "x_m": 44.246703,
+                  "y_m": 56.575543
+                }
+              ]
+            },
+            {
+              "id": "front_center",
+              "label": "Elöl közép",
+              "bearing_deg": 0.0,
+              "origin_local_m": {
+                "forward": 2.2,
+                "right": 0.0
+              },
+              "origin_world_m": {
+                "x_m": 41.348925,
+                "y_m": 58.0
+              },
+              "range_m": 3.0,
+              "distance_m": null,
+              "status": "no_return",
+              "target": null,
+              "hit_bearing_deg": null,
+              "hit_world_m": null,
+              "beam_endpoints_world_m": [
+                {
+                  "x_m": 44.168003,
+                  "y_m": 56.97394
+                },
+                {
+                  "x_m": 44.168003,
+                  "y_m": 59.02606
+                }
+              ]
+            },
+            {
+              "id": "front_right",
+              "label": "Elöl jobb",
+              "bearing_deg": 35.0,
+              "origin_local_m": {
+                "forward": 2.2,
+                "right": 0.648
+              },
+              "origin_world_m": {
+                "x_m": 41.348925,
+                "y_m": 58.648
+              },
+              "range_m": 3.0,
+              "distance_m": null,
+              "status": "no_return",
+              "target": null,
+              "hit_bearing_deg": null,
+              "hit_world_m": null,
+              "beam_endpoints_world_m": [
+                {
+                  "x_m": 44.246703,
+                  "y_m": 59.424457
+                },
+                {
+                  "x_m": 43.069655,
+                  "y_m": 61.105456
+                }
+              ]
+            },
+            {
+              "id": "rear_left",
+              "label": "Hátul bal",
+              "bearing_deg": -145.0,
+              "origin_local_m": {
+                "forward": -2.2,
+                "right": -0.648
+              },
+              "origin_world_m": {
+                "x_m": 36.948925,
+                "y_m": 57.352
+              },
+              "range_m": 3.0,
+              "distance_m": null,
+              "status": "no_return",
+              "target": null,
+              "hit_bearing_deg": null,
+              "hit_world_m": null,
+              "beam_endpoints_world_m": [
+                {
+                  "x_m": 34.051148,
+                  "y_m": 56.575543
+                },
+                {
+                  "x_m": 35.228196,
+                  "y_m": 54.894544
+                }
+              ]
+            },
+            {
+              "id": "rear_center",
+              "label": "Hátul közép",
+              "bearing_deg": 180.0,
+              "origin_local_m": {
+                "forward": -2.2,
+                "right": 0.0
+              },
+              "origin_world_m": {
+                "x_m": 36.948925,
+                "y_m": 58.0
+              },
+              "range_m": 3.0,
+              "distance_m": null,
+              "status": "no_return",
+              "target": null,
+              "hit_bearing_deg": null,
+              "hit_world_m": null,
+              "beam_endpoints_world_m": [
+                {
+                  "x_m": 34.129848,
+                  "y_m": 59.02606
+                },
+                {
+                  "x_m": 34.129848,
+                  "y_m": 56.97394
+                }
+              ]
+            },
+            {
+              "id": "rear_right",
+              "label": "Hátul jobb",
+              "bearing_deg": 145.0,
+              "origin_local_m": {
+                "forward": -2.2,
+                "right": 0.648
+              },
+              "origin_world_m": {
+                "x_m": 36.948925,
+                "y_m": 58.648
+              },
+              "range_m": 3.0,
+              "distance_m": null,
+              "status": "no_return",
+              "target": null,
+              "hit_bearing_deg": null,
+              "hit_world_m": null,
+              "beam_endpoints_world_m": [
+                {
+                  "x_m": 35.228196,
+                  "y_m": 61.105456
+                },
+                {
+                  "x_m": 34.051148,
+                  "y_m": 59.424457
+                }
+              ]
+            },
+            {
+              "id": "left",
+              "label": "Bal oldal",
+              "bearing_deg": -90.0,
+              "origin_local_m": {
+                "forward": 0.0,
+                "right": -0.9
+              },
+              "origin_world_m": {
+                "x_m": 39.148925,
+                "y_m": 57.1
+              },
+              "range_m": 3.0,
+              "distance_m": null,
+              "status": "no_return",
+              "target": null,
+              "hit_bearing_deg": null,
+              "hit_world_m": null,
+              "beam_endpoints_world_m": [
+                {
+                  "x_m": 38.122865,
+                  "y_m": 54.280922
+                },
+                {
+                  "x_m": 40.174986,
+                  "y_m": 54.280922
+                }
+              ]
+            },
+            {
+              "id": "right",
+              "label": "Jobb oldal",
+              "bearing_deg": 90.0,
+              "origin_local_m": {
+                "forward": 0.0,
+                "right": 0.9
+              },
+              "origin_world_m": {
+                "x_m": 39.148925,
+                "y_m": 58.9
+              },
+              "range_m": 3.0,
+              "distance_m": null,
+              "status": "no_return",
+              "target": null,
+              "hit_bearing_deg": null,
+              "hit_world_m": null,
+              "beam_endpoints_world_m": [
+                {
+                  "x_m": 40.174986,
+                  "y_m": 61.719078
+                },
+                {
+                  "x_m": 38.122865,
+                  "y_m": 61.719078
+                }
+              ]
+            }
+          ],
+          "nearest_distance_m": null,
+          "assumptions": {
+            "coordinate_frame": "SVG_world_clockwise_heading_local_forward_right",
+            "distance_origin": "sensor_mount_to_first_rectangular_surface",
+            "added_range_noise_m": 0.0,
+            "range_resolution_m": 1e-06,
+            "coordinate_resolution_m": 1e-06,
+            "body_shape": "configured_oriented_rectangle",
+            "threshold_source": "educational_model_not_manufacturer_specification",
+            "control_input": false,
+            "nearest_ray_occlusion": true,
+            "continuous_beam_coverage": false,
+            "finite_ray_gaps_unobserved": true,
+            "no_return_meaning": "no_supplied_body_hit_on_tested_rays_within_range",
+            "pedestrian_geometry_modelled": false,
+            "reflectivity_modelled": false,
+            "ultrasound_propagation_modelled": false,
+            "world_boundaries_are_obstacles": false
+          }
+        },
+        "environment": {
+          "coverage": "radial_360_no_occlusion",
+          "source": "existing_sampled_virtual_proximity_sensor",
+          "vehicles": [],
+          "crossings": [
+            {
+              "id": "ZEBRA1",
+              "x_m": 43,
+              "y_m": 58,
+              "distance_m": 3.851075,
+              "position_source": "known_map_crossing",
+              "pedestrian_state": "waiting",
+              "pedestrian_state_source": "sampled_onboard_pedestrian_state"
+            }
+          ]
+        },
+        "sampled": true,
+        "age_s": 0.05,
+        "fresh": true,
+        "fault_active": false,
+        "period_s": 0.1,
+        "nominal_period_s": 0.1,
+        "sampling": {
+          "policy": "first_integration_tick_at_or_after_nominal_deadline",
+          "period_kind": "fixed_step_quantized_interval",
+          "integration_step_s": 0.05,
+          "integration_step_source": "actual_step",
+          "maximum_observed_step_s": 0.05,
+          "bound_excludes_fault_outages": true,
+          "interpolated_samples": false
+        },
+        "timeout_s": 0.5,
+        "range_m": 18.0,
+        "position_uncertainty_m": 0.1,
+        "position_euclidean_bound_m": 0.141421,
+        "assumptions": {
+          "position_error_distribution": "independent_uniform_per_axis",
+          "heading_error_distribution": "uniform_plus_or_minus_one_degree",
+          "localization_drives_motion": false,
+          "environment_perception_drives_braking": true,
+          "range_selection": "simulation_reference_center_distance",
+          "occlusion_modelled": false,
+          "odometry_yaw_rate_is_ideal_polyline_proxy": true
+        }
+      },
+      "request_id": "CAR001-parking",
+      "reservation_id": "6d682f18f3dc-park-1",
+      "route_progress_m": 25.1489,
+      "remaining_route_m": 140.8511,
+      "zone_grants": {},
+      "next_zone_id": "C1",
+      "route": [
+        [
+          14.0,
+          58.0
+        ],
+        [
+          122.0,
+          58.0
+        ],
+        [
+          122.0,
+          24.0
+        ],
+        [
+          110.0,
+          24.0
+        ],
+        [
+          110.0,
+          12.0
+        ]
+      ],
+      "wait_reason": "Gyalogos: ZEBRA1",
+      "distance_m": 25.1489
+    },
+    {
+      "id": "CAR002",
+      "x": 16.5312,
+      "y": 58.0,
+      "heading": 0.0,
+      "speed": 2.25,
+      "state": "driving",
+      "slot_id": "P07",
+      "elapsed_s": 2.3,
+      "yard_elapsed_s": 2.3,
+      "sensor_age_s": 0.05,
+      "sensor_ok": true,
+      "control": {
+        "source": "ideal_route_controller",
+        "decision_sim_time_s": 11.3,
+        "motion_interval_s": 0.05,
+        "target_speed_m_s": 3.0,
+        "speed_before_m_s": 2.2,
+        "speed_after_m_s": 2.25,
+        "applied_acceleration_m_s2": 1.0,
+        "braking_distance_m": 1.21,
+        "reaction_allowance_m": 0.22,
+        "reaction_period_s": 0.1,
+        "nominal_period_s": 0.1,
+        "braking_deceleration_m_s2": 2.0,
+        "braking_assumption": "ideal_constant_deceleration_excluding_reaction_allowance",
+        "stop_limit_progress_m": 100.6,
+        "stop_limit_remaining_m": 98.18,
+        "stop_reason": "Zónaengedély: C1",
+        "target_state": "waiting_zone",
+        "result_state": "driving",
+        "sensor_sample_sim_time_s": 11.25,
+        "sensor_age_s": 0.05,
+        "connected": true,
+        "zone_grants": {}
+      },
+      "sensors": {
+        "schema_version": 1,
+        "source": "virtual_onboard_bundle",
+        "sample_sim_time_s": 11.25,
+        "sample_interval_s": 0.1,
+        "pose": {
+          "x_m": 16.260974,
+          "y_m": 57.945183,
+          "heading_deg": 359.951147,
+          "heading_uncertainty_deg": 1.0,
+          "source": "bounded_uniform_virtual_localization"
+        },
+        "reference_pose": {
+          "x_m": 16.31125,
+          "y_m": 58.0,
+          "heading_deg": 0.0,
+          "source": "sampled_simulation_reference"
+        },
+        "guidance": {
+          "available": true,
+          "source": "noisy_pose_projection_on_assigned_map_route",
+          "projected_x_m": 16.260974,
+          "projected_y_m": 58.0,
+          "segment_index": 0,
+          "progress_m": 2.260974,
+          "lateral_error_m": -0.054817,
+          "heading_error_deg": -0.048853,
+          "route_heading_deg": 0.0
+        },
+        "odometry": {
+          "speed_m_s": 2.15,
+          "distance_m": 2.31125,
+          "yaw_rate_deg_s": 0.0,
+          "source": "ideal_model_proxy"
+        },
+        "proximity": {
+          "schema_version": 1,
+          "source": "virtual_bumper_ray_fan",
+          "model": "oriented_rectangle_first_return",
+          "sample_sim_time_s": 11.25,
+          "sampled": true,
+          "range_m": 3.0,
+          "beam_half_angle_deg": 20.0,
+          "rays_per_channel": 9,
+          "thresholds_m": {
+            "close": 0.55,
+            "warning": 1.2
+          },
+          "vehicle": {
+            "length_m": 4.4,
+            "width_m": 1.8
+          },
+          "reference_pose": {
+            "x_m": 16.31125,
+            "y_m": 58.0,
+            "heading_deg": 0.0
+          },
+          "channels": [
+            {
+              "id": "front_left",
+              "label": "Elöl bal",
+              "bearing_deg": -35.0,
+              "origin_local_m": {
+                "forward": 2.2,
+                "right": -0.648
+              },
+              "origin_world_m": {
+                "x_m": 18.51125,
+                "y_m": 57.352
+              },
+              "range_m": 3.0,
+              "distance_m": null,
+              "status": "no_return",
+              "target": null,
+              "hit_bearing_deg": null,
+              "hit_world_m": null,
+              "beam_endpoints_world_m": [
+                {
+                  "x_m": 20.231979,
+                  "y_m": 54.894544
+                },
+                {
+                  "x_m": 21.409027,
+                  "y_m": 56.575543
+                }
+              ]
+            },
+            {
+              "id": "front_center",
+              "label": "Elöl közép",
+              "bearing_deg": 0.0,
+              "origin_local_m": {
+                "forward": 2.2,
+                "right": 0.0
+              },
+              "origin_world_m": {
+                "x_m": 18.51125,
+                "y_m": 58.0
+              },
+              "range_m": 3.0,
+              "distance_m": null,
+              "status": "no_return",
+              "target": null,
+              "hit_bearing_deg": null,
+              "hit_world_m": null,
+              "beam_endpoints_world_m": [
+                {
+                  "x_m": 21.330328,
+                  "y_m": 56.97394
+                },
+                {
+                  "x_m": 21.330328,
+                  "y_m": 59.02606
+                }
+              ]
+            },
+            {
+              "id": "front_right",
+              "label": "Elöl jobb",
+              "bearing_deg": 35.0,
+              "origin_local_m": {
+                "forward": 2.2,
+                "right": 0.648
+              },
+              "origin_world_m": {
+                "x_m": 18.51125,
+                "y_m": 58.648
+              },
+              "range_m": 3.0,
+              "distance_m": null,
+              "status": "no_return",
+              "target": null,
+              "hit_bearing_deg": null,
+              "hit_world_m": null,
+              "beam_endpoints_world_m": [
+                {
+                  "x_m": 21.409027,
+                  "y_m": 59.424457
+                },
+                {
+                  "x_m": 20.231979,
+                  "y_m": 61.105456
+                }
+              ]
+            },
+            {
+              "id": "rear_left",
+              "label": "Hátul bal",
+              "bearing_deg": -145.0,
+              "origin_local_m": {
+                "forward": -2.2,
+                "right": -0.648
+              },
+              "origin_world_m": {
+                "x_m": 14.11125,
+                "y_m": 57.352
+              },
+              "range_m": 3.0,
+              "distance_m": null,
+              "status": "no_return",
+              "target": null,
+              "hit_bearing_deg": null,
+              "hit_world_m": null,
+              "beam_endpoints_world_m": [
+                {
+                  "x_m": 11.213473,
+                  "y_m": 56.575543
+                },
+                {
+                  "x_m": 12.390521,
+                  "y_m": 54.894544
+                }
+              ]
+            },
+            {
+              "id": "rear_center",
+              "label": "Hátul közép",
+              "bearing_deg": 180.0,
+              "origin_local_m": {
+                "forward": -2.2,
+                "right": 0.0
+              },
+              "origin_world_m": {
+                "x_m": 14.11125,
+                "y_m": 58.0
+              },
+              "range_m": 3.0,
+              "distance_m": null,
+              "status": "no_return",
+              "target": null,
+              "hit_bearing_deg": null,
+              "hit_world_m": null,
+              "beam_endpoints_world_m": [
+                {
+                  "x_m": 11.292172,
+                  "y_m": 59.02606
+                },
+                {
+                  "x_m": 11.292172,
+                  "y_m": 56.97394
+                }
+              ]
+            },
+            {
+              "id": "rear_right",
+              "label": "Hátul jobb",
+              "bearing_deg": 145.0,
+              "origin_local_m": {
+                "forward": -2.2,
+                "right": 0.648
+              },
+              "origin_world_m": {
+                "x_m": 14.11125,
+                "y_m": 58.648
+              },
+              "range_m": 3.0,
+              "distance_m": null,
+              "status": "no_return",
+              "target": null,
+              "hit_bearing_deg": null,
+              "hit_world_m": null,
+              "beam_endpoints_world_m": [
+                {
+                  "x_m": 12.390521,
+                  "y_m": 61.105456
+                },
+                {
+                  "x_m": 11.213473,
+                  "y_m": 59.424457
+                }
+              ]
+            },
+            {
+              "id": "left",
+              "label": "Bal oldal",
+              "bearing_deg": -90.0,
+              "origin_local_m": {
+                "forward": 0.0,
+                "right": -0.9
+              },
+              "origin_world_m": {
+                "x_m": 16.31125,
+                "y_m": 57.1
+              },
+              "range_m": 3.0,
+              "distance_m": null,
+              "status": "no_return",
+              "target": null,
+              "hit_bearing_deg": null,
+              "hit_world_m": null,
+              "beam_endpoints_world_m": [
+                {
+                  "x_m": 15.28519,
+                  "y_m": 54.280922
+                },
+                {
+                  "x_m": 17.33731,
+                  "y_m": 54.280922
+                }
+              ]
+            },
+            {
+              "id": "right",
+              "label": "Jobb oldal",
+              "bearing_deg": 90.0,
+              "origin_local_m": {
+                "forward": 0.0,
+                "right": 0.9
+              },
+              "origin_world_m": {
+                "x_m": 16.31125,
+                "y_m": 58.9
+              },
+              "range_m": 3.0,
+              "distance_m": null,
+              "status": "no_return",
+              "target": null,
+              "hit_bearing_deg": null,
+              "hit_world_m": null,
+              "beam_endpoints_world_m": [
+                {
+                  "x_m": 17.33731,
+                  "y_m": 61.719078
+                },
+                {
+                  "x_m": 15.28519,
+                  "y_m": 61.719078
+                }
+              ]
+            }
+          ],
+          "nearest_distance_m": null,
+          "assumptions": {
+            "coordinate_frame": "SVG_world_clockwise_heading_local_forward_right",
+            "distance_origin": "sensor_mount_to_first_rectangular_surface",
+            "added_range_noise_m": 0.0,
+            "range_resolution_m": 1e-06,
+            "coordinate_resolution_m": 1e-06,
+            "body_shape": "configured_oriented_rectangle",
+            "threshold_source": "educational_model_not_manufacturer_specification",
+            "control_input": false,
+            "nearest_ray_occlusion": true,
+            "continuous_beam_coverage": false,
+            "finite_ray_gaps_unobserved": true,
+            "no_return_meaning": "no_supplied_body_hit_on_tested_rays_within_range",
+            "pedestrian_geometry_modelled": false,
+            "reflectivity_modelled": false,
+            "ultrasound_propagation_modelled": false,
+            "world_boundaries_are_obstacles": false
+          }
+        },
+        "environment": {
+          "coverage": "radial_360_no_occlusion",
+          "source": "existing_sampled_virtual_proximity_sensor",
+          "vehicles": [],
+          "crossings": []
+        },
+        "sampled": true,
+        "age_s": 0.05,
+        "fresh": true,
+        "fault_active": false,
+        "period_s": 0.1,
+        "nominal_period_s": 0.1,
+        "sampling": {
+          "policy": "first_integration_tick_at_or_after_nominal_deadline",
+          "period_kind": "fixed_step_quantized_interval",
+          "integration_step_s": 0.05,
+          "integration_step_source": "actual_step",
+          "maximum_observed_step_s": 0.05,
+          "bound_excludes_fault_outages": true,
+          "interpolated_samples": false
+        },
+        "timeout_s": 0.5,
+        "range_m": 18.0,
+        "position_uncertainty_m": 0.1,
+        "position_euclidean_bound_m": 0.141421,
+        "assumptions": {
+          "position_error_distribution": "independent_uniform_per_axis",
+          "heading_error_distribution": "uniform_plus_or_minus_one_degree",
+          "localization_drives_motion": false,
+          "environment_perception_drives_braking": true,
+          "range_selection": "simulation_reference_center_distance",
+          "occlusion_modelled": false,
+          "odometry_yaw_rate_is_ideal_polyline_proxy": true
+        }
+      },
+      "request_id": "CAR002-parking",
+      "reservation_id": "6d682f18f3dc-park-2",
+      "route_progress_m": 2.5313,
+      "remaining_route_m": 173.4688,
+      "zone_grants": {},
+      "next_zone_id": "C1",
+      "route": [
+        [
+          14.0,
+          58.0
+        ],
+        [
+          122.0,
+          58.0
+        ],
+        [
+          122.0,
+          24.0
+        ],
+        [
+          100.0,
+          24.0
+        ],
+        [
+          100.0,
+          12.0
+        ]
+      ],
+      "wait_reason": "Zónaengedély: C1",
+      "distance_m": 2.5313
+    }
+  ],
+  "pedestrians": [
+    {
+      "id": "PED001",
+      "x": 43.0,
+      "y": 52.0,
+      "state": "waiting",
+      "crossing_id": "ZEBRA1"
+    }
+  ],
+  "parking": [
+    {
+      "id": "P01",
+      "x": 40,
+      "y": 12,
+      "car_id": null,
+      "reservation_id": null,
+      "state": "free"
+    },
+    {
+      "id": "P02",
+      "x": 50,
+      "y": 12,
+      "car_id": null,
+      "reservation_id": null,
+      "state": "occupied"
+    },
+    {
+      "id": "P03",
+      "x": 60,
+      "y": 12,
+      "car_id": null,
+      "reservation_id": null,
+      "state": "free"
+    },
+    {
+      "id": "P04",
+      "x": 70,
+      "y": 12,
+      "car_id": null,
+      "reservation_id": null,
+      "state": "free"
+    },
+    {
+      "id": "P05",
+      "x": 80,
+      "y": 12,
+      "car_id": null,
+      "reservation_id": null,
+      "state": "occupied"
+    },
+    {
+      "id": "P06",
+      "x": 90,
+      "y": 12,
+      "car_id": null,
+      "reservation_id": null,
+      "state": "free"
+    },
+    {
+      "id": "P07",
+      "x": 100,
+      "y": 12,
+      "car_id": "CAR002",
+      "reservation_id": "6d682f18f3dc-park-2",
+      "state": "reserved"
+    },
+    {
+      "id": "P08",
+      "x": 110,
+      "y": 12,
+      "car_id": "CAR001",
+      "reservation_id": "6d682f18f3dc-park-1",
+      "state": "reserved"
+    },
+    {
+      "id": "P09",
+      "x": 40,
+      "y": 36,
+      "car_id": null,
+      "reservation_id": null,
+      "state": "free"
+    },
+    {
+      "id": "P10",
+      "x": 50,
+      "y": 36,
+      "car_id": null,
+      "reservation_id": null,
+      "state": "free"
+    },
+    {
+      "id": "P11",
+      "x": 60,
+      "y": 36,
+      "car_id": null,
+      "reservation_id": null,
+      "state": "free"
+    },
+    {
+      "id": "P12",
+      "x": 70,
+      "y": 36,
+      "car_id": null,
+      "reservation_id": null,
+      "state": "free"
+    },
+    {
+      "id": "P13",
+      "x": 80,
+      "y": 36,
+      "car_id": null,
+      "reservation_id": null,
+      "state": "occupied"
+    },
+    {
+      "id": "P14",
+      "x": 90,
+      "y": 36,
+      "car_id": null,
+      "reservation_id": null,
+      "state": "free"
+    },
+    {
+      "id": "P15",
+      "x": 100,
+      "y": 36,
+      "car_id": null,
+      "reservation_id": null,
+      "state": "free"
+    },
+    {
+      "id": "P16",
+      "x": 110,
+      "y": 36,
+      "car_id": null,
+      "reservation_id": null,
+      "state": "occupied"
+    }
+  ],
+  "zones": [
+    {
+      "id": "C1",
+      "owner": null,
+      "grant_id": null
+    }
+  ],
+  "metrics": {
+    "completed": 0,
+    "active": 2,
+    "offered": 2,
+    "admitted": 2,
+    "buffered": 0,
+    "unfinished": 2,
+    "avg_parking_time_s": 0,
+    "avg_yard_time_s": 0,
+    "avg_distance_m": 0,
+    "collisions": 0,
+    "pedestrian_stops": 1
+  },
+  "events": [
+    {
+      "type": "production_exit",
+      "message": "Jármű érkezett a gyártósori kijárathoz",
+      "car_id": "CAR001",
+      "sim_time": 0.05,
+      "category": "lifecycle",
+      "level": "info",
+      "offered_at_s": 0.0,
+      "buffer_wait_s": 0.05
+    },
+    {
+      "type": "state_changed",
+      "message": "Járműállapot: várakozás; a jármű áll",
+      "car_id": "CAR001",
+      "sim_time": 0.05,
+      "category": "state",
+      "level": "info",
+      "from_state": null,
+      "to_state": "waiting",
+      "from_reason": null,
+      "reason": "Parkolóengedélyre vár",
+      "motion_phase": "stopped",
+      "request_id": "CAR001-parking",
+      "parking_request_id": "CAR001-parking",
+      "reservation_id": null,
+      "slot_id": null,
+      "zone_id": null,
+      "grant_id": null,
+      "speed_m_s": 0.0,
+      "position_m": [
+        14,
+        58
+      ]
+    },
+    {
+      "type": "parking_assigned",
+      "message": "Parkoló kijelölve: P08",
+      "car_id": "CAR001",
+      "sim_time": 0.05,
+      "category": "decision",
+      "level": "info",
+      "slot_id": "P08",
+      "reservation_id": "6d682f18f3dc-park-1",
+      "route_length_m": 166.0,
+      "remaining_route_m": 166.0,
+      "route_source": "configured_polyline",
+      "upcoming_zones": [
+        "C1"
+      ]
+    },
+    {
+      "type": "state_changed",
+      "message": "Járműállapot: haladás; a jármű áll",
+      "car_id": "CAR001",
+      "sim_time": 0.05,
+      "category": "state",
+      "level": "info",
+      "from_state": "waiting",
+      "to_state": "driving",
+      "from_reason": "Parkolóengedélyre vár",
+      "reason": "",
+      "motion_phase": "stopped",
+      "request_id": "CAR001-parking",
+      "parking_request_id": "CAR001-parking",
+      "reservation_id": "6d682f18f3dc-park-1",
+      "slot_id": "P08",
+      "zone_id": null,
+      "grant_id": null,
+      "speed_m_s": 0.0,
+      "position_m": [
+        14,
+        58
+      ]
+    },
+    {
+      "type": "state_changed",
+      "message": "Járműállapot: haladás; a jármű még mozog",
+      "car_id": "CAR001",
+      "sim_time": 0.1,
+      "category": "state",
+      "level": "info",
+      "from_state": "driving",
+      "to_state": "driving",
+      "from_reason": "",
+      "reason": "Zónaengedély: C1",
+      "motion_phase": "moving",
+      "request_id": "CAR001-parking",
+      "parking_request_id": "CAR001-parking",
+      "reservation_id": "6d682f18f3dc-park-1",
+      "slot_id": "P08",
+      "zone_id": null,
+      "grant_id": null,
+      "speed_m_s": 0.05,
+      "position_m": [
+        14.00125,
+        58.0
+      ]
+    },
+    {
+      "type": "vehicle_resumed",
+      "message": "A jármű mozgása megkezdődött vagy folytatódott",
+      "car_id": "CAR001",
+      "sim_time": 0.1,
+      "category": "state",
+      "level": "info",
+      "reason": "Zónaengedély: C1",
+      "motion_phase": "moving",
+      "request_id": "CAR001-parking",
+      "parking_request_id": "CAR001-parking",
+      "reservation_id": "6d682f18f3dc-park-1",
+      "slot_id": "P08",
+      "zone_id": null,
+      "grant_id": null,
+      "speed_m_s": 0.05,
+      "position_m": [
+        14.00125,
+        58.0
+      ]
+    },
+    {
+      "type": "command_duplicate",
+      "message": "Ismételt parkolóengedély nem indítja újra a mozgást",
+      "car_id": "CAR001",
+      "sim_time": 6.95,
+      "category": "transport",
+      "level": "info",
+      "reason": "idempotent_grant",
+      "request_id": "CAR001-parking",
+      "reservation_id": "6d682f18f3dc-park-1",
+      "zone_id": null,
+      "grant_id": null,
+      "command_kind": "parking_grant",
+      "topic": "commands/CAR001",
+      "current_reservation_id": "6d682f18f3dc-park-1",
+      "current_slot_id": "P08"
+    },
+    {
+      "type": "pedestrian_waiting",
+      "message": "Gyalogos vár a járdaszegélynél: ZEBRA1",
+      "car_id": null,
+      "sim_time": 7.3,
+      "category": "lifecycle",
+      "level": "info",
+      "crossing_id": "ZEBRA1"
+    },
+    {
+      "type": "pedestrian_stop",
+      "message": "Helyi érzékelés alapján fékez a zebra előtt",
+      "car_id": "CAR001",
+      "sim_time": 7.35,
+      "category": "state",
+      "level": "info"
+    },
+    {
+      "type": "state_changed",
+      "message": "Járműállapot: zebra miatti fékezési/várakozási állapot; a jármű még mozog",
+      "car_id": "CAR001",
+      "sim_time": 7.35,
+      "category": "state",
+      "level": "info",
+      "from_state": "driving",
+      "to_state": "pedestrian_stop",
+      "from_reason": "Zónaengedély: C1",
+      "reason": "Gyalogos: ZEBRA1",
+      "motion_phase": "moving",
+      "request_id": "CAR001-parking",
+      "parking_request_id": "CAR001-parking",
+      "reservation_id": "6d682f18f3dc-park-1",
+      "slot_id": "P08",
+      "zone_id": null,
+      "grant_id": null,
+      "speed_m_s": 3.0,
+      "position_m": [
+        31.4,
+        58.0
+      ]
+    },
+    {
+      "type": "production_exit",
+      "message": "Jármű érkezett a gyártósori kijárathoz",
+      "car_id": "CAR002",
+      "sim_time": 9.0,
+      "category": "lifecycle",
+      "level": "info",
+      "offered_at_s": 9.0,
+      "buffer_wait_s": -0.0
+    },
+    {
+      "type": "state_changed",
+      "message": "Járműállapot: várakozás; a jármű áll",
+      "car_id": "CAR002",
+      "sim_time": 9.0,
+      "category": "state",
+      "level": "info",
+      "from_state": null,
+      "to_state": "waiting",
+      "from_reason": null,
+      "reason": "Parkolóengedélyre vár",
+      "motion_phase": "stopped",
+      "request_id": "CAR002-parking",
+      "parking_request_id": "CAR002-parking",
+      "reservation_id": null,
+      "slot_id": null,
+      "zone_id": null,
+      "grant_id": null,
+      "speed_m_s": 0.0,
+      "position_m": [
+        14,
+        58
+      ]
+    },
+    {
+      "type": "parking_assigned",
+      "message": "Parkoló kijelölve: P07",
+      "car_id": "CAR002",
+      "sim_time": 9.05,
+      "category": "decision",
+      "level": "info",
+      "slot_id": "P07",
+      "reservation_id": "6d682f18f3dc-park-2",
+      "route_length_m": 176.0,
+      "remaining_route_m": 176.0,
+      "route_source": "configured_polyline",
+      "upcoming_zones": [
+        "C1"
+      ]
+    },
+    {
+      "type": "state_changed",
+      "message": "Járműállapot: haladás; a jármű áll",
+      "car_id": "CAR002",
+      "sim_time": 9.05,
+      "category": "state",
+      "level": "info",
+      "from_state": "waiting",
+      "to_state": "driving",
+      "from_reason": "Parkolóengedélyre vár",
+      "reason": "",
+      "motion_phase": "stopped",
+      "request_id": "CAR002-parking",
+      "parking_request_id": "CAR002-parking",
+      "reservation_id": "6d682f18f3dc-park-2",
+      "slot_id": "P07",
+      "zone_id": null,
+      "grant_id": null,
+      "speed_m_s": 0.0,
+      "position_m": [
+        14,
+        58
+      ]
+    },
+    {
+      "type": "state_changed",
+      "message": "Járműállapot: haladás; a jármű még mozog",
+      "car_id": "CAR002",
+      "sim_time": 9.1,
+      "category": "state",
+      "level": "info",
+      "from_state": "driving",
+      "to_state": "driving",
+      "from_reason": "",
+      "reason": "Zónaengedély: C1",
+      "motion_phase": "moving",
+      "request_id": "CAR002-parking",
+      "parking_request_id": "CAR002-parking",
+      "reservation_id": "6d682f18f3dc-park-2",
+      "slot_id": "P07",
+      "zone_id": null,
+      "grant_id": null,
+      "speed_m_s": 0.05,
+      "position_m": [
+        14.00125,
+        58.0
+      ]
+    },
+    {
+      "type": "vehicle_resumed",
+      "message": "A jármű mozgása megkezdődött vagy folytatódott",
+      "car_id": "CAR002",
+      "sim_time": 9.1,
+      "category": "state",
+      "level": "info",
+      "reason": "Zónaengedély: C1",
+      "motion_phase": "moving",
+      "request_id": "CAR002-parking",
+      "parking_request_id": "CAR002-parking",
+      "reservation_id": "6d682f18f3dc-park-2",
+      "slot_id": "P07",
+      "zone_id": null,
+      "grant_id": null,
+      "speed_m_s": 0.05,
+      "position_m": [
+        14.00125,
+        58.0
+      ]
+    },
+    {
+      "type": "braking_started",
+      "message": "Fékezés megkezdődött; a jármű még mozog",
+      "car_id": "CAR001",
+      "sim_time": 9.15,
+      "category": "state",
+      "level": "info",
+      "reason": "Gyalogos: ZEBRA1",
+      "motion_phase": "braking",
+      "request_id": "CAR001-parking",
+      "parking_request_id": "CAR001-parking",
+      "reservation_id": "6d682f18f3dc-park-1",
+      "slot_id": "P08",
+      "zone_id": null,
+      "grant_id": null,
+      "speed_m_s": 2.967699,
+      "position_m": [
+        36.799192,
+        58.0
+      ]
+    },
+    {
+      "type": "vehicle_stopped",
+      "message": "A jármű ténylegesen megállt",
+      "car_id": "CAR001",
+      "sim_time": 10.95,
+      "category": "state",
+      "level": "info",
+      "reason": "Gyalogos: ZEBRA1",
+      "motion_phase": "stopped",
+      "request_id": "CAR001-parking",
+      "parking_request_id": "CAR001-parking",
+      "reservation_id": "6d682f18f3dc-park-1",
+      "slot_id": "P08",
+      "zone_id": null,
+      "grant_id": null,
+      "speed_m_s": 0.0,
+      "position_m": [
+        39.148925,
+        58.0
+      ]
+    }
+  ],
+  "warnings": [],
+  "paused": false,
+  "speed": 4.0,
+  "seed": 123,
+  "worker_mqtt": {
+    "published": 295,
+    "received": 4
+  },
+  "sent_ns": 25518562651700,
+  "producer": "simulator",
+  "producer_seq": 296,
+  "message_id": "6d682f18f3dc:simulator:296",
+  "received_utc": "2026-10-12T07:15:02.481Z",
+  "strategy": "nearest",
+  "max_active": 6,
+  "control_recovery": {
+    "pause_available": false,
+    "slow_available": false,
+    "reason": "Helyreállító szünet és lassítás csak friss MQTT-állapotérkezés mellett kérhető."
+  },
+  "mqtt": {
+    "published": 296,
+    "received": 336,
+    "latency_ms": 2.083666666666667,
+    "latency_p95_ms": 4.4324,
+    "last_message_age_s": 0.0269536,
+    "invalid": 0,
+    "observer": {
+      "batches": 162,
+      "dequeued_messages": 335,
+      "last_batch_messages": 3,
+      "last_batch_wall_ms": 5.233500000031199,
+      "max_batch_wall_ms": 21.08079999743495,
+      "backlog_messages": 0,
+      "peak_backlog_messages": 0,
+      "last_queue_wait_ms": 10.097,
+      "queue_wait_p95_ms": 15.5034,
+      "queue_wait_sample_count": 335,
+      "queue_wait_window_limit": 1000,
+      "queue_wait_invalid_clocks": 0,
+      "queue_wait_definition": "received callback -> whole-message ingestion start; excludes ingestion duration",
+      "batch_message_budget": 128,
+      "batch_wall_budget_ms": 25.0,
+      "budget_definition": "checked after each complete message; one ingestion or health check can exceed the budget",
+      "backlog_definition": "queue.qsize() at batch completion; approximate while MQTT callback is active"
+    },
+    "transport": {
+      "broker_connected": true,
+      "communication_fault_active": false,
+      "callback_received_messages": 336,
+      "last_message_age_s": 0.0121754,
+      "last_snapshot_age_s": 0.0269536,
+      "snapshot_received": true,
+      "age_clock": "host_perf_counter_receipt"
+    },
+    "capacity": {
+      "window_s": 3.0203215,
+      "arrival_rate_hz": 110.91534460818161,
+      "dequeue_rate_hz": 110.91534460818161,
+      "queue_messages": 0,
+      "queue_growth_hz": 0.0,
+      "status": "observed",
+      "sample_age_s": 0.0003318,
+      "history_limit": 120,
+      "sample_interval_s": 1.0,
+      "window_target_s": 5.0,
+      "reset_reason": "new_run",
+      "clock": "host_perf_counter",
+      "scope": "current_run_bounded_in_memory_observations",
+      "rate_definition": "counter delta / actual positive host-clock window; all subscribed topics, not maximum capacity",
+      "queue_definition": "queue.qsize() at diagnostic sample; approximate while callback is active",
+      "history": [
+        {
+          "segment": 0,
+          "elapsed_s": 0.0,
+          "received_total": 1,
+          "dequeued_total": 0,
+          "queue_messages": 0,
+          "snapshot_age_s": null,
+          "window_s": null,
+          "arrival_rate_hz": null,
+          "dequeue_rate_hz": null,
+          "queue_growth_hz": null
+        },
+        {
+          "segment": 0,
+          "elapsed_s": 1.0093286,
+          "received_total": 97,
+          "dequeued_total": 96,
+          "queue_messages": 0,
+          "snapshot_age_s": 0.0545446,
+          "window_s": 1.0093286,
+          "arrival_rate_hz": 95.11273137410355,
+          "dequeue_rate_hz": 95.11273137410355,
+          "queue_growth_hz": 0.0
+        },
+        {
+          "segment": 0,
+          "elapsed_s": 2.0107991,
+          "received_total": 203,
+          "dequeued_total": 196,
+          "queue_messages": 6,
+          "snapshot_age_s": 0.0503228,
+          "window_s": 2.0107991,
+          "arrival_rate_hz": 100.45757430466327,
+          "dequeue_rate_hz": 97.4736859589802,
+          "queue_growth_hz": 2.9838883456830674
+        },
+        {
+          "segment": 0,
+          "elapsed_s": 3.0203215,
+          "received_total": 336,
+          "dequeued_total": 335,
+          "queue_messages": 0,
+          "snapshot_age_s": 0.0266218,
+          "window_s": 3.0203215,
+          "arrival_rate_hz": 110.91534460818161,
+          "dequeue_rate_hz": 110.91534460818161,
+          "queue_growth_hz": 0.0
+        }
+      ]
+    },
+    "clock_resolution_ms": 9.999999999999999e-05
+  },
+  "logging": {
+    "records": 35,
+    "last_id": 35,
+    "telemetry_records": 138,
+    "telemetry_total_received": 138,
+    "telemetry_count_definition": "received pose telemetry plus observer-only perception/controller diagnostics during sensor faults",
+    "telemetry_truncated": 0,
+    "telemetry_limit": 200000,
+    "semantic_retention": "entire_run",
+    "trip_samples": 138,
+    "trip_retention": "entire_received_run_on_disk",
+    "trip_prior_missing_samples": 0,
+    "perception_samples": 138,
+    "perception_compressed_bytes": 249341,
+    "perception_uncompressed_bytes": 782179,
+    "perception_retention": "entire_received_run_on_disk",
+    "perception_image_kind": "schematic_reconstruction_from_saved_sensor_observations",
+    "camera_recording": false,
+    "commit_interval_s": 0.5,
+    "commit_batch_size": 100,
+    "detailed_raw_limited": false,
+    "raw_policy": "recent_per_run_ring",
+    "raw_limit_bytes": 104857600,
+    "raw_segment_bytes": 26214400,
+    "raw_retained_bytes": 1781105,
+    "raw_total_received_bytes": 1781105,
+    "raw_removed_segments": 0,
+    "raw_removed_bytes": 0,
+    "raw_oversize_dropped": 0,
+    "raw_segments": [
+      {
+        "file": "6d682f18f3dc-messages.jsonl",
+        "bytes": 1781105
+      }
+    ]
+  },
+  "operations": {
+    "available": true,
+    "thresholds": {
+      "startup_grace_s": 5,
+      "communication_timeout_s": 2,
+      "processing_timeout_s": 2,
+      "fresh_snapshot_s": 0.75,
+      "fault_observations": 2,
+      "healthy_observations": 2,
+      "observation_gap_s": 2.5,
+      "observation_interval_s": 1
+    },
+    "summary": {
+      "total": 0,
+      "active": 0,
+      "unacknowledged": 0,
+      "known_rules": 3,
+      "total_rules": 4,
+      "observation_utc": "2026-10-12T07:15:02.508Z",
+      "quality": {
+        "communication_unavailable": "unknown",
+        "processing_lag": "healthy",
+        "sensor_unavailable": "healthy",
+        "worker_stopped": "healthy"
+      },
+      "observation_fresh": true,
+      "health": "unknown",
+      "health_reason": "A megfigyelés hiányos, elavult, az indulási türelmi időn belül van, vagy egy első hibás minta megerősítésére vár.",
+      "prefix_count": 0,
+      "counts_scope": "entire_selected_run"
+    }
+  }
+}

@@ -1,0 +1,1793 @@
+{
+  "case": {
+    "id": "S03-megtelt-parkolo",
+    "expected": "16 fizikailag foglalt hely mellett nincs új foglalás; a kijárati autó áll, a további öt felajánlott autó a termelési pufferben vár.",
+    "observed": {
+      "metrics": {
+        "completed": 0,
+        "active": 1,
+        "offered": 6,
+        "admitted": 1,
+        "buffered": 5,
+        "unfinished": 6,
+        "avg_parking_time_s": 0,
+        "avg_yard_time_s": 0,
+        "avg_distance_m": 0,
+        "collisions": 0,
+        "pedestrian_stops": 0
+      },
+      "occupied_slots": 16,
+      "moving_cars": 0,
+      "denial_receipt_id": 11,
+      "no_available_slot_audit": {
+        "category": "decision",
+        "level": "info",
+        "event_type": "parking_wait",
+        "message": "Parkolóengedély nem adható: Nincs szabad parkolóhely",
+        "sim_time": 0.05,
+        "car_id": "CAR001",
+        "request_id": "CAR001-parking",
+        "reservation_id": null,
+        "zone_id": null,
+        "reason": "no_available_slot",
+        "available_count": 0,
+        "sensor_seq": 1,
+        "sensor_age_s": 0.0015156,
+        "repeats": 1,
+        "aggregation_interval_s": 5.0,
+        "run_id": "487209a72172",
+        "sent_ns": 25559695633000,
+        "producer": "coordinator",
+        "producer_seq": 7,
+        "message_id": "487209a72172:coordinator:7",
+        "received_utc": "2026-10-12T07:15:43.614Z"
+      }
+    },
+    "status": "PASS",
+    "run_id": "487209a72172",
+    "journal_record_ids": [
+      7,
+      8,
+      12,
+      14,
+      16,
+      18,
+      20,
+      21,
+      23,
+      25,
+      27,
+      29,
+      31,
+      32,
+      34,
+      36,
+      38,
+      40,
+      42,
+      43,
+      45,
+      47,
+      49,
+      51,
+      53,
+      54,
+      56,
+      58,
+      60,
+      62,
+      64,
+      65,
+      67,
+      69,
+      71,
+      73,
+      75,
+      76,
+      78,
+      80,
+      82,
+      84,
+      86,
+      87,
+      89,
+      91,
+      93,
+      95,
+      97,
+      98,
+      100,
+      102,
+      104,
+      106,
+      108,
+      109,
+      111,
+      113,
+      115,
+      117
+    ]
+  },
+  "records": [
+    {
+      "id": 7,
+      "utc": "2026-10-12T07:15:43.613Z",
+      "sim_time": 0.05,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25559695556800,
+        "producer": "coordinator",
+        "producer_seq": 6,
+        "message_id": "487209a72172:coordinator:6",
+        "received_utc": "2026-10-12T07:15:43.613Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25559697513400,
+          "latency_ms": 1.9566,
+          "received_utc": "2026-10-12T07:15:43.613Z"
+        }
+      }
+    },
+    {
+      "id": 8,
+      "utc": "2026-10-12T07:15:43.613Z",
+      "sim_time": 0.05,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Parkolóengedély nem adható: Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "request_id": "CAR001-parking",
+        "reservation_id": null,
+        "zone_id": null,
+        "reason": "no_available_slot",
+        "available_count": 0,
+        "sensor_seq": 1,
+        "sensor_age_s": 0.0015156,
+        "repeats": 1,
+        "aggregation_interval_s": 5.0,
+        "run_id": "487209a72172",
+        "sent_ns": 25559695633000,
+        "producer": "coordinator",
+        "producer_seq": 7,
+        "message_id": "487209a72172:coordinator:7",
+        "received_utc": "2026-10-12T07:15:43.613Z",
+        "mqtt": {
+          "topic": "audit",
+          "received_ns": 25559697605000,
+          "latency_ms": 1.972,
+          "received_utc": "2026-10-12T07:15:43.613Z"
+        }
+      }
+    },
+    {
+      "id": 12,
+      "utc": "2026-10-12T07:15:43.743Z",
+      "sim_time": 1.05,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25559827422600,
+        "producer": "coordinator",
+        "producer_seq": 9,
+        "message_id": "487209a72172:coordinator:9",
+        "received_utc": "2026-10-12T07:15:43.743Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25559827978300,
+          "latency_ms": 0.5557,
+          "received_utc": "2026-10-12T07:15:43.743Z"
+        }
+      }
+    },
+    {
+      "id": 14,
+      "utc": "2026-10-12T07:15:43.869Z",
+      "sim_time": 2.05,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25559952401400,
+        "producer": "coordinator",
+        "producer_seq": 11,
+        "message_id": "487209a72172:coordinator:11",
+        "received_utc": "2026-10-12T07:15:43.869Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25559953639300,
+          "latency_ms": 1.2379,
+          "received_utc": "2026-10-12T07:15:43.869Z"
+        }
+      }
+    },
+    {
+      "id": 16,
+      "utc": "2026-10-12T07:15:44.005Z",
+      "sim_time": 3.1,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25560089295600,
+        "producer": "coordinator",
+        "producer_seq": 13,
+        "message_id": "487209a72172:coordinator:13",
+        "received_utc": "2026-10-12T07:15:44.005Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25560089717000,
+          "latency_ms": 0.4214,
+          "received_utc": "2026-10-12T07:15:44.005Z"
+        }
+      }
+    },
+    {
+      "id": 18,
+      "utc": "2026-10-12T07:15:44.136Z",
+      "sim_time": 4.15,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25560219922400,
+        "producer": "coordinator",
+        "producer_seq": 15,
+        "message_id": "487209a72172:coordinator:15",
+        "received_utc": "2026-10-12T07:15:44.136Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25560220899500,
+          "latency_ms": 0.9771,
+          "received_utc": "2026-10-12T07:15:44.136Z"
+        }
+      }
+    },
+    {
+      "id": 20,
+      "utc": "2026-10-12T07:15:44.266Z",
+      "sim_time": 5.2,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25560349345400,
+        "producer": "coordinator",
+        "producer_seq": 17,
+        "message_id": "487209a72172:coordinator:17",
+        "received_utc": "2026-10-12T07:15:44.266Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25560350643200,
+          "latency_ms": 1.2978,
+          "received_utc": "2026-10-12T07:15:44.266Z"
+        }
+      }
+    },
+    {
+      "id": 21,
+      "utc": "2026-10-12T07:15:44.267Z",
+      "sim_time": 5.2,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Parkolóengedély nem adható: Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "request_id": "CAR001-parking",
+        "reservation_id": null,
+        "zone_id": null,
+        "reason": "no_available_slot",
+        "available_count": 0,
+        "sensor_seq": 52,
+        "sensor_age_s": 0.0034197,
+        "repeats": 5,
+        "aggregation_interval_s": 5.0,
+        "run_id": "487209a72172",
+        "sent_ns": 25560349402100,
+        "producer": "coordinator",
+        "producer_seq": 18,
+        "message_id": "487209a72172:coordinator:18",
+        "received_utc": "2026-10-12T07:15:44.267Z",
+        "mqtt": {
+          "topic": "audit",
+          "received_ns": 25560351062200,
+          "latency_ms": 1.6601,
+          "received_utc": "2026-10-12T07:15:44.267Z"
+        }
+      }
+    },
+    {
+      "id": 23,
+      "utc": "2026-10-12T07:15:44.395Z",
+      "sim_time": 6.25,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25560477986900,
+        "producer": "coordinator",
+        "producer_seq": 21,
+        "message_id": "487209a72172:coordinator:21",
+        "received_utc": "2026-10-12T07:15:44.395Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25560479099900,
+          "latency_ms": 1.113,
+          "received_utc": "2026-10-12T07:15:44.395Z"
+        }
+      }
+    },
+    {
+      "id": 25,
+      "utc": "2026-10-12T07:15:44.520Z",
+      "sim_time": 7.3,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25560603331800,
+        "producer": "coordinator",
+        "producer_seq": 23,
+        "message_id": "487209a72172:coordinator:23",
+        "received_utc": "2026-10-12T07:15:44.520Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25560604344600,
+          "latency_ms": 1.0128,
+          "received_utc": "2026-10-12T07:15:44.520Z"
+        }
+      }
+    },
+    {
+      "id": 27,
+      "utc": "2026-10-12T07:15:44.644Z",
+      "sim_time": 8.3,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25560727643800,
+        "producer": "coordinator",
+        "producer_seq": 25,
+        "message_id": "487209a72172:coordinator:25",
+        "received_utc": "2026-10-12T07:15:44.644Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25560728549800,
+          "latency_ms": 0.906,
+          "received_utc": "2026-10-12T07:15:44.644Z"
+        }
+      }
+    },
+    {
+      "id": 29,
+      "utc": "2026-10-12T07:15:44.769Z",
+      "sim_time": 9.3,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25560852660700,
+        "producer": "coordinator",
+        "producer_seq": 27,
+        "message_id": "487209a72172:coordinator:27",
+        "received_utc": "2026-10-12T07:15:44.769Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25560853201600,
+          "latency_ms": 0.5409,
+          "received_utc": "2026-10-12T07:15:44.769Z"
+        }
+      }
+    },
+    {
+      "id": 31,
+      "utc": "2026-10-12T07:15:44.908Z",
+      "sim_time": 10.3,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25560990389500,
+        "producer": "coordinator",
+        "producer_seq": 29,
+        "message_id": "487209a72172:coordinator:29",
+        "received_utc": "2026-10-12T07:15:44.908Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25560991568800,
+          "latency_ms": 1.1793,
+          "received_utc": "2026-10-12T07:15:44.908Z"
+        }
+      }
+    },
+    {
+      "id": 32,
+      "utc": "2026-10-12T07:15:44.908Z",
+      "sim_time": 10.3,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Parkolóengedély nem adható: Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "request_id": "CAR001-parking",
+        "reservation_id": null,
+        "zone_id": null,
+        "reason": "no_available_slot",
+        "available_count": 0,
+        "sensor_seq": 103,
+        "sensor_age_s": 0.0160995,
+        "repeats": 5,
+        "aggregation_interval_s": 5.0,
+        "run_id": "487209a72172",
+        "sent_ns": 25560990526100,
+        "producer": "coordinator",
+        "producer_seq": 30,
+        "message_id": "487209a72172:coordinator:30",
+        "received_utc": "2026-10-12T07:15:44.908Z",
+        "mqtt": {
+          "topic": "audit",
+          "received_ns": 25560991893100,
+          "latency_ms": 1.367,
+          "received_utc": "2026-10-12T07:15:44.908Z"
+        }
+      }
+    },
+    {
+      "id": 34,
+      "utc": "2026-10-12T07:15:45.018Z",
+      "sim_time": 11.3,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25561101308900,
+        "producer": "coordinator",
+        "producer_seq": 32,
+        "message_id": "487209a72172:coordinator:32",
+        "received_utc": "2026-10-12T07:15:45.018Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25561102066200,
+          "latency_ms": 0.7573,
+          "received_utc": "2026-10-12T07:15:45.018Z"
+        }
+      }
+    },
+    {
+      "id": 36,
+      "utc": "2026-10-12T07:15:45.146Z",
+      "sim_time": 12.3,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25561230110900,
+        "producer": "coordinator",
+        "producer_seq": 34,
+        "message_id": "487209a72172:coordinator:34",
+        "received_utc": "2026-10-12T07:15:45.146Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25561230541900,
+          "latency_ms": 0.431,
+          "received_utc": "2026-10-12T07:15:45.146Z"
+        }
+      }
+    },
+    {
+      "id": 38,
+      "utc": "2026-10-12T07:15:45.272Z",
+      "sim_time": 13.3,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25561355716200,
+        "producer": "coordinator",
+        "producer_seq": 37,
+        "message_id": "487209a72172:coordinator:37",
+        "received_utc": "2026-10-12T07:15:45.272Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25561356433000,
+          "latency_ms": 0.7168,
+          "received_utc": "2026-10-12T07:15:45.272Z"
+        }
+      }
+    },
+    {
+      "id": 40,
+      "utc": "2026-10-12T07:15:45.394Z",
+      "sim_time": 14.3,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25561477796300,
+        "producer": "coordinator",
+        "producer_seq": 39,
+        "message_id": "487209a72172:coordinator:39",
+        "received_utc": "2026-10-12T07:15:45.394Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25561478509000,
+          "latency_ms": 0.7127,
+          "received_utc": "2026-10-12T07:15:45.394Z"
+        }
+      }
+    },
+    {
+      "id": 42,
+      "utc": "2026-10-12T07:15:45.527Z",
+      "sim_time": 15.3,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25561610366600,
+        "producer": "coordinator",
+        "producer_seq": 41,
+        "message_id": "487209a72172:coordinator:41",
+        "received_utc": "2026-10-12T07:15:45.527Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25561611351300,
+          "latency_ms": 0.9847,
+          "received_utc": "2026-10-12T07:15:45.527Z"
+        }
+      }
+    },
+    {
+      "id": 43,
+      "utc": "2026-10-12T07:15:45.528Z",
+      "sim_time": 15.3,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Parkolóengedély nem adható: Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "request_id": "CAR001-parking",
+        "reservation_id": null,
+        "zone_id": null,
+        "reason": "no_available_slot",
+        "available_count": 0,
+        "sensor_seq": 153,
+        "sensor_age_s": 0.0020965,
+        "repeats": 5,
+        "aggregation_interval_s": 5.0,
+        "run_id": "487209a72172",
+        "sent_ns": 25561610506000,
+        "producer": "coordinator",
+        "producer_seq": 42,
+        "message_id": "487209a72172:coordinator:42",
+        "received_utc": "2026-10-12T07:15:45.528Z",
+        "mqtt": {
+          "topic": "audit",
+          "received_ns": 25561611771100,
+          "latency_ms": 1.2651,
+          "received_utc": "2026-10-12T07:15:45.528Z"
+        }
+      }
+    },
+    {
+      "id": 45,
+      "utc": "2026-10-12T07:15:45.658Z",
+      "sim_time": 16.3,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25561741417100,
+        "producer": "coordinator",
+        "producer_seq": 44,
+        "message_id": "487209a72172:coordinator:44",
+        "received_utc": "2026-10-12T07:15:45.658Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25561742444100,
+          "latency_ms": 1.027,
+          "received_utc": "2026-10-12T07:15:45.658Z"
+        }
+      }
+    },
+    {
+      "id": 47,
+      "utc": "2026-10-12T07:15:45.776Z",
+      "sim_time": 17.3,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25561860125100,
+        "producer": "coordinator",
+        "producer_seq": 46,
+        "message_id": "487209a72172:coordinator:46",
+        "received_utc": "2026-10-12T07:15:45.776Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25561860812900,
+          "latency_ms": 0.6878,
+          "received_utc": "2026-10-12T07:15:45.776Z"
+        }
+      }
+    },
+    {
+      "id": 49,
+      "utc": "2026-10-12T07:15:45.898Z",
+      "sim_time": 18.3,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25561982098000,
+        "producer": "coordinator",
+        "producer_seq": 48,
+        "message_id": "487209a72172:coordinator:48",
+        "received_utc": "2026-10-12T07:15:45.898Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25561982804800,
+          "latency_ms": 0.7068,
+          "received_utc": "2026-10-12T07:15:45.898Z"
+        }
+      }
+    },
+    {
+      "id": 51,
+      "utc": "2026-10-12T07:15:46.029Z",
+      "sim_time": 19.3,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25562112438700,
+        "producer": "coordinator",
+        "producer_seq": 50,
+        "message_id": "487209a72172:coordinator:50",
+        "received_utc": "2026-10-12T07:15:46.029Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25562113438700,
+          "latency_ms": 1.0,
+          "received_utc": "2026-10-12T07:15:46.029Z"
+        }
+      }
+    },
+    {
+      "id": 53,
+      "utc": "2026-10-12T07:15:46.152Z",
+      "sim_time": 20.3,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25562234901200,
+        "producer": "coordinator",
+        "producer_seq": 53,
+        "message_id": "487209a72172:coordinator:53",
+        "received_utc": "2026-10-12T07:15:46.152Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25562235951400,
+          "latency_ms": 1.0502,
+          "received_utc": "2026-10-12T07:15:46.152Z"
+        }
+      }
+    },
+    {
+      "id": 54,
+      "utc": "2026-10-12T07:15:46.152Z",
+      "sim_time": 20.3,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Parkolóengedély nem adható: Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "request_id": "CAR001-parking",
+        "reservation_id": null,
+        "zone_id": null,
+        "reason": "no_available_slot",
+        "available_count": 0,
+        "sensor_seq": 203,
+        "sensor_age_s": 0.0015101,
+        "repeats": 5,
+        "aggregation_interval_s": 5.0,
+        "run_id": "487209a72172",
+        "sent_ns": 25562234951100,
+        "producer": "coordinator",
+        "producer_seq": 54,
+        "message_id": "487209a72172:coordinator:54",
+        "received_utc": "2026-10-12T07:15:46.152Z",
+        "mqtt": {
+          "topic": "audit",
+          "received_ns": 25562236367500,
+          "latency_ms": 1.4164,
+          "received_utc": "2026-10-12T07:15:46.152Z"
+        }
+      }
+    },
+    {
+      "id": 56,
+      "utc": "2026-10-12T07:15:46.278Z",
+      "sim_time": 21.3,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25562360352300,
+        "producer": "coordinator",
+        "producer_seq": 56,
+        "message_id": "487209a72172:coordinator:56",
+        "received_utc": "2026-10-12T07:15:46.278Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25562361948700,
+          "latency_ms": 1.5964,
+          "received_utc": "2026-10-12T07:15:46.278Z"
+        }
+      }
+    },
+    {
+      "id": 58,
+      "utc": "2026-10-12T07:15:46.396Z",
+      "sim_time": 22.3,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25562479915600,
+        "producer": "coordinator",
+        "producer_seq": 58,
+        "message_id": "487209a72172:coordinator:58",
+        "received_utc": "2026-10-12T07:15:46.396Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25562480461000,
+          "latency_ms": 0.5454,
+          "received_utc": "2026-10-12T07:15:46.396Z"
+        }
+      }
+    },
+    {
+      "id": 60,
+      "utc": "2026-10-12T07:15:46.526Z",
+      "sim_time": 23.3,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25562609122900,
+        "producer": "coordinator",
+        "producer_seq": 60,
+        "message_id": "487209a72172:coordinator:60",
+        "received_utc": "2026-10-12T07:15:46.526Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25562609928300,
+          "latency_ms": 0.8054,
+          "received_utc": "2026-10-12T07:15:46.526Z"
+        }
+      }
+    },
+    {
+      "id": 62,
+      "utc": "2026-10-12T07:15:46.646Z",
+      "sim_time": 24.3,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25562729427600,
+        "producer": "coordinator",
+        "producer_seq": 62,
+        "message_id": "487209a72172:coordinator:62",
+        "received_utc": "2026-10-12T07:15:46.646Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25562730097800,
+          "latency_ms": 0.6702,
+          "received_utc": "2026-10-12T07:15:46.646Z"
+        }
+      }
+    },
+    {
+      "id": 64,
+      "utc": "2026-10-12T07:15:46.773Z",
+      "sim_time": 25.3,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25562856753000,
+        "producer": "coordinator",
+        "producer_seq": 64,
+        "message_id": "487209a72172:coordinator:64",
+        "received_utc": "2026-10-12T07:15:46.773Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25562857510900,
+          "latency_ms": 0.7579,
+          "received_utc": "2026-10-12T07:15:46.773Z"
+        }
+      }
+    },
+    {
+      "id": 65,
+      "utc": "2026-10-12T07:15:46.773Z",
+      "sim_time": 25.3,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Parkolóengedély nem adható: Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "request_id": "CAR001-parking",
+        "reservation_id": null,
+        "zone_id": null,
+        "reason": "no_available_slot",
+        "available_count": 0,
+        "sensor_seq": 253,
+        "sensor_age_s": 0.0016905,
+        "repeats": 5,
+        "aggregation_interval_s": 5.0,
+        "run_id": "487209a72172",
+        "sent_ns": 25562856840400,
+        "producer": "coordinator",
+        "producer_seq": 65,
+        "message_id": "487209a72172:coordinator:65",
+        "received_utc": "2026-10-12T07:15:46.773Z",
+        "mqtt": {
+          "topic": "audit",
+          "received_ns": 25562857892100,
+          "latency_ms": 1.0517,
+          "received_utc": "2026-10-12T07:15:46.773Z"
+        }
+      }
+    },
+    {
+      "id": 67,
+      "utc": "2026-10-12T07:15:46.902Z",
+      "sim_time": 26.3,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25562985431900,
+        "producer": "coordinator",
+        "producer_seq": 67,
+        "message_id": "487209a72172:coordinator:67",
+        "received_utc": "2026-10-12T07:15:46.902Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25562986182900,
+          "latency_ms": 0.751,
+          "received_utc": "2026-10-12T07:15:46.902Z"
+        }
+      }
+    },
+    {
+      "id": 69,
+      "utc": "2026-10-12T07:15:47.027Z",
+      "sim_time": 27.3,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25563110041700,
+        "producer": "coordinator",
+        "producer_seq": 69,
+        "message_id": "487209a72172:coordinator:69",
+        "received_utc": "2026-10-12T07:15:47.027Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25563110820800,
+          "latency_ms": 0.7791,
+          "received_utc": "2026-10-12T07:15:47.027Z"
+        }
+      }
+    },
+    {
+      "id": 71,
+      "utc": "2026-10-12T07:15:47.145Z",
+      "sim_time": 28.3,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25563229026100,
+        "producer": "coordinator",
+        "producer_seq": 72,
+        "message_id": "487209a72172:coordinator:72",
+        "received_utc": "2026-10-12T07:15:47.145Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25563229567000,
+          "latency_ms": 0.5409,
+          "received_utc": "2026-10-12T07:15:47.145Z"
+        }
+      }
+    },
+    {
+      "id": 73,
+      "utc": "2026-10-12T07:15:47.270Z",
+      "sim_time": 29.3,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25563352870700,
+        "producer": "coordinator",
+        "producer_seq": 74,
+        "message_id": "487209a72172:coordinator:74",
+        "received_utc": "2026-10-12T07:15:47.270Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25563353486200,
+          "latency_ms": 0.6155,
+          "received_utc": "2026-10-12T07:15:47.270Z"
+        }
+      }
+    },
+    {
+      "id": 75,
+      "utc": "2026-10-12T07:15:47.397Z",
+      "sim_time": 30.3,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25563480936400,
+        "producer": "coordinator",
+        "producer_seq": 76,
+        "message_id": "487209a72172:coordinator:76",
+        "received_utc": "2026-10-12T07:15:47.397Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25563481565400,
+          "latency_ms": 0.629,
+          "received_utc": "2026-10-12T07:15:47.397Z"
+        }
+      }
+    },
+    {
+      "id": 76,
+      "utc": "2026-10-12T07:15:47.398Z",
+      "sim_time": 30.3,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Parkolóengedély nem adható: Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "request_id": "CAR001-parking",
+        "reservation_id": null,
+        "zone_id": null,
+        "reason": "no_available_slot",
+        "available_count": 0,
+        "sensor_seq": 303,
+        "sensor_age_s": 0.0022097,
+        "repeats": 5,
+        "aggregation_interval_s": 5.0,
+        "run_id": "487209a72172",
+        "sent_ns": 25563481041400,
+        "producer": "coordinator",
+        "producer_seq": 77,
+        "message_id": "487209a72172:coordinator:77",
+        "received_utc": "2026-10-12T07:15:47.398Z",
+        "mqtt": {
+          "topic": "audit",
+          "received_ns": 25563482007400,
+          "latency_ms": 0.966,
+          "received_utc": "2026-10-12T07:15:47.398Z"
+        }
+      }
+    },
+    {
+      "id": 78,
+      "utc": "2026-10-12T07:15:47.522Z",
+      "sim_time": 31.3,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25563604985100,
+        "producer": "coordinator",
+        "producer_seq": 79,
+        "message_id": "487209a72172:coordinator:79",
+        "received_utc": "2026-10-12T07:15:47.522Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25563605717800,
+          "latency_ms": 0.7327,
+          "received_utc": "2026-10-12T07:15:47.522Z"
+        }
+      }
+    },
+    {
+      "id": 80,
+      "utc": "2026-10-12T07:15:47.653Z",
+      "sim_time": 32.35,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25563735740900,
+        "producer": "coordinator",
+        "producer_seq": 81,
+        "message_id": "487209a72172:coordinator:81",
+        "received_utc": "2026-10-12T07:15:47.653Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25563737799500,
+          "latency_ms": 2.0586,
+          "received_utc": "2026-10-12T07:15:47.653Z"
+        }
+      }
+    },
+    {
+      "id": 82,
+      "utc": "2026-10-12T07:15:47.787Z",
+      "sim_time": 33.4,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25563870739200,
+        "producer": "coordinator",
+        "producer_seq": 83,
+        "message_id": "487209a72172:coordinator:83",
+        "received_utc": "2026-10-12T07:15:47.787Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25563871368300,
+          "latency_ms": 0.6291,
+          "received_utc": "2026-10-12T07:15:47.787Z"
+        }
+      }
+    },
+    {
+      "id": 84,
+      "utc": "2026-10-12T07:15:47.918Z",
+      "sim_time": 34.45,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25563999932000,
+        "producer": "coordinator",
+        "producer_seq": 85,
+        "message_id": "487209a72172:coordinator:85",
+        "received_utc": "2026-10-12T07:15:47.918Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25564002124900,
+          "latency_ms": 2.1929,
+          "received_utc": "2026-10-12T07:15:47.918Z"
+        }
+      }
+    },
+    {
+      "id": 86,
+      "utc": "2026-10-12T07:15:48.050Z",
+      "sim_time": 35.5,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25564133331700,
+        "producer": "coordinator",
+        "producer_seq": 88,
+        "message_id": "487209a72172:coordinator:88",
+        "received_utc": "2026-10-12T07:15:48.050Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25564134582600,
+          "latency_ms": 1.2509,
+          "received_utc": "2026-10-12T07:15:48.050Z"
+        }
+      }
+    },
+    {
+      "id": 87,
+      "utc": "2026-10-12T07:15:48.050Z",
+      "sim_time": 35.5,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Parkolóengedély nem adható: Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "request_id": "CAR001-parking",
+        "reservation_id": null,
+        "zone_id": null,
+        "reason": "no_available_slot",
+        "available_count": 0,
+        "sensor_seq": 355,
+        "sensor_age_s": 0.0027214,
+        "repeats": 5,
+        "aggregation_interval_s": 5.0,
+        "run_id": "487209a72172",
+        "sent_ns": 25564133423900,
+        "producer": "coordinator",
+        "producer_seq": 89,
+        "message_id": "487209a72172:coordinator:89",
+        "received_utc": "2026-10-12T07:15:48.050Z",
+        "mqtt": {
+          "topic": "audit",
+          "received_ns": 25564134679900,
+          "latency_ms": 1.256,
+          "received_utc": "2026-10-12T07:15:48.050Z"
+        }
+      }
+    },
+    {
+      "id": 89,
+      "utc": "2026-10-12T07:15:48.177Z",
+      "sim_time": 36.55,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25564260181800,
+        "producer": "coordinator",
+        "producer_seq": 91,
+        "message_id": "487209a72172:coordinator:91",
+        "received_utc": "2026-10-12T07:15:48.177Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25564261313600,
+          "latency_ms": 1.1318,
+          "received_utc": "2026-10-12T07:15:48.177Z"
+        }
+      }
+    },
+    {
+      "id": 91,
+      "utc": "2026-10-12T07:15:48.314Z",
+      "sim_time": 37.6,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25564397192600,
+        "producer": "coordinator",
+        "producer_seq": 93,
+        "message_id": "487209a72172:coordinator:93",
+        "received_utc": "2026-10-12T07:15:48.314Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25564398357700,
+          "latency_ms": 1.1651,
+          "received_utc": "2026-10-12T07:15:48.314Z"
+        }
+      }
+    },
+    {
+      "id": 93,
+      "utc": "2026-10-12T07:15:48.443Z",
+      "sim_time": 38.65,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25564526474000,
+        "producer": "coordinator",
+        "producer_seq": 95,
+        "message_id": "487209a72172:coordinator:95",
+        "received_utc": "2026-10-12T07:15:48.443Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25564528189300,
+          "latency_ms": 1.7153,
+          "received_utc": "2026-10-12T07:15:48.443Z"
+        }
+      }
+    },
+    {
+      "id": 95,
+      "utc": "2026-10-12T07:15:48.575Z",
+      "sim_time": 39.7,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25564658692500,
+        "producer": "coordinator",
+        "producer_seq": 97,
+        "message_id": "487209a72172:coordinator:97",
+        "received_utc": "2026-10-12T07:15:48.575Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25564659355500,
+          "latency_ms": 0.663,
+          "received_utc": "2026-10-12T07:15:48.575Z"
+        }
+      }
+    },
+    {
+      "id": 97,
+      "utc": "2026-10-12T07:15:48.712Z",
+      "sim_time": 40.75,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25564794336100,
+        "producer": "coordinator",
+        "producer_seq": 99,
+        "message_id": "487209a72172:coordinator:99",
+        "received_utc": "2026-10-12T07:15:48.712Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25564796007300,
+          "latency_ms": 1.6712,
+          "received_utc": "2026-10-12T07:15:48.712Z"
+        }
+      }
+    },
+    {
+      "id": 98,
+      "utc": "2026-10-12T07:15:48.712Z",
+      "sim_time": 40.75,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Parkolóengedély nem adható: Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "request_id": "CAR001-parking",
+        "reservation_id": null,
+        "zone_id": null,
+        "reason": "no_available_slot",
+        "available_count": 0,
+        "sensor_seq": 407,
+        "sensor_age_s": 0.0136688,
+        "repeats": 5,
+        "aggregation_interval_s": 5.0,
+        "run_id": "487209a72172",
+        "sent_ns": 25564794433600,
+        "producer": "coordinator",
+        "producer_seq": 100,
+        "message_id": "487209a72172:coordinator:100",
+        "received_utc": "2026-10-12T07:15:48.712Z",
+        "mqtt": {
+          "topic": "audit",
+          "received_ns": 25564796454700,
+          "latency_ms": 2.0211,
+          "received_utc": "2026-10-12T07:15:48.712Z"
+        }
+      }
+    },
+    {
+      "id": 100,
+      "utc": "2026-10-12T07:15:48.839Z",
+      "sim_time": 41.8,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25564922086600,
+        "producer": "coordinator",
+        "producer_seq": 103,
+        "message_id": "487209a72172:coordinator:103",
+        "received_utc": "2026-10-12T07:15:48.839Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25564922875300,
+          "latency_ms": 0.7887,
+          "received_utc": "2026-10-12T07:15:48.839Z"
+        }
+      }
+    },
+    {
+      "id": 102,
+      "utc": "2026-10-12T07:15:48.971Z",
+      "sim_time": 42.85,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25565054549100,
+        "producer": "coordinator",
+        "producer_seq": 105,
+        "message_id": "487209a72172:coordinator:105",
+        "received_utc": "2026-10-12T07:15:48.971Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25565055651600,
+          "latency_ms": 1.1025,
+          "received_utc": "2026-10-12T07:15:48.971Z"
+        }
+      }
+    },
+    {
+      "id": 104,
+      "utc": "2026-10-12T07:15:49.099Z",
+      "sim_time": 43.9,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25565182753700,
+        "producer": "coordinator",
+        "producer_seq": 107,
+        "message_id": "487209a72172:coordinator:107",
+        "received_utc": "2026-10-12T07:15:49.099Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25565183609400,
+          "latency_ms": 0.8557,
+          "received_utc": "2026-10-12T07:15:49.099Z"
+        }
+      }
+    },
+    {
+      "id": 106,
+      "utc": "2026-10-12T07:15:49.234Z",
+      "sim_time": 44.95,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25565316638500,
+        "producer": "coordinator",
+        "producer_seq": 109,
+        "message_id": "487209a72172:coordinator:109",
+        "received_utc": "2026-10-12T07:15:49.234Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25565317994800,
+          "latency_ms": 1.3563,
+          "received_utc": "2026-10-12T07:15:49.234Z"
+        }
+      }
+    },
+    {
+      "id": 108,
+      "utc": "2026-10-12T07:15:49.366Z",
+      "sim_time": 46.0,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25565449623100,
+        "producer": "coordinator",
+        "producer_seq": 111,
+        "message_id": "487209a72172:coordinator:111",
+        "received_utc": "2026-10-12T07:15:49.366Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25565450467000,
+          "latency_ms": 0.8439,
+          "received_utc": "2026-10-12T07:15:49.366Z"
+        }
+      }
+    },
+    {
+      "id": 109,
+      "utc": "2026-10-12T07:15:49.367Z",
+      "sim_time": 46.0,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Parkolóengedély nem adható: Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "request_id": "CAR001-parking",
+        "reservation_id": null,
+        "zone_id": null,
+        "reason": "no_available_slot",
+        "available_count": 0,
+        "sensor_seq": 460,
+        "sensor_age_s": 0.0097527,
+        "repeats": 5,
+        "aggregation_interval_s": 5.0,
+        "run_id": "487209a72172",
+        "sent_ns": 25565449754800,
+        "producer": "coordinator",
+        "producer_seq": 112,
+        "message_id": "487209a72172:coordinator:112",
+        "received_utc": "2026-10-12T07:15:49.367Z",
+        "mqtt": {
+          "topic": "audit",
+          "received_ns": 25565450861100,
+          "latency_ms": 1.1063,
+          "received_utc": "2026-10-12T07:15:49.367Z"
+        }
+      }
+    },
+    {
+      "id": 111,
+      "utc": "2026-10-12T07:15:49.497Z",
+      "sim_time": 47.05,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25565580316300,
+        "producer": "coordinator",
+        "producer_seq": 115,
+        "message_id": "487209a72172:coordinator:115",
+        "received_utc": "2026-10-12T07:15:49.497Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25565581770800,
+          "latency_ms": 1.4545,
+          "received_utc": "2026-10-12T07:15:49.497Z"
+        }
+      }
+    },
+    {
+      "id": 113,
+      "utc": "2026-10-12T07:15:49.621Z",
+      "sim_time": 48.1,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25565704052500,
+        "producer": "coordinator",
+        "producer_seq": 117,
+        "message_id": "487209a72172:coordinator:117",
+        "received_utc": "2026-10-12T07:15:49.621Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25565704738500,
+          "latency_ms": 0.686,
+          "received_utc": "2026-10-12T07:15:49.621Z"
+        }
+      }
+    },
+    {
+      "id": 115,
+      "utc": "2026-10-12T07:15:49.764Z",
+      "sim_time": 49.15,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25565847171400,
+        "producer": "coordinator",
+        "producer_seq": 119,
+        "message_id": "487209a72172:coordinator:119",
+        "received_utc": "2026-10-12T07:15:49.764Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25565848367500,
+          "latency_ms": 1.1961,
+          "received_utc": "2026-10-12T07:15:49.764Z"
+        }
+      }
+    },
+    {
+      "id": 117,
+      "utc": "2026-10-12T07:15:49.891Z",
+      "sim_time": 50.2,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_wait",
+      "message": "Nincs szabad parkolóhely",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_wait",
+        "request_id": "CAR001-parking",
+        "reason": "Nincs szabad parkolóhely",
+        "run_id": "487209a72172",
+        "sent_ns": 25565973324400,
+        "producer": "coordinator",
+        "producer_seq": 121,
+        "message_id": "487209a72172:coordinator:121",
+        "received_utc": "2026-10-12T07:15:49.891Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25565974567600,
+          "latency_ms": 1.2432,
+          "received_utc": "2026-10-12T07:15:49.891Z"
+        }
+      }
+    }
+  ]
+}

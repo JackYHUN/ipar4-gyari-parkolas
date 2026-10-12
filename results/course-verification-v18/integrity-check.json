@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "executed_at_utc": "2026-10-12T07:25:38.678432+00:00",
+  "scope": "Post-campaign readonly verification of both report digests, all 37 recorded source entries and all 48 recorded artifact digests; report status PASS; no rerun claimed.",
+  "reports_verified": 2,
+  "recorded_source_entries_verified": 37,
+  "recorded_artifact_digests_verified": 48,
+  "bundle_summary_sha256": "1a5a2fe2cd4c6250ba1e0f9d3d858f40cd7131d272829d603f196cea29fb4b12",
+  "document_sha256": "873749e0683d62035f79c1376ab98463519010606f9bee79baafe291e2ea76a7",
+  "demo_config_sha256": "2a2046b207029c8e400d8942103ada476760a16c3beea705496e732b57c4b6b7",
+  "report_sha256": {
+    "campaign-20261012-0715/summary.json": "d024db9f077ff89b192c31b18c37dc8515b6bfcba0e6570f02836c657567f05e",
+    "nominal/summary.json": "b3a5d1e10ccfdde45cbc57e09c707da186841a4e7bf6215be3f08740d5ad8cca"
+  }
+}

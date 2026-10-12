@@ -1,0 +1,284 @@
+[
+  {
+    "scenario": "reference_9s",
+    "seed": 1001,
+    "schedule_sha256": "a278969258d54f61e9dc2335078a889ddd4243ff7cab3a9c3922ae49fc6b6fd8",
+    "schedule_rng_seed": 12625137,
+    "generation": "independent RNG; first U(7,14)s, gaps U(50,65)s, ceil dt ticks",
+    "events": [
+      {
+        "event_id": "ZEBRA1-001",
+        "crossing_id": "ZEBRA1",
+        "tick": 170,
+        "offered_at_s": 8.5
+      },
+      {
+        "event_id": "ZEBRA2-001",
+        "crossing_id": "ZEBRA2",
+        "tick": 212,
+        "offered_at_s": 10.6
+      },
+      {
+        "event_id": "ZEBRA1-002",
+        "crossing_id": "ZEBRA1",
+        "tick": 1415,
+        "offered_at_s": 70.75
+      },
+      {
+        "event_id": "ZEBRA2-002",
+        "crossing_id": "ZEBRA2",
+        "tick": 1466,
+        "offered_at_s": 73.3
+      },
+      {
+        "event_id": "ZEBRA1-003",
+        "crossing_id": "ZEBRA1",
+        "tick": 2668,
+        "offered_at_s": 133.4
+      },
+      {
+        "event_id": "ZEBRA2-003",
+        "crossing_id": "ZEBRA2",
+        "tick": 2761,
+        "offered_at_s": 138.05
+      },
+      {
+        "event_id": "ZEBRA1-004",
+        "crossing_id": "ZEBRA1",
+        "tick": 3842,
+        "offered_at_s": 192.1
+      },
+      {
+        "event_id": "ZEBRA2-004",
+        "crossing_id": "ZEBRA2",
+        "tick": 4037,
+        "offered_at_s": 201.85
+      },
+      {
+        "event_id": "ZEBRA1-005",
+        "crossing_id": "ZEBRA1",
+        "tick": 4900,
+        "offered_at_s": 245.0
+      },
+      {
+        "event_id": "ZEBRA2-005",
+        "crossing_id": "ZEBRA2",
+        "tick": 5070,
+        "offered_at_s": 253.5
+      },
+      {
+        "event_id": "ZEBRA1-006",
+        "crossing_id": "ZEBRA1",
+        "tick": 5903,
+        "offered_at_s": 295.15
+      },
+      {
+        "event_id": "ZEBRA2-006",
+        "crossing_id": "ZEBRA2",
+        "tick": 6204,
+        "offered_at_s": 310.2
+      },
+      {
+        "event_id": "ZEBRA1-007",
+        "crossing_id": "ZEBRA1",
+        "tick": 7150,
+        "offered_at_s": 357.5
+      },
+      {
+        "event_id": "ZEBRA2-007",
+        "crossing_id": "ZEBRA2",
+        "tick": 7293,
+        "offered_at_s": 364.65
+      },
+      {
+        "event_id": "ZEBRA2-008",
+        "crossing_id": "ZEBRA2",
+        "tick": 8387,
+        "offered_at_s": 419.35
+      },
+      {
+        "event_id": "ZEBRA1-008",
+        "crossing_id": "ZEBRA1",
+        "tick": 8430,
+        "offered_at_s": 421.5
+      },
+      {
+        "event_id": "ZEBRA1-009",
+        "crossing_id": "ZEBRA1",
+        "tick": 9454,
+        "offered_at_s": 472.7
+      },
+      {
+        "event_id": "ZEBRA2-009",
+        "crossing_id": "ZEBRA2",
+        "tick": 9661,
+        "offered_at_s": 483.05
+      },
+      {
+        "event_id": "ZEBRA1-010",
+        "crossing_id": "ZEBRA1",
+        "tick": 10656,
+        "offered_at_s": 532.8
+      },
+      {
+        "event_id": "ZEBRA2-010",
+        "crossing_id": "ZEBRA2",
+        "tick": 10883,
+        "offered_at_s": 544.15
+      },
+      {
+        "event_id": "ZEBRA1-011",
+        "crossing_id": "ZEBRA1",
+        "tick": 11700,
+        "offered_at_s": 585.0
+      },
+      {
+        "event_id": "ZEBRA2-011",
+        "crossing_id": "ZEBRA2",
+        "tick": 11915,
+        "offered_at_s": 595.75
+      }
+    ]
+  },
+  {
+    "scenario": "high_load_3s",
+    "seed": 1001,
+    "schedule_sha256": "a278969258d54f61e9dc2335078a889ddd4243ff7cab3a9c3922ae49fc6b6fd8",
+    "schedule_rng_seed": 12625137,
+    "generation": "independent RNG; first U(7,14)s, gaps U(50,65)s, ceil dt ticks",
+    "events": [
+      {
+        "event_id": "ZEBRA1-001",
+        "crossing_id": "ZEBRA1",
+        "tick": 170,
+        "offered_at_s": 8.5
+      },
+      {
+        "event_id": "ZEBRA2-001",
+        "crossing_id": "ZEBRA2",
+        "tick": 212,
+        "offered_at_s": 10.6
+      },
+      {
+        "event_id": "ZEBRA1-002",
+        "crossing_id": "ZEBRA1",
+        "tick": 1415,
+        "offered_at_s": 70.75
+      },
+      {
+        "event_id": "ZEBRA2-002",
+        "crossing_id": "ZEBRA2",
+        "tick": 1466,
+        "offered_at_s": 73.3
+      },
+      {
+        "event_id": "ZEBRA1-003",
+        "crossing_id": "ZEBRA1",
+        "tick": 2668,
+        "offered_at_s": 133.4
+      },
+      {
+        "event_id": "ZEBRA2-003",
+        "crossing_id": "ZEBRA2",
+        "tick": 2761,
+        "offered_at_s": 138.05
+      },
+      {
+        "event_id": "ZEBRA1-004",
+        "crossing_id": "ZEBRA1",
+        "tick": 3842,
+        "offered_at_s": 192.1
+      },
+      {
+        "event_id": "ZEBRA2-004",
+        "crossing_id": "ZEBRA2",
+        "tick": 4037,
+        "offered_at_s": 201.85
+      },
+      {
+        "event_id": "ZEBRA1-005",
+        "crossing_id": "ZEBRA1",
+        "tick": 4900,
+        "offered_at_s": 245.0
+      },
+      {
+        "event_id": "ZEBRA2-005",
+        "crossing_id": "ZEBRA2",
+        "tick": 5070,
+        "offered_at_s": 253.5
+      },
+      {
+        "event_id": "ZEBRA1-006",
+        "crossing_id": "ZEBRA1",
+        "tick": 5903,
+        "offered_at_s": 295.15
+      },
+      {
+        "event_id": "ZEBRA2-006",
+        "crossing_id": "ZEBRA2",
+        "tick": 6204,
+        "offered_at_s": 310.2
+      },
+      {
+        "event_id": "ZEBRA1-007",
+        "crossing_id": "ZEBRA1",
+        "tick": 7150,
+        "offered_at_s": 357.5
+      },
+      {
+        "event_id": "ZEBRA2-007",
+        "crossing_id": "ZEBRA2",
+        "tick": 7293,
+        "offered_at_s": 364.65
+      },
+      {
+        "event_id": "ZEBRA2-008",
+        "crossing_id": "ZEBRA2",
+        "tick": 8387,
+        "offered_at_s": 419.35
+      },
+      {
+        "event_id": "ZEBRA1-008",
+        "crossing_id": "ZEBRA1",
+        "tick": 8430,
+        "offered_at_s": 421.5
+      },
+      {
+        "event_id": "ZEBRA1-009",
+        "crossing_id": "ZEBRA1",
+        "tick": 9454,
+        "offered_at_s": 472.7
+      },
+      {
+        "event_id": "ZEBRA2-009",
+        "crossing_id": "ZEBRA2",
+        "tick": 9661,
+        "offered_at_s": 483.05
+      },
+      {
+        "event_id": "ZEBRA1-010",
+        "crossing_id": "ZEBRA1",
+        "tick": 10656,
+        "offered_at_s": 532.8
+      },
+      {
+        "event_id": "ZEBRA2-010",
+        "crossing_id": "ZEBRA2",
+        "tick": 10883,
+        "offered_at_s": 544.15
+      },
+      {
+        "event_id": "ZEBRA1-011",
+        "crossing_id": "ZEBRA1",
+        "tick": 11700,
+        "offered_at_s": 585.0
+      },
+      {
+        "event_id": "ZEBRA2-011",
+        "crossing_id": "ZEBRA2",
+        "tick": 11915,
+        "offered_at_s": 595.75
+      }
+    ]
+  }
+]

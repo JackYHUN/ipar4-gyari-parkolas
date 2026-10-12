@@ -1,0 +1,19 @@
+test_two_close_requests_never_share_a_space (tests.test_coordinator.CoordinatorTests.test_two_close_requests_never_share_a_space) ... ok
+test_duplicate_request_reuses_grant_without_second_reservation (tests.test_coordinator.CoordinatorTests.test_duplicate_request_reuses_grant_without_second_reservation) ... ok
+test_new_request_id_cannot_reserve_twice_for_same_car (tests.test_coordinator.CoordinatorTests.test_new_request_id_cannot_reserve_twice_for_same_car) ... ok
+test_no_parking_grant_before_first_sensor_sample (tests.test_coordinator.CoordinatorTests.test_no_parking_grant_before_first_sensor_sample) ... ok
+test_reordered_sensor_sample_cannot_overwrite_or_refresh_state (tests.test_coordinator.CoordinatorTests.test_reordered_sensor_sample_cannot_overwrite_or_refresh_state) ... ok
+test_stale_payload_and_foreign_run_do_not_update_sensor (tests.test_coordinator.CoordinatorTests.test_stale_payload_and_foreign_run_do_not_update_sensor) ... ok
+test_timeout_never_releases_logical_reservation (tests.test_coordinator.CoordinatorTests.test_timeout_never_releases_logical_reservation) ... ok
+test_departure_requires_matching_id_and_later_empty_sensor (tests.test_coordinator.CoordinatorTests.test_departure_requires_matching_id_and_later_empty_sensor) ... ok
+test_late_duplicate_request_cannot_replay_closed_reservation (tests.test_coordinator.CoordinatorTests.test_late_duplicate_request_cannot_replay_closed_reservation) ... ok
+test_zone_timeout_does_not_free_occupied_area (tests.test_coordinator.CoordinatorTests.test_zone_timeout_does_not_free_occupied_area) ... ok
+test_zone_exit_needs_matching_grant_and_whole_vehicle_outside (tests.test_coordinator.CoordinatorTests.test_zone_exit_needs_matching_grant_and_whole_vehicle_outside) ... ok
+test_selected_candidate_cost_and_replay_are_correlated_without_new_reservation (tests.test_coordinator_audit.CoordinatorAuditTests.test_selected_candidate_cost_and_replay_are_correlated_without_new_reservation) ... ok
+test_rejected_frame_reasons_are_visible_and_do_not_refresh_physical_evidence (tests.test_coordinator_audit.CoordinatorAuditTests.test_rejected_frame_reasons_are_visible_and_do_not_refresh_physical_evidence) ... ok
+test_parking_release_records_later_empty_frame_certificate (tests.test_coordinator_audit.CoordinatorAuditTests.test_parking_release_records_later_empty_frame_certificate) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.001s
+
+OK

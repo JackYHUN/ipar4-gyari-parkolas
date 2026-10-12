@@ -1,0 +1,106 @@
+{
+  "case": {
+    "id": "S02-idempotencia",
+    "expected": "Ugyanaz a car_id/request_id ugyanazt a reservation_id-t kapja; egyetlen logikai helyfoglalás.",
+    "observed": {
+      "car_id": "CAR001",
+      "request_id": "CAR001-parking",
+      "reservation_id": "6d682f18f3dc-park-1",
+      "audit_receipt_id": 116,
+      "mqtt_audit": {
+        "category": "decision",
+        "level": "info",
+        "event_type": "parking_grant_replayed",
+        "message": "Ismételt kérésre ugyanaz a parkolóengedély került visszaküldésre",
+        "sim_time": 6.7,
+        "car_id": "CAR001",
+        "request_id": "CAR001-parking",
+        "reservation_id": "6d682f18f3dc-park-1",
+        "zone_id": null,
+        "reason": "idempotent_request",
+        "slot_id": "P08",
+        "repeats": 1,
+        "aggregation_interval_s": 5.0,
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25517478198700,
+        "producer": "coordinator",
+        "producer_seq": 23,
+        "message_id": "6d682f18f3dc:coordinator:23",
+        "received_utc": "2026-10-12T07:15:01.395Z"
+      },
+      "close_distinct_requests_proof": "Targeted test ID: test_two_close_requests_never_share_a_space; direct Coordinator test, not a concurrent TCP load test"
+    },
+    "status": "PASS",
+    "run_id": "6d682f18f3dc",
+    "journal_record_ids": [
+      16,
+      17
+    ]
+  },
+  "records": [
+    {
+      "id": 16,
+      "utc": "2026-10-12T07:15:01.395Z",
+      "sim_time": 6.7,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_grant_replayed",
+      "message": "Ismételt kérésre ugyanaz a parkolóengedély került visszaküldésre",
+      "car_id": "CAR001",
+      "details": {
+        "request_id": "CAR001-parking",
+        "reservation_id": "6d682f18f3dc-park-1",
+        "zone_id": null,
+        "reason": "idempotent_request",
+        "slot_id": "P08",
+        "repeats": 1,
+        "aggregation_interval_s": 5.0,
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25517478198700,
+        "producer": "coordinator",
+        "producer_seq": 23,
+        "message_id": "6d682f18f3dc:coordinator:23",
+        "received_utc": "2026-10-12T07:15:01.395Z",
+        "mqtt": {
+          "topic": "audit",
+          "received_ns": 25517479255700,
+          "latency_ms": 1.057,
+          "received_utc": "2026-10-12T07:15:01.395Z"
+        }
+      }
+    },
+    {
+      "id": 17,
+      "utc": "2026-10-12T07:15:01.405Z",
+      "sim_time": 6.95,
+      "level": "info",
+      "category": "transport",
+      "event_type": "command_duplicate",
+      "message": "Ismételt parkolóengedély nem indítja újra a mozgást",
+      "car_id": "CAR001",
+      "details": {
+        "reason": "idempotent_grant",
+        "request_id": "CAR001-parking",
+        "reservation_id": "6d682f18f3dc-park-1",
+        "zone_id": null,
+        "grant_id": null,
+        "command_kind": "parking_grant",
+        "topic": "commands/CAR001",
+        "current_reservation_id": "6d682f18f3dc-park-1",
+        "current_slot_id": "P08",
+        "run_id": "6d682f18f3dc",
+        "sent_ns": 25517487686100,
+        "producer": "simulator",
+        "producer_seq": 164,
+        "message_id": "6d682f18f3dc:simulator:164",
+        "received_utc": "2026-10-12T07:15:01.405Z",
+        "mqtt": {
+          "topic": "events",
+          "received_ns": 25517488561700,
+          "latency_ms": 0.8756,
+          "received_utc": "2026-10-12T07:15:01.405Z"
+        }
+      }
+    }
+  ]
+}

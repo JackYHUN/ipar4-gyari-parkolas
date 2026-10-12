@@ -1,0 +1,14 @@
+{
+  "run_id": "487209a72172",
+  "actual_mqtt": true,
+  "frames": 64,
+  "coordinator_frames": 64,
+  "received_messages": 755,
+  "first_sim_time": 0.05,
+  "last_sim_time": 51.05,
+  "logical_reservations_observed": 0,
+  "invariant_violations": [],
+  "interpolation": false,
+  "outage_frames_filled": false,
+  "frame_definition": "Every received simulator snapshot, with the last independently received coordinator overlay and its own receipt clock; this is model reconstruction, not camera/UI capture"
+}

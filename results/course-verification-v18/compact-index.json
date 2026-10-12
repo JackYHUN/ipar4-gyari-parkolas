@@ -1,0 +1,26 @@
+{
+  "scope": "Historical actual-MQTT receipts plus compact samples; full archives remain in local course-verification-v18 submission evidence. Missing originals are not revalidated from this public snapshot.",
+  "runs": [
+    {
+      "run_id": "a8d33ff8fef3",
+      "folder": "nominal",
+      "event_sample": "results/course-verification-v18/nominal/events-sample.json",
+      "mqtt_sample": "results/course-verification-v18/nominal/mqtt-sample.json",
+      "full_recordings_in_public_repo": false
+    },
+    {
+      "run_id": "6d682f18f3dc",
+      "folder": "campaign-20261012-0715/core",
+      "event_sample": "results/course-verification-v18/campaign-20261012-0715/core/events-sample.json",
+      "mqtt_sample": "results/course-verification-v18/campaign-20261012-0715/core/mqtt-sample.json",
+      "full_recordings_in_public_repo": false
+    },
+    {
+      "run_id": "487209a72172",
+      "folder": "campaign-20261012-0715/full-parking",
+      "event_sample": "results/course-verification-v18/campaign-20261012-0715/full-parking/events-sample.json",
+      "mqtt_sample": "results/course-verification-v18/campaign-20261012-0715/full-parking/mqtt-sample.json",
+      "full_recordings_in_public_repo": false
+    }
+  ]
+}

@@ -1,0 +1,1472 @@
+{
+  "kind": "deterministic_compact_sample",
+  "source_artifact": "nominal/events.json",
+  "source_sha256": "7283ff5b69a2faaca06b518240df2a933c97f49f49c0a935d409c436117d3c50",
+  "original_records": 260,
+  "sample_records": 33,
+  "selection": "first12 + last12 + journal IDs referenced by same-run course cases; original order retained",
+  "events": [
+    {
+      "id": 1,
+      "utc": "2026-10-12T07:18:02.306Z",
+      "sim_time": 0.0,
+      "level": "info",
+      "category": "lifecycle",
+      "event_type": "run_started",
+      "message": "Új MQTT-futás indult.",
+      "car_id": null,
+      "details": {
+        "seed": 123,
+        "strategy": "nearest",
+        "speed": 8,
+        "version": "0.18.0"
+      }
+    },
+    {
+      "id": 2,
+      "utc": "2026-10-12T07:18:02.724Z",
+      "sim_time": 0.05,
+      "level": "info",
+      "category": "lifecycle",
+      "event_type": "production_exit",
+      "message": "Jármű érkezett a gyártósori kijárathoz",
+      "car_id": "CAR001",
+      "details": {
+        "offered_at_s": 0.0,
+        "buffer_wait_s": 0.05,
+        "run_id": "a8d33ff8fef3",
+        "sent_ns": 25698807647400,
+        "producer": "simulator",
+        "producer_seq": 2,
+        "message_id": "a8d33ff8fef3:simulator:2",
+        "received_utc": "2026-10-12T07:18:02.724Z",
+        "mqtt": {
+          "topic": "events",
+          "received_ns": 25698808593200,
+          "latency_ms": 0.9458,
+          "received_utc": "2026-10-12T07:18:02.724Z"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "utc": "2026-10-12T07:18:02.724Z",
+      "sim_time": 0.05,
+      "level": "info",
+      "category": "state",
+      "event_type": "state_changed",
+      "message": "Járműállapot: várakozás; a jármű áll",
+      "car_id": "CAR001",
+      "details": {
+        "from_state": null,
+        "to_state": "waiting",
+        "from_reason": null,
+        "reason": "Parkolóengedélyre vár",
+        "motion_phase": "stopped",
+        "request_id": "CAR001-parking",
+        "parking_request_id": "CAR001-parking",
+        "reservation_id": null,
+        "slot_id": null,
+        "zone_id": null,
+        "grant_id": null,
+        "speed_m_s": 0.0,
+        "position_m": [
+          14,
+          58
+        ],
+        "run_id": "a8d33ff8fef3",
+        "sent_ns": 25698807694700,
+        "producer": "simulator",
+        "producer_seq": 3,
+        "message_id": "a8d33ff8fef3:simulator:3",
+        "received_utc": "2026-10-12T07:18:02.724Z",
+        "mqtt": {
+          "topic": "events",
+          "received_ns": 25698808788500,
+          "latency_ms": 1.0938,
+          "received_utc": "2026-10-12T07:18:02.724Z"
+        }
+      }
+    },
+    {
+      "id": 4,
+      "utc": "2026-10-12T07:18:02.725Z",
+      "sim_time": 0.05,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_request",
+      "message": "Erőforráskérés: parking",
+      "car_id": "CAR001",
+      "details": {
+        "request_id": "CAR001-parking",
+        "origin": [
+          14,
+          58
+        ],
+        "run_id": "a8d33ff8fef3",
+        "sent_ns": 25698807742200,
+        "producer": "simulator",
+        "producer_seq": 4,
+        "message_id": "a8d33ff8fef3:simulator:4",
+        "received_utc": "2026-10-12T07:18:02.725Z",
+        "mqtt": {
+          "topic": "requests/parking",
+          "received_ns": 25698809263300,
+          "latency_ms": 1.5211,
+          "received_utc": "2026-10-12T07:18:02.725Z"
+        }
+      }
+    },
+    {
+      "id": 5,
+      "utc": "2026-10-12T07:18:02.725Z",
+      "sim_time": 0.05,
+      "level": "info",
+      "category": "transport",
+      "event_type": "parking_observation_changed",
+      "message": "A virtuális parkolóérzékelő állapotváltozást jelentett",
+      "car_id": null,
+      "details": {
+        "request_id": null,
+        "reservation_id": null,
+        "zone_id": null,
+        "reason": "fresh_increasing_sensor_frame",
+        "sensor_seq": 1,
+        "changes": [
+          {
+            "slot_id": "P01",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "slot_id": "P02",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "slot_id": "P03",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "slot_id": "P04",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "slot_id": "P05",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "slot_id": "P06",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "slot_id": "P07",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "slot_id": "P08",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "slot_id": "P09",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "slot_id": "P10",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "slot_id": "P11",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "slot_id": "P12",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "slot_id": "P13",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": true,
+            "blocked": false
+          },
+          {
+            "slot_id": "P14",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "slot_id": "P15",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": false,
+            "blocked": false
+          },
+          {
+            "slot_id": "P16",
+            "previous": {
+              "occupied": null,
+              "blocked": false
+            },
+            "occupied": true,
+            "blocked": false
+          }
+        ],
+        "run_id": "a8d33ff8fef3",
+        "sent_ns": 25698808458100,
+        "producer": "coordinator",
+        "producer_seq": 3,
+        "message_id": "a8d33ff8fef3:coordinator:3",
+        "received_utc": "2026-10-12T07:18:02.725Z",
+        "mqtt": {
+          "topic": "audit",
+          "received_ns": 25698809858500,
+          "latency_ms": 1.4004,
+          "received_utc": "2026-10-12T07:18:02.725Z"
+        }
+      }
+    },
+    {
+      "id": 6,
+      "utc": "2026-10-12T07:18:02.726Z",
+      "sim_time": 0.05,
+      "level": "info",
+      "category": "transport",
+      "event_type": "parking_sensor_fresh",
+      "message": "Friss parkolóérzékelés áll rendelkezésre",
+      "car_id": null,
+      "details": {
+        "request_id": null,
+        "reservation_id": null,
+        "zone_id": null,
+        "reason": "first_frame",
+        "sensor_seq": 1,
+        "run_id": "a8d33ff8fef3",
+        "sent_ns": 25698808698400,
+        "producer": "coordinator",
+        "producer_seq": 4,
+        "message_id": "a8d33ff8fef3:coordinator:4",
+        "received_utc": "2026-10-12T07:18:02.726Z",
+        "mqtt": {
+          "topic": "audit",
+          "received_ns": 25698810701900,
+          "latency_ms": 2.0035,
+          "received_utc": "2026-10-12T07:18:02.726Z"
+        }
+      }
+    },
+    {
+      "id": 7,
+      "utc": "2026-10-12T07:18:02.726Z",
+      "sim_time": 0.05,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_grant",
+      "message": "Parkolófoglalás kiadva",
+      "car_id": "CAR001",
+      "details": {
+        "kind": "parking_grant",
+        "request_id": "CAR001-parking",
+        "slot_id": "P08",
+        "reservation_id": "a8d33ff8fef3-park-1",
+        "route": [
+          [
+            14,
+            58
+          ],
+          [
+            122,
+            58
+          ],
+          [
+            122,
+            24
+          ],
+          [
+            110,
+            24
+          ],
+          [
+            110,
+            12
+          ]
+        ],
+        "run_id": "a8d33ff8fef3",
+        "sent_ns": 25698809444400,
+        "producer": "coordinator",
+        "producer_seq": 5,
+        "message_id": "a8d33ff8fef3:coordinator:5",
+        "received_utc": "2026-10-12T07:18:02.726Z",
+        "mqtt": {
+          "topic": "commands/CAR001",
+          "received_ns": 25698810826100,
+          "latency_ms": 1.3817,
+          "received_utc": "2026-10-12T07:18:02.726Z"
+        }
+      }
+    },
+    {
+      "id": 8,
+      "utc": "2026-10-12T07:18:02.726Z",
+      "sim_time": 0.05,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_granted",
+      "message": "Parkoló kijelölve: P08",
+      "car_id": "CAR001",
+      "details": {
+        "request_id": "CAR001-parking",
+        "reservation_id": "a8d33ff8fef3-park-1",
+        "zone_id": null,
+        "reason": "shortest_available_route_then_id",
+        "strategy": "nearest",
+        "slot_id": "P08",
+        "selected_route_length_m": 166.0,
+        "candidate_routes": [
+          {
+            "slot_id": "P01",
+            "route_length_m": 236.0
+          },
+          {
+            "slot_id": "P03",
+            "route_length_m": 216.0
+          },
+          {
+            "slot_id": "P04",
+            "route_length_m": 206.0
+          },
+          {
+            "slot_id": "P06",
+            "route_length_m": 186.0
+          },
+          {
+            "slot_id": "P07",
+            "route_length_m": 176.0
+          },
+          {
+            "slot_id": "P08",
+            "route_length_m": 166.0
+          },
+          {
+            "slot_id": "P09",
+            "route_length_m": 236.0
+          },
+          {
+            "slot_id": "P10",
+            "route_length_m": 226.0
+          },
+          {
+            "slot_id": "P11",
+            "route_length_m": 216.0
+          },
+          {
+            "slot_id": "P12",
+            "route_length_m": 206.0
+          },
+          {
+            "slot_id": "P14",
+            "route_length_m": 186.0
+          },
+          {
+            "slot_id": "P15",
+            "route_length_m": 176.0
+          }
+        ],
+        "sensor_seq": 1,
+        "sensor_age_s": 0.0010314,
+        "run_id": "a8d33ff8fef3",
+        "sent_ns": 25698809501000,
+        "producer": "coordinator",
+        "producer_seq": 6,
+        "message_id": "a8d33ff8fef3:coordinator:6",
+        "received_utc": "2026-10-12T07:18:02.726Z",
+        "mqtt": {
+          "topic": "audit",
+          "received_ns": 25698810934400,
+          "latency_ms": 1.4334,
+          "received_utc": "2026-10-12T07:18:02.726Z"
+        }
+      }
+    },
+    {
+      "id": 9,
+      "utc": "2026-10-12T07:18:02.731Z",
+      "sim_time": 0.05,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_assigned",
+      "message": "Parkoló kijelölve: P08",
+      "car_id": "CAR001",
+      "details": {
+        "slot_id": "P08",
+        "reservation_id": "a8d33ff8fef3-park-1",
+        "route_length_m": 166.0,
+        "remaining_route_m": 166.0,
+        "route_source": "configured_polyline",
+        "upcoming_zones": [
+          "C1"
+        ],
+        "run_id": "a8d33ff8fef3",
+        "sent_ns": 25698814903700,
+        "producer": "simulator",
+        "producer_seq": 7,
+        "message_id": "a8d33ff8fef3:simulator:7",
+        "received_utc": "2026-10-12T07:18:02.731Z",
+        "mqtt": {
+          "topic": "events",
+          "received_ns": 25698815541300,
+          "latency_ms": 0.6376,
+          "received_utc": "2026-10-12T07:18:02.731Z"
+        }
+      }
+    },
+    {
+      "id": 10,
+      "utc": "2026-10-12T07:18:02.732Z",
+      "sim_time": 0.05,
+      "level": "info",
+      "category": "state",
+      "event_type": "state_changed",
+      "message": "Járműállapot: haladás; a jármű áll",
+      "car_id": "CAR001",
+      "details": {
+        "from_state": "waiting",
+        "to_state": "driving",
+        "from_reason": "Parkolóengedélyre vár",
+        "reason": "",
+        "motion_phase": "stopped",
+        "request_id": "CAR001-parking",
+        "parking_request_id": "CAR001-parking",
+        "reservation_id": "a8d33ff8fef3-park-1",
+        "slot_id": "P08",
+        "zone_id": null,
+        "grant_id": null,
+        "speed_m_s": 0.0,
+        "position_m": [
+          14,
+          58
+        ],
+        "run_id": "a8d33ff8fef3",
+        "sent_ns": 25698814972700,
+        "producer": "simulator",
+        "producer_seq": 8,
+        "message_id": "a8d33ff8fef3:simulator:8",
+        "received_utc": "2026-10-12T07:18:02.732Z",
+        "mqtt": {
+          "topic": "events",
+          "received_ns": 25698815810800,
+          "latency_ms": 0.8381,
+          "received_utc": "2026-10-12T07:18:02.732Z"
+        }
+      }
+    },
+    {
+      "id": 11,
+      "utc": "2026-10-12T07:18:02.732Z",
+      "sim_time": 0.1,
+      "level": "info",
+      "category": "state",
+      "event_type": "state_changed",
+      "message": "Járműállapot: haladás; a jármű még mozog",
+      "car_id": "CAR001",
+      "details": {
+        "from_state": "driving",
+        "to_state": "driving",
+        "from_reason": "",
+        "reason": "Zónaengedély: C1",
+        "motion_phase": "moving",
+        "request_id": "CAR001-parking",
+        "parking_request_id": "CAR001-parking",
+        "reservation_id": "a8d33ff8fef3-park-1",
+        "slot_id": "P08",
+        "zone_id": null,
+        "grant_id": null,
+        "speed_m_s": 0.05,
+        "position_m": [
+          14.00125,
+          58.0
+        ],
+        "run_id": "a8d33ff8fef3",
+        "sent_ns": 25698815011500,
+        "producer": "simulator",
+        "producer_seq": 9,
+        "message_id": "a8d33ff8fef3:simulator:9",
+        "received_utc": "2026-10-12T07:18:02.732Z",
+        "mqtt": {
+          "topic": "events",
+          "received_ns": 25698816005900,
+          "latency_ms": 0.9944,
+          "received_utc": "2026-10-12T07:18:02.732Z"
+        }
+      }
+    },
+    {
+      "id": 12,
+      "utc": "2026-10-12T07:18:02.732Z",
+      "sim_time": 0.1,
+      "level": "info",
+      "category": "state",
+      "event_type": "vehicle_resumed",
+      "message": "A jármű mozgása megkezdődött vagy folytatódott",
+      "car_id": "CAR001",
+      "details": {
+        "reason": "Zónaengedély: C1",
+        "motion_phase": "moving",
+        "request_id": "CAR001-parking",
+        "parking_request_id": "CAR001-parking",
+        "reservation_id": "a8d33ff8fef3-park-1",
+        "slot_id": "P08",
+        "zone_id": null,
+        "grant_id": null,
+        "speed_m_s": 0.05,
+        "position_m": [
+          14.00125,
+          58.0
+        ],
+        "run_id": "a8d33ff8fef3",
+        "sent_ns": 25698815041900,
+        "producer": "simulator",
+        "producer_seq": 10,
+        "message_id": "a8d33ff8fef3:simulator:10",
+        "received_utc": "2026-10-12T07:18:02.732Z",
+        "mqtt": {
+          "topic": "events",
+          "received_ns": 25698816268000,
+          "latency_ms": 1.2261,
+          "received_utc": "2026-10-12T07:18:02.732Z"
+        }
+      }
+    },
+    {
+      "id": 18,
+      "utc": "2026-10-12T07:18:03.856Z",
+      "sim_time": 9.0,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_granted",
+      "message": "Parkoló kijelölve: P07",
+      "car_id": "CAR002",
+      "details": {
+        "request_id": "CAR002-parking",
+        "reservation_id": "a8d33ff8fef3-park-2",
+        "zone_id": null,
+        "reason": "shortest_available_route_then_id",
+        "strategy": "nearest",
+        "slot_id": "P07",
+        "selected_route_length_m": 176.0,
+        "candidate_routes": [
+          {
+            "slot_id": "P01",
+            "route_length_m": 236.0
+          },
+          {
+            "slot_id": "P03",
+            "route_length_m": 216.0
+          },
+          {
+            "slot_id": "P04",
+            "route_length_m": 206.0
+          },
+          {
+            "slot_id": "P06",
+            "route_length_m": 186.0
+          },
+          {
+            "slot_id": "P07",
+            "route_length_m": 176.0
+          },
+          {
+            "slot_id": "P09",
+            "route_length_m": 236.0
+          },
+          {
+            "slot_id": "P10",
+            "route_length_m": 226.0
+          },
+          {
+            "slot_id": "P11",
+            "route_length_m": 216.0
+          },
+          {
+            "slot_id": "P12",
+            "route_length_m": 206.0
+          },
+          {
+            "slot_id": "P14",
+            "route_length_m": 186.0
+          },
+          {
+            "slot_id": "P15",
+            "route_length_m": 176.0
+          }
+        ],
+        "sensor_seq": 90,
+        "sensor_age_s": 0.0121667,
+        "run_id": "a8d33ff8fef3",
+        "sent_ns": 25699938694200,
+        "producer": "coordinator",
+        "producer_seq": 19,
+        "message_id": "a8d33ff8fef3:coordinator:19",
+        "received_utc": "2026-10-12T07:18:03.856Z",
+        "mqtt": {
+          "topic": "audit",
+          "received_ns": 25699940006200,
+          "latency_ms": 1.312,
+          "received_utc": "2026-10-12T07:18:03.856Z"
+        }
+      }
+    },
+    {
+      "id": 27,
+      "utc": "2026-10-12T07:18:04.989Z",
+      "sim_time": 18.0,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_granted",
+      "message": "Parkoló kijelölve: P15",
+      "car_id": "CAR003",
+      "details": {
+        "request_id": "CAR003-parking",
+        "reservation_id": "a8d33ff8fef3-park-3",
+        "zone_id": null,
+        "reason": "shortest_available_route_then_id",
+        "strategy": "nearest",
+        "slot_id": "P15",
+        "selected_route_length_m": 176.0,
+        "candidate_routes": [
+          {
+            "slot_id": "P01",
+            "route_length_m": 236.0
+          },
+          {
+            "slot_id": "P03",
+            "route_length_m": 216.0
+          },
+          {
+            "slot_id": "P04",
+            "route_length_m": 206.0
+          },
+          {
+            "slot_id": "P06",
+            "route_length_m": 186.0
+          },
+          {
+            "slot_id": "P09",
+            "route_length_m": 236.0
+          },
+          {
+            "slot_id": "P10",
+            "route_length_m": 226.0
+          },
+          {
+            "slot_id": "P11",
+            "route_length_m": 216.0
+          },
+          {
+            "slot_id": "P12",
+            "route_length_m": 206.0
+          },
+          {
+            "slot_id": "P14",
+            "route_length_m": 186.0
+          },
+          {
+            "slot_id": "P15",
+            "route_length_m": 176.0
+          }
+        ],
+        "sensor_seq": 180,
+        "sensor_age_s": 0.0093135,
+        "run_id": "a8d33ff8fef3",
+        "sent_ns": 25701064075400,
+        "producer": "coordinator",
+        "producer_seq": 31,
+        "message_id": "a8d33ff8fef3:coordinator:31",
+        "received_utc": "2026-10-12T07:18:04.989Z",
+        "mqtt": {
+          "topic": "audit",
+          "received_ns": 25701073075800,
+          "latency_ms": 9.0004,
+          "received_utc": "2026-10-12T07:18:04.989Z"
+        }
+      }
+    },
+    {
+      "id": 36,
+      "utc": "2026-10-12T07:18:06.107Z",
+      "sim_time": 27.0,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_granted",
+      "message": "Parkoló kijelölve: P06",
+      "car_id": "CAR004",
+      "details": {
+        "request_id": "CAR004-parking",
+        "reservation_id": "a8d33ff8fef3-park-4",
+        "zone_id": null,
+        "reason": "shortest_available_route_then_id",
+        "strategy": "nearest",
+        "slot_id": "P06",
+        "selected_route_length_m": 186.0,
+        "candidate_routes": [
+          {
+            "slot_id": "P01",
+            "route_length_m": 236.0
+          },
+          {
+            "slot_id": "P03",
+            "route_length_m": 216.0
+          },
+          {
+            "slot_id": "P04",
+            "route_length_m": 206.0
+          },
+          {
+            "slot_id": "P06",
+            "route_length_m": 186.0
+          },
+          {
+            "slot_id": "P09",
+            "route_length_m": 236.0
+          },
+          {
+            "slot_id": "P10",
+            "route_length_m": 226.0
+          },
+          {
+            "slot_id": "P11",
+            "route_length_m": 216.0
+          },
+          {
+            "slot_id": "P12",
+            "route_length_m": 206.0
+          },
+          {
+            "slot_id": "P14",
+            "route_length_m": 186.0
+          }
+        ],
+        "sensor_seq": 270,
+        "sensor_age_s": 0.0144459,
+        "run_id": "a8d33ff8fef3",
+        "sent_ns": 25702188114800,
+        "producer": "coordinator",
+        "producer_seq": 43,
+        "message_id": "a8d33ff8fef3:coordinator:43",
+        "received_utc": "2026-10-12T07:18:06.107Z",
+        "mqtt": {
+          "topic": "audit",
+          "received_ns": 25702191859500,
+          "latency_ms": 3.7447,
+          "received_utc": "2026-10-12T07:18:06.107Z"
+        }
+      }
+    },
+    {
+      "id": 49,
+      "utc": "2026-10-12T07:18:07.244Z",
+      "sim_time": 36.0,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_granted",
+      "message": "Parkoló kijelölve: P14",
+      "car_id": "CAR005",
+      "details": {
+        "request_id": "CAR005-parking",
+        "reservation_id": "a8d33ff8fef3-park-6",
+        "zone_id": null,
+        "reason": "shortest_available_route_then_id",
+        "strategy": "nearest",
+        "slot_id": "P14",
+        "selected_route_length_m": 186.0,
+        "candidate_routes": [
+          {
+            "slot_id": "P01",
+            "route_length_m": 236.0
+          },
+          {
+            "slot_id": "P03",
+            "route_length_m": 216.0
+          },
+          {
+            "slot_id": "P04",
+            "route_length_m": 206.0
+          },
+          {
+            "slot_id": "P09",
+            "route_length_m": 236.0
+          },
+          {
+            "slot_id": "P10",
+            "route_length_m": 226.0
+          },
+          {
+            "slot_id": "P11",
+            "route_length_m": 216.0
+          },
+          {
+            "slot_id": "P12",
+            "route_length_m": 206.0
+          },
+          {
+            "slot_id": "P14",
+            "route_length_m": 186.0
+          }
+        ],
+        "sensor_seq": 360,
+        "sensor_age_s": 0.0115628,
+        "run_id": "a8d33ff8fef3",
+        "sent_ns": 25703319735300,
+        "producer": "coordinator",
+        "producer_seq": 57,
+        "message_id": "a8d33ff8fef3:coordinator:57",
+        "received_utc": "2026-10-12T07:18:07.244Z",
+        "mqtt": {
+          "topic": "audit",
+          "received_ns": 25703328313600,
+          "latency_ms": 8.5783,
+          "received_utc": "2026-10-12T07:18:07.244Z"
+        }
+      }
+    },
+    {
+      "id": 91,
+      "utc": "2026-10-12T07:18:08.368Z",
+      "sim_time": 45.0,
+      "level": "info",
+      "category": "decision",
+      "event_type": "parking_granted",
+      "message": "Parkoló kijelölve: P04",
+      "car_id": "CAR006",
+      "details": {
+        "request_id": "CAR006-parking",
+        "reservation_id": "a8d33ff8fef3-park-8",
+        "zone_id": null,
+        "reason": "shortest_available_route_then_id",
+        "strategy": "nearest",
+        "slot_id": "P04",
+        "selected_route_length_m": 206.0,
+        "candidate_routes": [
+          {
+            "slot_id": "P01",
+            "route_length_m": 236.0
+          },
+          {
+            "slot_id": "P03",
+            "route_length_m": 216.0
+          },
+          {
+            "slot_id": "P04",
+            "route_length_m": 206.0
+          },
+          {
+            "slot_id": "P09",
+            "route_length_m": 236.0
+          },
+          {
+            "slot_id": "P10",
+            "route_length_m": 226.0
+          },
+          {
+            "slot_id": "P11",
+            "route_length_m": 216.0
+          },
+          {
+            "slot_id": "P12",
+            "route_length_m": 206.0
+          }
+        ],
+        "sensor_seq": 450,
+        "sensor_age_s": 0.0088181,
+        "run_id": "a8d33ff8fef3",
+        "sent_ns": 25704450044500,
+        "producer": "coordinator",
+        "producer_seq": 82,
+        "message_id": "a8d33ff8fef3:coordinator:82",
+        "received_utc": "2026-10-12T07:18:08.368Z",
+        "mqtt": {
+          "topic": "audit",
+          "received_ns": 25704452185000,
+          "latency_ms": 2.1405,
+          "received_utc": "2026-10-12T07:18:08.368Z"
+        }
+      }
+    },
+    {
+      "id": 147,
+      "utc": "2026-10-12T07:18:09.953Z",
+      "sim_time": 57.75,
+      "level": "info",
+      "category": "lifecycle",
+      "event_type": "parked",
+      "message": "Jármű beparkolt: P08",
+      "car_id": "CAR001",
+      "details": {
+        "slot_id": "P08",
+        "reservation_id": "a8d33ff8fef3-park-1",
+        "parking_time_s": 57.75,
+        "yard_time_s": 57.7,
+        "distance_m": 166.0,
+        "run_id": "a8d33ff8fef3",
+        "sent_ns": 25706035673400,
+        "producer": "simulator",
+        "producer_seq": 2854,
+        "message_id": "a8d33ff8fef3:simulator:2854",
+        "received_utc": "2026-10-12T07:18:09.953Z",
+        "mqtt": {
+          "topic": "events",
+          "received_ns": 25706037510100,
+          "latency_ms": 1.8367,
+          "received_utc": "2026-10-12T07:18:09.953Z"
+        }
+      }
+    },
+    {
+      "id": 200,
+      "utc": "2026-10-12T07:18:11.514Z",
+      "sim_time": 70.1,
+      "level": "info",
+      "category": "lifecycle",
+      "event_type": "parked",
+      "message": "Jármű beparkolt: P07",
+      "car_id": "CAR002",
+      "details": {
+        "slot_id": "P07",
+        "reservation_id": "a8d33ff8fef3-park-2",
+        "parking_time_s": 61.1,
+        "yard_time_s": 61.1,
+        "distance_m": 176.0,
+        "run_id": "a8d33ff8fef3",
+        "sent_ns": 25707596423400,
+        "producer": "simulator",
+        "producer_seq": 3767,
+        "message_id": "a8d33ff8fef3:simulator:3767",
+        "received_utc": "2026-10-12T07:18:11.514Z",
+        "mqtt": {
+          "topic": "events",
+          "received_ns": 25707598750000,
+          "latency_ms": 2.3266,
+          "received_utc": "2026-10-12T07:18:11.514Z"
+        }
+      }
+    },
+    {
+      "id": 237,
+      "utc": "2026-10-12T07:18:12.629Z",
+      "sim_time": 79.2,
+      "level": "info",
+      "category": "lifecycle",
+      "event_type": "parked",
+      "message": "Jármű beparkolt: P15",
+      "car_id": "CAR003",
+      "details": {
+        "slot_id": "P15",
+        "reservation_id": "a8d33ff8fef3-park-3",
+        "parking_time_s": 61.2,
+        "yard_time_s": 61.2,
+        "distance_m": 176.0,
+        "run_id": "a8d33ff8fef3",
+        "sent_ns": 25708712538000,
+        "producer": "simulator",
+        "producer_seq": 4438,
+        "message_id": "a8d33ff8fef3:simulator:4438",
+        "received_utc": "2026-10-12T07:18:12.629Z",
+        "mqtt": {
+          "topic": "events",
+          "received_ns": 25708713639300,
+          "latency_ms": 1.1013,
+          "received_utc": "2026-10-12T07:18:12.629Z"
+        }
+      }
+    },
+    {
+      "id": 244,
+      "utc": "2026-10-12T07:18:14.172Z",
+      "sim_time": 91.45,
+      "level": "info",
+      "category": "lifecycle",
+      "event_type": "parked",
+      "message": "Jármű beparkolt: P06",
+      "car_id": "CAR004",
+      "details": {
+        "slot_id": "P06",
+        "reservation_id": "a8d33ff8fef3-park-4",
+        "parking_time_s": 64.45,
+        "yard_time_s": 64.45,
+        "distance_m": 186.0,
+        "run_id": "a8d33ff8fef3",
+        "sent_ns": 25710255274600,
+        "producer": "simulator",
+        "producer_seq": 5310,
+        "message_id": "a8d33ff8fef3:simulator:5310",
+        "received_utc": "2026-10-12T07:18:14.172Z",
+        "mqtt": {
+          "topic": "events",
+          "received_ns": 25710256394600,
+          "latency_ms": 1.12,
+          "received_utc": "2026-10-12T07:18:14.172Z"
+        }
+      }
+    },
+    {
+      "id": 249,
+      "utc": "2026-10-12T07:18:15.319Z",
+      "sim_time": 100.45,
+      "level": "info",
+      "category": "lifecycle",
+      "event_type": "parked",
+      "message": "Jármű beparkolt: P14",
+      "car_id": "CAR005",
+      "details": {
+        "slot_id": "P14",
+        "reservation_id": "a8d33ff8fef3-park-6",
+        "parking_time_s": 64.45,
+        "yard_time_s": 64.45,
+        "distance_m": 186.0,
+        "run_id": "a8d33ff8fef3",
+        "sent_ns": 25711400884500,
+        "producer": "simulator",
+        "producer_seq": 5953,
+        "message_id": "a8d33ff8fef3:simulator:5953",
+        "received_utc": "2026-10-12T07:18:15.319Z",
+        "mqtt": {
+          "topic": "events",
+          "received_ns": 25711403884900,
+          "latency_ms": 3.0004,
+          "received_utc": "2026-10-12T07:18:15.319Z"
+        }
+      }
+    },
+    {
+      "id": 250,
+      "utc": "2026-10-12T07:18:15.319Z",
+      "sim_time": 100.45,
+      "level": "info",
+      "category": "state",
+      "event_type": "state_changed",
+      "message": "Járműállapot: beparkolt; a jármű áll",
+      "car_id": "CAR005",
+      "details": {
+        "from_state": "driving",
+        "to_state": "parked",
+        "from_reason": "",
+        "reason": "Kiadásra vár; egyszerűsített kiadási modell",
+        "motion_phase": "stopped",
+        "request_id": "CAR005-parking",
+        "parking_request_id": "CAR005-parking",
+        "reservation_id": "a8d33ff8fef3-park-6",
+        "slot_id": "P14",
+        "zone_id": null,
+        "grant_id": null,
+        "speed_m_s": 0.0,
+        "position_m": [
+          90.0,
+          36.0
+        ],
+        "run_id": "a8d33ff8fef3",
+        "sent_ns": 25711401137600,
+        "producer": "simulator",
+        "producer_seq": 5954,
+        "message_id": "a8d33ff8fef3:simulator:5954",
+        "received_utc": "2026-10-12T07:18:15.319Z",
+        "mqtt": {
+          "topic": "events",
+          "received_ns": 25711404144500,
+          "latency_ms": 3.0069,
+          "received_utc": "2026-10-12T07:18:15.319Z"
+        }
+      }
+    },
+    {
+      "id": 251,
+      "utc": "2026-10-12T07:18:15.320Z",
+      "sim_time": 100.45,
+      "level": "info",
+      "category": "state",
+      "event_type": "vehicle_stopped",
+      "message": "A jármű ténylegesen megállt",
+      "car_id": "CAR005",
+      "details": {
+        "reason": "Kiadásra vár; egyszerűsített kiadási modell",
+        "motion_phase": "stopped",
+        "request_id": "CAR005-parking",
+        "parking_request_id": "CAR005-parking",
+        "reservation_id": "a8d33ff8fef3-park-6",
+        "slot_id": "P14",
+        "zone_id": null,
+        "grant_id": null,
+        "speed_m_s": 0.0,
+        "position_m": [
+          90.0,
+          36.0
+        ],
+        "run_id": "a8d33ff8fef3",
+        "sent_ns": 25711401377700,
+        "producer": "simulator",
+        "producer_seq": 5955,
+        "message_id": "a8d33ff8fef3:simulator:5955",
+        "received_utc": "2026-10-12T07:18:15.320Z",
+        "mqtt": {
+          "topic": "events",
+          "received_ns": 25711404540600,
+          "latency_ms": 3.1629,
+          "received_utc": "2026-10-12T07:18:15.320Z"
+        }
+      }
+    },
+    {
+      "id": 252,
+      "utc": "2026-10-12T07:18:15.325Z",
+      "sim_time": 100.45,
+      "level": "info",
+      "category": "transport",
+      "event_type": "parking_observation_changed",
+      "message": "A virtuális parkolóérzékelő állapotváltozást jelentett",
+      "car_id": null,
+      "details": {
+        "request_id": null,
+        "reservation_id": null,
+        "zone_id": null,
+        "reason": "fresh_increasing_sensor_frame",
+        "sensor_seq": 1005,
+        "changes": [
+          {
+            "slot_id": "P14",
+            "previous": {
+              "occupied": false,
+              "blocked": false
+            },
+            "occupied": true,
+            "blocked": false
+          }
+        ],
+        "run_id": "a8d33ff8fef3",
+        "sent_ns": 25711404794400,
+        "producer": "coordinator",
+        "producer_seq": 199,
+        "message_id": "a8d33ff8fef3:coordinator:199",
+        "received_utc": "2026-10-12T07:18:15.325Z",
+        "mqtt": {
+          "topic": "audit",
+          "received_ns": 25711409682800,
+          "latency_ms": 4.8884,
+          "received_utc": "2026-10-12T07:18:15.325Z"
+        }
+      }
+    },
+    {
+      "id": 253,
+      "utc": "2026-10-12T07:18:17.267Z",
+      "sim_time": 116.1,
+      "level": "info",
+      "category": "lifecycle",
+      "event_type": "parked",
+      "message": "Jármű beparkolt: P04",
+      "car_id": "CAR006",
+      "details": {
+        "slot_id": "P04",
+        "reservation_id": "a8d33ff8fef3-park-8",
+        "parking_time_s": 71.1,
+        "yard_time_s": 71.1,
+        "distance_m": 206.0,
+        "run_id": "a8d33ff8fef3",
+        "sent_ns": 25713350833500,
+        "producer": "simulator",
+        "producer_seq": 7073,
+        "message_id": "a8d33ff8fef3:simulator:7073",
+        "received_utc": "2026-10-12T07:18:17.267Z",
+        "mqtt": {
+          "topic": "events",
+          "received_ns": 25713351748400,
+          "latency_ms": 0.9149,
+          "received_utc": "2026-10-12T07:18:17.267Z"
+        }
+      }
+    },
+    {
+      "id": 254,
+      "utc": "2026-10-12T07:18:17.268Z",
+      "sim_time": 116.1,
+      "level": "info",
+      "category": "state",
+      "event_type": "state_changed",
+      "message": "Járműállapot: beparkolt; a jármű áll",
+      "car_id": "CAR006",
+      "details": {
+        "from_state": "driving",
+        "to_state": "parked",
+        "from_reason": "",
+        "reason": "Kiadásra vár; egyszerűsített kiadási modell",
+        "motion_phase": "stopped",
+        "request_id": "CAR006-parking",
+        "parking_request_id": "CAR006-parking",
+        "reservation_id": "a8d33ff8fef3-park-8",
+        "slot_id": "P04",
+        "zone_id": null,
+        "grant_id": null,
+        "speed_m_s": 0.0,
+        "position_m": [
+          70.0,
+          12.0
+        ],
+        "run_id": "a8d33ff8fef3",
+        "sent_ns": 25713350970100,
+        "producer": "simulator",
+        "producer_seq": 7074,
+        "message_id": "a8d33ff8fef3:simulator:7074",
+        "received_utc": "2026-10-12T07:18:17.268Z",
+        "mqtt": {
+          "topic": "events",
+          "received_ns": 25713352237100,
+          "latency_ms": 1.267,
+          "received_utc": "2026-10-12T07:18:17.268Z"
+        }
+      }
+    },
+    {
+      "id": 255,
+      "utc": "2026-10-12T07:18:17.268Z",
+      "sim_time": 116.1,
+      "level": "info",
+      "category": "state",
+      "event_type": "vehicle_stopped",
+      "message": "A jármű ténylegesen megállt",
+      "car_id": "CAR006",
+      "details": {
+        "reason": "Kiadásra vár; egyszerűsített kiadási modell",
+        "motion_phase": "stopped",
+        "request_id": "CAR006-parking",
+        "parking_request_id": "CAR006-parking",
+        "reservation_id": "a8d33ff8fef3-park-8",
+        "slot_id": "P04",
+        "zone_id": null,
+        "grant_id": null,
+        "speed_m_s": 0.0,
+        "position_m": [
+          70.0,
+          12.0
+        ],
+        "run_id": "a8d33ff8fef3",
+        "sent_ns": 25713351105200,
+        "producer": "simulator",
+        "producer_seq": 7075,
+        "message_id": "a8d33ff8fef3:simulator:7075",
+        "received_utc": "2026-10-12T07:18:17.268Z",
+        "mqtt": {
+          "topic": "events",
+          "received_ns": 25713352987400,
+          "latency_ms": 1.8822,
+          "received_utc": "2026-10-12T07:18:17.268Z"
+        }
+      }
+    },
+    {
+      "id": 256,
+      "utc": "2026-10-12T07:18:17.276Z",
+      "sim_time": 116.15,
+      "level": "info",
+      "category": "transport",
+      "event_type": "parking_observation_changed",
+      "message": "A virtuális parkolóérzékelő állapotváltozást jelentett",
+      "car_id": null,
+      "details": {
+        "request_id": null,
+        "reservation_id": null,
+        "zone_id": null,
+        "reason": "fresh_increasing_sensor_frame",
+        "sensor_seq": 1162,
+        "changes": [
+          {
+            "slot_id": "P04",
+            "previous": {
+              "occupied": false,
+              "blocked": false
+            },
+            "occupied": true,
+            "blocked": false
+          }
+        ],
+        "run_id": "a8d33ff8fef3",
+        "sent_ns": 25713357819600,
+        "producer": "coordinator",
+        "producer_seq": 218,
+        "message_id": "a8d33ff8fef3:coordinator:218",
+        "received_utc": "2026-10-12T07:18:17.276Z",
+        "mqtt": {
+          "topic": "audit",
+          "received_ns": 25713360276800,
+          "latency_ms": 2.4572,
+          "received_utc": "2026-10-12T07:18:17.276Z"
+        }
+      }
+    },
+    {
+      "id": 257,
+      "utc": "2026-10-12T07:18:20.587Z",
+      "sim_time": 116.4,
+      "level": "info",
+      "category": "control",
+      "event_type": "control_requested",
+      "message": "Kezelőművelet kérése.",
+      "car_id": null,
+      "details": {
+        "action": "pause",
+        "control_id": "0c58a53fb8bc4fdd"
+      }
+    },
+    {
+      "id": 258,
+      "utc": "2026-10-12T07:18:20.619Z",
+      "sim_time": 116.4,
+      "level": "info",
+      "category": "control",
+      "event_type": "control_published",
+      "message": "Kezelőparancs átadva az MQTT-közvetítőnek.",
+      "car_id": null,
+      "details": {
+        "action": "pause",
+        "control_id": "0c58a53fb8bc4fdd",
+        "recovery_request": {
+          "reason": "Friss MQTT-állapot érkezik, de a kijelzett állapot elavult. Csak szünet és 1× lassítás kérhető.",
+          "processed_snapshot_age_s": 3.2835286,
+          "callback_snapshot_age_s": 0.1040933,
+          "clock": "host_perf_counter_receipt",
+          "allowed_actions": "pause or speed=1 only"
+        }
+      }
+    },
+    {
+      "id": 259,
+      "utc": "2026-10-12T07:18:20.598Z",
+      "sim_time": null,
+      "level": "info",
+      "category": "control",
+      "event_type": "pause",
+      "message": "Vezérlési kérés: pause",
+      "car_id": null,
+      "details": {
+        "action": "pause",
+        "control_id": "0c58a53fb8bc4fdd",
+        "recovery_request": {
+          "reason": "Friss MQTT-állapot érkezik, de a kijelzett állapot elavult. Csak szünet és 1× lassítás kérhető.",
+          "processed_snapshot_age_s": 3.2835286,
+          "callback_snapshot_age_s": 0.1040933,
+          "clock": "host_perf_counter_receipt",
+          "allowed_actions": "pause or speed=1 only"
+        },
+        "run_id": "a8d33ff8fef3",
+        "sent_ns": 25716677079900,
+        "producer": "display",
+        "producer_seq": 1,
+        "message_id": "a8d33ff8fef3:display:1",
+        "received_utc": "2026-10-12T07:18:20.598Z",
+        "mqtt": {
+          "topic": "control",
+          "received_ns": 25716683415000,
+          "latency_ms": 6.3351,
+          "received_utc": "2026-10-12T07:18:20.598Z"
+        }
+      }
+    },
+    {
+      "id": 260,
+      "utc": "2026-10-12T07:18:20.604Z",
+      "sim_time": 142.85,
+      "level": "info",
+      "category": "control",
+      "event_type": "control_applied",
+      "message": "Kezelőparancs alkalmazva: pause",
+      "car_id": null,
+      "details": {
+        "control_id": "0c58a53fb8bc4fdd",
+        "action": "pause",
+        "parameters": {},
+        "recovery_request": {
+          "reason": "Friss MQTT-állapot érkezik, de a kijelzett állapot elavult. Csak szünet és 1× lassítás kérhető.",
+          "processed_snapshot_age_s": 3.2835286,
+          "callback_snapshot_age_s": 0.1040933,
+          "clock": "host_perf_counter_receipt",
+          "allowed_actions": "pause or speed=1 only"
+        },
+        "run_id": "a8d33ff8fef3",
+        "sent_ns": 25716685401300,
+        "producer": "simulator",
+        "producer_seq": 8983,
+        "message_id": "a8d33ff8fef3:simulator:8983",
+        "received_utc": "2026-10-12T07:18:20.604Z",
+        "mqtt": {
+          "topic": "events",
+          "received_ns": 25716688686600,
+          "latency_ms": 3.2853,
+          "received_utc": "2026-10-12T07:18:20.604Z"
+        }
+      }
+    }
+  ]
+}
