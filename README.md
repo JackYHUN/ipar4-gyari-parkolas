@@ -59,7 +59,21 @@ A kódtár tömör bizonyítékot és a teljes horizontú seed1001 pilot négy e
 
 Először a pilotot kell futtatni. A fő runner a pilot forrás- és konfigurációhash-eivel egyező állapotban engedi elindulni a 30-30 párt. Az új futás új helyi nyers adatokat és időbélyegű összesítőt készít; a számítás erőforrásfüggő, az eredeti gépen körülbelül 7 percet igényelt.
 
-A **120 végleges futás teljes nyers esemény- és döntési naplója** a [data/course-comparison-v18.zip](data/course-comparison-v18.zip) tömörített mellékletben érhető el. Ez a teljes eredeti, körülbelül 97 MB-os nyers könyvtár; a ZIP körülbelül 3,6 MB. Az adatok a fenti parancsokkal újragenerálhatók is. Kibontási hely: `results/course-comparison-v18/`. A megőrzött [validation.json](results/course-comparison-v18/validation.json) a teljes eredeti helyi validálás nyugtája; ez önmagában nem a tömör klónban végzett új nyersadat-validálás. A `validate_exports.py` csak a teljes ZIP kibontása vagy az újrafuttatás után kapja meg minden bemenetét. PowerShellben a kibontás: `Expand-Archive -LiteralPath data/course-comparison-v18.zip -DestinationPath results/course-comparison-v18 -Force`. PowerShellben a kibontás: `Expand-Archive -LiteralPath data/course-comparison-v18.zip -DestinationPath results/course-comparison-v18 -Force`. PowerShellben a kibontás: `Expand-Archive -LiteralPath data/course-comparison-v18.zip -DestinationPath results/course-comparison-v18 -Force`. PowerShellben a kibontás: `Expand-Archive -LiteralPath data/course-comparison-v18.zip -DestinationPath results/course-comparison-v18 -Force`. PowerShellben a kibontás: `Expand-Archive -LiteralPath data/course-comparison-v18.zip -DestinationPath results/course-comparison-v18 -Force`. PowerShellben a kibontás: `Expand-Archive -LiteralPath data/course-comparison-v18.zip -DestinationPath results/course-comparison-v18 -Force`.
+A **120 végleges futás teljes nyers esemény- és döntési naplója** a [data/course-comparison-v18.zip](data/course-comparison-v18.zip) tömörített mellékletben érhető el. Ez a teljes eredeti, körülbelül 97 MB-os nyers könyvtár; a ZIP körülbelül 3,6 MB. Az archívum felső könyvtára már `course-comparison-v18`, ezért a **`results/` gyökérbe** kell kibontani. A létrejövő adatok helye `results/course-comparison-v18/`.
+
+```powershell
+Expand-Archive -LiteralPath data/course-comparison-v18.zip -DestinationPath results -Force
+.\.venv\Scripts\python.exe results/course-comparison-v18/validate_exports.py
+```
+
+A megőrzött [validation.json](results/course-comparison-v18/validation.json) a teljes eredeti helyi ellenőrzés nyugtája. A fenti parancs már a letöltött nyers fájlokat ellenőrzi újra; új időbélyegű helyi `validation.json` nyugtát ír. A tömör klón eredeti fájlazonosságát kibontás és újrafuttatás előtt a `tools/verify_public_evidence.py` vizsgálja. Új eredmények után a `--sources-only` mód használható a változatlan forrás ellenőrzésére.
+
+```powershell
+Expand-Archive -LiteralPath data/course-comparison-v18.zip -DestinationPath results -Force
+.\.venv\Scripts\python.exe results/course-comparison-v18/validate_exports.py
+```
+
+A megőrzött [validation.json](results/course-comparison-v18/validation.json) a teljes eredeti helyi ellenőrzés nyugtája. A fenti parancs már a letöltött nyers fájlokat ellenőrzi újra; új időbélyegű helyi `validation.json` nyugtát ír. A tömör klón eredeti fájlazonosságát kibontás és újrafuttatás előtt a `tools/verify_public_evidence.py` vizsgálja. Új eredmények után a `--sources-only` mód használható a változatlan forrás ellenőrzésére.
 
 ```powershell
 .\.venv\Scripts\python.exe tools/verify_public_evidence.py
@@ -77,7 +91,7 @@ A [kurzus MQTT-bizonyítékai](results/course-verification-v18/summary.json) kü
 
 ## Tartalom és források
 
-`factory_yard/`: modell, központ, MQTT-adatút, napló és HTTP-szerver. `web/`: böngészős kijelző. `tests/`: célzott és regressziós ellenőrzések. `config/`: kurzus- és bővítési konfigurációk. `experiments/`: mérési és ellenőrző futtatók. `docs/course-report/`: saját UML-források és ábrák, bibliográfiai hivatkozások. A részletes állapot- és adatfolyamábra értelmezése az [ábramellékletben](docs/ABRA_MELLEKLET.md) található. A részletes állapot- és adatfolyamábra értelmezése az [ábramellékletben](docs/ABRA_MELLEKLET.md) található. A részletes állapot- és adatfolyamábra értelmezése az [ábramellékletben](docs/ABRA_MELLEKLET.md) található. A részletes állapot- és adatfolyamábra értelmezése az [ábramellékletben](docs/ABRA_MELLEKLET.md) található. A részletes állapot- és adatfolyamábra értelmezése az [ábramellékletben](docs/ABRA_MELLEKLET.md) található. A részletes állapot- és adatfolyamábra értelmezése az [ábramellékletben](docs/ABRA_MELLEKLET.md) található. A [SOURCE_MANIFEST.json](SOURCE_MANIFEST.json) a csomag fájlprovenienciáját rögzíti.
+`factory_yard/`: modell, központ, MQTT-adatút, napló és HTTP-szerver. `web/`: böngészős kijelző. `tests/`: célzott és regressziós ellenőrzések. `config/`: kurzus- és bővítési konfigurációk. `experiments/`: mérési és ellenőrző futtatók. `docs/course-report/`: saját UML-források és ábrák, bibliográfiai hivatkozások. A részletes állapot- és adatfolyamábra értelmezése az [ábramellékletben](docs/ABRA_MELLEKLET.md) található. A [SOURCE_MANIFEST.json](SOURCE_MANIFEST.json) a csomag fájlprovenienciáját rögzíti.
 
 A személyes hallgatói kézirat, elérhetőség, régi kiadási csomag, virtuális környezet, cache és harmadik fél teljes PDF-anyaga nem része a kódtárnak. Az Audi-programfüzetet a [hivatkozásjegyzék](docs/course-report/references.json) eredeti forrásként hivatkozza; a saját oktatási ábrák nem valódi üzemrajzok. A csomag nem rendel kitalált licencet a szerző vagy a külső források munkájához; a függőségek és külső anyagok saját feltételei érvényesek.
 
