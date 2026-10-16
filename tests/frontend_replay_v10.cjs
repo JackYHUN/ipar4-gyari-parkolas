@@ -29,7 +29,7 @@ function harness() {
     getJSON:url=>{const r={url,...deferred()};requests.push(r);return r.promise;},scenarioToMap:c=>c,
     rebuildTripMap:()=>{ctx.trip.bounds={x:0,y:0,w:140,h:90};ctx.trip.view={...ctx.trip.bounds};ctx.trip.follow=false;renders.push("map");},
     renderTripPoint:i=>{ctx.trip.index=i;ctx.trip.perceptionGap=false;ctx.$("trip-status").textContent=ctx.trip.playing?"Mentett minták visszajátszása":"Mentett minta";renders.push({kind:"point",id:ctx.trip.samples[i]?.id});},
-    renderTripSummary(){},renderPerceptionCoverage(){},renderTripQuality(){},renderTripMission(){},renderTripEvents(){},
+    renderTripDecisions(){},renderTripDecisionNavigation(){},renderTripSummary(){},renderPerceptionCoverage(){},renderTripQuality(){},renderTripMission(){},renderTripEvents(){},
     renderTripPerception:(p,held)=>renders.push({kind:"perception",id:p?.id,held}),renderTripSensorOverlay:(p,held)=>renders.push({kind:"overlay",id:p?.id,held}),
     updateTripView:()=>renders.push("trip-view"),updateView:()=>renders.push("live-view"),renderSensorOverlay(){},renderPerception(){},requestAnimationFrame() {},
   };

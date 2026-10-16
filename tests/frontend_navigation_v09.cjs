@@ -49,7 +49,7 @@ function harness() {
     fitView: {w: 140, h: 90}, view: {x: 0, y: 0, w: 140, h: 90}, followCar: true,
     getJSON: url => {const request = {url, ...deferred()}; requests.push(request); return request.promise;},
     scenarioToMap: config => ({fromConfig: config}),
-    rebuildTripMap: () => renders.push("map"), renderTripSummary: () => renders.push("summary"),
+    rebuildTripMap: () => renders.push("map"), renderTripDecisions(){},renderTripDecisionNavigation(){},renderTripSummary: () => renders.push("summary"),
     renderPerceptionCoverage: () => renders.push("coverage"), renderTripMission: () => {}, renderTripEvents: () => renders.push("events"),
     renderTripPoint: index => {context.trip.index = index; renders.push(`point:${index}`);},
     renderPerception: (prefix, data) => renders.push({kind: "perception", prefix, data}),

@@ -1,0 +1,126 @@
+{
+  "status": "PASS",
+  "feature": "received_decision_window_v1",
+  "verified_at_utc": "2026-10-16T16:20:53.271Z",
+  "run_id": "d8245dee142a",
+  "car_id": "CAR001",
+  "source_sha256": {
+    "web/app.js": "594cf4f990a7c03d1db86d68656cc4a80fd2c5efecdd16ef55c043956e357dc1",
+    "web/index.html": "caa2223ebdd6e7e41b5e31bb80eaaba3d30d0fbca2e49259d65273ba9ebe0f61",
+    "web/style.css": "f989a1e3b77f68dcd882dbe7dc4dcf313e9529a1c728ea75392a4c934850f881",
+    "web/perception.css": "6156a05034263936fd0084f91cea00a83ce7c714a3607987fd237eeb1a770e0d",
+    "web/perception.js": "a3fee6d61890886e8c3c1c1d5540b5981e87adc3e7b7ff0fc107768d27e66722",
+    "web/perception-analysis.js": "dbd4e0ec9d75d36230045254265bd05741a0754d0525dd59ff6f2686e1457bd7"
+  },
+  "artifact_sha256": {
+    "results/ui/decision-window/desktop.png": "9c95a81441a81929f3c1560c3a4a80479ab18c26bf45355357298101d6189cae",
+    "results/ui/decision-window/mobile.png": "3694746f68090c2c6e643242f83f78d571b1b3fa40d4bfdaf28d778e5e47090a",
+    "results/ui/decision-window/minimum-frame.json": "ee6f9a1a1f1003a5ccad30d0d878b91e70d3a11114a39bde49d44bc02bfe4b97"
+  },
+  "checks": [
+    {
+      "name": "initial_received_window",
+      "observed": "BETÖLTÖTT ÚTABLAK · NAPLÓZOTT DÖNTÉSEK\n\nFékezések gyorskeresése\nBetöltött döntések összesítve\nMegfigyelt fékezési szakaszok\n1\nA betöltött ablakban, adatréseknél szétválasztva.\nLegkisebb tartalék mozgás közben\n0,01 m · 57,75 s →\nMozgó, konzisztens döntés kijelölt megállási céllal. Kattintás: a pontos fogadott keret.\nLegnagyobb alkalmazott lassulás\n-1,93 m/s² · 56,25 s →\nLegnegatívabb naplózott gyorsulás mozgó, konzisztens döntésből. Kattintás: a pontos keret.\n← Előző fékezési szakasz\nKövetkező fékezési szakasz →\n\nA kijelölt keret nem része összevethető fékezési szakasznak. 1 szakasz kereshető a betöltött ablakban.\n\n2000 fogadott keret · 2000 egyedi döntésidő · 0 azonos döntésidővel ismételt keret · 50 megőrzöttként is látott és 0 ismeretlen érzékelőfrissességű döntésidő. 0 nem értelmezhető keret · 0 hibás és 0 ellentmondó döntésidő; ezek a csoportok átfedhetnek.\n\nCAR001 · d8245dee142a · betöltött ablak: 1–2000. A szakaszok a fogadási sorrendben összefüggő fékezési megfigyeléseket jelölik; az adatrés és az óratörés megszakítja őket. Az ablak szélén a fékezés folytatódhat. Teljesúti eseményszámot vagy fékezési időtartamot ebből nem becsülünk. A vezérlési összegzés nem igazol friss érzékelést; a tartalék modelladat."
+    },
+    {
+      "name": "next_braking_section_exact_frame",
+      "observed": {
+        "focused": "trip-perception-title",
+        "index": "562 / 10 578",
+        "nextDisabled": true,
+        "phase": "Fékezés folyamatban",
+        "position": "1. fékezési szakasz / 1 · döntésidők: 56,15 s → 57,65 s · 16 különböző döntés",
+        "previousDisabled": true,
+        "summary": "CAR001 · 1–2000 / 10 578 fogadott minta · 0,05 s → 199,95 s",
+        "time": "56,15 s · 00:56.1"
+      }
+    },
+    {
+      "name": "minimum_exact_frame",
+      "observed": {
+        "focused": "trip-perception-title",
+        "index": "578 / 10 578",
+        "phase": "Megállt",
+        "reserve": "0,01 m",
+        "summary": "CAR001 · 1–2000 / 10 578 fogadott minta · 0,05 s → 199,95 s",
+        "time": "57,75 s · 00:57.7"
+      }
+    },
+    {
+      "name": "native_minimum_json",
+      "observed": {
+        "clock": 57.75,
+        "reserve": 0.013381000000000002,
+        "speed_before_m_s": 0.096375
+      }
+    },
+    {
+      "name": "strongest_exact_frame",
+      "observed": {
+        "acceleration": "-1,93 m/s²",
+        "focused": "trip-perception-title",
+        "index": "563 / 10 578",
+        "phase": "Fékezés folyamatban",
+        "summary": "CAR001 · 1–2000 / 10 578 fogadott minta · 0,05 s → 199,95 s",
+        "time": "56,25 s · 00:56.2"
+      }
+    },
+    {
+      "name": "window_replacement_clears_old_metrics",
+      "observed": {
+        "minimum": "Nincs összevethető döntés",
+        "minimumDisabled": true,
+        "nextDisabled": true,
+        "previousDisabled": true,
+        "scope": "CAR001 · d8245dee142a · betöltött ablak: 2001–4000. A szakaszok a fogadási sorrendben összefüggő fékezési megfigyeléseket jelölik; az adatrés és az óratörés megszakítja őket. Az ablak szélén a fékezés folytatódhat. Teljesúti eseményszámot vagy fékezési időtartamot ebből nem becsülünk. A vezérlési összegzés nem igazol friss érzékelést; a tartalék modelladat.",
+        "sections": "0",
+        "strongestDisabled": true,
+        "summary": "CAR001 · 2001–4000 / 10 578 fogadott minta · 200,05 s → 399,95 s"
+      }
+    },
+    {
+      "name": "mobile_no_horizontal_overflow",
+      "observed": {
+        "columns": "320px",
+        "fields": [
+          {
+            "overflow": false,
+            "text": "1"
+          },
+          {
+            "overflow": false,
+            "text": "0,01 m · 57,75 s →"
+          },
+          {
+            "overflow": false,
+            "text": "0,01 m · 57,75 s →"
+          },
+          {
+            "overflow": false,
+            "text": "-1,93 m/s² · 56,25 s →"
+          },
+          {
+            "overflow": false,
+            "text": "-1,93 m/s² · 56,25 s →"
+          },
+          {
+            "overflow": false,
+            "text": "← Előző fékezési szakasz"
+          },
+          {
+            "overflow": false,
+            "text": "Következő fékezési szakasz →"
+          }
+        ],
+        "pageWidth": 375,
+        "panelWidth": 349.3333435058594,
+        "viewport": 375
+      }
+    },
+    {
+      "name": "console_errors",
+      "observed": []
+    }
+  ],
+  "scope": "Actual archived MQTT-fed trip, native exact-frame jumps and native JSON attachment. No simulation control change or new statistical model campaign."
+}

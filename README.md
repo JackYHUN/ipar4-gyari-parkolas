@@ -1,5 +1,18 @@
 # Ipar 4.0 – gyári készjármű-parkolási szimulátor
 
+## Fékezések gyorskeresése egy mentett útablakban
+
+Az útelőzményben közvetlenül a megfigyelt fékezési szakaszokra, a legkisebb mozgás közbeni modellbeli tartalékra és a legerősebb alkalmazott lassulásra lehet ugrani. A gombok pontos fogadott keretet választanak ki, a térkép és az érzékelőnézet azt a rekordot mutatja. Az összegzés kizárólag a betöltött, legfeljebb 2000 mintás ablakra vonatkozik; az ismételt, hibás, ellentmondó és ismeretlen frissességű döntések külön számlálót kapnak. Az adatrések szétválasztják a szakaszokat.
+
+[Műszaki leírás és definíciók](docs/DONTESABLAK_ES_FEKEZESKERESO.md). A 43 új ellenőrzés önállóan futtatható:
+
+```powershell
+node tests/frontend_decision_window.cjs
+node tests/frontend_decision_navigator.cjs
+```
+
+A [friss fejlesztői nyugta](results/ui/decision-window-check.json) összesen 313 sikeres esetet és 2486 korábban fogadott MQTT-keret két külön ablakának offline vizsgálatát rögzíti. A [böngészős bizonyíték](results/ui/decision-window/browser-check.json) a tényleges ugrásokat, a natív mintaletöltést, az ablakváltás utáni törlést és a mobilos tördelést mutatja. A vezérlési összegzés nem igazol friss érzékelést vagy fizikai biztonságot. A mért mozgásmodell és konfigurációk változatlanok; a beadási jelentés forrásreferenciája továbbra is [f625cfe](https://github.com/JackYHUN/ipar4-gyari-parkolas/tree/f625cfe5e85cf5a8a28943704e7e025b89b7b0a4).
+
 ## Fékezési döntés élőben és az útelőzményben
 
 Az érzékelőnézet új kártyája megmutatja a sebességet a vezérlési lépés előtt és után, az alkalmazott gyorsulást, a megállási célt és az ideális fékúthoz viszonyított modellbeli tartalékot. A fékezés és a már bekövetkezett megállás külön állapot. Elavult vagy hiányos adat külön jelzést kap; ellentmondó diagnosztikából nem számolunk tartalékot. A JSON- és SVG-mintaletöltés a nyers adatok mellett az értelmezést is megőrzi.
@@ -13,7 +26,7 @@ node tests/frontend_braking_analysis.cjs
 node tests/frontend_braking_panel.cjs
 ```
 
-A [fejlesztői nyugta](results/ui/braking-panel-check.json) 239 korábbi regressziót és 2486 korábban fogadott vezérlési keret offline elemzését is rögzíti. A [böngészős vizsgálat](results/ui/braking/browser-check.json) külön igazolja az élő/archív megjelenítést, a tényleges mintaletöltéseket és a keskeny képernyős tördelést. Ez a felületi bővítés nem új statisztikai modellkampány.
+A korábbi [fejlesztői nyugta](results/ui/braking-panel-check.json) 239 korábbi regressziót és 2486 korábban fogadott vezérlési keret offline elemzését is rögzíti. A korábbi [böngészős vizsgálat](results/ui/braking/browser-check.json) külön igazolja az élő/archív megjelenítést, a tényleges mintaletöltéseket és a keskeny képernyős tördelést. Ez a felületi bővítés nem új statisztikai modellkampány.
 
 Python-alapú oktatási prototípus, valódi helyi MQTT 3.1.1 adatúttal, webes megjelenítéssel, virtuális érzékelőkkel és ellenőrizhető parkolófoglalásokkal. A mozgásmodell mért forráspillanatképe: **v0.18.0**.
 

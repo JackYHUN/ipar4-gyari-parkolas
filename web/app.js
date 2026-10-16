@@ -1083,8 +1083,57 @@
     return nearest;
   }
   function tripLocation(point){if(!trip?.map||!hasValue(point.x)||!hasValue(point.y))return "—";const slot=nearestTripSlot(point,trip.map);if(slot)return `${["parked","parking"].includes(point.state)&&slot.id===point.slot_id?"Parkoló":"Parkoló közelében"}: ${slot.id}`;const crossing=(trip.map.crossings||[]).map(c=>({c,distance:Math.hypot(c.x-point.x,c.y-point.y)})).filter(item=>item.distance<9).sort((a,b)=>a.distance-b.distance)[0]?.c;if(crossing)return `Gyalogátkelő: ${crossing.id}`;let closest=null,best=Infinity;for(const road of trip.map.roads||[]){const ps=Array.isArray(road)?road:road.points||[];for(let i=1;i<ps.length;i++){const distance=pointSegmentDistance([point.x,point.y],ps[i-1],ps[i]);if(distance<best){best=distance;closest=road.label||road.id||"Útszakasz";}}}return best<12?`${closest}${hasValue(point.heading)?` · ${fmt(point.heading,0)}°`:" · irányadat nincs mentve"}`:hasValue(point.heading)?`${fmt(point.heading,0)}° irány`:"—";}
+  function renderTripDecisions(){
+    const panel=$("trip-decisions-panel"),badge=$("trip-decisions-status");
+    if(!trip){
+      panel.dataset.runId="";panel.dataset.reserve="unknown";
+      for(const field of ["sections","minimum","strongest"])$("trip-decisions-"+field).textContent="—";
+      for(const field of ["minimum-note","strongest-note","counts"])$("trip-decisions-"+field).textContent="";
+      $("trip-decisions-scope").textContent="A betöltött ablak döntéseire várunk.";
+      badge.textContent="Nincs betöltött ablak";badge.className="data-badge neutral";
+      renderTripDecisionNavigation();return;
+    }
+    const analysis=window.YardBrakingAnalysis.summarizeWindow(trip.samples,{sample_period_s:trip.summary?.sample_period_s});
+    trip.decisionWindow=analysis;panel.dataset.runId=trip.runId;
+    const minimum=analysis.minimum_moving_reserve,strongest=analysis.strongest_braking;
+    panel.dataset.reserve=minimum?minimum.model_reserve_m<0?"negative":"nonnegative":"unknown";
+    $("trip-decisions-sections").textContent=String(analysis.braking_sections.length);
+    $("trip-decisions-minimum").textContent=minimum?`${reading(minimum.model_reserve_m,"m",2)} · ${reading(minimum.decision_sim_time_s,"s",2)} →`:"Nincs összevethető döntés";
+    $("trip-decisions-strongest").textContent=strongest?`${reading(strongest.applied_acceleration_m_s2,"m/s²",2)} · ${reading(strongest.decision_sim_time_s,"s",2)} →`:"Nincs fékezési döntés";
+    $("trip-decisions-minimum-note").textContent=minimum?"Mozgó, konzisztens döntés kijelölt megállási céllal. Kattintás: a pontos fogadott keret.":"Csak a mozgó, konzisztens, megállási céllal rendelkező döntések hasonlíthatók össze.";
+    $("trip-decisions-strongest-note").textContent=strongest?"Legnegatívabb naplózott gyorsulás mozgó, konzisztens döntésből. Kattintás: a pontos keret.":"Ebben az ablakban nincs összevethető, mozgás közbeni negatív gyorsulás.";
+    $("trip-decisions-counts").textContent=`${analysis.frame_count} fogadott keret · ${analysis.unique_decisions} egyedi döntésidő · ${analysis.duplicate_decisions} azonos döntésidővel ismételt keret · ${analysis.retained_decisions} megőrzöttként is látott és ${analysis.freshness_unknown_decisions} ismeretlen érzékelőfrissességű döntésidő. ${analysis.unavailable_frames} nem értelmezhető keret · ${analysis.invalid_decisions} hibás és ${analysis.inconsistent_decisions} ellentmondó döntésidő; ezek a csoportok átfedhetnek.`;
+    $("trip-decisions-scope").textContent=`${trip.carId} · ${trip.runId} · betöltött ablak: ${trip.window?.start_ordinal??"—"}–${trip.window?.end_ordinal??"—"}. A szakaszok a fogadási sorrendben összefüggő fékezési megfigyeléseket jelölik; az adatrés és az óratörés megszakítja őket. Az ablak szélén a fékezés folytatódhat. Teljesúti eseményszámot vagy fékezési időtartamot ebből nem becsülünk. A vezérlési összegzés nem igazol friss érzékelést; a tartalék modelladat.`;
+    badge.textContent=analysis.unique_decisions?"Betöltött döntések összesítve":"Nincs azonosítható döntés";
+    badge.className=`data-badge ${analysis.inconsistent_decisions||analysis.unavailable_frames?"warn":analysis.unique_decisions?"good":"neutral"}`;
+    renderTripDecisionNavigation();
+  }
+  function renderTripDecisionNavigation(){
+    const analysis=trip?.decisionWindow,sections=analysis?.braking_sections||[],index=trip?.index;
+    const previous=sections.filter(section=>section.end_index<index).at(-1),next=sections.find(section=>section.start_index>index);
+    $("trip-decisions-previous").disabled=tripLoading||!previous;
+    $("trip-decisions-next").disabled=tripLoading||!next;
+    $("trip-decisions-minimum").disabled=tripLoading||!analysis?.minimum_moving_reserve;
+    $("trip-decisions-strongest").disabled=tripLoading||!analysis?.strongest_braking;
+    const active=sections.findIndex(section=>section.start_index<=index&&index<=section.end_index),section=sections[active];
+    $("trip-decisions-position").textContent=!analysis?"Nincs betöltött döntésablak.":tripLoading?"Ablakbetöltés folyamatban · a korábbi összegzés marad.":section?`${active+1}. fékezési szakasz / ${sections.length} · döntésidők: ${reading(section.start_time_s,"s",2)} → ${reading(section.end_time_s,"s",2)} · ${section.decision_count} különböző döntés${section.starts_at_window_edge||section.ends_at_window_edge?" · ablakhatár érintett":""}`:`A kijelölt keret nem része összevethető fékezési szakasznak. ${sections.length} szakasz kereshető a betöltött ablakban.`;
+  }
+  function jumpTripDecision(index,identity=trip){
+    if(!trip||trip!==identity||tripLoading||!trip.decisionWindow||!Number.isInteger(index)||index<0||index>=trip.samples.length)return;
+    stopTrip();renderTripPoint(index);
+    const heading=$("trip-perception-title");
+    heading.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"instant":"smooth",block:"start"});
+    heading.focus({preventScroll:true});
+  }
+  function stepTripDecision(direction){
+    if(!trip||tripLoading||![-1,1].includes(direction))return;
+    const sections=trip.decisionWindow?.braking_sections||[],identity=trip;
+    const target=direction<0?sections.filter(section=>section.end_index<trip.index).at(-1):sections.find(section=>section.start_index>trip.index);
+    if(target)jumpTripDecision(target.start_index,identity);
+  }
   function renderTripPoint(index){
     if(!trip)return;trip.perceptionGap=false;trip.index=Math.max(0,Math.min(trip.samples.length-1,number(index)));$("trip-slider").value=trip.index;
+    renderTripDecisionNavigation();
     const point=trip.samples[trip.index];empty($("trip-point-layer"));$("trip-sample-index").textContent=point?`${(number(trip.window?.start_ordinal,1)+trip.index).toLocaleString("hu-HU")} / ${number(trip.window?.total_count,trip.samples.length).toLocaleString("hu-HU")}`:"0 minta";
     for(const id of ["trip-start","trip-play","trip-end","trip-slider"])$(id).disabled=tripLoading||!point;
     if(!point){for(const id of ["trip-time","trip-utc","trip-position","trip-speed","trip-state","trip-slot","trip-distance","trip-location"])$(id).textContent="—";$("trip-status").textContent="Nincs fogadott minta";$("trip-status").className="data-badge neutral";renderTripPerception(null);return;}
@@ -1117,12 +1166,13 @@
     $("trip-coverage").textContent=`Szimulációs idő és UTC-fogadás külön órán. Mentett telemetria-periódus: ${reading(summary.sample_period_s,"s",2)}. ${!trip.samples.length?"Nincs fogadott pozícióminta; az eseményekből nem állítunk elő útvonalat.":summary.complete_received_archive===false?"Hiányos régi archívum: korábban törölt minták nem állíthatók vissza.":"Minden megőrzött minta elérhető a lapozással vagy az idő szerinti kereséssel, 20 000 minta felett is."} ${gaps?`${gaps} idő- vagy sorszámrés a betöltött ablakban; a térképi vonal ezeken megszakad.`:"A betöltött ablakban nem észleltünk idő- vagy sorszámrést."} Folyamatos módban a visszajátszás a rögzített archívhatárig lapoz; betöltéskor az utolsó fogadott minta marad. Időbélyeghibánál vagy visszalépő óránál megáll. Azonos időbélyegek fogadási sorrendben követik egymást, külön időtartamot nem kapnak. A teljes export a lekéréskori megőrzött mintákat tartalmazza. A minták között nem feltételezünk pozíciót.`;
   }
   function renderTripNavigation(){
+    renderTripDecisionNavigation();
     $("trip-load").disabled=tripLoading;$("trip-refresh").disabled=tripLoading||!trip;
     $("trip-previous").disabled=tripLoading||!trip?.window?.previous_before_id;$("trip-next").disabled=tripLoading||!trip?.window?.next_after_id;$("trip-seek").disabled=tripLoading||!trip;$("trip-seek-time").disabled=tripLoading||!trip;
     for(const id of ["trip-start","trip-end","trip-slider"])$(id).disabled=tripLoading||!trip?.samples.length;$("trip-play").disabled=(tripLoading&&!trip?.continuing)||!trip?.samples.length;
   }
   function invalidateTripSelection(){
-    stopTrip();tripVersion++;catalogueVersion++;inspectSelectedTrip.generation=(inspectSelectedTrip.generation||0)+1;tripLoading=false;trip=null;perceptionFrames.delete("trip");proximitySelections.delete("trip");$("trip-content").hidden=true;$("trip-status").textContent="Válaszd ki és töltsd be az utat";renderTripNavigation();
+    stopTrip();tripVersion++;catalogueVersion++;inspectSelectedTrip.generation=(inspectSelectedTrip.generation||0)+1;tripLoading=false;trip=null;perceptionFrames.delete("trip");proximitySelections.delete("trip");$("trip-content").hidden=true;$("trip-status").textContent="Válaszd ki és töltsd be az utat";renderTripDecisions();renderTripNavigation();
   }
   async function loadTrip(refresh=false){
     return loadTripWindow({run:refresh&&trip?trip.runId:tripRunId(),car:refresh&&trip?trip.carId:$("trip-car").value,refresh,direction:refresh&&hasValue(trip?.samples[trip.index]?.sim_time)?"time":"start",simTime:refresh?trip?.samples[trip.index]?.sim_time:undefined});
@@ -1166,7 +1216,7 @@
         trip={runId:run,carId:car,samples,window:windowInfo,events:keepEvents?base.events:result.events||[],eventsBefore:keepEvents?base.eventsBefore:result.next_events_before||null,summary:result.summary||{},map,overview,mission,untilId:result.until_id,eventsUntilId:result.events_until_id,index:0,playing:continuation,playGeneration:continuation?generation:0,seek:result.seek,contextOrigin:options.contextOrigin||(!options.refresh&&same?base.contextOrigin:null)};
         const target=samples.findIndex(point=>point.id===result.target_id);trip.index=continuation?0:Math.max(0,target);$("trip-content").hidden=false;$("trip-slider").max=Math.max(0,samples.length-1);
         const exportQuery=tripQuery(run,car);for(const format of ["csv","json"]){const link=$("trip-export-"+format);link.setAttribute("aria-disabled",String(Boolean(trip.contextOrigin)));if(trip.contextOrigin){link.removeAttribute("href");link.title="A teljesút-export a lekéréskori egész archívumot tartalmazná. A kijelölt megfigyelés résznézetéhez nem érhető el.";}else{link.href=`/api/car/history/export?${exportQuery}&format=${format}`;link.title="";}}
-        rebuildTripMap();if(retainedView){trip.view=retainedView;trip.follow=retainedFollow;updateTripView();}renderTripSummary();renderPerceptionCoverage();renderTripQuality();renderTripMission();renderTripEvents();renderTripPoint(trip.index);
+        rebuildTripMap();if(retainedView){trip.view=retainedView;trip.follow=retainedFollow;updateTripView();}renderTripSummary();renderPerceptionCoverage();renderTripQuality();renderTripDecisions();renderTripMission();renderTripEvents();renderTripPoint(trip.index);
         if(continuation){trip.playTime=Math.max(number(playTime),number(samples[0]?.sim_time));trip.frame=performance.now();$("trip-play").textContent="Visszajátszás szüneteltetése";}
         const seek=result.seek;$("trip-seek-note").textContent=!seek?"Idő szerinti ugrás: a keresett időt megelőző legutolsó mentett minta.":seek.predecessor_found?`Keresett idő ${reading(seek.requested_sim_time,"s",2)} · megelőző mentett minta ${reading(seek.resolved_sim_time,"s",2)}. Az esemény pontos helyét nem feltételezzük.`:seek.resolution==="earliest_fallback"?`A keresett ${reading(seek.requested_sim_time,"s",2)} idő előtt nincs tárolt minta; a legkorábbi ${reading(seek.resolved_sim_time,"s",2)} mintát mutatjuk.`:"Nincs időbélyeges mentett minta.";
         if(options.event)$("trip-events-note").textContent=`Esemény ${reading(options.event.sim_time,"s",2)} · ${$("trip-seek-note").textContent}`;
@@ -1339,6 +1389,8 @@
   $("trip-previous").addEventListener("click",()=>loadTripWindow({direction:"before",cursor:trip?.window?.previous_before_id}));$("trip-next").addEventListener("click",()=>loadTripWindow({direction:"after",cursor:trip?.window?.next_after_id}));
   const seekTrip=()=>loadTripWindow({direction:"time",simTime:$("trip-seek-time").value});$("trip-seek").addEventListener("click",seekTrip);$("trip-seek-time").addEventListener("keydown",event=>{if(event.key==="Enter"){event.preventDefault();seekTrip();}});
   $("trip-quality-minimum").addEventListener("click",()=>{const minimum=trip?.quality?.proximity.minimum_clearance;if(!minimum)return;stopTrip();renderTripPoint(minimum.row_index);selectProximityChannel("trip",minimum.channel_id);$("trip-perception-title").scrollIntoView({behavior:"smooth",block:"start"});});
+  $("trip-decisions-previous").addEventListener("click",()=>stepTripDecision(-1));$("trip-decisions-next").addEventListener("click",()=>stepTripDecision(1));
+  $("trip-decisions-minimum").addEventListener("click",()=>jumpTripDecision(trip?.decisionWindow?.minimum_moving_reserve?.index));$("trip-decisions-strongest").addEventListener("click",()=>jumpTripDecision(trip?.decisionWindow?.strongest_braking?.index));
   $("trip-slider").addEventListener("input",()=>{stopTrip();renderTripPoint($("trip-slider").value);});$("trip-start").addEventListener("click",()=>loadTripWindow({direction:"start"}));$("trip-end").addEventListener("click",()=>loadTripWindow({direction:"end"}));$("trip-play").addEventListener("click",toggleTripPlayback);
   $("trip-show-overview").addEventListener("change",renderTripOverview);$("trip-continuous").addEventListener("change",()=>{if(!$("trip-continuous").checked&&(trip?.continuing||trip?.pendingWindow))stopTrip("Folyamatos lejátszás kikapcsolva · mentett minta");});
   installTripMapControls();

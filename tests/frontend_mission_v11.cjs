@@ -29,7 +29,7 @@ function harness(){
     getJSON:(url,timeoutMs)=>{const r={url,timeoutMs,...deferred()};requests.push(r);return r.promise;},scenarioToMap:c=>c,
     rebuildTripMap:()=>{ctx.trip.bounds={x:0,y:0,w:140,h:90};ctx.trip.view={...ctx.trip.bounds};ctx.trip.follow=false;renders.push("map");},
     renderTripPoint:i=>{ctx.trip.index=i;renders.push({kind:"point",id:ctx.trip.samples[i]?.id});},
-    renderTripSummary(){},renderPerceptionCoverage(){},renderTripQuality(){},renderTripMission(){},updateTripView(){},
+    renderTripDecisions(){},renderTripDecisionNavigation(){},renderTripSummary(){},renderPerceptionCoverage(){},renderTripQuality(){},renderTripMission(){},updateTripView(){},
   };
   vm.createContext(ctx);for(const name of ["tripError","stopTrip","tripQuery","tripRunId","renderTripNavigation","invalidateTripSelection","loadTrip","loadTripWindow","tripClockProblem","renderTripEvents","loadOlderTripEvents","jumpTripEvent"])vm.runInContext(extract(name),ctx,{filename:`app:${name}`});
   ctx.$("trip-run").add(option("A","RUN-A"));ctx.$("trip-car").add(option("CAR001","CAR001"));return {ctx,requests,renders};

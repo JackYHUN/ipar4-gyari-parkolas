@@ -251,5 +251,129 @@
     }
     return result;
   }
-  global.YardBrakingAnalysis = Object.freeze({analyzeFrame});
+  /* Summarize one car's explicitly loaded receipt window, never a complete
+     trip. Clock counts are distinct valid controller clocks with a known
+     source and a nonfuture row time; malformed diagnostics still contribute
+     to invalid_decisions, never to extrema or observed braking sections.
+     Retained/unknown freshness clocks can overlap other reception categories.
+     Section times are original decision times. An identical held diagnostic
+     can extend its last row index, but never its decision count or end time.
+     Disconnected sections count their distinct clocks locally. */
+  function summarizeWindow(rows, options = {}) {
+    const loaded = Array.isArray(rows) ? rows : [];
+    const result = {schema_version: 1, scope: "loaded_received_window",
+      frame_count: loaded.length, unique_decisions: 0, duplicate_decisions: 0,
+      unavailable_frames: 0, invalid_decisions: 0, inconsistent_decisions: 0,
+      retained_decisions: 0, freshness_unknown_decisions: 0,
+      braking_sections: [], minimum_moving_reserve: null,
+      strongest_braking: null};
+    const decisions = new Map(), entries = [];
+    // Canonical comparison includes all received control fields. Sorting keys
+    // prevents insertion order from manufacturing a conflicting diagnostic.
+    // The iterative comparison also avoids recursive calls on nested JSON.
+    function equalControl(first, second) {
+      const pending = [[first, second]];
+      while (pending.length) {
+        const [left, right] = pending.pop();
+        if (Object.is(left, right)) continue;
+        if (left === null || right === null || typeof left !== "object" || typeof right !== "object"
+            || Array.isArray(left) !== Array.isArray(right)) return false;
+        const leftKeys = Object.keys(left).sort(), rightKeys = Object.keys(right).sort();
+        if (leftKeys.length !== rightKeys.length) return false;
+        for (let index = 0; index < leftKeys.length; index++) {
+          if (leftKeys[index] !== rightKeys[index]) return false;
+          pending.push([left[leftKeys[index]], right[rightKeys[index]]]);
+        }
+      }
+      return true;
+    }
+    for (let index = 0; index < loaded.length; index++) {
+      const row = object(loaded[index]) ? loaded[index] : {};
+      const sensors = row.sensors, control = row.control;
+      const analysis = analyzeFrame({sensors, control, telemetry_sim_time: row.sim_time,
+        fresh: sensors?.fresh === true && sensors?.fault_active !== true});
+      if (!analysis.available) result.unavailable_frames++;
+      const clock = object(control) ? control.decision_sim_time_s : null;
+      const identifiable = control?.source === "ideal_route_controller" && nonnegative(clock)
+        && nonnegative(row.sim_time) && clock - row.sim_time <= 1e-6;
+      let decision = null;
+      if (identifiable) {
+        decision = decisions.get(clock);
+        if (!decision) {
+          decision = {control, invalid: false, inconsistent: false, retained: false, freshnessUnknown: false};
+          decisions.set(clock, decision);
+        } else {
+          result.duplicate_decisions++;
+          if (!equalControl(decision.control, control)) decision.inconsistent = true;
+        }
+        if (!analysis.available) decision.invalid = true;
+        if (analysis.consistency === "inconsistent") decision.inconsistent = true;
+        if (analysis.freshness === "retained") decision.retained = true;
+        if (analysis.available && analysis.freshness === "unknown") decision.freshnessUnknown = true;
+      }
+      entries.push({row, index, analysis, decision});
+    }
+    result.unique_decisions = decisions.size;
+    for (const decision of decisions.values()) {
+      if (decision.invalid) result.invalid_decisions++;
+      if (decision.inconsistent) result.inconsistent_decisions++;
+      if (decision.retained) result.retained_decisions++;
+      if (decision.freshnessUnknown) result.freshness_unknown_decisions++;
+    }
+    const period = options?.sample_period_s;
+    const maximumGap = finite(period) && period > 0 ? Math.max(.15, period * 1.55) : .15;
+    const sequence = value => nonnegative(value) && Number.isSafeInteger(value);
+    function continues(previous, current) {
+      if (!previous) return false;
+      const before = previous.row, after = current.row;
+      if (after.break_before === true || after.gap_before === true
+          || (finite(after.time_gap_before_s) && after.time_gap_before_s > 0)) return false;
+      if (!nonnegative(before.sim_time) || !nonnegative(after.sim_time)
+          || after.sim_time <= before.sim_time || after.sim_time - before.sim_time > maximumGap + 1e-6
+          || !sequence(before.seq) || !sequence(after.seq) || after.seq !== before.seq + 1) return false;
+      const firstClock = previous.analysis.decision_sim_time_s;
+      const secondClock = current.analysis.decision_sim_time_s;
+      return nonnegative(firstClock) && nonnegative(secondClock) && secondClock >= firstClock;
+    }
+    let section = null;
+    const observed = new Set();
+    for (let index = 0; index < entries.length; index++) {
+      const entry = entries[index], analysis = entry.analysis, decision = entry.decision;
+      const eligible = decision && !decision.invalid && !decision.inconsistent
+        && analysis.available && analysis.consistency === "consistent";
+      if (eligible && !observed.has(analysis.decision_sim_time_s)) {
+        observed.add(analysis.decision_sim_time_s);
+        if (analysis.speed_before_m_s > 0) {
+          const clock = analysis.decision_sim_time_s;
+          const reserve = analysis.model_reserve_m;
+          if (finite(reserve) && (result.minimum_moving_reserve === null
+              || reserve < result.minimum_moving_reserve.model_reserve_m)) {
+            result.minimum_moving_reserve = {index, decision_sim_time_s: clock, model_reserve_m: reserve};
+          }
+          const acceleration = analysis.applied_acceleration_m_s2;
+          if (acceleration < 0 && (result.strongest_braking === null
+              || acceleration < result.strongest_braking.applied_acceleration_m_s2)) {
+            result.strongest_braking = {index, decision_sim_time_s: clock,
+              applied_acceleration_m_s2: acceleration};
+          }
+        }
+      }
+      if (!eligible || analysis.phase !== "braking") { section = null; continue; }
+      if (!section || !continues(entries[index - 1], entry)) {
+        section = {start_index: index, end_index: index,
+          start_time_s: analysis.decision_sim_time_s, end_time_s: analysis.decision_sim_time_s,
+          decision_count: 1, starts_at_window_edge: index === 0, ends_at_window_edge: false};
+        result.braking_sections.push(section);
+      } else {
+        section.end_index = index;
+        if (analysis.decision_sim_time_s !== section.end_time_s) {
+          section.end_time_s = analysis.decision_sim_time_s;
+          section.decision_count++;
+        }
+      }
+      section.ends_at_window_edge = index === loaded.length - 1;
+    }
+    return result;
+  }
+  global.YardBrakingAnalysis = Object.freeze({analyzeFrame, summarizeWindow});
 })(globalThis);

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "prepared_at_utc": "2026-10-16T15:27:14.304838+00:00",
-  "status": "PREPARED_BRAKING_UI_UPDATE",
+  "prepared_at_utc": "2026-10-16T16:21:44.483072+00:00",
+  "status": "PREPARED_DECISION_WINDOW_UPDATE",
   "source_root_relative": "projekt",
   "repository_root_relative": "output/repository/ipar4-gyari-parkolas",
   "network_publication_performed": false,
@@ -122,33 +122,33 @@
       "path": "web/app.js",
       "kind": "source",
       "source_relative": "web/app.js",
-      "source_sha256": "0cf9d61543c5c5ed9266af2318882d0184bbe69f03e242e2c89f8ef3089272c8",
-      "sha256": "0cf9d61543c5c5ed9266af2318882d0184bbe69f03e242e2c89f8ef3089272c8",
-      "size_bytes": 243303
+      "source_sha256": "594cf4f990a7c03d1db86d68656cc4a80fd2c5efecdd16ef55c043956e357dc1",
+      "sha256": "594cf4f990a7c03d1db86d68656cc4a80fd2c5efecdd16ef55c043956e357dc1",
+      "size_bytes": 249388
     },
     {
       "path": "web/index.html",
       "kind": "source",
       "source_relative": "web/index.html",
-      "source_sha256": "944be04976c0f905d0b00211335867da47b69e9a5e862440d8315a8fc97ec95f",
-      "sha256": "944be04976c0f905d0b00211335867da47b69e9a5e862440d8315a8fc97ec95f",
-      "size_bytes": 64347
+      "source_sha256": "caa2223ebdd6e7e41b5e31bb80eaaba3d30d0fbca2e49259d65273ba9ebe0f61",
+      "sha256": "caa2223ebdd6e7e41b5e31bb80eaaba3d30d0fbca2e49259d65273ba9ebe0f61",
+      "size_bytes": 66159
     },
     {
       "path": "web/perception-analysis.js",
       "kind": "source",
       "source_relative": "web/perception-analysis.js",
-      "source_sha256": "fcd6f708cc0e687cccd3c8868cc51d60d18a459c6f561d20812fe0c0f264946a",
-      "sha256": "fcd6f708cc0e687cccd3c8868cc51d60d18a459c6f561d20812fe0c0f264946a",
-      "size_bytes": 15512
+      "source_sha256": "dbd4e0ec9d75d36230045254265bd05741a0754d0525dd59ff6f2686e1457bd7",
+      "sha256": "dbd4e0ec9d75d36230045254265bd05741a0754d0525dd59ff6f2686e1457bd7",
+      "size_bytes": 22548
     },
     {
       "path": "web/perception.css",
       "kind": "source",
       "source_relative": "web/perception.css",
-      "source_sha256": "2f5eff563995798513961e36759ae6934d9ad3358a0b45f8b15241ff5fb2f0a1",
-      "sha256": "2f5eff563995798513961e36759ae6934d9ad3358a0b45f8b15241ff5fb2f0a1",
-      "size_bytes": 4916
+      "source_sha256": "6156a05034263936fd0084f91cea00a83ce7c714a3607987fd237eeb1a770e0d",
+      "sha256": "6156a05034263936fd0084f91cea00a83ce7c714a3607987fd237eeb1a770e0d",
+      "size_bytes": 6981
     },
     {
       "path": "web/perception.js",
@@ -186,17 +186,17 @@
       "path": "tests/frontend_mission_v11.cjs",
       "kind": "source",
       "source_relative": "tests/frontend_mission_v11.cjs",
-      "source_sha256": "5fb909fe3fbd5d16c3573d036a9d9ffebe77173d9ac2233ed246147e93b5c736",
-      "sha256": "5fb909fe3fbd5d16c3573d036a9d9ffebe77173d9ac2233ed246147e93b5c736",
-      "size_bytes": 25997
+      "source_sha256": "32347f3b2fa787b1be5058a8c2afa8b57b89c28f4d3438550803cbdc38de25a1",
+      "sha256": "32347f3b2fa787b1be5058a8c2afa8b57b89c28f4d3438550803cbdc38de25a1",
+      "size_bytes": 26054
     },
     {
       "path": "tests/frontend_navigation_v09.cjs",
       "kind": "source",
       "source_relative": "tests/frontend_navigation_v09.cjs",
-      "source_sha256": "c79e439ffbbf169d7fa780b69ca579d57a0d0660b4d3dd570ab025bf3d112a4a",
-      "sha256": "c79e439ffbbf169d7fa780b69ca579d57a0d0660b4d3dd570ab025bf3d112a4a",
-      "size_bytes": 17796
+      "source_sha256": "cc2fd178873fe7a32354cd28e5bdb2b14385b02c86aac8ac917acaf552f0c2be",
+      "sha256": "cc2fd178873fe7a32354cd28e5bdb2b14385b02c86aac8ac917acaf552f0c2be",
+      "size_bytes": 17853
     },
     {
       "path": "tests/frontend_operations_report_v17.cjs",
@@ -234,9 +234,9 @@
       "path": "tests/frontend_replay_v10.cjs",
       "kind": "source",
       "source_relative": "tests/frontend_replay_v10.cjs",
-      "source_sha256": "88ceb7a78c3e59c6accc20db5977b879e4d97bd975874d518aed5c3a447e348b",
-      "sha256": "88ceb7a78c3e59c6accc20db5977b879e4d97bd975874d518aed5c3a447e348b",
-      "size_bytes": 19296
+      "source_sha256": "73baefd26813a5df2a60a78b0ff394eb3fd23f2cad9792b39fd873e510ad62fe",
+      "sha256": "73baefd26813a5df2a60a78b0ff394eb3fd23f2cad9792b39fd873e510ad62fe",
+      "size_bytes": 19353
     },
     {
       "path": "tests/frontend_transport_archive_v14.cjs",
@@ -250,9 +250,9 @@
       "path": "tests/frontend_transport_context_v15.cjs",
       "kind": "source",
       "source_relative": "tests/frontend_transport_context_v15.cjs",
-      "source_sha256": "fe7a71e33849655635e1fa99aa62260fc4ecde5a6d2b2977b8e3bee10661d85f",
-      "sha256": "fe7a71e33849655635e1fa99aa62260fc4ecde5a6d2b2977b8e3bee10661d85f",
-      "size_bytes": 24164
+      "source_sha256": "3d582b80913d97e8bf8acd05e17ff7a80b01f7af1e3c3dfc1531f046612316f8",
+      "sha256": "3d582b80913d97e8bf8acd05e17ff7a80b01f7af1e3c3dfc1531f046612316f8",
+      "size_bytes": 24221
     },
     {
       "path": "tests/frontend_transport_v12.cjs",
@@ -1811,8 +1811,8 @@
       "kind": "generated_public_documentation",
       "source_relative": null,
       "source_sha256": null,
-      "sha256": "3356babfec1934b6b11fb74260a5f6bc6380437328da35ac76409ab961c9bc0d",
-      "size_bytes": 11011
+      "sha256": "f3224cccf87135bd1c9e0046e953f3d68c70029daeba720b7d202e8126a2f34a",
+      "size_bytes": 12546
     },
     {
       "path": "results/course-verification-v18/compact-index.json",
@@ -1946,6 +1946,86 @@
       "source_sha256": "fcaf11f3ea3b216653c43cb0ac871469c29e884925ab91f1cc684816bccceca4",
       "sha256": "fcaf11f3ea3b216653c43cb0ac871469c29e884925ab91f1cc684816bccceca4",
       "size_bytes": 21312
+    },
+    {
+      "path": "docs/DONTESABLAK_ES_FEKEZESKERESO.md",
+      "kind": "documentation",
+      "source_relative": "docs/DONTESABLAK_ES_FEKEZESKERESO.md",
+      "source_sha256": "d588fe364c756d902770a23e6abe4f888d0f800d5c6e4ad1cd81a184c6cdd823",
+      "sha256": "d588fe364c756d902770a23e6abe4f888d0f800d5c6e4ad1cd81a184c6cdd823",
+      "size_bytes": 5978
+    },
+    {
+      "path": "experiments/verify_decision_window.py",
+      "kind": "source",
+      "source_relative": "experiments/verify_decision_window.py",
+      "source_sha256": "836433bb4aa170e7567470e1f9211fa22aacb74c5ea35062241915d42f298569",
+      "sha256": "836433bb4aa170e7567470e1f9211fa22aacb74c5ea35062241915d42f298569",
+      "size_bytes": 4558
+    },
+    {
+      "path": "tests/frontend_decision_window.cjs",
+      "kind": "source",
+      "source_relative": "tests/frontend_decision_window.cjs",
+      "source_sha256": "fd426429797281bb9d0e9d2ea154d0a62193bda49478ac4d730dbfcb862b27c5",
+      "sha256": "fd426429797281bb9d0e9d2ea154d0a62193bda49478ac4d730dbfcb862b27c5",
+      "size_bytes": 16465
+    },
+    {
+      "path": "tests/frontend_decision_navigator.cjs",
+      "kind": "source",
+      "source_relative": "tests/frontend_decision_navigator.cjs",
+      "source_sha256": "8844d46ddcbb77be2c92959317ff5232b7d7161e508e55ab3c776459ad7c73b0",
+      "sha256": "8844d46ddcbb77be2c92959317ff5232b7d7161e508e55ab3c776459ad7c73b0",
+      "size_bytes": 14766
+    },
+    {
+      "path": "results/ui/decision-window-check.json",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/decision-window-check.json",
+      "source_sha256": "389d6f011da007854d2923f1a597f3aa21db1ccb0aec54cd5162cb019e37030e",
+      "sha256": "389d6f011da007854d2923f1a597f3aa21db1ccb0aec54cd5162cb019e37030e",
+      "size_bytes": 12464
+    },
+    {
+      "path": "results/ui/decision-window-regressions.json",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/decision-window-regressions.json",
+      "source_sha256": "7197b3c4dc381c071ebe7e1623d292f9367c5aeafba087e03e7fcd46cdfd8219",
+      "sha256": "7197b3c4dc381c071ebe7e1623d292f9367c5aeafba087e03e7fcd46cdfd8219",
+      "size_bytes": 30249
+    },
+    {
+      "path": "results/ui/decision-window/browser-check.json",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/decision-window/browser-check.json",
+      "source_sha256": "2a1f769d1b338911cb4fd7c55bb674287d73c68258ffb655ff05e746dbb6518d",
+      "sha256": "2a1f769d1b338911cb4fd7c55bb674287d73c68258ffb655ff05e746dbb6518d",
+      "size_bytes": 6011
+    },
+    {
+      "path": "results/ui/decision-window/desktop.png",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/decision-window/desktop.png",
+      "source_sha256": "9c95a81441a81929f3c1560c3a4a80479ab18c26bf45355357298101d6189cae",
+      "sha256": "9c95a81441a81929f3c1560c3a4a80479ab18c26bf45355357298101d6189cae",
+      "size_bytes": 70146
+    },
+    {
+      "path": "results/ui/decision-window/mobile.png",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/decision-window/mobile.png",
+      "source_sha256": "3694746f68090c2c6e643242f83f78d571b1b3fa40d4bfdaf28d778e5e47090a",
+      "sha256": "3694746f68090c2c6e643242f83f78d571b1b3fa40d4bfdaf28d778e5e47090a",
+      "size_bytes": 34564
+    },
+    {
+      "path": "results/ui/decision-window/minimum-frame.json",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/decision-window/minimum-frame.json",
+      "source_sha256": "ee6f9a1a1f1003a5ccad30d0d878b91e70d3a11114a39bde49d44bc02bfe4b97",
+      "sha256": "ee6f9a1a1f1003a5ccad30d0d878b91e70d3a11114a39bde49d44bc02bfe4b97",
+      "size_bytes": 11579
     }
   ],
   "omissions": [
@@ -2746,6 +2826,6 @@
     "personal_release_packaging_scripts": "Six legacy package verification scripts omitted; measured core sources unmodified."
   },
   "measurement_archive_in_public_snapshot": "data/course-comparison-v18.zip",
-  "feature": "received_braking_decision_v1",
+  "feature": "received_decision_window_v1",
   "course_reference_commit": "f625cfe5e85cf5a8a28943704e7e025b89b7b0a4"
 }
