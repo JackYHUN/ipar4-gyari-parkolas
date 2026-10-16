@@ -882,9 +882,9 @@
       "path": "docs/BEADASI_CSOMAG.md",
       "kind": "documentation",
       "source_relative": "docs/BEADASI_CSOMAG.md",
-      "source_sha256": "6bb8d01f4495798b4f855ea4f36e912c6df8294f9d0918bd943fd899f96181de",
-      "sha256": "6bb8d01f4495798b4f855ea4f36e912c6df8294f9d0918bd943fd899f96181de",
-      "size_bytes": 4565
+      "source_sha256": "eeea5506b69fcc827b8d3a7c8ab46986fc88bb4a1e306b0348b15ec88eaab2e0",
+      "sha256": "eeea5506b69fcc827b8d3a7c8ab46986fc88bb4a1e306b0348b15ec88eaab2e0",
+      "size_bytes": 5009
     },
     {
       "path": "docs/car_states.puml",
@@ -1811,8 +1811,8 @@
       "kind": "generated_public_documentation",
       "source_relative": null,
       "source_sha256": null,
-      "sha256": "88f1cc74fdb379d593737e1482f335345e4b83160d74597bc18533f22a490064",
-      "size_bytes": 10194
+      "sha256": "8d20d2941502ee087878e3d675c2090e86e423fba971dbb73e41753ee3d79bfd",
+      "size_bytes": 9520
     },
     {
       "path": "results/course-verification-v18/compact-index.json",

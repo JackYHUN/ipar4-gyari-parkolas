@@ -69,13 +69,6 @@ Expand-Archive -LiteralPath data/course-comparison-v18.zip -DestinationPath resu
 A megőrzött [validation.json](results/course-comparison-v18/validation.json) a teljes eredeti helyi ellenőrzés nyugtája. A fenti parancs már a letöltött nyers fájlokat ellenőrzi újra; új időbélyegű helyi `validation.json` nyugtát ír. A tömör klón eredeti fájlazonosságát kibontás és újrafuttatás előtt a `tools/verify_public_evidence.py` vizsgálja. Új eredmények után a `--sources-only` mód használható a változatlan forrás ellenőrzésére.
 
 ```powershell
-Expand-Archive -LiteralPath data/course-comparison-v18.zip -DestinationPath results -Force
-.\.venv\Scripts\python.exe results/course-comparison-v18/validate_exports.py
-```
-
-A megőrzött [validation.json](results/course-comparison-v18/validation.json) a teljes eredeti helyi ellenőrzés nyugtája. A fenti parancs már a letöltött nyers fájlokat ellenőrzi újra; új időbélyegű helyi `validation.json` nyugtát ír. A tömör klón eredeti fájlazonosságát kibontás és újrafuttatás előtt a `tools/verify_public_evidence.py` vizsgálja. Új eredmények után a `--sources-only` mód használható a változatlan forrás ellenőrzésére.
-
-```powershell
 .\.venv\Scripts\python.exe tools/verify_public_evidence.py
 .\.venv\Scripts\python.exe -m compileall -q factory_yard tests experiments
 .\.venv\Scripts\python.exe -m unittest discover -s tests
