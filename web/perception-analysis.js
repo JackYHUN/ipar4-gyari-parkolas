@@ -166,3 +166,90 @@
   }
   global.YardPerceptionAnalysis = Object.freeze({summarizeFrames});
 })(globalThis);
+
+/* Read-only interpretation of a received controller diagnostic, kept separate
+   from the sensor analysis above. It never updates or reruns the controller. */
+(function (global) {
+  "use strict";
+  const object = value => value !== null && typeof value === "object" && !Array.isArray(value);
+  const finite = value => typeof value === "number" && Number.isFinite(value);
+  const nonnegative = value => finite(value) && value >= 0;
+  const close = (first, second) => finite(first) && finite(second)
+    && Math.abs(first - second) <= 2e-5 + 1e-5 * Math.max(Math.abs(first), Math.abs(second));
+  const clockClose = (first, second) => Math.abs(first - second) <= 1e-6;
+  const scalars = ["decision_sim_time_s", "motion_interval_s", "speed_before_m_s", "speed_after_m_s",
+    "target_speed_m_s", "applied_acceleration_m_s2", "braking_distance_m", "reaction_allowance_m",
+    "stop_limit_remaining_m"];
+
+  function analyzeFrame(data) {
+    const result = {schema_version: 1, available: false, freshness: "unknown", phase: null,
+      consistency: "unknown", issues: [], decision_sim_time_s: null, motion_interval_s: null,
+      speed_before_m_s: null, speed_after_m_s: null, target_speed_m_s: null,
+      applied_acceleration_m_s2: null, braking_distance_m: null, reaction_allowance_m: null,
+      stop_limit_remaining_m: null, model_reserve_m: null, braking_utilization_pct: null};
+    const control = object(data?.control) ? data.control : null;
+    if (!control || control.source !== "ideal_route_controller") {
+      result.issues.push(control ? "unknown_control_source" : "missing_control");
+      return result;
+    }
+    let valid = true;
+    for (const key of scalars) {
+      const value = control[key];
+      // A null limit explicitly means no assigned stopping target. Missing,
+      // mistyped and negative limits remain distinct from that declaration.
+      if (key === "stop_limit_remaining_m" && value === null) continue;
+      const accepted = key === "applied_acceleration_m_s2" ? finite(value)
+        : key === "motion_interval_s" ? finite(value) && value > 0 : nonnegative(value);
+      if (!accepted) { result.issues.push(`invalid_${key}`); valid = false; }
+      else result[key] = value;
+    }
+    const deceleration = control.braking_deceleration_m_s2;
+    if (!finite(deceleration) || deceleration <= 0) {
+      result.issues.push("invalid_braking_deceleration_m_s2"); valid = false;
+    }
+    const rowTime = data?.telemetry_sim_time;
+    if (!nonnegative(rowTime)) { result.issues.push("invalid_telemetry_sim_time"); valid = false; }
+    else if (result.decision_sim_time_s !== null && result.decision_sim_time_s - rowTime > 1e-6) {
+      result.issues.push("future_control_decision"); valid = false;
+    }
+    if (!valid) return result;
+    result.available = true;
+    result.consistency = "consistent";
+    const before = result.speed_before_m_s, after = result.speed_after_m_s;
+    // A stop target or state name alone does not establish that motion ended.
+    result.phase = after === 0 ? "stopped" : after < before ? "braking"
+      : after > before ? "accelerating" : "cruising";
+    const expectedBraking = before * before / (2 * deceleration);
+    const expectedAcceleration = (after - before) / result.motion_interval_s;
+    if (!close(result.braking_distance_m, expectedBraking)) {
+      result.issues.push("braking_distance_mismatch"); result.consistency = "inconsistent";
+    }
+    if (!close(result.applied_acceleration_m_s2, expectedAcceleration)) {
+      result.issues.push("acceleration_mismatch"); result.consistency = "inconsistent";
+    }
+    const sample = data?.sensors;
+    const validSample = object(sample) && sample.schema_version === 1
+      && sample.source === "virtual_onboard_bundle" && sample.sampled === true
+      && nonnegative(sample.sample_sim_time_s);
+    const controlSampleClock = control.sensor_sample_sim_time_s;
+    const matchingClock = validSample && nonnegative(controlSampleClock)
+      && clockClose(controlSampleClock, sample.sample_sim_time_s);
+    if (validSample && nonnegative(controlSampleClock) && !matchingClock) {
+      result.issues.push("sensor_sample_clock_mismatch"); result.consistency = "inconsistent";
+    }
+    if (validSample) result.freshness = data.fresh === true && data.gap !== true
+      && sample.fresh === true && sample.fault_active !== true && matchingClock ? "current" : "retained";
+    if (result.consistency === "consistent") {
+      // The saved limit already contains the controller's configured margins.
+      // Do not subtract reaction_allowance_m for a second time. This reserve
+      // belongs to the ideal route model; it is not a real safety guarantee.
+      const reserve = result.stop_limit_remaining_m === null ? null
+        : result.stop_limit_remaining_m - result.braking_distance_m;
+      result.model_reserve_m = finite(reserve) ? reserve : null;
+      const utilization = Math.max(0, -result.applied_acceleration_m_s2) / deceleration * 100;
+      result.braking_utilization_pct = finite(utilization) ? utilization : null;
+    }
+    return result;
+  }
+  global.YardBrakingAnalysis = Object.freeze({analyzeFrame});
+})(globalThis);

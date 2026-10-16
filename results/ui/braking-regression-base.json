@@ -1,0 +1,181 @@
+{
+  "status": "PASS",
+  "model_version": "0.18.0",
+  "executed_at_utc": "2026-10-16T15:25:45.951434+00:00",
+  "checks": [
+    {
+      "command": "node tests/perception_visuals_smoke.cjs",
+      "status": "PASS",
+      "cases": 16,
+      "output": "PASS body clearance thresholds include boundaries; far green requires an actual hit\nPASS stale hits retain distances without fresh red or green indication\nPASS relative observation uses sampled origin; bearing right is positive\nPASS parking renderer retains eight channels; no live model access or input mutation\nPASS stale radar contains no fresh green glyphs, even in the legend\nPASS legacy archive never fabricates proximity bands\nPASS forward renderer excludes rear targets and models only saved heading/dimensions\nPASS forward surface hits use archived hit coordinates; no-return and legacy do not invent hits\nPASS geometric proximity and forward reconstruction use their saved sampling frame despite localization heading noise\nPASS rotated saved proximity frames keep clockwise right-positive geometry without mutating recorded coordinates\nPASS selected saved channel has a neutral outline and target title without changing colors, metadata or samples\nPASS unknown selection and legacy bundles do not invent channels or change default geometry\nPASS stale selected channel keeps stale readings and neutral selection without fresh proximity colors\nPASS rear, no-return and missing-coordinate selection only explains why no forward point is available\nPASS custom threshold and range legends preserve two decimal places instead of rounding sensor settings\nPASS both renderers obey the passive SVG export vocabulary; all geometry is finite\n16 renderer checks passed.\n"
+    },
+    {
+      "command": "node tests/perception_analysis_smoke.cjs",
+      "status": "PASS",
+      "cases": 15,
+      "output": "PASS empty inputs produce serializable null minima and interval statistics\nPASS duplicate fresh and stale cache copies count one original observation and one proximity exposure\nPASS a stale-only sample keeps historical minimum provenance but never adds fresh exposure or intervals\nPASS an active sensor fault is unavailable even within cache age timeout, matching archive and UI freshness\nPASS old archives and absent or unsampled bundles do not fabricate bumper data\nPASS missing freshness is unknown instead of silently classified fresh or stale\nPASS schema and clock mismatches, nonfinite or negative clocks are rejected\nPASS invalid proximity configurations never feed distance or status summaries\nPASS negative, nonfinite, out-of-range, mistyped, unlabelled or status-inconsistent hits are ignored\nPASS exact close, warning and range boundaries preserve recorded configured states\nPASS no-return channels remain unknown and never supply clearance or a green hit\nPASS intervals sort distinct clocks per car and keep gaps without claiming network frequency\nPASS legacy nested bundle fallback works but never hides malformed top-level content\nPASS duplicate channel identifiers cannot masquerade as extra exposures\nPASS analysis preserves arrays, bundles and target objects without returning mutable references\nPASS 15 loaded-frame analysis checks\n"
+    },
+    {
+      "command": "node tests/frontend_regressions.cjs",
+      "status": "PASS",
+      "cases": 7,
+      "output": "PASS parked Győr P03 resolves to its nearest slot instead of earlier nearby P01; assignment does not override actual position\nPASS drag suppresses only pointer click; Enter, Space and assistive keyboard click still select the slot\nPASS main-map follow button is disabled for archived cars and preview, enabled only for the active selected car\nPASS shared map overlay uses recorded mount, fan and first-hit coordinates; stale keeps geometry without fresh colours\nPASS live and archived channel tables use same distances and targets; stale/no-return cannot advertise fresh clear space\nPASS model explanations follow custom archived range, thresholds and beam rather than fixed defaults\nPASS telemetry redraw preserves channel button identity and updates readings without losing keyboard focus\n7 frontend regressions passed.\n"
+    },
+    {
+      "command": "node tests/frontend_navigation_v09.cjs",
+      "status": "PASS",
+      "cases": 12,
+      "output": "PASS out-of-order requests cannot replace a newer run/car window or release its loading state\nPASS late old success or error cannot overwrite a completed newer selection\nPASS frozen until_id survives paging and time seek; explicit refresh releases the ceiling\nPASS zero ceiling stays frozen and unrelated identity never inherits another car's prefix\nPASS receipt order and target receipt ID remain exact even when simulation clocks regress\nPASS invalid time seeks make no request and do not clear an existing loaded archive\nPASS empty and earliest-fallback responses have explicit notes with no invented position samples\nPASS mismatched identities and malformed or oversized windows cannot replace a valid loaded archive\nPASS selection invalidation discards pending archive requests and removes trip channel state\nPASS channel selection is scoped to prefix, run, car and the actual saved channel set\nPASS sensor focus uses archived mount/hit geometry and keeps live/trip views isolated\nPASS quality cards analyze the loaded received window and retain the exact minimum evidence row\n12 frontend navigation checks passed.\n"
+    },
+    {
+      "command": "node tests/frontend_replay_v10.cjs",
+      "status": "PASS",
+      "cases": 21,
+      "output": "PASS regressed/missing/negative clocks break map segments; equal clocks retain receipt order\nPASS per-row nested cadence avoids false gaps when integration step changes but retains true missing intervals\nPASS overview uses stored break flags instead of treating downsampled elapsed time as a gap\nPASS fit extents include full valid-point bounds even when a far vertex was thinned from outline\nPASS missing or invalid manual sample clock is labelled unknown instead of displayed as zero\nPASS cadence shows saved nominal/quantized/observed fields and leaves old archive unknowns explicit\nPASS continuation holds exact last evidence, freezes both ceilings, reuses overview and preserves view\nPASS positive gap at page seam holds old position and stale observations until next exact timestamp\nPASS pause during an in-flight continuation prevents a late response from replacing or restarting trip\nPASS pause while a received seam awaits its timestamp cancels the pending window\nPASS new time seek takes precedence over late continuation without losing fixed prefix\nPASS continuation errors keep evidence and stop playback with an explicit error\nPASS changed frozen event ceiling and a regressed seam cannot silently continue\nPASS within-window regression halts at preceding exact receipt; duplicate clocks need no invented duration\nPASS unchecked continuous mode stops at local window end and never issues another request\nPASS loaded trip pins archive identity across a live reset; unloaded current catalogue refresh clears stale cars\nPASS late run-list responses cannot overwrite newer catalogue selection\nPASS inspect-trip captures car and run before awaiting; changed live selection aborts request\nPASS car selection invalidates pending catalogue response instead of restoring an old selected car\nPASS no-return channel focus ignores contradictory saved hit and focuses its actual mount\nPASS overview is fetched for first identity/refresh, cached for same prefix, and toggle is presentation only\n21 frontend replay checks passed.\n"
+    },
+    {
+      "command": "node tests/frontend_mission_v11.cjs",
+      "status": "PASS",
+      "cases": 24,
+      "output": "PASS legacy events preserve unknown clocks without invented zero and valid zero remains seekable\nPASS programmatic event seek ignores null empty boolean and negative clock but accepts numeric zero\nPASS stale older-event request failure cannot show an error or unlock a newer request\nPASS current older-event error stays visible and restores its own control\nPASS mission is requested initially, cached by both fixed ceilings across windows, and refreshed explicitly\nPASS mission is not reused when only event ceiling changes, and a missing cache is requested next\nPASS mission with wrong car run scope or fixed ceilings cannot replace current evidence\nPASS late mission response cannot restore a replaced selection or mix new car identity\nPASS fullprefix metrics are separate from window and duration bars exclude unknown span\nPASS unknown metrics remain unavailable while genuine zero values are represented\nPASS missing mission has an explicit unavailable state instead of deriving a fulltrip from its window\nPASS unknown or zero-duration bars do not turn samplecount into time; bounded others preserve totals\nPASS first and last anchors use exact frozen start/end receipts despite interleaved global IDs and duplicate or absent clocks\nPASS anchor from mismatched mission identity or either frozen ceiling cannot issue a request\nPASS detached anchor from a different trip cannot seek into the new selection\nPASS busy-laptop archive windows and older events receive a 30 second budget with unchanged fixed ceilings\nPASS actual JSON helper retains five second live default and clears timer after success\nPASS actual JSON helper uses explicit long budget and reports friendly named timeout\nPASS body-read AbortError is normalized after timeout while its timer is always cleared\nPASS actual server HTTP messages and fallback status remain intact rather than becoming timeout errors\nPASS network and JSON parse failures retain original error identity and clear timer\nPASS observer diagnostics absent or malformed stay unavailable rather than inventing an empty queue\nPASS observer diagnostics preserve valid numeric zero for pending messages and local batch time\nPASS observer reports real queue and over-budget wall time as approximate local processing with a soft target\n24 frontend mission checks passed.\n"
+    },
+    {
+      "command": "node tests/frontend_transport_v12.cjs",
+      "status": "PASS",
+      "cases": 10,
+      "output": "PASS fresh callbacks, queue waiting and old displayed snapshot remain independently scoped clocks\nPASS old payload and invalid numeric ages are unknown instead of zero while old displayed age is retained\nPASS genuine zero ages and wait survive strict validation without marking backlog\nPASS broker-alive stale snapshot badge is distinct from disconnected or HTTP-unreachable states\nPASS recovery requires explicit server flags and recent callback snapshot; no arbitrary stale action can qualify\nPASS disconnected, fault, stale callback, unknown clocks and offline HTTP deny recovery despite optimistic flags\nPASS only pause and 1x are enabled for stale display recovery; reset remains possible and other live controls stay gated\nPASS stale pause request remains explicit pause even when old snapshot says paused; publication is not falsely applied\nPASS speed 1x may publish while stale but speed-up resume and other actions never issue HTTP requests\nPASS fresh paused snapshots retain normal resume behavior and recovery permission does not imply successful application\n10 frontend transport checks passed.\n"
+    },
+    {
+      "command": "node tests/frontend_capacity_v13.cjs",
+      "status": "PASS",
+      "cases": 25,
+      "output": "PASS only declared server clock and current run observations are accepted; old payload cannot reuse a chart\nPASS genuine zero rates, queue and growth remain visible observations\nPASS null, coercible text, booleans and nonfinite rates never become a fabricated zero\nPASS queue count must be a whole safe count, while fractional nonnegative rates remain valid\nPASS a negative queue growth is an observed draining trend, not an invalid rate or overload alarm\nPASS growing received queue has a scoped warning and references existing acknowledged controls\nPASS initial collecting sample at elapsed zero has a real queue dot but no invented rate or duration\nPASS current cards cannot infer rates from an absent, invalid or too short host window\nPASS unavailable counters do not erase separately received historical queue observations\nPASS stale measurements remain marked historical and cannot raise a fresh growing-queue message\nPASS run change and backend counter-reset history replace plots instead of joining prior runs\nPASS irregular actual elapsed time determines x coordinates rather than browser polling positions\nPASS missing rate values split only that source series and do not fabricate queue gaps\nPASS long sampling gap produces distinct segments, never an interpolated continuous traffic trace\nPASS unknown interval, invalid clocks and nonincreasing receipt order cannot be sorted into a continuous trace\nPASS rate window invalidity interrupts received historical rates even when a value is present\nPASS units and scopes remain explicit and rate series share an axis separate from queue counts\nPASS no wall-age value is coerced into fresh zero and repeated polls do not add observations\nPASS drawing never mutates or sorts frozen server evidence\nPASS bounded source history and extreme finite observations produce bounded finite SVG geometry\nPASS persistent HTTP failure marks preserved measurements historical without mutating source or recomputing age\nPASS brief HTTP errors preserve the existing 1500ms threshold instead of falsely marking the panel disconnected\nPASS a successful loading state updates the measurement series even without a map and clears a prior run\nPASS fresh HTTP recovery replaces the offline presentation solely from the next received measurement\nPASS old cached HTML and partially missing new elements cannot turn a successful loading poll into an HTTP failure\n25 frontend capacity checks passed.\n"
+    },
+    {
+      "command": "node tests/frontend_transport_archive_v14.cjs",
+      "status": "PASS",
+      "cases": 22,
+      "output": "PASS archive schema accepts an exact run and rejects oversized, mismatched or malformed received pages\nPASS frozen page identity, strictly ascending sample ids and advancing cursors are enforced\nPASS legacy not-recorded runs display unknown traffic rather than manufactured zero\nPASS genuine empty recorded history and actual zero traffic retain separate meanings\nPASS unknown coerced booleans text and nonfinite values never render as valid numeric observations\nPASS distinct host measurement series never bridge a restarted elapsed clock\nPASS same-series missing values, invalid clocks and long actual sampling gaps split without sorting\nPASS sample ordinal x coordinates do not reinterpret reset elapsed time as a continuous timeline\nPASS full prefix summary and current page count stay distinct, with charts bounded to120 rows\nPASS archive render and chart processing preserve frozen received evidence\nPASS observation detail retains UTC, own monotonic time, processed simulation time and recorded ceilings separately\nPASS exports freeze exact archive run and prefix and do not follow current live run\nPASS first query fixes a prefix then next and previous pages reuse it without growing browser history\nPASS manual fresh-prefix request explicitly drops the old ceiling and page stack\nPASS run change cancels older HTTP page completions and retains only matching newly selected run\nPASS older same-run HTTP request cannot overwrite a newer refresh ceiling\nPASS failed page fetch preserves fixed data and exports with explicit stale status\nPASS wrong-run or changed frozen API response never replaces the preserved page\nPASS catalogue refresh keeps a pinned archived run across a new live run\nPASS run catalogue paging resolves historical selection without discarding its frozen chart\nPASS live reset cache function leaves archive identity, page and selection unchanged\nPASS archived controls are bound to keyboard-native slider and page buttons, guarded for missing old HTML\n22 frontend transport archive checks passed.\n"
+    },
+    {
+      "command": "node tests/frontend_transport_context_v15.cjs",
+      "status": "PASS",
+      "cases": 23,
+      "output": "PASS context exactsample run and both receiptceilings are validated\nPASS vehicle pages are bounded and ascending by known car id, exactreceiptids never exceed sample\nPASS semantic pages enforce descending records within frozen prefix and strict older cursor\nPASS explicit context request uses selected archived sample, bounded separate pages and real stored values\nPASS null nonfinite boolean text readings remainunknown and measuredzero remainszero\nPASS legacy incomplete retention and empty received evidence have explicitunknown meaning\nPASS car next and previous pages reuse same sample, retain no growing row collection\nPASS event older and newer pages preserve independent carcursor and exactsample\nPASS archive selectionchange invalidates an inflight context response including same sample refreshedprefix\nPASS newer requests win over old success and old failure for same frozen identity\nPASS failed or mismatched page fetch preserves received evidence and explicitstale status\nPASS live reset cannot move selected archive context or manufacture newer poses\nPASS contexttripjump pins savedrun car exactreceipt with explicitglobalceilings and blocks full exports\nPASS global receiptceiling mayexceed selectedcar lastreceipt when futurecar records exist outside frozenprefix\nPASS invalid explicittripbounds never issue a historyrequest\nPASS future records events overview or summary and wrong exacttarget cannot replace trip evidence\nPASS changed context while triprequest ispending cancels result even after validresponse\nPASS contextorigin navigation remains frozen; manualrefresh explicitly expands prefix and reenables exports\nPASS late run and car catalogues cannot restoreliveidentity during contextjump\nPASS context navigation rejects changedsummaryceilings and futureeventcursor\nPASS contradictory complete legacy retention never appears as complete evidence\nPASS trip provenance and explicitrefresh scope are visible in production summary\nPASS actual UIhooks nullsafe and immutable received response is not modified by rendering\n23 frontend transport context checks passed.\n"
+    },
+    {
+      "command": "node tests/frontend_operations_v16.cjs",
+      "status": "PASS",
+      "cases": 23,
+      "output": "PASS explicit run bounded page and mutable lifecycle contract are validated\nPASS filter response cannot smuggle resolved or acknowledged rows\nPASS current and archived run identity are always explicit, never default latest\nPASS resolved pending review and active acknowledged are independently visible\nPASS older/newer pages freeze episode membership and never accumulate growing lists\nPASS HTTP polling is deduplicated and a failed page preserves evidence while blocking ack\nPASS explicit run change rejects old success and failure without exposing wrong history\nPASS same run filter change ignores stale response from former filter\nPASS acknowledgment cannot act on archived stale offline reset or already acknowledged rows\nPASS explicit ack posts run item lifecycle revision and note only, leaves active fault intact\nPASS ack failure preserves draft and observed state, marks stale, never automatically retries\nPASS late ack completion never corrupts newly selected run\nPASS draft editing survives render refresh and oversized notes are rejected before HTTP\nPASS focus in note field postpones automatic list replacement; refresh still samples no invented values\nPASS opening evidence requests first fault sample exact UTC and ceilings, never latest observation\nPASS wrong opening evidence boundaries or UTC are rejected and never scroll to manufactured context\nPASS archived opening evidence persists through live reset and background archive sample replacement\nPASS unknown and legacy unavailable data never masquerade as healthy or zero readings\nPASS late run catalogue cannot replace explicit selection or drop missing saved run\nPASS rendering never mutates stored API evidence and missing optional panel is safe\nPASS a live reset immediately marks old diagnostics historical and disables draft editing as well as ack\nPASS per-rule diagnostic coverage distinguishes observed fault healthy and stale unknown\nPASS production markup exposes linked panel and narrow-view actions have no fixed width\n23 frontend operations checks passed.\n"
+    },
+    {
+      "command": "node tests/frontend_operations_report_v17.cjs",
+      "status": "PASS",
+      "cases": 19,
+      "output": "PASS report validates exact run ceiling UTC scope and bounded aggregate partitions\nPASS report validates fixed rule rows counts completeness and duration sample eligibility\nPASS capture is explicit deduplicated and pins selected page ceiling without filter\nPASS complete prefix downloads use selected report run and ceiling without page50 or state\nPASS live polling can enlarge list while captured data and export membership stay frozen\nPASS inflight capture accepts its pinned ceiling after a newer live page arrives\nPASS wrong report run or ceiling is an error preserving prior numbers and disabling downloads\nPASS late success and failure after run change never overwrite a new report\nPASS filter change keeps captured report and accepts same-run inflight capture\nPASS invalid and missing time pairs display dashes with actual excluded sample counts\nPASS a real zero delay and fixed zero-count rule rows remain selectable semantic data\nPASS empty available archive has honest zero counts null time means and bounded export0\nPASS legacy archive capture reports unavailable without inventing zeros or healthy state\nPASS stale offline loading wrong-run and unavailable data disable export and capture safely\nPASS report failure keeps prior capture disables export and is recoverable by explicit retry\nPASS offline diagnostics never keep a green healthy badge or healthy rule observations\nPASS reset normalizes real current labels immediately keeps selection and schedules one catalog refresh\nPASS rapid reset token cancels obsolete catalog scheduling and normalizes stale active flags\nPASS markup has compact accessible report data fresh export scope and host-clock explanation\n19 frontend operations report checks passed.\n"
+    },
+    {
+      "command": "node tests/frontend_operations_search_v18.cjs",
+      "status": "PASS",
+      "cases": 22,
+      "output": "PASS every operations request sends four explicit extras including empty text defaults\nPASS typing drafts changes neither request identity nor loaded acknowledgments\nPASS automatic live refresh uses applied text and ignores changed input drafts\nPASS late applied response remains valid after text draft changes without a second apply\nPASS select changes commit only selectors while typed text still awaits explicit apply\nPASS apply trims original Unicode and exact car casing then searches only the server\nPASS input and blur never query while native Enter and Apply bind explicit commits\nPASS client rejects invalid identifiers and over128 code points without losing applied page\nPASS filter metadata echoes each applied value exactly and count bounds are enforced\nPASS wrong status rule severity exact car and ASCII literal search rows are rejected\nPASS Unicode server matches never get falsely rejected by incomplete JavaScript case folding\nPASS default legacy metadata is tolerated only for the complete default filter tuple\nPASS matching count means complete bounded prefix rather than displayed rows\nPASS new applied filter restarts first page and releases previous membership ceiling\nPASS old success and failure after a new search cannot replace result or unlock its request\nPASS reset clears all draft and applied filters preserves note drafts and ignores late searches\nPASS zero matches and missing legacy archive have distinct honest presentation\nPASS failed refresh preserves filtered evidence and warns about preserved match count\nPASS run reset preserves explicit selected filtered archive and pending filter identity\nPASS late acknowledgment across filter change cannot erase review draft or restore old result\nPASS filters leave captured full-prefix report and dedicated exports unchanged\nPASS search group is labeled keyboard native and responsive without automatic text requests\n22 frontend operations search checks passed.\n"
+    }
+  ],
+  "total_cases": 239,
+  "mqtt_archive": {
+    "run_id": "4a9717a75913",
+    "source": "C:\\Users\\User\\Desktop\\Ipar 4.0\\projekt\\results\\perception-smoke-20261011-224308\\CAR001-perception.json",
+    "input_scope": "complete fixed received-car JSON export, offline analysis",
+    "source_sha256": "1a6d3b605707d4d7e1a8243ee1e604103d9bb03be1082546cf521934dfd20eac",
+    "analysis": {
+      "schema_version": 1,
+      "source": "loaded_received_perception_frames",
+      "scope": "loaded_window_not_full_run",
+      "frames": {
+        "received": 2486,
+        "missing": 0,
+        "unsampled": 0,
+        "invalid": 0,
+        "fresh": 2426,
+        "stale": 60,
+        "freshness_unknown": 0,
+        "fault_active": 60
+      },
+      "samples": {
+        "distinct": 2426,
+        "fresh_distinct": 2426,
+        "stale_only_distinct": 0,
+        "freshness_unknown_distinct": 0,
+        "repeated": 60
+      },
+      "intervals": {
+        "count": 2425,
+        "min_s": 0.09999999999999432,
+        "mean_s": 0.10247422680412371,
+        "max_s": 6.1
+      },
+      "proximity": {
+        "fresh_distinct_samples": 2426,
+        "close_samples": 0,
+        "warning_samples": 0,
+        "clear_hit_samples": 31,
+        "no_return_only_samples": 2395,
+        "missing_fresh_samples": 0,
+        "invalid_frames": 0,
+        "invalid_channels": 0,
+        "valid_distinct_samples": 2426,
+        "minimum_clearance": {
+          "row_index": 0,
+          "telemetry_id": 1,
+          "row_sim_time_s": 0.05,
+          "sample_sim_time_s": 0.05,
+          "car_id": "CAR001",
+          "channel_id": "rear_center",
+          "channel_label": "Hátul közép",
+          "target": {
+            "id": "CAR002",
+            "kind": "vehicle",
+            "label": "CAR002",
+            "source": "sampled_simulation_vehicle_body"
+          },
+          "distance_m": 2.4,
+          "status": "clear",
+          "fresh_when_received": true
+        }
+      },
+      "definitions": {
+        "frames": "A betöltött fogadott keretek; ismételt gyorsítótárazott észlelések is szerepelnek. Friss: fresh=true és nincs aktív érzékelőhiba; a hibás gyorsítótárazott keret az elavult csoportba kerül, az eredeti vezérlési bizonyíték változatlan.",
+        "samples": "Egyedi (járműazonosító, eredeti érzékelő-mintaidő) párok; az idő nulla is érvényes.",
+        "intervals": "Járművenként rendezett, különböző, frissen fogadott eredeti mintaidők szimulációs időkülönbsége; nem hálózati frekvencia vagy késleltetés.",
+        "proximity_counts": "Az adott színsávot tartalmazó egyedi friss minták száma. A sávok átfedhetnek; elavult másolat nem új kitettség és a közelség nem ütközési veszélymutató.",
+        "minimum_clearance": "A betöltött egyedi minták legkisebb érvényes lökhárítós találata; a fresh_when_received jelzi, ha csak elavult másolat áll rendelkezésre.",
+        "no_return": "Nincs visszatérés a vizsgált sugarakon; nem igazol szabad területet. Részben hibás csatornáknál sem igazol teljes lefedettséget.",
+        "validation": "1-es séma, ismert forrás, egyező eredeti mintaidő (1 µs tűrés), véges nemnegatív távolság a hatótávon belül, egyező állapot és konfigurált küszöbök."
+      }
+    }
+  },
+  "source_sha256": {
+    "web/app.js": "0cf9d61543c5c5ed9266af2318882d0184bbe69f03e242e2c89f8ef3089272c8",
+    "web/index.html": "944be04976c0f905d0b00211335867da47b69e9a5e862440d8315a8fc97ec95f",
+    "web/style.css": "f989a1e3b77f68dcd882dbe7dc4dcf313e9529a1c728ea75392a4c934850f881",
+    "web/perception.css": "2f5eff563995798513961e36759ae6934d9ad3358a0b45f8b15241ff5fb2f0a1",
+    "web/perception.js": "a3fee6d61890886e8c3c1c1d5540b5981e87adc3e7b7ff0fc107768d27e66722",
+    "web/perception-analysis.js": "fcd6f708cc0e687cccd3c8868cc51d60d18a459c6f561d20812fe0c0f264946a",
+    "tests/perception_visuals_smoke.cjs": "9733ec855e423ee2207ca7d8bb7a34a94cb9daa0e3d25ba5ec857bd59745d118",
+    "tests/perception_analysis_smoke.cjs": "86c87c21f8236e8566c87e66248c4a44fd68c6757be5ff91c763f9df1b354886",
+    "tests/frontend_regressions.cjs": "9d6698a754a28303c5775f7faf8c8a65243c4552890fe2383accb88509ab390f",
+    "tests/frontend_navigation_v09.cjs": "c79e439ffbbf169d7fa780b69ca579d57a0d0660b4d3dd570ab025bf3d112a4a",
+    "tests/frontend_replay_v10.cjs": "88ceb7a78c3e59c6accc20db5977b879e4d97bd975874d518aed5c3a447e348b",
+    "tests/frontend_mission_v11.cjs": "5fb909fe3fbd5d16c3573d036a9d9ffebe77173d9ac2233ed246147e93b5c736",
+    "tests/frontend_transport_v12.cjs": "1d8fc90fb8fc63556f298fc71be0b26a3817a4528ff585e2e7af10f6182a5fe9",
+    "tests/frontend_capacity_v13.cjs": "52e3d18ba5e79ba773cc3ddbb72c65aa5bdbd22d246f2aefc51de6fa38096ac8",
+    "tests/frontend_transport_archive_v14.cjs": "2ae10192b321edad141901f58092d05cf99a49ebe430ee6c665b5d0981c1220e",
+    "tests/frontend_transport_context_v15.cjs": "fe7a71e33849655635e1fa99aa62260fc4ecde5a6d2b2977b8e3bee10661d85f",
+    "tests/frontend_operations_v16.cjs": "249463b270cf275f6fc53238335a805364c8ee30c9ea5dce6eda983a4ec6ff33",
+    "tests/frontend_operations_report_v17.cjs": "d39dfcd4f43fef61903ed1b9b0f773a9b48828a2fcb3ace68dc8be3c4f83322d",
+    "tests/frontend_operations_search_v18.cjs": "a005577a70d4166294928345b062c5e7e7e5d344b544911a8d8599ac1cbc8e92",
+    "experiments/verify_frontend.py": "a24f1a3b16123aba2a8ae8560b91ef724ac30a55dba9610edecde0cf5e0341f2"
+  },
+  "sources_unchanged_during_run": true
+}

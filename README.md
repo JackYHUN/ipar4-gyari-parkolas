@@ -1,6 +1,21 @@
 # Ipar 4.0 – gyári készjármű-parkolási szimulátor
 
-Python-alapú oktatási prototípus, valódi helyi MQTT 3.1.1 adatúttal, webes megjelenítéssel, virtuális érzékelőkkel és ellenőrizhető parkolófoglalásokkal. A kurzusbeadandó mért forráspillanatképe: **v0.18.0**.
+## Fékezési döntés élőben és az útelőzményben
+
+Az érzékelőnézet új kártyája megmutatja a sebességet a vezérlési lépés előtt és után, az alkalmazott gyorsulást, a megállási célt és az ideális fékúthoz viszonyított modellbeli tartalékot. A fékezés és a már bekövetkezett megállás külön állapot. Elavult vagy hiányos adat külön jelzést kap; ellentmondó diagnosztikából nem számolunk tartalékot. A JSON- és SVG-mintaletöltés a nyers adatok mellett az értelmezést is megőrzi.
+
+[Műszaki leírás és értelmezési határok](docs/FEKEZESI_DIAGNOSZTIKA.md). A változtatás a felületet bővíti, a mért mozgásmodell és konfigurációk eredeti SHA-256 értékei egyeznek. A 17 oldalas beadási jelentéshez tartozó korábbi kiadás [f625cfe](https://github.com/JackYHUN/ipar4-gyari-parkolas/tree/f625cfe5e85cf5a8a28943704e7e025b89b7b0a4) alatt érhető el.
+
+Az új funkció 31 önálló ellenőrzése:
+
+```powershell
+node tests/frontend_braking_analysis.cjs
+node tests/frontend_braking_panel.cjs
+```
+
+A [fejlesztői nyugta](results/ui/braking-panel-check.json) 239 korábbi regressziót és 2486 korábban fogadott vezérlési keret offline elemzését is rögzíti. A [böngészős vizsgálat](results/ui/braking/browser-check.json) külön igazolja az élő/archív megjelenítést, a tényleges mintaletöltéseket és a keskeny képernyős tördelést. Ez a felületi bővítés nem új statisztikai modellkampány.
+
+Python-alapú oktatási prototípus, valódi helyi MQTT 3.1.1 adatúttal, webes megjelenítéssel, virtuális érzékelőkkel és ellenőrizhető parkolófoglalásokkal. A mozgásmodell mért forráspillanatképe: **v0.18.0**.
 
 | Kurzuskonfiguráció | Érték |
 |---|---:|

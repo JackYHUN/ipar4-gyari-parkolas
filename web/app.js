@@ -290,7 +290,33 @@
     const proximityText=channels.length?`A ${reading(proximity.range_m,"m",2)} hatótávú közelségcsatornák a lökhárítótól mért első geometriai találatot mutatják. Piros: legfeljebb ${reading(proximity.thresholds_m?.close,"m",2)}; sárga: legfeljebb ${reading(proximity.thresholds_m?.warning,"m",2)}; zöld: távolabbi találat; szürke: nincs visszatérés. Csatornánként ${hasValue(proximity.rays_per_channel)?proximity.rays_per_channel:"ismeretlen számú"} tesztelt sugár, ±${reading(proximity.beam_half_angle_deg,"°",1)} nyaláb. A nyalábok között és hatótávon túl a találat hiánya nem igazol szabad területet. A közelségi térkép és az elölnézet a mentett geometriai mintavételi helyet és irányt használja; a lokalizációs zaj nem fordítja el a találati pontokat.`:"Régi, közelségcsatorna nélküli mintából nem feltételezünk új mérést; az elölnézet a régi mért irány szerinti vetületet használja.";
     return `${proximityText} A színküszöbök a mintához tartozó modellbeállítások. A ${reading(sample?.range_m,"m",1)} környezeti mintában nincs takarásmodell; a fogadott tárgykoordináták zaját megtartjuk. A zebra térképi állapot, az elölnézet nem kamerakép. A felületi pontokból nem rekonstruáljuk az akadály teljes alakját. A JSON-export megőrzi a mintát.`;
   }
+  function renderBrakingDecision(prefix,data){
+    const result=window.YardBrakingAnalysis.analyzeFrame(data),panel=$(`${prefix}-braking-panel`),badge=$(`${prefix}-braking-status`);
+    const phases={braking:"Fékezés folyamatban",accelerating:"Gyorsítás",cruising:"Egyenletes haladás",stopped:"Megállt"};
+    const retained=result.freshness!=="current",inconsistent=result.consistency==="inconsistent";
+    panel.dataset.reserve=result.model_reserve_m===null?"unknown":result.model_reserve_m<0?"negative":"nonnegative";
+    panel.dataset.state=!result.available?"unknown":inconsistent?"inconsistent":retained?"retained":result.phase;
+    badge.textContent=!result.available?"Nincs értelmezhető döntés":inconsistent?"Eltérő diagnosztikai adatok":retained?"Megőrzött döntés":"Fogadott döntés";
+    badge.className=`data-badge ${!result.available?"neutral":inconsistent||retained?"warn":"good"}`;
+    $(`${prefix}-braking-phase`).textContent=result.available?phases[result.phase]||"Ismeretlen mozgás":"Nem állapítható meg";
+    $(`${prefix}-braking-speed`).textContent=result.available?`${reading(result.speed_before_m_s,"m/s",2)} → ${reading(result.speed_after_m_s,"m/s",2)}`:"—";
+    $(`${prefix}-braking-acceleration`).textContent=result.available?reading(result.applied_acceleration_m_s2,"m/s²",2):"—";
+    $(`${prefix}-braking-limit`).textContent=result.available?reading(result.stop_limit_remaining_m,"m",2):"—";
+    $(`${prefix}-braking-reserve`).textContent=result.available&&result.consistency==="consistent"?reading(result.model_reserve_m,"m",2):"—";
+    $(`${prefix}-braking-use`).textContent=result.available&&result.consistency==="consistent"?reading(result.braking_utilization_pct,"%",0):"—";
+    $(`${prefix}-braking-clock`).textContent=result.available?`Döntés: ${reading(result.decision_sim_time_s,"s",2)} · lépés: ${reading(result.motion_interval_s,"s",3)}${data?.gap?" · visszajátszási adatrés":retained?" · megtartott megfigyelés":""}`:"A naplózott vezérlési döntésre várunk.";
+    const bar=$(`${prefix}-braking-bar`),remaining=result.stop_limit_remaining_m,brake=result.braking_distance_m;
+    const comparable=result.available&&result.consistency==="consistent"&&remaining!==null&&brake!==null&&(remaining>0||brake>0);
+    bar.hidden=!comparable;
+    if(comparable){
+      const span=Math.max(remaining,brake),used=Math.min(100,100*brake/span),limit=Math.min(100,100*remaining/span);
+      bar.setAttribute("aria-label",`Ideális fékút: ${reading(brake,"m",2)}; megállási célig: ${reading(remaining,"m",2)}. Modellértékek.`);
+      $(`${prefix}-braking-used`).style.width=`${used}%`;$(`${prefix}-braking-marker`).style.left=`${limit}%`;
+    }else bar.removeAttribute("aria-label");
+    $(`${prefix}-braking-note`).textContent=!result.available?"A hiányzó, régi vagy hibás döntési adatokból nem számolunk megállási tartalékot.":inconsistent?"A naplózott időpontok vagy kinematikai értékek nem illeszkednek; származtatott tartalék és kihasználás nem jelenik meg.":`${retained?"A megőrzött döntés számai láthatók; új vagy élő észlelést nem jelentenek. ":""}A tartalék a mozgás előtti megállási céltávolság és az ideális fékút különbsége. A cél már tartalmaz ráhagyásokat; a reakcióutat nem vonjuk le még egyszer. Ez modellbeli összevetés, nem igazolt fizikai biztonsági távolság.`;
+  }
   function renderPerception(prefix,data){
+    renderBrakingDecision(prefix,data);
     const available=usableSensorFrame(data?.sensors);perceptionFrames.set(prefix,available?data:null);renderProximitySelection(prefix,available?data:null);
     for(const kind of ["svg","json"]){const anchor=$(`${prefix}-perception-${kind}`);anchor.setAttribute("aria-disabled",String(!available));anchor.classList.toggle("disabled",!available);if(!available)anchor.removeAttribute("href");else anchor.href="#";}
     if(!available){empty($(`${prefix}-radar`));empty($(`${prefix}-front-view`));renderProximityTable(prefix,null,false);$(`${prefix}-perception-source`).textContent="Az észlelési magyarázat a fogadott vagy mentett mintával együtt jelenik meg.";$(`${prefix}-perception`).classList.remove("is-stale");delete $(`${prefix}-perception`).dataset.carId;delete $(`${prefix}-perception`).dataset.sampleTime;return;}
@@ -318,6 +344,7 @@
   function preparePerceptionDownload(event,prefix,kind){
     event.preventDefault();const data=perceptionFrames.get(prefix);if(!data){showToast("Ehhez a mintához nincs mentett érzékelőcsomag.",true);return;}
     const documentData={schema_version:1,kind:"received_virtual_sensor_frame",run_id:data.run_id,car_id:data.car_id,telemetry_sim_time:data.telemetry_sim_time,telemetry_source:data.telemetry_source,utc:data.utc,sensors:data.sensors,control:data.control,view_context:{archived:Boolean(data.archive),held_during_gap:Boolean(data.gap),fresh_in_view:Boolean(data.fresh),selected_channel_id:selectedProximityChannel(prefix,data)?.id||null,description:"Egocentrikus virtuális radarnézet és szintetikus elölnézet; nem kamera- vagy radarfelvétel."}};
+    documentData.braking_analysis=window.YardBrakingAnalysis.analyzeFrame(data);
     let content;if(kind==="json"){content=JSON.stringify(documentData,null,2);}
     else{const svg=node("svg",{xmlns:NS,width:910,height:397,viewBox:"0 0 910 397","font-family":"Segoe UI, Arial, sans-serif"});node("rect",{width:910,height:397,fill:"#f4f9fa"},svg);node("text",{x:16,y:23,fill:"#3d7183","font-size":14,"font-weight":600},svg,`${data.car_id} · minta ${fmt(data.sensors.sample_sim_time_s,2)} s · ${data.run_id}`);const radar=$(`${prefix}-radar`).cloneNode(true),front=$(`${prefix}-front-view`).cloneNode(true);for(const s of [radar,front])s.removeAttribute("id");radar.setAttribute("x",10);radar.setAttribute("y",37);radar.setAttribute("width",340);radar.setAttribute("height",340);front.setAttribute("x",372);front.setAttribute("y",37);front.setAttribute("width",510);front.setAttribute("height",300);svg.append(radar,front);node("text",{x:372,y:359,fill:"#64828e","font-size":11},svg,"Fogadott virtuális észlelésekből rajzolva; nem kamerafelvétel.");node("text",{x:372,y:378,fill:"#64828e","font-size":11},svg,"Zebra: ismert térképi helyhez társított állapot, nem gyalogos-pozíció.");node("metadata",{},svg,JSON.stringify(documentData));content=`<?xml version="1.0" encoding="UTF-8"?>\n${new XMLSerializer().serializeToString(svg)}`;}
     // A native same-origin HTTP attachment also works in embedded browsers

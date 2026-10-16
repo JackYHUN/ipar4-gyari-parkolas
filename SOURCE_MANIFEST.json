@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "prepared_at_utc": "2026-10-12T07:45:32.322937+00:00",
-  "status": "PREPARED_SOURCE_SNAPSHOT",
+  "prepared_at_utc": "2026-10-16T15:27:14.304838+00:00",
+  "status": "PREPARED_BRAKING_UI_UPDATE",
   "source_root_relative": "projekt",
   "repository_root_relative": "output/repository/ipar4-gyari-parkolas",
   "network_publication_performed": false,
@@ -122,33 +122,33 @@
       "path": "web/app.js",
       "kind": "source",
       "source_relative": "web/app.js",
-      "source_sha256": "0b785b317550615fa43bbdabbb4602dbed1cdecf99fa3ee27ac02cf1fb2c7d01",
-      "sha256": "0b785b317550615fa43bbdabbb4602dbed1cdecf99fa3ee27ac02cf1fb2c7d01",
-      "size_bytes": 239735
+      "source_sha256": "0cf9d61543c5c5ed9266af2318882d0184bbe69f03e242e2c89f8ef3089272c8",
+      "sha256": "0cf9d61543c5c5ed9266af2318882d0184bbe69f03e242e2c89f8ef3089272c8",
+      "size_bytes": 243303
     },
     {
       "path": "web/index.html",
       "kind": "source",
       "source_relative": "web/index.html",
-      "source_sha256": "ccb7b90e259f06f3fe9351fbe5dbe7e3ad516672b3ed12c5c3256f741751378a",
-      "sha256": "ccb7b90e259f06f3fe9351fbe5dbe7e3ad516672b3ed12c5c3256f741751378a",
-      "size_bytes": 61031
+      "source_sha256": "944be04976c0f905d0b00211335867da47b69e9a5e862440d8315a8fc97ec95f",
+      "sha256": "944be04976c0f905d0b00211335867da47b69e9a5e862440d8315a8fc97ec95f",
+      "size_bytes": 64347
     },
     {
       "path": "web/perception-analysis.js",
       "kind": "source",
       "source_relative": "web/perception-analysis.js",
-      "source_sha256": "befada47d74435b493a7fa4fa156fedd3d9e6e337ebeb8c1c9748612f9de5d13",
-      "sha256": "befada47d74435b493a7fa4fa156fedd3d9e6e337ebeb8c1c9748612f9de5d13",
-      "size_bytes": 10360
+      "source_sha256": "fcd6f708cc0e687cccd3c8868cc51d60d18a459c6f561d20812fe0c0f264946a",
+      "sha256": "fcd6f708cc0e687cccd3c8868cc51d60d18a459c6f561d20812fe0c0f264946a",
+      "size_bytes": 15512
     },
     {
       "path": "web/perception.css",
       "kind": "source",
       "source_relative": "web/perception.css",
-      "source_sha256": "3b9281211b183bc3fe312c02d2fd73e90e920141d669ae62fe6f66089cb540a1",
-      "sha256": "3b9281211b183bc3fe312c02d2fd73e90e920141d669ae62fe6f66089cb540a1",
-      "size_bytes": 2715
+      "source_sha256": "2f5eff563995798513961e36759ae6934d9ad3358a0b45f8b15241ff5fb2f0a1",
+      "sha256": "2f5eff563995798513961e36759ae6934d9ad3358a0b45f8b15241ff5fb2f0a1",
+      "size_bytes": 4916
     },
     {
       "path": "web/perception.js",
@@ -1811,8 +1811,8 @@
       "kind": "generated_public_documentation",
       "source_relative": null,
       "source_sha256": null,
-      "sha256": "8d20d2941502ee087878e3d675c2090e86e423fba971dbb73e41753ee3d79bfd",
-      "size_bytes": 9520
+      "sha256": "3356babfec1934b6b11fb74260a5f6bc6380437328da35ac76409ab961c9bc0d",
+      "size_bytes": 11011
     },
     {
       "path": "results/course-verification-v18/compact-index.json",
@@ -1858,6 +1858,94 @@
       "source_relative": null,
       "sha256": "0f8b4ee18178f71956bb35f08804545760e580f5203df5e636e5d149d53323ee",
       "size_bytes": 79
+    },
+    {
+      "path": "tests/frontend_braking_analysis.cjs",
+      "kind": "source",
+      "source_relative": "tests/frontend_braking_analysis.cjs",
+      "source_sha256": "c21c66692cb6b6b85a2dd93990a4155eaabed53537087f4f819dc6b82f7c0d2d",
+      "sha256": "c21c66692cb6b6b85a2dd93990a4155eaabed53537087f4f819dc6b82f7c0d2d",
+      "size_bytes": 10938
+    },
+    {
+      "path": "tests/frontend_braking_panel.cjs",
+      "kind": "source",
+      "source_relative": "tests/frontend_braking_panel.cjs",
+      "source_sha256": "c899fb94219223809e4f36dacffb065fbb4862a034dde7cab92895bc16f7f667",
+      "sha256": "c899fb94219223809e4f36dacffb065fbb4862a034dde7cab92895bc16f7f667",
+      "size_bytes": 13013
+    },
+    {
+      "path": "experiments/verify_braking_panel.py",
+      "kind": "source",
+      "source_relative": "experiments/verify_braking_panel.py",
+      "source_sha256": "faa81fde28a3a6f0c873e74810da8713a88c0e63dea44fa708feafd3fdae67ed",
+      "sha256": "faa81fde28a3a6f0c873e74810da8713a88c0e63dea44fa708feafd3fdae67ed",
+      "size_bytes": 4409
+    },
+    {
+      "path": "docs/FEKEZESI_DIAGNOSZTIKA.md",
+      "kind": "documentation",
+      "source_relative": "docs/FEKEZESI_DIAGNOSZTIKA.md",
+      "source_sha256": "6bfcab1b49c48be875e54e14d0758e7dfa8ed3dffd0698faee8d23591b7d3564",
+      "sha256": "6bfcab1b49c48be875e54e14d0758e7dfa8ed3dffd0698faee8d23591b7d3564",
+      "size_bytes": 4356
+    },
+    {
+      "path": "results/ui/braking-regression-base.json",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/braking-regression-base.json",
+      "source_sha256": "7a42e7cd40c396cb80b5e92388a3bd61d07ad406228368818f67f7ba85a77ef1",
+      "sha256": "7a42e7cd40c396cb80b5e92388a3bd61d07ad406228368818f67f7ba85a77ef1",
+      "size_bytes": 30249
+    },
+    {
+      "path": "results/ui/braking-panel-check.json",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/braking-panel-check.json",
+      "source_sha256": "eb921f49bfb5cd981b9ef3a9efd7ac69cbe515740788e1a319568ab07deeb6f2",
+      "sha256": "eb921f49bfb5cd981b9ef3a9efd7ac69cbe515740788e1a319568ab07deeb6f2",
+      "size_bytes": 5422
+    },
+    {
+      "path": "results/ui/braking/browser-check.json",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/braking/browser-check.json",
+      "source_sha256": "878bbb0a1929f73e58e392964e4b20f75b98f8cf1ca24d1ec442322adca5a164",
+      "sha256": "878bbb0a1929f73e58e392964e4b20f75b98f8cf1ca24d1ec442322adca5a164",
+      "size_bytes": 3169
+    },
+    {
+      "path": "results/ui/braking/archive-braking.png",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/braking/archive-braking.png",
+      "source_sha256": "b675e90ec7cc8c0cd58b8af8cc7f218cfc606cb0f03df06946e0fb5e1f8848b8",
+      "sha256": "b675e90ec7cc8c0cd58b8af8cc7f218cfc606cb0f03df06946e0fb5e1f8848b8",
+      "size_bytes": 65928
+    },
+    {
+      "path": "results/ui/braking/mobile-braking.png",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/braking/mobile-braking.png",
+      "source_sha256": "8723d6b79d65d6cedc7cc7c067f88c86f310338093b0b4640f357059c9912b85",
+      "sha256": "8723d6b79d65d6cedc7cc7c067f88c86f310338093b0b4640f357059c9912b85",
+      "size_bytes": 39829
+    },
+    {
+      "path": "results/ui/braking/received-frame.json",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/braking/received-frame.json",
+      "source_sha256": "5faa2dafc158d2ac87a07d9d2490092699949c52ad961079b5eae2b964e8d7ce",
+      "sha256": "5faa2dafc158d2ac87a07d9d2490092699949c52ad961079b5eae2b964e8d7ce",
+      "size_bytes": 11255
+    },
+    {
+      "path": "results/ui/braking/received-frame.svg",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/braking/received-frame.svg",
+      "source_sha256": "fcaf11f3ea3b216653c43cb0ac871469c29e884925ab91f1cc684816bccceca4",
+      "sha256": "fcaf11f3ea3b216653c43cb0ac871469c29e884925ab91f1cc684816bccceca4",
+      "size_bytes": 21312
     }
   ],
   "omissions": [
@@ -2657,5 +2745,7 @@
     "generic_python_executable_path": "Preserved byte-identical runtime provenance in three model summaries, approved for public snapshot.",
     "personal_release_packaging_scripts": "Six legacy package verification scripts omitted; measured core sources unmodified."
   },
-  "measurement_archive_in_public_snapshot": "data/course-comparison-v18.zip"
+  "measurement_archive_in_public_snapshot": "data/course-comparison-v18.zip",
+  "feature": "received_braking_decision_v1",
+  "course_reference_commit": "f625cfe5e85cf5a8a28943704e7e025b89b7b0a4"
 }

@@ -1,0 +1,92 @@
+{
+  "status": "PASS",
+  "feature": "received_braking_decision_v1",
+  "verified_at_utc": "2026-10-16T15:26:51.461Z",
+  "run_id": "d8245dee142a",
+  "source_sha256": {
+    "web/app.js": "0cf9d61543c5c5ed9266af2318882d0184bbe69f03e242e2c89f8ef3089272c8",
+    "web/index.html": "944be04976c0f905d0b00211335867da47b69e9a5e862440d8315a8fc97ec95f",
+    "web/style.css": "f989a1e3b77f68dcd882dbe7dc4dcf313e9529a1c728ea75392a4c934850f881",
+    "web/perception.css": "2f5eff563995798513961e36759ae6934d9ad3358a0b45f8b15241ff5fb2f0a1",
+    "web/perception.js": "a3fee6d61890886e8c3c1c1d5540b5981e87adc3e7b7ff0fc107768d27e66722",
+    "web/perception-analysis.js": "fcd6f708cc0e687cccd3c8868cc51d60d18a459c6f561d20812fe0c0f264946a"
+  },
+  "artifact_sha256": {
+    "results/ui/braking/archive-braking.png": "b675e90ec7cc8c0cd58b8af8cc7f218cfc606cb0f03df06946e0fb5e1f8848b8",
+    "results/ui/braking/mobile-braking.png": "8723d6b79d65d6cedc7cc7c067f88c86f310338093b0b4640f357059c9912b85",
+    "results/ui/braking/received-frame.json": "5faa2dafc158d2ac87a07d9d2490092699949c52ad961079b5eae2b964e8d7ce",
+    "results/ui/braking/received-frame.svg": "fcaf11f3ea3b216653c43cb0ac871469c29e884925ab91f1cc684816bccceca4"
+  },
+  "checks": [
+    {
+      "name": "live_received_decision",
+      "observed": "3.00 -> 3.00 m/s; cruising; 11.95 m model reserve at simulation 52.20 s"
+    },
+    {
+      "name": "sensor_fault_retained",
+      "observed": "Megőrzött döntés; stored zero-speed decision visibly labelled retained"
+    },
+    {
+      "name": "first_archive_frame",
+      "observed": "1 / 1332; stopped; 0.00 -> 0.00 m/s"
+    },
+    {
+      "name": "archived_moving_braking",
+      "observed": {
+        "sim_time": 56.95,
+        "phase": "braking",
+        "before": 1.435633,
+        "after": 1.342336,
+        "reserve": 0.07943900000000004
+      }
+    },
+    {
+      "name": "native_json_download",
+      "observed": "Contains raw control, sensors and consistent braking_analysis"
+    },
+    {
+      "name": "native_svg_download",
+      "observed": "Contains braking_analysis in passive SVG metadata"
+    },
+    {
+      "name": "mobile_no_overflow",
+      "observed": {
+        "fields": [
+          {
+            "overflow": false,
+            "text": "1,44 m/s → 1,34 m/s"
+          },
+          {
+            "overflow": false,
+            "text": "-1,87 m/s²"
+          },
+          {
+            "overflow": false,
+            "text": "0,59 m"
+          },
+          {
+            "overflow": false,
+            "text": "0,08 m"
+          },
+          {
+            "overflow": false,
+            "text": "93 %"
+          }
+        ],
+        "panelWidth": 298,
+        "phase": "Fékezés folyamatban",
+        "scroll": 375,
+        "viewport": 375
+      }
+    },
+    {
+      "name": "console_errors",
+      "observed": []
+    },
+    {
+      "name": "final_marker_css",
+      "observed": "Computed translateX(-1.5px) for 3px target marker: both relative-scale endpoints remain partly visible."
+    }
+  ],
+  "scope": "Actual local MQTT-fed live view and fixed archived trip; native attachment downloads. Not a new statistical model campaign or physical sensor test."
+}

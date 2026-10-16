@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "feature": "received_braking_decision_v1",
+  "verified_at_utc": "2026-10-16T15:25:46.333518+00:00",
+  "model_version": "0.18.0",
+  "regression_cases": 239,
+  "checks": [
+    {
+      "command": "node tests/frontend_braking_analysis.cjs",
+      "status": "PASS",
+      "cases": 20,
+      "output": "PASS bounded braking exposes actual speeds and margin without subtracting reaction twice\nPASS a stopping target is not an already stopped car\nPASS the step reaching zero is stopped even if its applied acceleration is negative\nPASS stationary and constant-speed phases use saved speeds rather than target state\nPASS no assigned stopping target preserves kinematics without inventing a zero margin\nPASS a negative reserve is preserved and never clipped to a reassuring zero\nPASS unknown and missing controllers do not produce diagnostics\nPASS missing or mistyped required scalars are not coerced into measurements\nPASS negative physical values and zero integration or deceleration are invalid\nPASS a missing, invalid or future telemetry time cannot validate the controller clock\nPASS six-decimal rounding is accepted in both independent physical identities\nPASS contradictory braking distance suppresses derived margin and utilization\nPASS contradictory acceleration is disclosed without replacing a received value\nPASS an original sensor clock mismatch is not presented as current or consistent\nPASS stale, faulty, held and caller-stale sensor observations remain retained\nPASS missing, unsampled and malformed sensor bundles leave kinematic freshness unknown\nPASS overflow in an otherwise finite physical identity cannot create derived Infinity\nPASS received zebra-braking frame retains six-decimal diagnostic rounding\nPASS received sensor-outage braking is retained evidence rather than fresh perception\nPASS the analyzer is deterministic, detached and does not mutate saved controller or sensor data\nPASS 20 received-braking diagnostic checks\n"
+    },
+    {
+      "command": "node tests/frontend_braking_panel.cjs",
+      "status": "PASS",
+      "cases": 11,
+      "output": "PASS both native panels have unique renderer targets and load the merged analyzer before app\nPASS a moving zebra-braking decision displays speeds, deceleration, reserve and accessible relative bar\nPASS stopping and acceleration labels follow reported motion rather than a waiting target\nPASS held replay observations keep historical numbers with explicit retained and gap notices\nPASS missing, malformed and future decisions clear all previous displayed measurements and bar label\nPASS contradictory diagnostics preserve reported speeds but suppress derived values and visual comparison\nPASS an unassigned stopping target keeps kinematics without inventing a limit, reserve or bar\nPASS negative model reserve remains signed and gets a distinct panel state without clipping geometry\nPASS live and archive use the same decision interpretation and maintain independent panel state\nPASS good to unavailable to good updates restore only the newest decision without mutating its input\nPASS the actual JSON download exports the same derived diagnostic and keeps raw observations even when unavailable\nPASS 11 received-braking panel integration checks\n"
+    }
+  ],
+  "new_cases": 31,
+  "source_sha256": {
+    "web/app.js": "0cf9d61543c5c5ed9266af2318882d0184bbe69f03e242e2c89f8ef3089272c8",
+    "web/index.html": "944be04976c0f905d0b00211335867da47b69e9a5e862440d8315a8fc97ec95f",
+    "web/perception-analysis.js": "fcd6f708cc0e687cccd3c8868cc51d60d18a459c6f561d20812fe0c0f264946a",
+    "web/perception.css": "2f5eff563995798513961e36759ae6934d9ad3358a0b45f8b15241ff5fb2f0a1",
+    "web/perception.js": "a3fee6d61890886e8c3c1c1d5540b5981e87adc3e7b7ff0fc107768d27e66722",
+    "web/style.css": "f989a1e3b77f68dcd882dbe7dc4dcf313e9529a1c728ea75392a4c934850f881",
+    "tests/frontend_braking_analysis.cjs": "c21c66692cb6b6b85a2dd93990a4155eaabed53537087f4f819dc6b82f7c0d2d",
+    "tests/frontend_braking_panel.cjs": "c899fb94219223809e4f36dacffb065fbb4862a034dde7cab92895bc16f7f667",
+    "experiments/verify_braking_panel.py": "faa81fde28a3a6f0c873e74810da8713a88c0e63dea44fa708feafd3fdae67ed",
+    "experiments/verify_frontend.py": "a24f1a3b16123aba2a8ae8560b91ef724ac30a55dba9610edecde0cf5e0341f2"
+  },
+  "sources_unchanged_during_run": true,
+  "base_report_sha256": "7a42e7cd40c396cb80b5e92388a3bd61d07ad406228368818f67f7ba85a77ef1",
+  "mqtt_archive": {
+    "path": "C:\\Users\\User\\Desktop\\Ipar 4.0\\projekt\\results\\perception-smoke-20261011-224308\\CAR001-perception.json",
+    "sha256": "1a6d3b605707d4d7e1a8243ee1e604103d9bb03be1082546cf521934dfd20eac",
+    "scope": "Offline analysis of previously received MQTT frames; no new broker campaign",
+    "frames": 2486,
+    "available": 2486,
+    "inconsistent": 0,
+    "missing": 0,
+    "phases": {
+      "stopped": 104,
+      "accelerating": 36,
+      "braking": 20,
+      "cruising": 2326
+    },
+    "freshness": {
+      "current": 2426,
+      "retained": 60
+    }
+  },
+  "limitations": [
+    "The route limit already contains controller margins; reaction distance is not subtracted twice.",
+    "A positive model reserve is not a physical safety guarantee.",
+    "Browser rendering is verified separately; historical course results retain their original dates and source scope."
+  ]
+}
