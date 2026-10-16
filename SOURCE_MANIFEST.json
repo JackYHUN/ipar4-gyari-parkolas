@@ -882,9 +882,9 @@
       "path": "docs/BEADASI_CSOMAG.md",
       "kind": "documentation",
       "source_relative": "docs/BEADASI_CSOMAG.md",
-      "source_sha256": "eeea5506b69fcc827b8d3a7c8ab46986fc88bb4a1e306b0348b15ec88eaab2e0",
-      "sha256": "eeea5506b69fcc827b8d3a7c8ab46986fc88bb4a1e306b0348b15ec88eaab2e0",
-      "size_bytes": 5009
+      "source_sha256": "007776d2dc67601e42213c9a881ca98a6a39412c8cab99af03fd7b8e32968120",
+      "sha256": "007776d2dc67601e42213c9a881ca98a6a39412c8cab99af03fd7b8e32968120",
+      "size_bytes": 4343
     },
     {
       "path": "docs/car_states.puml",
