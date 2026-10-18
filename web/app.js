@@ -1368,7 +1368,7 @@
   }
 
   function refreshControls() {const offline=!serverReachable||current?.connected!==true;for(const b of document.querySelectorAll("button[data-control]")){const reset=["reset-button","scenario-apply"].includes(b.id),recovery=b.id==="pause-button"?recoveryControlAllowed("pause"):b.dataset.speed==="1"?recoveryControlAllowed("speed",{value:1}):false;b.disabled=busy||(offline&&!reset&&!recovery);b.title=recovery?"Elavult kijelzett állapot mellett csak helyreállító parancs küldhető; a végrehajtást az MQTT-visszajelzés igazolja.":offline&&!reset?"Nincs friss kezelhető szimulátorállapot; a művelet jelenleg nem küldhető.":"";}
-    $("pause-label").textContent=current?.connected===true?(current?.paused?"Folytatás":"Szünet"):"Szünet kérése · elavult állapot";$("pause-icon").textContent=current?.connected===true&&current?.paused?"▶":"Ⅱ";
+    $("pause-label").textContent=current?.connected===true?(current?.paused?"Folytatás":"Szünet"):"Szünet kérése · elavult állapot";$("pause-icon").textContent=current?.connected===true&&current?.paused?"▶":"Ⅱ";$("pause-icon").dataset.paused=String(current?.connected===true&&Boolean(current?.paused));
     $("scenario-preview").disabled=previewBusy||!scenarioData;$("scenario-download").disabled=!scenarioData;$("initial-car-add").disabled=!scenarioDraft||number(scenarioDraft.initial_cars?.length)>=number(scenarioDraft.car_count,6);$("scenario-apply").disabled=busy||previewBusy||Boolean(coordinateEdit)||!scenarioData||$("scenario-apply").dataset.previewInvalid==="true";$("freeze-button").disabled=busy||offline||!$("car-select").value;}
   async function control(action,data={},successMessage=null) {
     if(busy)return null;if(!["reset","configure"].includes(action)&&(!serverReachable||current?.connected!==true)&&!recoveryControlAllowed(action,data)){showToast("Nincs friss kezelhető szimulátorállapot. Ez a művelet jelenleg nem küldhető; új futás indítható.",true);return null;}
@@ -1411,6 +1411,22 @@
   for(const eventName of ["pointerup","pointercancel"]){$("yard-map").addEventListener(eventName,event=>{if(drag?.id!==event.pointerId)return;if($("yard-map").hasPointerCapture(event.pointerId))$("yard-map").releasePointerCapture(event.pointerId);drag=null;});}
   $("yard-map").addEventListener("pointerleave",()=>{if(!drag)$("map-coordinates").textContent="Húzás: térkép mozgatása · Ctrl + görgő: nagyítás";});
   $("yard-map").addEventListener("click",event=>{if(movedPointer||!previewMap||$("placement-mode").value==="none"||event.target.closest('[role="button"]'))return;const point=mapPoint(event);if(point)savePlacement(point.x,point.y);});
+  // Keep section links and keyboard navigation in sync with native fragment URLs.
+  function installConsoleShell() {
+    const links = [...document.querySelectorAll(".header-nav a[href^='#']")];
+    function markSection() {
+      const target = !location.hash || location.hash === "#console-main" ? "#yard-area" : location.hash;
+      for (const link of links) {
+        const active = link.getAttribute("href") === target;
+        link.classList.toggle("active", active);
+        if (active) link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
+      }
+    }
+    window.addEventListener("hashchange", markSection);
+    markSection();
+  }
+  installConsoleShell();
   async function poll(){try{const state=await getJSON("/api/state");serverReachable=true;lastFetchOk=performance.now();if(state.run_id&&state.run_id!==observedRun)resetRunCaches(state.run_id);if(state&&state.map)render(state);else{current=state;refreshControls();renderTransportCapacity(state);$("run-status").textContent="Várakozás az MQTT-adatútra…";if(typeof state.connected==="boolean")setConnection(state.connected,null,state.mqtt?.transport);}renderOperationsSafety();}catch(error){serverReachable=false;renderOperationsSafety();refreshControls();renderCarDetails();renderSensors();if(performance.now()-lastFetchOk>1500){markTransportCapacityOffline();setConnection(false,"Műszerfal kapcsolódik");$("notice").hidden=false;$("notice").textContent="A helyi szerver jelenleg nem elérhető. A műszerfal automatikusan újracsatlakozik; a kijelzett értékek az utolsó fogadott adatok.";}}finally{setTimeout(poll,250);}}
   let lastFrame=performance.now();function animate(now){const elapsed=Math.min((now-lastFrame)/1000,.1);lastFrame=now;const smooth=window.matchMedia("(prefers-reduced-motion: reduce)").matches?1:1-Math.exp(-elapsed*15);for(const e of carNodes.values()){e.x+=(e.targetX-e.x)*smooth;e.y+=(e.targetY-e.y)*smooth;const d=((e.targetHeading-e.heading+540)%360)-180;e.heading+=d*smooth;e.g.setAttribute("transform",`translate(${e.x.toFixed(3)} ${e.y.toFixed(3)})`);e.body.setAttribute("transform",`rotate(${e.heading.toFixed(2)})`);}requestAnimationFrame(animate);}requestAnimationFrame(animate);refreshControls();poll();carLoop();logsLoop();receiptsLoop();loadScenario();installTransportArchive();installOperations();
 })();

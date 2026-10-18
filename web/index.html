@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#152539">
+  <meta name="theme-color" content="#202c3d">
   <title>Gyári járműlogisztika · Ipar 4.0</title>
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="/perception.css">
@@ -11,99 +11,171 @@
   <script src="/perception-analysis.js" defer></script>
   <script src="/app.js" defer></script>
 </head>
-<body>
+<body class="console-app">
+
   <header class="site-header">
-    <div class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 26V13l8 4v-7l8 5V7h6v19ZM10 21h2m5 0h2m5 0h2"/></svg></div>
-    <div class="brand-copy"><p class="eyebrow">IPAR 4.0 · KIBERFIZIKAI RENDSZER</p><h1>Gyári járműlogisztika</h1></div>
-    <nav class="header-nav" aria-label="Műszerfal nézetei"><a href="#yard-area" class="active">Gyárudvar</a><a href="#vehicle-panel">Járműrészletek</a><a href="#operations-panel">Üzemfelügyelet</a><a href="#logs-panel">Napló és export</a></nav><div class="header-status"><span id="connection-badge" class="status-badge pending"><i></i> Kapcsolódás</span><span class="simulation-tag">2D SZIMULÁCIÓ</span></div>
-  </header>
-  <main class="workspace">
+  <a class="console-brand" href="#console-main" aria-label="Gyárudvar Lab áttekintés"><!--
+tags: [goods, manufature, machine, trade, produce, product, worker, industry, industrial, site]
+category: Buildings
+version: "1.39"
+unicode: "ee1c"
+-->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M4 21c1.147 -4.02 1.983 -8.027 2 -12h6c.017 3.973 .853 7.98 2 12" />
+  <path d="M12.5 13h4.5c.025 2.612 .894 5.296 2 8" />
+  <path d="M9 5a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1" />
+  <path d="M3 21l19 0" />
+</svg><strong>GYÁRUDVAR <span>LAB</span></strong></a>
+  <h1>Gyári járműlogisztika</h1>
+  <nav class="header-nav" aria-label="Műszerfal nézetei"><a href="#yard-area" class="active" aria-current="location">Gyárudvar</a><a href="#vehicle-panel">Járművizsgálat</a><a href="#trip-panel">Útelőzmény</a><a href="#operations-panel">Üzemfelügyelet</a><a href="#transport-panel">MQTT</a><a href="#logs-panel">Napló</a><a href="#scenario-editor">Beállítások</a></nav>
+  <div class="header-status"><span id="connection-badge" class="status-badge pending"><i></i> Kapcsolódás</span><span class="simulation-tag">2D SZIMULÁCIÓ</span></div>
+</header>
+  <main class="workspace" id="console-main">
     <div id="notice" class="notice" role="status" hidden></div>
     <section class="run-strip" aria-label="Futás állapota">
       <div><span class="live-dot" id="run-dot"></span><strong id="run-status">Rendszer indítása…</strong><span class="run-label" id="strategy-label">MQTT-adatút</span></div>
       <div class="run-details"><span>Szimulációs idő <strong id="sim-time">00:00.0</strong></span><span>Aktív autók <strong id="active-count">0 / 6</strong></span><span>Mag <strong id="run-seed">—</strong></span><span>Futás <code id="run-id">—</code></span></div>
     </section>
-    <section class="metrics-grid" aria-label="Mérési eredmények">
-      <article class="metric-card"><span class="metric-icon blue" aria-hidden="true">◷</span><div><p>Átlagos parkolási idő</p><strong id="metric-time">—</strong><span class="metric-help">Készre jelentéstől, pufferrel</span></div></article>
-      <article class="metric-card"><span class="metric-icon teal" aria-hidden="true">↝</span><div><p>Átlagos megtett út</p><strong id="metric-distance">—</strong><span class="metric-help">Lezárt parkolások átlaga</span></div></article>
-      <article class="metric-card"><span class="metric-icon purple" aria-hidden="true">✓</span><div><p>Befejezett parkolások</p><strong id="metric-completed">0</strong><span class="metric-help">Ebben a futásban</span></div></article>
-      <article class="metric-card"><span class="metric-icon green" aria-hidden="true">P</span><div><p>Szabad parkolóhelyek</p><strong id="metric-free">— <small>/ 16</small></strong><span class="metric-help" id="parking-summary">Foglaltságadat érkezésére vár</span></div></article>
-    </section>
-    <section class="card layout-editor" id="scenario-editor">
-      <div class="editor-heading"><div><p class="eyebrow">TELEPHELY ÉS FORGATÓKÖNYV</p><h2>Állítsd össze a gyárudvart</h2><p class="subtle">Autók, parkolók és indulási helyek. A módosítások egy új, naplózott futásban lépnek életbe.</p></div><button id="editor-toggle" class="button secondary" type="button" aria-expanded="false" aria-controls="editor-body">Beállítások megnyitása <span aria-hidden="true">⌄</span></button></div>
-      <div class="editor-summary"><span id="scenario-name">Forgatókönyv betöltése…</span><span id="scenario-counts">—</span><span id="scenario-pending" class="data-badge warn" hidden>Nem alkalmazott módosítások</span></div>
-      <div id="editor-body" hidden>
-        <div class="editor-fields">
-          <label class="preset-field">Telephely<select id="scenario-preset" disabled></select></label>
-          <label>Egyszerre aktív autók<input id="scenario-cars" type="number" min="1" max="30" step="1" value="6"></label>
-          <label>Parkolóhelyek<input id="scenario-parking" type="number" min="4" max="96" step="1" value="16"></label>
-          <label>Kezdetben foglalt helyek<input id="scenario-occupied" type="number" min="0" max="96" step="1" value="4"></label>
-          <label>Kezdeti mozgó autók<input id="scenario-initial-cars" type="number" min="0" max="30" step="1" value="0"></label>
-          <label>Új autó érkezése [s]<input id="scenario-interval" type="number" min="1" max="120" step="1" value="9"></label>
-          <label>Parkolás időtartama [s]<input id="scenario-dwell" type="number" min="5" max="600" step="1" value="45"></label>
-          <label>Gyártósori kijárat<select id="scenario-exit"></select></label>
-          <label>Parkolási terület<select id="scenario-area"></select></label>
-          <label>Összes legyártandó autó<input id="scenario-limit" type="number" min="1" max="1000" step="1" placeholder="Üres: folyamatos gyártás"></label>
-        </div>
-        <div class="placement-editor"><div class="placement-heading"><div><h3>Pozíciók szerkesztése</h3><p>A térképi előnézet az új futás induló állapotát mutatja. A parkolók a kijelölt parkolási területen, az autók az induló útszakaszon helyezhetők el.</p></div><span id="editor-mode-badge" class="data-badge neutral">Nézet</span></div>
-          <div class="placement-fields"><label>Mit helyezzünk el?<select id="placement-mode"><option value="none">Térkép megtekintése</option><option value="slot">Parkolóhely áthelyezése</option><option value="car">Kezdeti autó elhelyezése</option></select></label><label>Elem<select id="placement-item"><option value="">Nincs kijelölt elem</option></select></label><label>X [m]<input id="placement-x" type="number" step="0.1"></label><label>Y [m]<input id="placement-y" type="number" step="0.1"></label><button id="placement-save" class="button secondary" type="button" disabled>Pozíció mentése</button><button id="initial-car-add" class="button tertiary" type="button">+ Kezdeti autó</button><button id="initial-car-remove" class="button tertiary" type="button" disabled>Autó törlése</button></div>
-          <p id="placement-hint" class="control-note">Válassz szerkesztési módot, majd kattints a térképre vagy add meg a koordinátákat. A szerver ellenőrzi az elérhetőséget és az átfedéseket.</p>
-        </div>
-        <div id="scenario-error" class="scenario-error" role="status" hidden></div>
-        <div class="editor-actions"><div><button id="scenario-preview" class="button secondary" type="button">Előnézet frissítése</button><button id="scenario-discard" class="button tertiary" type="button">Vissza az aktuális futáshoz</button><a id="scenario-download" class="button tertiary" href="/api/scenario/export" download>Forgatókönyv JSON ↓</a><label class="button tertiary scenario-file-label" for="scenario-import">JSON megnyitása<input id="scenario-import" type="file" accept=".json,application/json"></label></div><button id="scenario-apply" data-control class="button primary" type="button">Beállítások alkalmazása · új futás</button></div>
-        <p id="scenario-description" class="scenario-description"></p>
-      </div>
-    </section>
+<div class="console-summary"><section class="controls-card console-controls" aria-label="Futás vezérlése">
+          <div class="control-body"><span id="speed-label" class="small-pill console-speed-label">1×</span><button id="pause-button" data-control class="button primary full" type="button"><span id="pause-icon">Ⅱ</span> <span id="pause-label">Szünet</span></button>
+            <div class="speed-control"><span class="field-caption">Szimuláció sebessége</span><div class="segmented" aria-label="Szimuláció sebessége"><button type="button" data-control data-speed="1" class="selected">1×</button><button type="button" data-control data-speed="2">2×</button><button type="button" data-control data-speed="4">4×</button><button type="button" data-control data-speed="8">8×</button></div></div>
+            <div class="form-grid"><label>Kiosztási szabály<select id="strategy-select"><option value="nearest">Legrövidebb elérhető út</option><option value="fixed">Rögzített helyszámsorrend</option></select></label><label class="seed-field">Véletlenmag<input id="seed-input" type="number" value="42" min="0" max="2147483647" step="1"></label></div>
+            <button aria-label="Új futás indítása" title="Új futás indítása" id="reset-button" data-control class="button secondary full" type="button"><!--
+category: Arrows
+tags: [synchronization, reload, restart, spinner, loader, ajax, update, arrows]
+version: "1.0"
+unicode: "eb13"
+-->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" />
+  <path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" />
+</svg></button><p class="control-note">Az új futás törli az aktuális mérőszámokat. Azonos maggal a forgatókönyv megismételhető.</p>
+          </div>
+        </section><section class="metrics-grid" aria-label="Mérési eredmények">
+      <article class="metric-card"><span class="metric-icon blue" aria-hidden="true"><!--
+category: System
+tags: [time, watch, alarm]
+version: "1.0"
+unicode: "ea70"
+-->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+  <path d="M12 7v5l3 3" />
+</svg></span><div><p>Átlagos parkolási idő</p><strong id="metric-time">—</strong><span class="metric-help">Készre jelentéstől, pufferrel</span></div></article>
+      <article class="metric-card"><span class="metric-icon teal" aria-hidden="true"><!--
+tags: [path, journey, direction, trail, navigate, travel, way, road, travel-route, route-way]
+category: Map
+version: "1.0"
+unicode: "eb17"
+-->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M3 19a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+  <path d="M19 7a2 2 0 1 0 0 -4a2 2 0 0 0 0 4z" />
+  <path d="M11 19h5.5a3.5 3.5 0 0 0 0 -7h-8a3.5 3.5 0 0 1 0 -7h4.5" />
+</svg></span><div><p>Átlagos megtett út</p><strong id="metric-distance">—</strong><span class="metric-help">Lezárt parkolások átlaga</span></div></article>
+      <article class="metric-card"><span class="metric-icon purple" aria-hidden="true"><!--
+category: Shapes
+tags: [accept, yes, tick, done]
+version: "1.0"
+unicode: "ea67"
+-->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+  <path d="M9 12l2 2l4 -4" />
+</svg></span><div><p>Befejezett parkolások</p><strong id="metric-completed">0</strong><span class="metric-help">Ebben a futásban</span></div></article>
+      <article class="metric-card"><span class="metric-icon green" aria-hidden="true"><!--
+category: Map
+tags: [sign, car, vehicle, space]
+version: "1.0"
+unicode: "eb03"
+-->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14z" />
+  <path d="M10 16v-8h2.667c.736 0 1.333 .895 1.333 2s-.597 2 -1.333 2h-2.667" />
+</svg></span><div><p>Szabad parkolóhelyek</p><strong id="metric-free">— <small>/ 16</small></strong><span class="metric-help" id="parking-summary">Foglaltságadat érkezésére vár</span></div></article>
+    </section></div>
+
+
     <div class="main-grid">
       <div class="operations-column">
       <section class="card yard-card" id="yard-area">
-        <div class="card-heading"><div><p class="eyebrow">GYÁRUDVAR · ÉLŐ RENDSZERKÉP</p><h2>Gyártósortól a parkolóig</h2><p class="subtle" id="map-scale">140 × 90 m · zárt gyárudvar</p></div><div class="map-layer-controls"><label class="switch-label"><input id="show-routes" type="checkbox" checked><span>Tervezett útvonalak</span></label><label class="switch-label sensor-switch"><input id="show-sensors" type="checkbox" checked aria-controls="sensors-layer"><span>Kijelölt autó érzékelői</span></label></div></div>
-        <div class="map-toolbar"><span id="map-data-source" class="source-tag"><i></i> MQTT-n fogadott állapot</span><span id="map-selection">Válassz járművet a részletekhez</span><span id="snapshot-age">—</span></div><div class="map-navigation"><div class="zoom-controls" aria-label="Térkép nagyítása"><button id="map-zoom-in" type="button" aria-label="Térkép nagyítása">+</button><button id="map-zoom-out" type="button" aria-label="Térkép kicsinyítése">−</button><button id="map-fit" type="button">Forgalmi terület</button><button id="map-focus-car" type="button" disabled>Autó követése</button></div><span id="map-coordinates">Húzás: térkép mozgatása · Ctrl + görgő: nagyítás</span></div><div id="map-preview-banner" class="preview-banner" hidden>FORGATÓKÖNYV ELŐNÉZETE · A futó rendszer közben változatlanul működik.</div><div id="map-area-heading" class="map-area-heading">Gyártósori kijárat → forgalmi zónák → készjármű-parkoló</div><div id="warnings" class="warnings" hidden></div><div class="map-wrap"><svg id="yard-map" viewBox="0 0 140 90" role="img" aria-label="Gyárudvar: gyártósori kijáratok, utak, gyalogátkelők, járművek és parkolóhelyek"><defs><pattern id="map-grid" width="5" height="5" patternUnits="userSpaceOnUse"><path d="M5 0H0V5" fill="none" stroke="#dce4e8" stroke-width=".12"/></pattern><pattern id="factory-roof" width="2.4" height="2.4" patternUnits="userSpaceOnUse"><path d="M0 2.4L2.4 0" stroke="#c7d3db" stroke-width=".2"/></pattern><filter id="car-shadow" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy=".35" stdDeviation=".25" flood-color="#122033" flood-opacity=".25"/></filter></defs><rect class="map-background" width="140" height="90"/><rect id="map-grid-background" width="140" height="90" fill="url(#map-grid)"/><g id="buildings-layer"></g><g id="roads-layer"></g><g id="zones-layer"></g><g id="crossings-layer"></g><g id="parking-layer"></g><g id="routes-layer"></g><g id="pedestrians-layer"></g><g id="sensors-layer" aria-label="A kijelölt autó virtuális érzékelőmintája"></g><g id="cars-layer"></g><g id="map-annotations"></g><g id="editor-layer"></g></svg><div class="map-wait" id="map-wait"><span class="loader"></span>Várakozás az első MQTT-állapotképre…</div></div>
+        <div class="card-heading"><div><p class="eyebrow">ÉLŐ GYÁRUDVAR</p><h2>Gyárudvari forgalmi helyzet</h2><p class="subtle" id="map-scale">140 × 90 m · zárt gyárudvar</p></div><div class="map-layer-controls"><label class="switch-label"><input id="show-routes" type="checkbox" checked><span>Tervezett útvonalak</span></label><label class="switch-label sensor-switch"><input id="show-sensors" type="checkbox" checked aria-controls="sensors-layer"><span>Kijelölt autó érzékelői</span></label></div></div>
+        <div class="console-map-meta"><div class="map-toolbar"><span id="map-data-source" class="source-tag"><i></i> MQTT-n fogadott állapot</span><span id="map-selection">Válassz járművet a részletekhez</span><span id="snapshot-age">—</span></div><div class="map-navigation"><div class="zoom-controls" aria-label="Térkép nagyítása"><button id="map-zoom-in" type="button" aria-label="Térkép nagyítása">+</button><button id="map-zoom-out" type="button" aria-label="Térkép kicsinyítése">−</button><button id="map-fit" type="button">Forgalmi terület</button><button id="map-focus-car" type="button" disabled>Autó követése</button></div><span id="map-coordinates">Húzás: térkép mozgatása · Ctrl + görgő: nagyítás</span></div></div><div id="map-preview-banner" class="preview-banner" hidden>FORGATÓKÖNYV ELŐNÉZETE · A futó rendszer közben változatlanul működik.</div><div id="map-area-heading" class="map-area-heading">Gyártósori kijárat → forgalmi zónák → készjármű-parkoló</div><div id="warnings" class="warnings" hidden></div><div class="map-wrap"><svg id="yard-map" viewBox="0 0 140 90" role="img" aria-label="Gyárudvar: gyártósori kijáratok, utak, gyalogátkelők, járművek és parkolóhelyek"><defs><pattern id="map-grid" width="5" height="5" patternUnits="userSpaceOnUse"><path d="M5 0H0V5" fill="none" stroke="#dce4e8" stroke-width=".12"/></pattern><pattern id="factory-roof" width="2.4" height="2.4" patternUnits="userSpaceOnUse"><path d="M0 2.4L2.4 0" stroke="#c7d3db" stroke-width=".2"/></pattern><filter id="car-shadow" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy=".35" stdDeviation=".25" flood-color="#122033" flood-opacity=".25"/></filter></defs><rect class="map-background" width="140" height="90"/><rect id="map-grid-background" width="140" height="90" fill="url(#map-grid)"/><g id="buildings-layer"></g><g id="roads-layer"></g><g id="zones-layer"></g><g id="crossings-layer"></g><g id="parking-layer"></g><g id="routes-layer"></g><g id="pedestrians-layer"></g><g id="sensors-layer" aria-label="A kijelölt autó virtuális érzékelőmintája"></g><g id="cars-layer"></g><g id="map-annotations"></g><g id="editor-layer"></g></svg><div class="map-wait" id="map-wait"><span class="loader"></span>Várakozás az első MQTT-állapotképre…</div></div>
         <div class="map-footer"><div class="legend"><span><i class="legend-swatch free"></i>Szabad</span><span><i class="legend-swatch reserved"></i>Lefoglalt</span><span><i class="legend-swatch occupied"></i>Fizikailag foglalt</span><span><i class="legend-swatch blocked"></i>Lezárt</span><span><i class="legend-swatch unknown"></i>Ismeretlen</span></div><p>Kattints egy autóra vagy parkolóra a kijelöléshez. Az úthálózat szakaszai irányítottak.</p><div id="map-attribution" class="map-attribution"></div></div>
         <div class="safety-strip"><span><i class="tiny-dot amber"></i> Gyalogos miatti megállások <strong id="pedestrian-stops">0</strong></span><span><i class="tiny-dot" id="collision-dot"></i> Modellezett ütközések <strong id="collisions">0</strong></span><span id="zone-status">C1 zóna: —</span></div>
-        <section class="sensor-panel" id="sensor-panel" aria-labelledby="sensor-panel-title">
-          <div class="sensor-panel-heading"><div><p class="eyebrow">ÉRZÉKELŐNÉZET · VIRTUÁLIS MINTAVÉTEL</p><h3 id="sensor-panel-title">Mit érzékel az autó?</h3></div><span id="sensor-panel-status" class="data-badge neutral">Nincs minta</span></div>
-          <p id="sensor-panel-summary" class="sensor-panel-summary">Válassz egy aktív autót a térképen vagy a flottalistában.</p>
-          <div id="sensor-empty" class="sensor-empty">A minták az MQTT-n érkező állapotképből származnak. Az archív járművekhez és az elrendezés előnézetéhez nincs élő érzékelőréteg.</div>
-          <div id="sensor-content" hidden>
-            <div class="sensor-legend" aria-label="Érzékelőréteg jelmagyarázata"><span><i class="sensor-key range"></i>Helyi érzékelési kör</span><span><i class="sensor-key pose"></i>Becsült saját pozíció</span><span><i class="sensor-key reference"></i>Útvonalreferencia</span><span><i class="sensor-key detection"></i>Fogadott észlelések</span><span><i class="sensor-key proximity"></i>Közelségi nyaláb és első találat</span></div>
-            <div class="sensor-grid">
-              <article class="sensor-tile localization"><div class="sensor-tile-title"><span class="sensor-icon" aria-hidden="true">⌖</span><h4>Lokalizáció</h4><span class="sensor-kind">Virtuális pozícióadó</span></div><p>A saját hely és irány becslése a telephely koordinátarendszerében.</p><dl><div><dt>Mért pozíció</dt><dd id="sensor-pose">—</dd></div><div><dt>Tengelyenkénti hibakorlát</dt><dd id="sensor-pose-bound">—</dd></div></dl></article>
-              <article class="sensor-tile reference"><div class="sensor-tile-title"><span class="sensor-icon" aria-hidden="true">↝</span><h4>Úton maradás</h4><span class="sensor-kind">Ismert térképi referencia</span></div><p>A mért hely összevetése az előre megadott útvonallal.</p><dl><div><dt>Oldalirányú eltérés</dt><dd id="sensor-route-error">—</dd></div><div><dt>Útvonal iránya</dt><dd id="sensor-route-heading">—</dd></div></dl></article>
-              <article class="sensor-tile environment"><div class="sensor-tile-title"><span class="sensor-icon" aria-hidden="true">◉</span><h4>Környezetészlelés</h4><span class="sensor-kind">Virtuális távolsági érzékelés</span></div><p>A közeli autók és gyalogátkelők állapota segíti a fékezést.</p><dl><div><dt>Hatótáv · frissítés</dt><dd id="sensor-range">—</dd></div><div><dt>Észlelések</dt><dd id="sensor-detection-count">—</dd></div></dl></article>
-              <article class="sensor-tile odometry"><div class="sensor-tile-title"><span class="sensor-icon" aria-hidden="true">◷</span><h4>Mozgásbecslés</h4><span class="sensor-kind">Ideális modellből vett jel</span></div><p>A sebesség, haladási irány és megtett út állapotának követése.</p><dl><div><dt>Sebesség · irány</dt><dd id="sensor-motion">—</dd></div><div><dt>Megtett út</dt><dd id="sensor-distance">—</dd></div></dl></article>
-            </div>
-            <div class="sensor-observations"><strong>Észlelt környezet</strong><span id="sensor-detections">Nincs észlelés.</span></div>
-            <p id="sensor-sample-meta" class="sensor-sample-meta">—</p>
-            <section class="perception-view" id="live-perception" aria-labelledby="live-perception-title">
-              <div class="perception-heading"><div><h4 id="live-perception-title">Az autó szemszögéből</h4><p id="live-perception-meta">Fogadott virtuális megfigyelések</p></div><div class="perception-exports"><a id="live-perception-svg" class="export-link" download>Állókép SVG ↓</a><a id="live-perception-json" class="export-link" download>Ez a minta JSON ↓</a></div></div>
-              <div class="perception-grid"><article class="perception-card radar-card"><div class="perception-card-heading"><h5>Virtuális radarnézet</h5><span>HALADÁSI IRÁNY FELÜL</span></div><svg id="live-radar" viewBox="0 0 340 340" role="img" aria-label="A fogadott környezetminta az autó körül, a mintavételi irány szerint"></svg><p id="live-radar-caption" class="perception-caption">—</p></article><article class="perception-card camera-card"><div class="perception-card-heading"><h5>Szintetikus elölnézet</h5><span>SEMATIKUS · NEM KAMERAFELVÉTEL</span></div><svg id="live-front-view" viewBox="0 0 510 300" role="img" aria-label="A fogadott virtuális észlelésekből rajzolt sematikus elölnézet"></svg><p id="live-front-caption" class="perception-caption">—</p></article></div>
-              <dl class="perception-diagnostics"><div><dt>Legközelebbi felület / jármű</dt><dd id="live-perception-nearest">—</dd></div><div><dt>Vezérlő célsebessége</dt><dd id="live-perception-target">—</dd></div><div><dt>Ideális fékút · reakcióráhagyás</dt><dd id="live-perception-braking">—</dd></div><div><dt>Vezérlési döntés / megállás oka</dt><dd id="live-perception-decision">—</dd></div></dl>
-              <details class="proximity-details"><summary>Közelségcsatornák részletei <span id="live-proximity-summary">—</span></summary><div class="proximity-table-wrap"><table id="live-proximity-table" class="proximity-table" hidden><caption>Virtuális közelségcsatornák a kijelzett mintából. A távolság a szerelési ponttól az első eltalált felületig értendő.</caption><thead><tr><th scope="col">Csatorna</th><th scope="col">Távolság [m]</th><th scope="col">Állapot</th><th scope="col">Első felület</th></tr></thead><tbody id="live-proximity-rows"></tbody></table></div></details>
-            <div id="live-proximity-selection" class="proximity-selection" hidden><div><strong id="live-proximity-selected-title">—</strong><p id="live-proximity-selected-detail">—</p></div><div class="proximity-selection-actions"><button id="live-proximity-focus" type="button" class="button tertiary">Találat a térképen</button><button id="live-proximity-clear" type="button" class="text-button">Kijelölés törlése</button></div></div>
-              <section id="live-braking-panel" class="braking-panel" data-state="unknown" aria-labelledby="live-braking-title">
-                <div class="braking-heading"><div><p class="eyebrow">NAPLÓZOTT VEZÉRLÉSI DÖNTÉS</p><h4 id="live-braking-title">Fékezés és megállási cél</h4></div><span id="live-braking-status" class="data-badge neutral">Nincs értelmezhető döntés</span></div>
-                <p id="live-braking-phase" class="braking-phase">Nem állapítható meg</p><p id="live-braking-clock" class="braking-clock">A naplózott vezérlési döntésre várunk.</p>
-                <dl class="braking-values"><div><dt>Sebesség a lépés előtt → után</dt><dd id="live-braking-speed">—</dd></div><div><dt>Alkalmazott gyorsulás</dt><dd id="live-braking-acceleration">—</dd></div><div><dt>Megállási célig a döntéskor</dt><dd id="live-braking-limit">—</dd></div><div><dt>Modellbeli fékezési tartalék</dt><dd id="live-braking-reserve">—</dd></div><div><dt>Fékezési kapacitás kihasználása</dt><dd id="live-braking-use">—</dd></div></dl>
-                <div id="live-braking-bar" class="braking-distance-bar" role="img" hidden><span id="live-braking-used" class="braking-distance-used" aria-hidden="true"></span><span id="live-braking-marker" class="braking-distance-marker" aria-hidden="true"></span></div><p class="braking-legend">Kék sáv: ideális fékút · függőleges jel: megállási cél. Közös relatív távolságskála.</p>
-                <p id="live-braking-note" class="braking-note">A hiányzó döntési adatokból nem számolunk megállási tartalékot.</p>
-              </section>
-              <p id="live-perception-source" class="perception-source-note">Az észlelési magyarázat a fogadott mintával együtt jelenik meg.</p>
-            </section>
-          </div>
-          <p class="sensor-limit-note"><strong>A modell határa:</strong> a kormányzás ideális útvonalkövetés. Kamera, GNSS és IMU nincs bekötve; az útvonalreferencia nem kamerával felismert útszegély. A helyi érzékelési körben nincs takarásmodell.</p>
-          <details class="sensor-real-world"><summary>Milyen érzékelők segítenék egy valós autó útkövetését?</summary><ul><li><strong>Kamera:</strong> az útjelölések és az úthatár megfigyelése segítheti az oldalirányú helyzetkorrekciót.</li><li><strong>LiDAR:</strong> környezeti geometria és akadályok megfigyelése; térképpel összevetve helyzetbecslés.</li><li><strong>GNSS, IMU és kerékodometria:</strong> abszolút helyzet és rövid távú mozgásbecslés. Épületek, sodródás és megcsúszás ronthatják az egyes jeleket.</li></ul><p>Ezek egy későbbi, visszacsatolt útkövető modell lehetséges elemei. <a href="https://docs.autoware.org/main/design/autoware-architecture-v1/components/localization/" target="_blank" rel="noopener noreferrer">Forrás: Autoware lokalizációs terv ↗</a></p></details>
-        </section>
+
       </section>
-      <section class="card vehicle-card" id="vehicle-panel">
-        <div class="card-heading"><div><p class="eyebrow">JÁRMŰVIZSGÁLAT · FOGADOTT ADATOK</p><h2 id="selected-car-id">Kijelölt jármű</h2></div><div class="inspect-heading"><span id="car-panel-state" class="data-badge neutral">Nincs kijelölés</span><select id="inspect-car-select" aria-label="Vizsgált jármű"><option value="">Válassz autót</option></select></div></div>
-        <div id="car-empty" class="car-empty"><svg viewBox="0 0 50 26" aria-hidden="true"><path d="M8 19h34l-3-8-8-5H17l-6 6ZM15 19v3m21-3v3M17 8l-3 6h21l-6-6"/></svg><p>Válassz egy autót a térképen vagy a flottalistában.</p><span>Itt jelenik meg a sebessége, a várakozás oka és a fogadott telemetria idősora.</span></div>
-        <div id="car-details-content" hidden>
-          <div class="car-details-grid"><div class="car-readings"><dl class="reading-grid"><div><dt>Sebesség</dt><dd id="car-speed">—</dd></div><div><dt>Kijelölt parkoló</dt><dd id="car-slot">—</dd></div><div><dt>Teljes eltelt idő</dt><dd id="car-elapsed">—</dd><small>Készre jelentéstől</small></div><div><dt>Udvaron eltelt idő</dt><dd id="car-yard-elapsed">—</dd><small>Beengedéstől</small></div><div class="sensor-reading"><dt>Érzékelőadat kora</dt><dd id="car-sensor-age">—</dd><span id="car-sensor-state" class="data-badge neutral">Nincs adat</span></div><div><dt>Térképi pozíció</dt><dd id="car-position" class="small-reading">—</dd></div></dl><div class="wait-reason"><span>Állapot / várakozás oka</span><p id="car-wait-reason">—</p></div></div><div class="chart-panel"><div class="chart-heading"><h3>Sebesség időben</h3><span class="source-tag">FOGADOTT TELEMETRIA</span></div><div class="chart-wrap"><svg id="car-chart" viewBox="0 0 500 150" role="img" aria-label="A kiválasztott autó sebességének idősora"><defs><linearGradient id="speed-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1496a7" stop-opacity=".2"/><stop offset="100%" stop-color="#1496a7" stop-opacity="0"/></linearGradient></defs><g id="chart-grid"></g><path id="chart-area" fill="url(#speed-fill)"/><path id="chart-line" fill="none" stroke="#098c9c" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><g id="chart-labels"></g></svg><p id="car-chart-empty" class="chart-empty">Még nincs fogadott sebességminta.</p></div><p id="chart-caption" class="chart-caption">Szimulációs idő [s] · sebesség [m/s]</p><div id="car-history" class="car-history"></div></div></div>
-          <div class="car-identifiers"><span>Foglalás <code id="car-reservation">—</code></span><span>Kérés <code id="car-request">—</code></span><button id="inspect-trip-button" type="button" class="text-button">Teljes út visszakeresése →</button><button id="inspect-logs-button" type="button" class="text-button">Jármű naplójának szűrése →</button></div>
-        </div>
-      </section>
-      <section class="card trip-card" id="trip-panel">
+
+      <section class="card trend-card" id="vehicle-signals" aria-label="A kijelölt jármű mért sebessége"><div class="chart-panel"><div class="chart-heading"><h3>Sebesség időben</h3><span class="source-tag">FOGADOTT TELEMETRIA</span></div><div class="chart-wrap"><svg id="car-chart" viewBox="0 0 500 150" role="img" aria-label="A kiválasztott autó sebességének idősora"><defs><linearGradient id="speed-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1496a7" stop-opacity=".2"/><stop offset="100%" stop-color="#1496a7" stop-opacity="0"/></linearGradient></defs><g id="chart-grid"></g><path id="chart-area" fill="url(#speed-fill)"/><path id="chart-line" fill="none" stroke="#098c9c" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><g id="chart-labels"></g></svg><p id="car-chart-empty" class="chart-empty">Még nincs fogadott sebességminta.</p></div><p id="chart-caption" class="chart-caption">Szimulációs idő [s] · sebesség [m/s]</p></div><details class="console-details"><summary>Telemetria részletei</summary><div id="car-history" class="car-history"></div></details></section>
+<details class="card console-test-tools" id="test-tools"><summary>Teszt és hibainjektálás</summary><section class="card scenario-card"><div class="card-heading compact"><div><p class="eyebrow">HIBAINJEKTÁLÁS ÉS DEMÓ</p><h2>Mi történik, ha…</h2></div></div><div class="control-body">
+          <div class="inline-action"><select id="crossing-select" aria-label="Gyalogátkelő"><option value="ZEBRA1">Zebra 1 · kijárat</option><option value="ZEBRA2">Zebra 2 · parkolóút</option></select><button id="pedestrian-button" data-control class="button tertiary" type="button">Gyalogos</button></div>
+          <div class="inline-action"><select id="slot-select" aria-label="Parkolóhely"></select><button id="block-button" data-control class="button tertiary" type="button">Lezárás</button></div>
+          <div class="fault-divider"><span>Hiba időtartama</span><label><input id="fault-duration" type="number" value="5" min="1" max="60" step="1" aria-label="Hiba időtartama másodpercben"> <span>s</span></label></div>
+          <div class="fault-buttons"><button id="sensor-button" data-control class="button fault" type="button">Érzékelő kiesik</button><button id="disconnect-button" data-control class="button fault" type="button">MQTT megszakad</button></div>
+          <div class="inline-action freeze-action"><select id="car-select" aria-label="Megállítandó autó"><option value="">Nincs aktív autó</option></select><button id="freeze-button" data-control class="button tertiary" type="button">Autó megáll</button></div>
+          <p class="control-note">A hibák időtartama a szimuláció idejében értendő. A gyalogos a járdaszegélyről indul.</p>
+        </div></section></details>
+<section class="card trip-card" id="trip-panel">
         <div class="card-heading"><div><p class="eyebrow">JÁRMŰTÖRTÉNET · TÉNYLEGESEN FOGADOTT ÚT</p><h2>Egy autó teljes útja</h2><p class="subtle">Válassz futást és járművet. Az idővonal a mentett MQTT-mintákat mutatja, a visszajátszás az élő futást nem módosítja.</p></div><span id="trip-status" class="data-badge neutral">Nincs betöltött út</span></div>
         <div class="trip-filters"><label>Futás<select id="trip-run"><option value="">Aktuális futás</option></select></label><label>Jármű keresése<input id="trip-search" type="search" placeholder="Pl. CAR001" autocomplete="off"></label><label>Jármű<select id="trip-car"><option value="">Válassz mentett járművet</option></select></label><button id="trip-load" class="button secondary" type="button">Út betöltése</button><button id="trip-more-cars" class="text-button" type="button" hidden>További járművek</button></div>
         <p id="trip-catalogue-note" class="trip-note">A mentett járművek kereshetők akkor is, ha már elhagyták az aktív modellt.</p>
@@ -156,22 +228,129 @@
         </div>
       </section>
       </div>
-      <aside class="sidebar">
-        <section class="card controls-card"><div class="card-heading compact"><div><p class="eyebrow">FUTÁS VEZÉRLÉSE</p><h2>Próbáld ki a rendszert</h2></div><span id="speed-label" class="small-pill">1×</span></div>
-          <div class="control-body"><button id="pause-button" data-control class="button primary full" type="button"><span id="pause-icon">Ⅱ</span> <span id="pause-label">Szünet</span></button>
-            <div class="speed-control"><span class="field-caption">Szimuláció sebessége</span><div class="segmented" aria-label="Szimuláció sebessége"><button type="button" data-control data-speed="1" class="selected">1×</button><button type="button" data-control data-speed="2">2×</button><button type="button" data-control data-speed="4">4×</button><button type="button" data-control data-speed="8">8×</button></div></div>
-            <div class="form-grid"><label>Kiosztási szabály<select id="strategy-select"><option value="nearest">Legrövidebb elérhető út</option><option value="fixed">Rögzített helyszámsorrend</option></select></label><label class="seed-field">Véletlenmag<input id="seed-input" type="number" value="42" min="0" max="2147483647" step="1"></label></div>
-            <button id="reset-button" data-control class="button secondary full" type="button"><span aria-hidden="true">↻</span> Új futás indítása</button><p class="control-note">Az új futás törli az aktuális mérőszámokat. Azonos maggal a forgatókönyv megismételhető.</p>
-          </div>
-        </section>
-        <section class="card scenario-card"><div class="card-heading compact"><div><p class="eyebrow">HIBAINJEKTÁLÁS ÉS DEMÓ</p><h2>Mi történik, ha…</h2></div></div><div class="control-body">
-          <div class="inline-action"><select id="crossing-select" aria-label="Gyalogátkelő"><option value="ZEBRA1">Zebra 1 · kijárat</option><option value="ZEBRA2">Zebra 2 · parkolóút</option></select><button id="pedestrian-button" data-control class="button tertiary" type="button">Gyalogos</button></div>
-          <div class="inline-action"><select id="slot-select" aria-label="Parkolóhely"></select><button id="block-button" data-control class="button tertiary" type="button">Lezárás</button></div>
-          <div class="fault-divider"><span>Hiba időtartama</span><label><input id="fault-duration" type="number" value="5" min="1" max="60" step="1" aria-label="Hiba időtartama másodpercben"> <span>s</span></label></div>
-          <div class="fault-buttons"><button id="sensor-button" data-control class="button fault" type="button">Érzékelő kiesik</button><button id="disconnect-button" data-control class="button fault" type="button">MQTT megszakad</button></div>
-          <div class="inline-action freeze-action"><select id="car-select" aria-label="Megállítandó autó"><option value="">Nincs aktív autó</option></select><button id="freeze-button" data-control class="button tertiary" type="button">Autó megáll</button></div>
-          <p class="control-note">A hibák időtartama a szimuláció idejében értendő. A gyalogos a járdaszegélyről indul.</p>
-        </div></section>
+      <aside class="sidebar console-inspector"><section class="card vehicle-card" id="vehicle-panel">
+        <div class="card-heading"><div><p class="eyebrow">JÁRMŰVIZSGÁLAT · FOGADOTT ADATOK</p><h2 id="selected-car-id">Kijelölt jármű</h2></div><div class="inspect-heading"><span id="car-panel-state" class="data-badge neutral">Nincs kijelölés</span><select id="inspect-car-select" aria-label="Vizsgált jármű"><option value="">Válassz autót</option></select></div></div>
+        <div id="car-empty" class="car-empty"><svg viewBox="0 0 50 26" aria-hidden="true"><path d="M8 19h34l-3-8-8-5H17l-6 6ZM15 19v3m21-3v3M17 8l-3 6h21l-6-6"/></svg><p>Válassz egy autót a térképen vagy a flottalistában.</p><span>Itt jelenik meg a sebessége, a várakozás oka és a fogadott telemetria idősora.</span></div>
+        <div id="car-details-content" hidden>
+          <div class="car-details-grid console-car-grid"><div class="car-readings"><dl class="reading-grid"><div><dt>Sebesség</dt><dd id="car-speed">—</dd></div><div><dt>Kijelölt parkoló</dt><dd id="car-slot">—</dd></div></dl><details class="console-details"><summary>Pozíció, időzítés és adatfrissesség</summary><dl class="reading-grid"><div><dt>Teljes eltelt idő</dt><dd id="car-elapsed">—</dd><small>Készre jelentéstől</small></div><div><dt>Udvaron eltelt idő</dt><dd id="car-yard-elapsed">—</dd><small>Beengedéstől</small></div><div class="sensor-reading"><dt>Érzékelőadat kora</dt><dd id="car-sensor-age">—</dd><span id="car-sensor-state" class="data-badge neutral">Nincs adat</span></div><div><dt>Térképi pozíció</dt><dd id="car-position" class="small-reading">—</dd></div></dl></details><div class="wait-reason"><span>Állapot / várakozás oka</span><p id="car-wait-reason">—</p></div></div></div>
+
+        </div>
+      <details class="console-details console-identifiers"><summary>Azonosítók és előzmények</summary><div class="car-identifiers"><span>Foglalás <code id="car-reservation">—</code></span><span>Kérés <code id="car-request">—</code></span><button id="inspect-trip-button" type="button" class="text-button">Teljes út visszakeresése →</button><button id="inspect-logs-button" type="button" class="text-button">Jármű naplójának szűrése →</button></div></details><section class="sensor-panel" id="sensor-panel" aria-labelledby="sensor-panel-title">
+          <div class="sensor-panel-heading"><div><p class="eyebrow">ÉRZÉKELŐNÉZET · VIRTUÁLIS MINTAVÉTEL</p><h3 id="sensor-panel-title">Mit érzékel az autó?</h3></div><span id="sensor-panel-status" class="data-badge neutral">Nincs minta</span></div>
+          <p id="sensor-panel-summary" class="sensor-panel-summary">Válassz egy aktív autót a térképen vagy a flottalistában.</p>
+          <div id="sensor-empty" class="sensor-empty">A minták az MQTT-n érkező állapotképből származnak. Az archív járművekhez és az elrendezés előnézetéhez nincs élő érzékelőréteg.</div>
+          <div id="sensor-content" hidden><section class="perception-view" id="live-perception" aria-labelledby="live-perception-title">
+              <div class="perception-heading"><div><h4 id="live-perception-title">Az autó szemszögéből</h4><p id="live-perception-meta">Fogadott virtuális megfigyelések</p></div><div class="perception-exports"><a id="live-perception-svg" class="export-link" download>Állókép SVG ↓</a><a id="live-perception-json" class="export-link" download>Ez a minta JSON ↓</a></div></div>
+              <div class="perception-grid"><article class="perception-card radar-card"><div class="perception-card-heading"><h5>Virtuális radarnézet</h5><span>HALADÁSI IRÁNY FELÜL</span></div><svg id="live-radar" viewBox="0 0 340 340" role="img" aria-label="A fogadott környezetminta az autó körül, a mintavételi irány szerint"></svg><p id="live-radar-caption" class="perception-caption">—</p></article><details class="console-camera"><summary>Szintetikus elölnézet</summary><article class="perception-card camera-card"><div class="perception-card-heading"><h5>Szintetikus elölnézet</h5><span>SEMATIKUS · NEM KAMERAFELVÉTEL</span></div><svg id="live-front-view" viewBox="0 0 510 300" role="img" aria-label="A fogadott virtuális észlelésekből rajzolt sematikus elölnézet"></svg><p id="live-front-caption" class="perception-caption">—</p></article></details></div>
+
+              <details class="console-details"><summary>Vezérlési döntés és fékezés</summary><dl class="perception-diagnostics"><div><dt>Legközelebbi felület / jármű</dt><dd id="live-perception-nearest">—</dd></div><div><dt>Vezérlő célsebessége</dt><dd id="live-perception-target">—</dd></div><div><dt>Ideális fékút · reakcióráhagyás</dt><dd id="live-perception-braking">—</dd></div><div><dt>Vezérlési döntés / megállás oka</dt><dd id="live-perception-decision">—</dd></div></dl><section id="live-braking-panel" class="braking-panel" data-state="unknown" aria-labelledby="live-braking-title">
+                <div class="braking-heading"><div><p class="eyebrow">NAPLÓZOTT VEZÉRLÉSI DÖNTÉS</p><h4 id="live-braking-title">Fékezés és megállási cél</h4></div><span id="live-braking-status" class="data-badge neutral">Nincs értelmezhető döntés</span></div>
+                <p id="live-braking-phase" class="braking-phase">Nem állapítható meg</p><p id="live-braking-clock" class="braking-clock">A naplózott vezérlési döntésre várunk.</p>
+                <dl class="braking-values"><div><dt>Sebesség a lépés előtt → után</dt><dd id="live-braking-speed">—</dd></div><div><dt>Alkalmazott gyorsulás</dt><dd id="live-braking-acceleration">—</dd></div><div><dt>Megállási célig a döntéskor</dt><dd id="live-braking-limit">—</dd></div><div><dt>Modellbeli fékezési tartalék</dt><dd id="live-braking-reserve">—</dd></div><div><dt>Fékezési kapacitás kihasználása</dt><dd id="live-braking-use">—</dd></div></dl>
+                <div id="live-braking-bar" class="braking-distance-bar" role="img" hidden><span id="live-braking-used" class="braking-distance-used" aria-hidden="true"></span><span id="live-braking-marker" class="braking-distance-marker" aria-hidden="true"></span></div><p class="braking-legend">Kék sáv: ideális fékút · függőleges jel: megállási cél. Közös relatív távolságskála.</p>
+                <p id="live-braking-note" class="braking-note">A hiányzó döntési adatokból nem számolunk megállási tartalékot.</p>
+              </section></details><details class="proximity-details"><summary>Közelségcsatornák részletei <span id="live-proximity-summary">—</span></summary><div class="proximity-table-wrap"><table id="live-proximity-table" class="proximity-table" hidden><caption>Virtuális közelségcsatornák a kijelzett mintából. A távolság a szerelési ponttól az első eltalált felületig értendő.</caption><thead><tr><th scope="col">Csatorna</th><th scope="col">Távolság [m]</th><th scope="col">Állapot</th><th scope="col">Első felület</th></tr></thead><tbody id="live-proximity-rows"></tbody></table></div></details>
+            <div id="live-proximity-selection" class="proximity-selection" hidden><div><strong id="live-proximity-selected-title">—</strong><p id="live-proximity-selected-detail">—</p></div><div class="proximity-selection-actions"><button id="live-proximity-focus" type="button" class="button tertiary">Találat a térképen</button><button id="live-proximity-clear" type="button" class="text-button">Kijelölés törlése</button></div></div>
+
+              <details class="console-details"><summary>Mintavétel és értelmezési határok</summary><p id="live-perception-source" class="perception-source-note">Az észlelési magyarázat a fogadott mintával együtt jelenik meg.</p></details>
+            </section><details class="console-details"><summary>Útkövetési és érzékelési adatok</summary>
+            <div class="sensor-legend" aria-label="Érzékelőréteg jelmagyarázata"><span><i class="sensor-key range"></i>Helyi érzékelési kör</span><span><i class="sensor-key pose"></i>Becsült saját pozíció</span><span><i class="sensor-key reference"></i>Útvonalreferencia</span><span><i class="sensor-key detection"></i>Fogadott észlelések</span><span><i class="sensor-key proximity"></i>Közelségi nyaláb és első találat</span></div>
+            <div class="sensor-grid">
+              <article class="sensor-tile localization"><div class="sensor-tile-title"><span class="sensor-icon" aria-hidden="true"><!--
+category: Map
+tags: [navigation, location, travel]
+version: "1.0"
+unicode: "eae9"
+-->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M3 7l6 -3l6 3l6 -3v13l-6 3l-6 -3l-6 3v-13" />
+  <path d="M9 4v13" />
+  <path d="M15 7v13" />
+</svg>
+</span><h4>Lokalizáció</h4><span class="sensor-kind">Virtuális pozícióadó</span></div><p>A saját hely és irány becslése a telephely koordinátarendszerében.</p><dl><div><dt>Mért pozíció</dt><dd id="sensor-pose">—</dd></div><div><dt>Tengelyenkénti hibakorlát</dt><dd id="sensor-pose-bound">—</dd></div></dl></article>
+              <article class="sensor-tile reference"><div class="sensor-tile-title"><span class="sensor-icon" aria-hidden="true"><!--
+tags: [path, journey, direction, trail, navigate, travel, way, road, travel-route, route-way]
+category: Map
+version: "1.0"
+unicode: "eb17"
+-->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M3 19a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+  <path d="M19 7a2 2 0 1 0 0 -4a2 2 0 0 0 0 4z" />
+  <path d="M11 19h5.5a3.5 3.5 0 0 0 0 -7h-8a3.5 3.5 0 0 1 0 -7h4.5" />
+</svg>
+</span><h4>Úton maradás</h4><span class="sensor-kind">Ismert térképi referencia</span></div><p>A mért hely összevetése az előre megadott útvonallal.</p><dl><div><dt>Oldalirányú eltérés</dt><dd id="sensor-route-error">—</dd></div><div><dt>Útvonal iránya</dt><dd id="sensor-route-heading">—</dd></div></dl></article>
+              <article class="sensor-tile environment"><div class="sensor-tile-title"><span class="sensor-icon" aria-hidden="true"><!--
+tags: [location, navigation, gps, find, signal, technology, submarine]
+version: "1.54"
+category: Map
+unicode: "f017"
+-->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M21 12h-8a1 1 0 1 0 -1 1v8a9 9 0 0 0 9 -9" />
+  <path d="M16 9a5 5 0 1 0 -7 7" />
+  <path d="M20.486 9a9 9 0 1 0 -11.482 11.495" />
+</svg>
+</span><h4>Környezetészlelés</h4><span class="sensor-kind">Virtuális távolsági érzékelés</span></div><p>A közeli autók és gyalogátkelők állapota segíti a fékezést.</p><dl><div><dt>Hatótáv · frissítés</dt><dd id="sensor-range">—</dd></div><div><dt>Észlelések</dt><dd id="sensor-detection-count">—</dd></div></dl></article>
+              <article class="sensor-tile odometry"><div class="sensor-tile-title"><span class="sensor-icon" aria-hidden="true"><!--
+tags: [pulse, motion, health, action]
+version: "1.0"
+unicode: "ed23"
+-->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M3 12h4l3 8l4 -16l3 8h4" />
+</svg>
+</span><h4>Mozgásbecslés</h4><span class="sensor-kind">Ideális modellből vett jel</span></div><p>A sebesség, haladási irány és megtett út állapotának követése.</p><dl><div><dt>Sebesség · irány</dt><dd id="sensor-motion">—</dd></div><div><dt>Megtett út</dt><dd id="sensor-distance">—</dd></div></dl></article>
+            </div>
+            <div class="sensor-observations"><strong>Észlelt környezet</strong><span id="sensor-detections">Nincs észlelés.</span></div>
+            <p id="sensor-sample-meta" class="sensor-sample-meta">—</p>
+
+          </details></div>
+          <p class="sensor-limit-note"><strong>A modell határa:</strong> a kormányzás ideális útvonalkövetés. Kamera, GNSS és IMU nincs bekötve; az útvonalreferencia nem kamerával felismert útszegély. A helyi érzékelési körben nincs takarásmodell.</p>
+          <details class="sensor-real-world"><summary>Milyen érzékelők segítenék egy valós autó útkövetését?</summary><ul><li><strong>Kamera:</strong> az útjelölések és az úthatár megfigyelése segítheti az oldalirányú helyzetkorrekciót.</li><li><strong>LiDAR:</strong> környezeti geometria és akadályok megfigyelése; térképpel összevetve helyzetbecslés.</li><li><strong>GNSS, IMU és kerékodometria:</strong> abszolút helyzet és rövid távú mozgásbecslés. Épületek, sodródás és megcsúszás ronthatják az egyes jeleket.</li></ul><p>Ezek egy későbbi, visszacsatolt útkövető modell lehetséges elemei. <a href="https://docs.autoware.org/main/design/autoware-architecture-v1/components/localization/" target="_blank" rel="noopener noreferrer">Forrás: Autoware lokalizációs terv ↗</a></p></details>
+        </section></section>
+
+
         <section class="card fleet-card"><div class="card-heading compact"><div><p class="eyebrow">JÁRMŰVEK</p><h2>Aktuális állapot</h2></div><span id="fleet-count" class="small-pill">0</span></div><div id="fleet-list" class="fleet-list"><p class="empty-state">Az első autó a gyártósori kijáratnál jelenik meg.</p></div><div class="production-buffer"><div><span>Pufferben vár</span><strong id="buffered-count">—</strong></div><div><span>Elkészült autó</span><strong id="offered-count">—</strong></div><div><span>Beengedett</span><strong id="admitted-count">—</strong></div></div><p class="fleet-note" id="fleet-note">Az aktív autók a parkoló járműveket is tartalmazzák. A kezdeti parkolófoglaltság külön helyállapot.</p></section>
       </aside>
     </div>
@@ -260,7 +439,32 @@
       <div class="log-toolbar"><div><span id="log-mode" class="data-badge good"><i></i> Élő nézet</span><span id="log-status">Várakozás a naplóra…</span></div><div class="log-pager"><button id="log-latest" type="button" class="button secondary">Legfrissebb</button><button id="log-newer" type="button" class="button secondary" disabled>← Újabb</button><button id="log-older" type="button" class="button secondary" disabled>Régebbi →</button></div></div>
       <div id="log-error" class="log-error" role="status" hidden></div><div class="log-table-wrap"><table class="log-table"><thead><tr><th>Idő</th><th>Szint</th><th>Kategória</th><th>Jármű</th><th>Esemény és részletek</th></tr></thead><tbody id="event-list"><tr><td colspan="5" class="log-empty">A részletes napló az adatút indulása után jelenik meg.</td></tr></tbody></table></div><div class="log-footer"><span id="log-page-note">Legfeljebb 100 sor / oldal · élő frissítés 1 s</span><span id="logging-limit-note">MQTT-n fogadott adatokból</span></div>
     </section>
-    <footer class="page-footer"><p><strong>Modellhatár:</strong> ismert térkép, virtuális érzékelők és egyszerűsített járműmozgás. A parkolt autó kiadáskor lekerül a modellből; a kifelé vezető út nincs modellezve. Az Audi Győr ihlette változat nyilvános források alapján készült, egyszerűsített oktatási modell; a belső üzemi forgalom nem ismert.</p><span>GYÁRUDVAR LAB · v0.18</span></footer>
+    <section class="card layout-editor" id="scenario-editor">
+      <div class="editor-heading"><div><p class="eyebrow">KÖVETKEZŐ FUTÁS · TERVEZET</p><h2>A következő futás beállításai</h2><p class="subtle">Tervezett autók, parkolók és indulási helyek. A módosítások egy új, naplózott futásban lépnek életbe.</p></div><button id="editor-toggle" class="button secondary" type="button" aria-expanded="false" aria-controls="editor-body">Beállítások megnyitása <span aria-hidden="true">⌄</span></button></div>
+      <div class="editor-summary"><span id="scenario-name">Forgatókönyv betöltése…</span><span id="scenario-counts">—</span><span id="scenario-pending" class="data-badge warn" hidden>Nem alkalmazott módosítások</span></div>
+      <div id="editor-body" hidden>
+        <div class="editor-fields">
+          <label class="preset-field">Telephely<select id="scenario-preset" disabled></select></label>
+          <label>Egyszerre aktív autók<input id="scenario-cars" type="number" min="1" max="30" step="1" value="6"></label>
+          <label>Parkolóhelyek<input id="scenario-parking" type="number" min="4" max="96" step="1" value="16"></label>
+          <label>Kezdetben foglalt helyek<input id="scenario-occupied" type="number" min="0" max="96" step="1" value="4"></label>
+          <label>Kezdeti mozgó autók<input id="scenario-initial-cars" type="number" min="0" max="30" step="1" value="0"></label>
+          <label>Új autó érkezése [s]<input id="scenario-interval" type="number" min="1" max="120" step="1" value="9"></label>
+          <label>Parkolás időtartama [s]<input id="scenario-dwell" type="number" min="5" max="600" step="1" value="45"></label>
+          <label>Gyártósori kijárat<select id="scenario-exit"></select></label>
+          <label>Parkolási terület<select id="scenario-area"></select></label>
+          <label>Összes legyártandó autó<input id="scenario-limit" type="number" min="1" max="1000" step="1" placeholder="Üres: folyamatos gyártás"></label>
+        </div>
+        <div class="placement-editor"><div class="placement-heading"><div><h3>Pozíciók szerkesztése</h3><p>A térképi előnézet az új futás induló állapotát mutatja. A parkolók a kijelölt parkolási területen, az autók az induló útszakaszon helyezhetők el.</p></div><span id="editor-mode-badge" class="data-badge neutral">Nézet</span></div>
+          <div class="placement-fields"><label>Mit helyezzünk el?<select id="placement-mode"><option value="none">Térkép megtekintése</option><option value="slot">Parkolóhely áthelyezése</option><option value="car">Kezdeti autó elhelyezése</option></select></label><label>Elem<select id="placement-item"><option value="">Nincs kijelölt elem</option></select></label><label>X [m]<input id="placement-x" type="number" step="0.1"></label><label>Y [m]<input id="placement-y" type="number" step="0.1"></label><button id="placement-save" class="button secondary" type="button" disabled>Pozíció mentése</button><button id="initial-car-add" class="button tertiary" type="button">+ Kezdeti autó</button><button id="initial-car-remove" class="button tertiary" type="button" disabled>Autó törlése</button></div>
+          <p id="placement-hint" class="control-note">Válassz szerkesztési módot, majd kattints a térképre vagy add meg a koordinátákat. A szerver ellenőrzi az elérhetőséget és az átfedéseket.</p>
+        </div>
+        <div id="scenario-error" class="scenario-error" role="status" hidden></div>
+        <div class="editor-actions"><div><button id="scenario-preview" class="button secondary" type="button">Előnézet frissítése</button><button id="scenario-discard" class="button tertiary" type="button">Vissza az aktuális futáshoz</button><a id="scenario-download" class="button tertiary" href="/api/scenario/export" download>Forgatókönyv JSON ↓</a><label class="button tertiary scenario-file-label" for="scenario-import">JSON megnyitása<input id="scenario-import" type="file" accept=".json,application/json"></label></div><button id="scenario-apply" data-control class="button primary" type="button">Beállítások alkalmazása · új futás</button></div>
+        <p id="scenario-description" class="scenario-description"></p>
+      </div>
+    </section>
+<footer class="page-footer"><p><strong>Modellhatár:</strong> ismert térkép, virtuális érzékelők és egyszerűsített járműmozgás. A parkolt autó kiadáskor lekerül a modellből; a kifelé vezető út nincs modellezve. Az Audi Győr ihlette változat nyilvános források alapján készült, egyszerűsített oktatási modell; a belső üzemi forgalom nem ismert.</p><span>GYÁRUDVAR LAB · v0.18</span></footer>
   </main>
   <div id="toast" class="toast" role="status" hidden></div>
 </body>

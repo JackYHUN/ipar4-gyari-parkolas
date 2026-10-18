@@ -1,5 +1,11 @@
 # Ipar 4.0 – gyári készjármű-parkolási szimulátor
 
+## Új műszaki dashboard
+
+A világos munkafelület felső navigációt, kompakt futásvezérlést és KPI-sávot, kiemelt térképet és külön járművizsgáló oszlopot kapott. A radar, a szintetikus elölnézet, a fékezési részletek, az útelőzmény és a napló a meglévő fogadott adatokkal működik. Telefonon is elérhetők a kezelők és a kapcsolófeliratok. A helyben beágyazott Inter betű és a Tabler ikonok külső CDN nélkül töltődnek.
+
+[Műszaki leírás és licencek](docs/MUSZAKI_DASHBOARD_ARCULAT.md) · [Vizuális ellenőrzés](design-qa.md) · [Böngészős kép](results/ui/console-redesign/desktop.png). `python -m experiments.verify_console_redesign`: 313 sikeres meglévő felületi ellenőrzés, 2486 korábbi MQTT-keret két offline ablakban. A 20 mért modell- és konfigurációforrás változatlan; a korábbi beadási bizonyítékok külön történeti nyugták maradnak.
+
 ## Fékezések gyorskeresése egy mentett útablakban
 
 Az útelőzményben közvetlenül a megfigyelt fékezési szakaszokra, a legkisebb mozgás közbeni modellbeli tartalékra és a legerősebb alkalmazott lassulásra lehet ugrani. A gombok pontos fogadott keretet választanak ki, a térkép és az érzékelőnézet azt a rekordot mutatja. Az összegzés kizárólag a betöltött, legfeljebb 2000 mintás ablakra vonatkozik; az ismételt, hibás, ellentmondó és ismeretlen frissességű döntések külön számlálót kapnak. Az adatrések szétválasztják a szakaszokat.

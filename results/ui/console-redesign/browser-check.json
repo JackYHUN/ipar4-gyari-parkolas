@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "verified_at_utc": "2026-10-18T22:02:23.412Z",
+  "url": "http://127.0.0.1:8765/",
+  "runtime": "Actual local simulation with MQTT broker, simulator, coordinator and HTTP dashboard",
+  "source_sha256": {
+    "web/app.js": "f19bb3f10f42fa702b83eddb32c18b38fb061d654bf361a48c1c793dd4713b2e",
+    "web/index.html": "7dd837066f5eaa8b31d13dacdde77fabca91a6c25b0508d89a744d28357525d8",
+    "web/style.css": "1417a4260ed69f7ff72d628a3fde8cbf7a3ed4a49dd14c2cf0f3dc07d96bc2d6",
+    "web/perception.css": "0f78bbb0aa6afba898d7c174ce8c78e1751533b0c59c1457d71c6459dba267e2",
+    "web/perception.js": "a3fee6d61890886e8c3c1c1d5540b5981e87adc3e7b7ff0fc107768d27e66722",
+    "web/perception-analysis.js": "dbd4e0ec9d75d36230045254265bd05741a0754d0525dd59ff6f2686e1457bd7"
+  },
+  "viewports": {
+    "desktop": {
+      "client": 1425,
+      "scroll": 1425,
+      "viewport": 1440
+    },
+    "tablet": {
+      "client": 885,
+      "scroll": 885,
+      "viewport": 900
+    },
+    "mobile": {
+      "client": 375,
+      "labels": true,
+      "scroll": 375,
+      "seedVisible": true,
+      "viewport": 390
+    }
+  },
+  "checks": [
+    "Pause and resume confirmed by received run status",
+    "Select CAR002 and confirm inspector identity",
+    "Open synthetic front view and braking details",
+    "Open next-run settings and confirm aria-expanded",
+    "Navigate to log section and confirm active aria-current",
+    "Load archived d8245dee142a CAR001: 2000 of 10578 received frames",
+    "Jump to strongest braking at 56.25 s and observe braking-in-progress panel",
+    "No whole-page horizontal overflow at 1440, 900 and 390 pixel viewport",
+    "Mobile seed input and both map toggle labels remain visible"
+  ],
+  "console_errors_and_warnings": [],
+  "limitations": [
+    "Local browser workflow checks, not a new statistical campaign",
+    "Concept values are illustrative; screenshot uses actual received runtime values",
+    "Native SVG data visualizations retained; radar intentionally remains a dark instrument"
+  ]
+}

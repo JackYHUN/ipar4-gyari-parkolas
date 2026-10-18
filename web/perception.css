@@ -28,3 +28,34 @@
 @container(max-width:640px){.perception-view .perception-grid{grid-template-columns:1fr}.perception-view .radar-card svg{max-width:340px;margin-inline:auto}.perception-view .camera-card svg{margin-block:0}.perception-view .perception-card-heading{min-height:0}.perception-view .perception-caption{min-height:0;font-size:9px}}
 @media(max-width:1050px){.perception-view .perception-grid{gap:10px}.perception-view .perception-card{padding:9px}.perception-view .perception-card-heading{min-height:47px}.perception-view .perception-card-heading h4,.perception-view .perception-card-heading h5{font-size:11px}.perception-view .perception-caption{font-size:8px;min-height:45px}}
 @media(max-width:560px){.perception-view .perception-grid{grid-template-columns:1fr;gap:12px}.perception-view .perception-card{padding:10px}.perception-view .perception-card-heading{min-height:0;align-items:center}.perception-view .perception-card-heading h4,.perception-view .perception-card-heading h5{font-size:12px}.perception-view .perception-card-heading span{font-size:6.5px}.perception-view .perception-caption{font-size:9px;min-height:0}.perception-view .perception-diagnostics dd{font-size:10px}.perception-view .camera-card svg{margin-block:0}}
+/* Engineering workbench: native live and archived sensor components. */
+.console-app .perception-view{margin-top:12px;padding:0;border:0;background:transparent;box-shadow:none}
+.console-app .perception-view .perception-grid{gap:10px}
+.console-app .perception-view .perception-card{padding:10px;border:1px solid var(--line,#dfe5ec);border-radius:7px;background:#fff;box-shadow:none}
+.console-app .perception-view .perception-card-heading{min-height:0;padding:0 0 8px;align-items:center}
+.console-app .perception-view .perception-card-heading h4,.console-app .perception-view .perception-card-heading h5{font-size:12px;color:#26364a}
+.console-app .perception-view .perception-card-heading span{font-size:8px;color:#63758a}
+.console-app .perception-view .perception-card svg{border-radius:5px}
+.console-app .perception-view .perception-caption{font-size:10px;line-height:1.6;min-height:0;color:#627287;padding-top:8px}
+.console-app .perception-source-note{font-size:10px;line-height:1.6;color:#627287}
+.console-app .perception-diagnostics>div{background:#f7f9fc;border-color:#dfe5ec;border-radius:5px}
+.console-app .console-camera{min-width:0;border:1px solid #dfe5ec;border-radius:7px;padding:0;background:#fff}
+.console-app .console-camera>summary{padding:10px 12px;font-size:11px;font-weight:600;color:#3e5269;cursor:pointer}
+.console-app .console-camera .camera-card{border:0;border-top:1px solid #edf0f5;border-radius:0}
+.console-app .braking-panel,.console-app .decision-window{background:#f7f9fc;border:1px solid #dfe5ec;border-radius:7px;padding:14px}
+.console-app .braking-heading h4,.console-app .decision-window h3{color:#26364a;font-size:14px}
+.console-app .braking-phase{font-size:18px;color:#3268d8}
+.console-app .braking-values>div,.console-app .decision-window-values>div{border-radius:5px;border-color:#e1e7ee;padding:10px}
+.console-app .braking-clock,.console-app .braking-legend,.console-app .braking-note{color:#63758a}
+.console-app .decision-window-values dd{font-size:22px}
+.console-app .decision-anchor{font-size:12px;color:#3268d8}
+.console-app .console-inspector .perception-grid{grid-template-columns:1fr}
+.console-app .console-inspector .perception-view .radar-card svg{max-width:290px;margin-inline:auto}
+.console-app .console-inspector .braking-values{grid-template-columns:1fr 1fr}
+.console-app .console-inspector .perception-view>.section-heading{margin-bottom:10px}
+.console-app .console-inspector .perception-view>.section-heading h3{font-size:12px}
+.console-app .console-inspector .perception-view>.section-heading p{font-size:10px}
+.console-app .console-inspector .sensor-panel .section-heading{margin-bottom:10px}
+.console-app .console-inspector .sensor-panel .section-heading h3{font-size:12px}
+.console-app .console-inspector .sensor-model-note{font-size:10px;line-height:1.6}
+@media(max-width:500px){.console-app .console-controls .seed-field{display:flex}}
