@@ -1,0 +1,83 @@
+{
+  "status": "PASS",
+  "verified_at_utc": "2026-10-18T22:23:38.014Z",
+  "url": "http://127.0.0.1:8765/",
+  "scope": "Real local MQTT runtime; focused UI fixes, not a statistical or physical validation campaign",
+  "source_sha256": {
+    "web/app.js": "8424ac973ed1956d106ca10d934d9d44c77df6378fe2ad0140464928fb84ef66",
+    "web/index.html": "6764a511f9a0b3a21ecb29904f8e364c80571177f842cbbb447842efac0f4ae8",
+    "web/style.css": "2d84da8a4005385faca166054c5f6792d095b4c838bc2217ed7331c105afe46a",
+    "web/perception.css": "0f78bbb0aa6afba898d7c174ce8c78e1751533b0c59c1457d71c6459dba267e2",
+    "web/perception.js": "a3fee6d61890886e8c3c1c1d5540b5981e87adc3e7b7ff0fc107768d27e66722",
+    "web/perception-analysis.js": "dbd4e0ec9d75d36230045254265bd05741a0754d0525dd59ff6f2686e1457bd7"
+  },
+  "checks": [
+    "Chart: SVG and wrapper both 180 px, caption begins 10 px below SVG",
+    "Changing inspected car updates chart identity; new run clears prior selection and selects new CAR001",
+    "Loaded archived d8245dee142a CAR001, 2000 of 10578 frames; strongest-braking jump remains valid",
+    "Native upward scroll changed active nav from Napló to MQTT while preserving #logs-panel URL",
+    "Shift+Tab reveals skip link; Enter focuses console-main",
+    "Requested 2x speed received aria-pressed=true, restored 1x",
+    "Mobile inspector begins below measured sticky header, no overlap",
+    "At compact scale unselected labels are suppressed and explanation remains available",
+    "New demo run archived prior run and received a distinct run ID"
+  ],
+  "plot": {
+    "captionTop": 724.3229370117188,
+    "chartBottom": 714.3229370117188,
+    "height": 180,
+    "latest": "0,0 m/s",
+    "title": "Sebesség időben · CAR002",
+    "viewBox": "0 0 983 180",
+    "wrapHeight": 180
+  },
+  "archive": {
+    "captionAnchor": "end",
+    "content": 1376.666748046875,
+    "panel": 1376.666748046875,
+    "phase": "Fékezés folyamatban"
+  },
+  "wide_map": {
+    "client": 1905,
+    "expected": 0.1413793103448276,
+    "height": 580,
+    "pixel": 0.1413793103448276,
+    "scroll": 1905,
+    "width": 1453
+  },
+  "mobile": {
+    "client": 375,
+    "header": 98.66667175292967,
+    "inspector": 114.96875,
+    "scroll": 375,
+    "selectedSpeed": "true",
+    "viewport": 390
+  },
+  "mobile_map": {
+    "client": 375,
+    "compact": true,
+    "mutedLabelDisplay": "none",
+    "note": true,
+    "scroll": 375,
+    "viewport": 390
+  },
+  "tablet": {
+    "client": 885,
+    "scroll": 885,
+    "viewport": 900
+  },
+  "desktop_map_caption": {
+    "anchor": "end",
+    "client": 1425,
+    "scroll": 1425,
+    "view": "0 0 146 82",
+    "x": "144.56722276741903",
+    "y": "2.292443572129539"
+  },
+  "console_errors_and_warnings": [],
+  "limitations": [
+    "Screenshots show actual received simulated data at different times; no fabricated values",
+    "Horizontal nav and wide tables retain their own native scrolling",
+    "Focused keyboard and layout checks do not establish complete accessibility compliance"
+  ]
+}

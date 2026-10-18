@@ -94,9 +94,14 @@
     renderAttribution(map);if(previewMap)renderEditorMap();renderSensors();
   }
   function fillSelect(select, values, placeholder) {const prior=select.value;select.replaceChildren();if(!values.length){select.add(new Option(placeholder,""));return;}for(const v of values)select.add(new Option(v.label,v.value));if(values.some(v=>v.value===prior))select.value=prior;}
-  function updateView(){const map=$("yard-map");map.setAttribute("viewBox",`${view.x} ${view.y} ${view.w} ${view.h}`);map.classList.toggle("map-wide",fullMap.width>250);map.classList.toggle("map-detail",view.w<240);map.style.setProperty("--map-label-scale",Math.max(.5,view.w/150));map.style.setProperty("--map-pixel",view.w/Math.max(260,map.clientWidth||900));$("map-zoom-out").disabled=view.w>=fitView.w*1.7;$("map-zoom-in").disabled=view.w<=30;const activeCar=(current?.cars||[]).some(car=>car.id===selectedCar);$("map-focus-car").disabled=Boolean(previewMap)||!activeCar;$("map-focus-car").classList.toggle("selected",followCar&&activeCar);layoutParkingLabels();renderSensorOverlay();}
+  function yardMapPixel(){
+    const svg=$("yard-map"),width=Math.max(1,svg.clientWidth||900);
+    const height=Math.max(1,svg.clientHeight||view.h*width/view.w);
+    return Math.max(view.w/width,view.h/height);
+  }
+  function updateView(){const map=$("yard-map");map.setAttribute("viewBox",`${view.x} ${view.y} ${view.w} ${view.h}`);map.classList.toggle("map-wide",fullMap.width>250);map.classList.toggle("map-detail",view.w<240);const compact=yardMapPixel()>.25;map.classList.toggle("map-labels-compact",compact);$("map-label-note").hidden=!compact;map.style.setProperty("--map-label-scale",Math.max(.5,view.w/150));map.style.setProperty("--map-pixel",yardMapPixel());$("map-zoom-out").disabled=view.w>=fitView.w*1.7;$("map-zoom-in").disabled=view.w<=30;const activeCar=(current?.cars||[]).some(car=>car.id===selectedCar);$("map-focus-car").disabled=Boolean(previewMap)||!activeCar;$("map-focus-car").classList.toggle("selected",followCar&&activeCar);$("map-focus-car").setAttribute("aria-pressed",String(followCar&&activeCar));layoutParkingLabels();renderSensorOverlay();}
   function layoutParkingLabels(){
-    const pixel=view.w/Math.max(260,$("yard-map").clientWidth||900),states=new Map((current?.parking||[]).map(s=>[s.id,s]));
+    const pixel=yardMapPixel(),states=new Map((current?.parking||[]).map(s=>[s.id,s]));
     const labels=[...parkingNodes].map(([id,g])=>{const label=g.querySelector(".slot-label"),slot=states.get(id),highlighted=g.classList.contains("selected")||Boolean(!previewMap&&selectedCar&&slot?.car_id===selectedCar),occupied=previewMap?previewMap.initial_occupied?.includes(id):slot&&["occupied","reserved","blocked"].includes(parkingState(slot));return {g,id,x:number(label.getAttribute("x")),y:number(label.getAttribute("y")),width:(id.length*5+6)*pixel,highlighted,priority:highlighted?0:occupied?1:2};}).sort((a,b)=>a.priority-b.priority||a.y-b.y||a.x-b.x);
     const shown=[];for(const label of labels){const overlaps=shown.some(other=>Math.abs(label.y-other.y)<11*pixel&&Math.abs(label.x-other.x)<(label.width+other.width)/2);const visible=label.highlighted||!overlaps;label.g.classList.toggle("sparse-slot-label",!visible);label.g.classList.toggle("highlighted-slot-label",label.highlighted);if(visible)shown.push(label);}
   }
@@ -396,12 +401,12 @@
       }
       if(channel.id===data.selectedChannel){group.classList.add("sensor-channel-selected");node("circle",{cx:mount.x_m,cy:mount.y_m,r:4.5*pixel,class:"sensor-selection-ring"},group);if(visual.observed&&hasValue(hit?.x_m)&&hasValue(hit?.y_m))node("circle",{cx:hit.x_m,cy:hit.y_m,r:6*pixel,class:"sensor-selection-ring"},group);}
     }
-    node("text",{x:number(origin.x_m)+number(sample.range_m)+1.5,y:origin.y_m,class:"sensor-map-label"},layer,`${fmt(sample.range_m,1)} m környezet${channels.length?` · ${fmt(proximity.range_m,1)} m közelség`:""} · ${fresh?"virtuális érzékelés":"ELAVULT MINTA"}`);
+    const labelView=data.view;node("text",{x:labelView?labelView.x+labelView.w-10*pixel:number(origin.x_m)+number(sample.range_m)+1.5,y:labelView?labelView.y+16*pixel:origin.y_m,"text-anchor":labelView?"end":"start",class:"sensor-map-label"},layer,`${fmt(sample.range_m,1)} m környezet${channels.length?` · ${fmt(proximity.range_m,1)} m közelség`:""} · ${fresh?"virtuális érzékelés":"ELAVULT MINTA"}`);
   }
   function renderSensorOverlay(){
     const layer=$("sensors-layer");empty(layer);layer.classList.remove("sensor-layer-stale");for(const key of ["carId","sampleTime","fresh"])delete layer.dataset[key];
     const data=selectedSensors();if(!data||!$("show-sensors").checked)return;
-    drawMapSensorOverlay(layer,{...data,selectedChannel:selectedProximityChannel("live")?.id},view.w/Math.max(260,$("yard-map").clientWidth||900));
+    drawMapSensorOverlay(layer,{...data,view,selectedChannel:selectedProximityChannel("live")?.id},yardMapPixel());
   }
   function sampleCadenceText(sample){
     const period=reading(sample?.period_s,"s",3),nominal=hasValue(sample?.nominal_period_s)?`névleges ${reading(sample.nominal_period_s,"s",3)} · lépéshez igazított ${period}`:`mentett periódus ${period}`;
@@ -935,12 +940,16 @@
     const all=(Array.isArray(telemetry)?telemetry:[]).filter(p=>hasValue(p.sim_time)&&hasValue(p.speed)).sort((a,b)=>a.sim_time-b.sim_time);
     const last=all.at(-1)?.sim_time;const points=all.filter(p=>p.sim_time>=last-60);const grid=$("chart-grid"),labels=$("chart-labels");empty(grid);empty(labels);
     $("car-chart-empty").hidden=points.length>0;$("chart-line").setAttribute("d","");$("chart-area").setAttribute("d","");
-    const left=38,right=486,top=17,bottom=118;
+    const svg=$("car-chart"),width=Math.max(280,number(svg.clientWidth,500)||500);
+    svg.setAttribute("viewBox",`0 0 ${width} 180`);
+    $("car-chart-title").textContent=selectedCar?`Sebesség időben · ${selectedCar}`:"Sebesség időben";
+    $("chart-latest").textContent=points.length?`${fmt(points.at(-1).speed)} m/s`:"—";
+    const left=42,right=width-14,top=18,bottom=148;
     const maxSpeed=Math.max(1,Math.ceil(Math.max(...points.map(p=>number(p.speed)),0)*2)/2),start=points[0]?.sim_time||0,end=Math.max(start+1,number(last,start+1));
     const xx=t=>left+(t-start)/(end-start)*(right-left),yy=v=>bottom-Math.max(0,number(v))/maxSpeed*(bottom-top);
     for(let i=0;i<4;i++){const value=maxSpeed*i/3,y=yy(value);node("line",{x1:left,y1:y,x2:right,y2:y,stroke:"#e6edf2","stroke-width":1,"stroke-dasharray":i?"3 4":""},grid);node("text",{x:left-8,y:y+3,"text-anchor":"end",class:"chart-axis"},labels,fmt(value,1));}
-    node("text",{x:left-7,y:10,"text-anchor":"end",class:"chart-axis"},labels,"m/s");
-    for(let i=0;i<3;i++){const value=start+(end-start)*i/2;node("text",{x:xx(value),y:141,"text-anchor":i===0?"start":i===2?"end":"middle",class:"chart-axis"},labels,`${fmt(value,1)} s`);}
+    node("text",{x:left-7,y:11,"text-anchor":"end",class:"chart-axis"},labels,"m/s");
+    for(let i=0;i<3;i++){const value=start+(end-start)*i/2;node("text",{x:xx(value),y:173,"text-anchor":i===0?"start":i===2?"end":"middle",class:"chart-axis"},labels,`${fmt(value,1)} s`);}
     if(!points.length){$("chart-caption").textContent="Szimulációs idő [s] · sebesség [m/s] · nincs fogadott minta";return;}
     const deltas=points.slice(1).map((p,i)=>p.sim_time-points[i].sim_time).filter(d=>d>0).sort((a,b)=>a-b);const normal=deltas[Math.floor(deltas.length/2)]||.1;
     const segments=[[]];for(const p of points){const seg=segments.at(-1),previous=seg.at(-1);if(previous&&p.sim_time-previous.sim_time>Math.max(.5,normal*5))segments.push([]);segments.at(-1).push(p);}
@@ -1056,7 +1065,7 @@
   function renderTripSensorOverlay(point,held=false){
     if(!trip?.sensorLayer)return;const layer=trip.sensorLayer;empty(layer);layer.classList.remove("sensor-layer-stale");for(const key of ["carId","sampleTime","fresh"])delete layer.dataset[key];
     const sample=point?.sensors;if(!usableSensorFrame(sample)||!hasValue(sample.pose?.x_m)||!hasValue(sample.pose?.y_m))return;
-    const fresh=Boolean(sample.fresh&&!sample.fault_active&&!held);drawMapSensorOverlay(layer,{car:{id:trip.carId},sample,fresh,selectedChannel:selectedProximityChannel("trip",{run_id:trip.runId,car_id:trip.carId,sensors:sample})?.id},tripMapPixel());
+    const fresh=Boolean(sample.fresh&&!sample.fault_active&&!held);drawMapSensorOverlay(layer,{car:{id:trip.carId},sample,fresh,view:trip.view||trip.bounds,selectedChannel:selectedProximityChannel("trip",{run_id:trip.runId,car_id:trip.carId,sensors:sample})?.id},tripMapPixel());
   }
   function fitTripMap(){if(!trip?.bounds)return;trip.follow=false;trip.view={...trip.bounds};updateTripView();}
   function zoomTripMap(factor){if(!trip?.bounds)return;trip.follow=false;const v=trip.view||trip.bounds,w=Math.max(30,Math.min(trip.bounds.w*1.8,v.w*factor)),h=w*trip.bounds.h/trip.bounds.w;trip.view={x:v.x+(v.w-w)/2,y:v.y+(v.h-h)/2,w,h};updateTripView();}
@@ -1361,7 +1370,7 @@
   function render(state) {
     synchronizeRunSettings(state);
     current=state;const map=state.map||{};const key=`${state.run_id}:${map.width}:${(map.slots||[]).map(s=>`${s.id}:${s.x}:${s.y}`).join(",")}`;if(!previewMap&&key!==mapKey){mapKey=key;selectedSlot=null;buildMap(map);}fillSelect($("slot-select"),(map.slots||[]).map(s=>({value:s.id,label:`${s.id} · parkolóhely`})),"Nincs parkolóhely");fillSelect($("crossing-select"),(map.crossings||[]).map((s,i)=>({value:s.id,label:s.label||`Zebra ${i+1} · ${i===0?"kijárat":"parkolóút"}`})),"Nincs zebra");
-    $("map-wait").hidden=Boolean(state.map);$("notice").hidden=true;setConnection(Boolean(state.connected),null,state.mqtt?.transport);$("run-status").textContent=state.paused?"A futás szünetel":"Szimuláció folyamatban";$("run-dot").classList.toggle("paused",Boolean(state.paused));$("sim-time").textContent=timeText(state.sim_time);$("run-seed").textContent=Number.isInteger(state.seed)?state.seed:"—";$("run-id").textContent=state.run_id||"—";$("run-id").title=state.run_id||"";$("strategy-label").textContent=state.strategy==="fixed"?"Rögzített helyszámsorrend":"Legrövidebb elérhető út";$("active-count").textContent=`${(state.cars||[]).length} / ${state.max_active||6}`;$("pause-label").textContent=state.paused?"Folytatás":"Szünet";$("pause-icon").textContent=state.paused?"▶":"Ⅱ";$("speed-label").textContent=`${state.speed||1}×`;for(const b of document.querySelectorAll("[data-speed]"))b.classList.toggle("selected",number(b.dataset.speed)===number(state.speed,1));
+    $("map-wait").hidden=Boolean(state.map);$("notice").hidden=true;setConnection(Boolean(state.connected),null,state.mqtt?.transport);$("run-status").textContent=state.paused?"A futás szünetel":"Szimuláció folyamatban";$("run-dot").classList.toggle("paused",Boolean(state.paused));$("sim-time").textContent=timeText(state.sim_time);$("run-seed").textContent=Number.isInteger(state.seed)?state.seed:"—";$("run-id").textContent=state.run_id||"—";$("run-id").title=state.run_id||"";$("strategy-label").textContent=state.strategy==="fixed"?"Rögzített helyszámsorrend":"Legrövidebb elérhető út";$("active-count").textContent=`${(state.cars||[]).length} / ${state.max_active||6}`;$("pause-label").textContent=state.paused?"Folytatás":"Szünet";$("pause-icon").textContent=state.paused?"▶":"Ⅱ";$("speed-label").textContent=`${state.speed||1}×`;for(const b of document.querySelectorAll("[data-speed]")){const active=number(b.dataset.speed)===number(state.speed,1);b.classList.toggle("selected",active);b.setAttribute("aria-pressed",String(active));}
     const metrics=state.metrics||{};for(const [id,key]of [["buffered-count","buffered"],["offered-count","offered"],["admitted-count","admitted"]])$(id).textContent=Number.isFinite(metrics[key])?metrics[key].toLocaleString("hu-HU"):"—";$("metric-time").title=Number.isFinite(metrics.avg_yard_time_s)?`Udvaron belüli részidő: ${fmt(metrics.avg_yard_time_s)} s`:"A gyártósori készre jelentéstől a parkolásig, pufferben várakozással.";$("metric-time").textContent=number(metrics.completed)>0?`${fmt(metrics.avg_parking_time_s)} s`:"—";$("metric-distance").textContent=number(metrics.completed)>0?`${fmt(metrics.avg_distance_m)} m`:"—";$("metric-completed").textContent=number(metrics.completed).toLocaleString("hu-HU");$("pedestrian-stops").textContent=number(metrics.pedestrian_stops);$("collisions").textContent=number(metrics.collisions);$("collision-dot").classList.toggle("red",number(metrics.collisions)>0);const zones=state.zones||[],owned=zones.filter(z=>z.owner);$("zone-status").textContent=`${zones.length} forgalmi zóna · ${owned.length} foglalt`;$("zone-status").title=zones.map(z=>`${z.id}: ${z.owner||"szabad"}`).join(" · ");for(const group of $("zones-layer").children){const z=zones.find(v=>v.id===group.dataset.zone);if(!previewMap){group.classList.toggle("zone-owned",Boolean(z?.owner));group.setAttribute("aria-label",`${group.dataset.zone}: ${z?.owner||"szabad"}`);}}$("fleet-note").textContent=`Az aktív korlát ${state.max_active||6} autó, a parkoló járműveket is beleszámítva. A kezdeti parkolófoglaltság külön helyállapot.`;
     const mqtt=state.mqtt||{};$("mqtt-published").textContent=number(mqtt.published).toLocaleString("hu-HU");$("mqtt-received").textContent=number(mqtt.received).toLocaleString("hu-HU");const latency=typeof mqtt.latency_ms==="object"?mqtt.latency_ms?.mean:mqtt.latency_ms;$("mqtt-latency").textContent=Number.isFinite(Number(latency))&&latency!==null?`${fmt(latency,2)} ms`:"—";
     registerCars(state.cars||[]);if(!selectedCar&&(state.cars||[]).length)selectCar(state.cars[0].id);renderParking();renderCars();renderPedestrians();renderFleet();renderWarnings();renderCarDetails();renderSensors();fillSelect($("car-select"),(state.cars||[]).filter(c=>c.state!=="parked").map(c=>({value:c.id,label:`${c.id} · ${stateNames[c.state]||c.state}`})),"Nincs mozgó autó");renderObservability(state);if(followCar&&!previewMap){const car=(state.cars||[]).find(c=>c.id===selectedCar);if(car){view.x=number(car.x)-view.w/2;view.y=number(car.y)-view.h/2;}else followCar=false;}updateView();refreshControls();
@@ -1397,7 +1406,7 @@
   new ResizeObserver(()=>{updateView();resizeTripMap();}).observe($("yard-map"));new ResizeObserver(resizeTripMap).observe($("trip-map"));requestAnimationFrame(animateTrip);setTimeout(tripCatalogueLoop,500);
   for(const id of ["log-level","log-category","log-car"])$(id).addEventListener("change",()=>requestLogs());$("log-search").addEventListener("input",()=>requestLogs());$("log-clear").addEventListener("click",()=>{for(const id of ["log-level","log-category","log-car","log-search"])$(id).value="";requestLogs();});
   $("log-older").addEventListener("click",()=>{if(logNextBefore!==null){logCursorStack.push(logCursor);logCursor=logNextBefore;requestLogs(false);}});$("log-newer").addEventListener("click",()=>{if(logCursorStack.length){logCursor=logCursorStack.pop();requestLogs(false);}});$("log-latest").addEventListener("click",()=>requestLogs());
-  $("editor-toggle").addEventListener("click",()=>{const open=$("editor-body").hidden;$("editor-body").hidden=!open;$("editor-toggle").setAttribute("aria-expanded",String(open));$("editor-toggle").replaceChildren(document.createTextNode(open?"Beállítások bezárása ":"Beállítások megnyitása "),html("span",{"aria-hidden":"true"},open?"⌃":"⌄"));});
+  $("editor-toggle").addEventListener("click",()=>{const open=$("editor-body").hidden;$("editor-body").hidden=!open;$("editor-toggle").setAttribute("aria-expanded",String(open));$("editor-toggle").replaceChildren(document.createTextNode(open?"Beállítások bezárása ":"Beállítások megnyitása "),html("span",{"aria-hidden":"true"},open?"⌃":"⌄"));if(open)requestAnimationFrame(()=>$("scenario-editor").scrollIntoView({behavior:"auto",block:"start"}));});
   for(const id of ["scenario-preset",...Object.values(scenarioFieldIds),"scenario-exit","scenario-area","scenario-limit"]){$(id).addEventListener("change",()=>{if(!scenarioDraft)return;const resetLayout=["scenario-preset","scenario-area","scenario-parking"].includes(id),resetCars=["scenario-preset","scenario-exit"].includes(id);readScenarioFields();if(resetLayout)delete scenarioDraft.slots;if(resetCars)delete scenarioDraft.initial_cars;if(id==="scenario-preset"){delete scenarioDraft.production_exit_id;delete scenarioDraft.parking_area_id;}markScenarioDirty();scenarioError();schedulePreview();});}
   $("scenario-preview").addEventListener("click",()=>{clearTimeout(previewTimer);markScenarioDirty();previewScenario();});$("scenario-apply").addEventListener("click",applyScenario);$("scenario-discard").addEventListener("click",discardScenario);$("placement-mode").addEventListener("change",async()=>{clearCoordinateEdit();if($("placement-mode").value!=="none"&&!previewMap){markScenarioDirty();await previewScenario();}fillPlacementItems();});$("placement-item").addEventListener("change",()=>{clearCoordinateEdit();fillPlacementItems($("placement-item").value);});$("placement-save").addEventListener("click",()=>savePlacement());$("initial-car-add").addEventListener("click",addInitialCar);$("initial-car-remove").addEventListener("click",()=>{if($("placement-mode").value!=="car"||!placementPosition())return;clearCoordinateEdit();scenarioDraft.initial_cars.splice(Number($("placement-item").value),1);scenarioDraft.initial_car_count=scenarioDraft.initial_cars.length;$("scenario-initial-cars").value=scenarioDraft.initial_car_count;markScenarioDirty();fillPlacementItems();schedulePreview();});
   $("scenario-download").addEventListener("click",downloadScenario);$("scenario-import").addEventListener("change",importScenario);
@@ -1411,20 +1420,46 @@
   for(const eventName of ["pointerup","pointercancel"]){$("yard-map").addEventListener(eventName,event=>{if(drag?.id!==event.pointerId)return;if($("yard-map").hasPointerCapture(event.pointerId))$("yard-map").releasePointerCapture(event.pointerId);drag=null;});}
   $("yard-map").addEventListener("pointerleave",()=>{if(!drag)$("map-coordinates").textContent="Húzás: térkép mozgatása · Ctrl + görgő: nagyítás";});
   $("yard-map").addEventListener("click",event=>{if(movedPointer||!previewMap||$("placement-mode").value==="none"||event.target.closest('[role="button"]'))return;const point=mapPoint(event);if(point)savePlacement(point.x,point.y);});
-  // Keep section links and keyboard navigation in sync with native fragment URLs.
+  // Main-flow sections determine scroll position; the parallel inspector is
+  // selected only when explicitly requested and remains visible at the guide.
+  function consoleSectionTarget(items,guide,hash="",atBottom=false) {
+    const visible=items.filter(item=>item.bottom>guide);
+    if(atBottom){const last=visible.filter(item=>item.id!=="vehicle-panel").at(-1);if(last)return last.id;}
+    const inspector=visible.find(item=>item.id==="vehicle-panel"&&item.top<=guide);
+    if(hash==="#vehicle-panel"&&inspector)return inspector.id;
+    const main=items.filter(item=>item.id!=="vehicle-panel"&&item.top<=guide)
+      .sort((a,b)=>b.top-a.top);
+    return main[0]?.id||"yard-area";
+  }
   function installConsoleShell() {
-    const links = [...document.querySelectorAll(".header-nav a[href^='#']")];
-    function markSection() {
-      const target = !location.hash || location.hash === "#console-main" ? "#yard-area" : location.hash;
-      for (const link of links) {
-        const active = link.getAttribute("href") === target;
-        link.classList.toggle("active", active);
-        if (active) link.setAttribute("aria-current", "location");
-        else link.removeAttribute("aria-current");
-      }
+    const nav=document.querySelector(".header-nav"),header=document.querySelector(".site-header");
+    const links=[...nav.querySelectorAll("a[href^='#']")];
+    let scheduled=false,activeId=null;
+    function markSection(id) {
+      if(id===activeId)return;activeId=id;
+      for(const link of links){const active=link.getAttribute("href")==="#"+id;
+        link.classList.toggle("active",active);
+        if(active){link.setAttribute("aria-current","location");
+          const left=link.offsetLeft-nav.offsetLeft,right=left+link.offsetWidth;
+          if(left<nav.scrollLeft||right>nav.scrollLeft+nav.clientWidth)
+            nav.scrollTo({left:Math.max(0,left-12),behavior:"auto"});
+        }else link.removeAttribute("aria-current");}
     }
-    window.addEventListener("hashchange", markSection);
-    markSection();
+    function readPosition() {
+      scheduled=false;const guide=header.getBoundingClientRect().bottom+20;
+      const items=links.map(link=>{const id=link.hash.slice(1),element=$(id),rect=element?.getBoundingClientRect();
+        return rect?{id,top:rect.top,bottom:rect.bottom}:null;}).filter(Boolean);
+      const atBottom=window.scrollY+window.innerHeight>=document.documentElement.scrollHeight-2;
+      markSection(consoleSectionTarget(items,guide,location.hash,atBottom));
+    }
+    function schedule(){if(!scheduled){scheduled=true;requestAnimationFrame(readPosition);}}
+    function resize(){document.documentElement.style.setProperty("--console-header-height",`${header.getBoundingClientRect().height}px`);
+      renderChart(carData?.telemetry||[]);updateView();resizeTripMap();schedule();}
+    window.addEventListener("hashchange",()=>{markSection(location.hash==="#console-main"?"yard-area":location.hash.slice(1));schedule();});
+    window.addEventListener("scroll",schedule,{passive:true});
+    window.addEventListener("resize",resize);
+    document.fonts?.ready.then(resize);
+    resize();
   }
   installConsoleShell();
   async function poll(){try{const state=await getJSON("/api/state");serverReachable=true;lastFetchOk=performance.now();if(state.run_id&&state.run_id!==observedRun)resetRunCaches(state.run_id);if(state&&state.map)render(state);else{current=state;refreshControls();renderTransportCapacity(state);$("run-status").textContent="Várakozás az MQTT-adatútra…";if(typeof state.connected==="boolean")setConnection(state.connected,null,state.mqtt?.transport);}renderOperationsSafety();}catch(error){serverReachable=false;renderOperationsSafety();refreshControls();renderCarDetails();renderSensors();if(performance.now()-lastFetchOk>1500){markTransportCapacityOffline();setConnection(false,"Műszerfal kapcsolódik");$("notice").hidden=false;$("notice").textContent="A helyi szerver jelenleg nem elérhető. A műszerfal automatikusan újracsatlakozik; a kijelzett értékek az utolsó fogadott adatok.";}}finally{setTimeout(poll,250);}}

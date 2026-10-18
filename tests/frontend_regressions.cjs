@@ -41,7 +41,7 @@ const context = {
   trip: null, parkingRenderCount: 0, renderParking: () => context.parkingRenderCount++, fillPlacementItems() {}, layoutParkingLabels() {}, renderSensorOverlay() {}, selectedProximityChannel() {return null;}, selectProximityChannel() {}
 };
 vm.createContext(context);
-for (const name of ["node", "pointSegmentDistance", "renderMapGeometry", "updateView", "nearestTripSlot", "tripLocation", "renderProximityTable", "perceptionSourceNote", "drawMapSensorOverlay"]) vm.runInContext(extract(name), context);
+for (const name of ["node", "pointSegmentDistance", "renderMapGeometry", "yardMapPixel", "updateView", "nearestTripSlot", "tripLocation", "renderProximityTable", "perceptionSourceNote", "drawMapSensorOverlay"]) vm.runInContext(extract(name), context);
 let checks = 0;
 function test(name, callback) {callback(); checks++; process.stdout.write(`PASS ${name}\n`);}
 function walk(element) {return [element, ...element.children.flatMap(walk)];}
@@ -113,5 +113,18 @@ test("telemetry redraw preserves channel button identity and updates readings wi
   assert.equal(firstButton.children[1].textContent, "Új címke");
   assert.equal(firstRow.children[1].textContent, "0,20");
   assert.equal(firstRow.children[2].textContent, "Elavult találat");
+});
+test("sensor range caption stays inside the live map instead of following a car off the right edge", () => {
+  const layer=new Element("g"), view={x:0,y:0,w:146,h:82};
+  context.drawMapSensorOverlay(layer,{car:{id:"CAR001"},sample,fresh:true,view},.2);
+  const label=walk(layer).find(n=>n.attributes.class==="sensor-map-label");
+  assert.equal(label.attributes.x,"144");assert.equal(label.attributes.y,"3.2");assert.equal(label.attributes["text-anchor"],"end");
+});
+test("archived map caption follows a panned viewport without changing sensor coordinates", () => {
+  const layer=new Element("g"),view={x:-50,y:100,w:80,h:45};
+  const before=JSON.stringify(sample);
+  context.drawMapSensorOverlay(layer,{car:{id:"CAR001"},sample,fresh:false,view},.25);
+  const label=walk(layer).find(n=>n.attributes.class==="sensor-map-label");
+  assert.equal(label.attributes.x,"27.5");assert.equal(label.attributes.y,"104");assert.equal(JSON.stringify(sample),before);
 });
 process.stdout.write(`${checks} frontend regressions passed.\n`);

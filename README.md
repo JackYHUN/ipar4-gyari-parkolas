@@ -1,5 +1,11 @@
 # Ipar 4.0 – gyári készjármű-parkolási szimulátor
 
+## Felületi hibajavítások és olvashatóság
+
+A sebességgrafikon a saját keretén belül marad, megnevezi a kiválasztott autót és az utolsó fogadott sebességet. Az útelőzmény teljes szélességű; a navigáció a kézi görgetést is követi. Javult a mobilos sorrend, a célterületek mérete, a billentyűs belépés és a széles térkép jelöléseinek méretezése. A hatótávfelirat a térképen belül marad, kicsinyítéskor kevesebb az egymásra kerülő azonosító.
+
+[Hibák, képek és ellenőrzési hatókör](docs/FELULETI_HIBAJAVITASOK.md). `python -m experiments.verify_console_polish`: 336 sikeres eset, köztük 23 új regresszió, továbbá 2486 korábbi MQTT-keret két offline ablakban. A 20 mért modell- és konfigurációforrás változatlan. A korábbi arculati és mérési nyugták történeti állapotot rögzítenek.
+
 ## Új műszaki dashboard
 
 A világos munkafelület felső navigációt, kompakt futásvezérlést és KPI-sávot, kiemelt térképet és külön járművizsgáló oszlopot kapott. A radar, a szintetikus elölnézet, a fékezési részletek, az útelőzmény és a napló a meglévő fogadott adatokkal működik. Telefonon is elérhetők a kezelők és a kapcsolófeliratok. A helyben beágyazott Inter betű és a Tabler ikonok külső CDN nélkül töltődnek.

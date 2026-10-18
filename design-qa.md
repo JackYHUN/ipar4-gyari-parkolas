@@ -32,3 +32,21 @@ A konzolban nem volt figyelmeztetés vagy hiba. A végső forrásokra futtatott 
 ## Maradó, elfogadott eltérések
 
 A működő alkalmazás több bizonyítékot és diagnosztikát tartalmaz a koncepciónál, ezért a fejléc alatti információs rész sűrűbb, a teljes oldal hosszabb. Az élő adatfolyam és a megőrzött, valódi geometria elsőbbséget kap az illusztratív autóelhelyezéssel szemben. A radar sötét háttere, az eredeti sematikus autók és a távolsági küszöbök szándékosan megmaradtak. Ezek nem nyitott működési hibák. További P0/P1/P2 probléma a végső összevetés és az ellenőrzött munkafolyamatok során nem maradt.
+
+
+## Kiegészítő javítási kör — 2026. október 19.
+
+final result: passed
+
+Az új audit friss böngészőképeken reprodukálta a grafikon túlcsordulását és a keskeny útelőzményt. A korábbi nyugta az előző forrásállapot történeti eredménye marad; ezt a kört külön ellenőrzési csomag rögzíti.
+
+- **P2, javítva:** a 150 px-es keretbe nőtt 295 px-es SVG helyett a grafikon és a keret magassága egyaránt 180 px. A képaláírás 10 px-rel az SVG után kezdődik. A szélességet a tényleges rendelkezésre álló helyhez illesztjük; a cím az autóazonosítót is tartalmazza.
+- **P2, javítva:** a mentett út többé nem szorul az élő térkép bal oszlopába. Azonos archivált jármű és mintahatár, azonos 1440 × 1024-es viewport mellett készült a [közös előtte/utána összevetés](results/ui/console-polish/comparison-trip.png). Az élő flotta külön kártya; telefonon a DOM és a vizuális sorrend is a térkép után hozza a járművizsgálót.
+- **P2, javítva:** az aktív navigáció görgetéskor is frissül. Az oldal vége és az egymás mellett megjelenő térkép/járművizsgáló külön esetet kap. A billentyűs átugró link a fő tartalomra fókuszál, a sebességgombok kijelölt állapota felolvasható.
+- **P2, javítva:** a széles, magasságban korlátozott SVG jelöléseinek méretezése mindkét tengelyt figyelembe veszi. A távolsági magyarázat a nézeten belülre került az élő és mentett térképen is. Kicsinyített nézetben a nem kijelölt autófeliratok fókuszra, érintésre/kijelölésre vagy nagyításra érhetők el.
+
+A meglévő Inter/Tabler arculat, színek és adatgrafikák maradtak. A címsorok, egységek és mentett adatjelentés nem változott. A [mobilos képpár](results/ui/console-polish/comparison-mobile.png) azonos 390 × 844-es viewportban, járművizsgáló állapotban készült; az autó és a szimulációs idő különbözik, így a képpár csak vizuális összevetés. A részletes műszaki szöveg sűrűsége szándékos maradt.
+
+[Böngészős ellenőrzés](results/ui/console-polish/browser-check.json): 390/900/1440/1920 px, járműváltás, sebességkérés, görgetést követő navigáció, billentyűs belépés, teljes szélességű archív út és pontos fékezési keret. Nincs egész oldalas vízszintes túlcsordulás, nincs böngészőkonzol-hiba vagy figyelmeztetés. A friss regressziós nyugta 336 sikeres esetet és 2486 korábbi MQTT-keret két offline ablakának vizsgálatát tartalmazza. A 431 korábbi DOM-azonosító és a 20 mért forrás/config lenyomata megmaradt.
+
+A végső képpárokon és az ellenőrzött folyamatokban további P0/P1/P2 megjelenítési vagy működési hiba nem maradt. Ez nem teljes akadálymentességi tanúsítás és nem új fizikai vagy statisztikai kampány.

@@ -239,3 +239,43 @@ html:has(.console-app){scroll-behavior:auto}
 .console-app .slot-label,.console-app .trip-map .slot-label{fill:#34465d;font-weight:600}
 .console-app .sensor-map-label{font-size:calc(var(--map-pixel, .15)*10px)}
 @media(max-width:760px){.console-app .console-map-meta{padding-inline:14px;gap:8px}.console-app #yard-map{max-height:none}}
+
+/* Post-redesign fixes: bounded chart, full-width archive and readable controls. */
+.console-app :is(section,details)[id],.console-app #console-main{scroll-margin-top:calc(var(--console-header-height,58px) + 16px)}
+.console-app .console-skip-link{position:fixed;top:8px;left:12px;z-index:1000;padding:12px 16px;background:#fff;color:#234d97;border:2px solid #3268d8;border-radius:5px;transform:translateY(-150%);font-size:13px}
+.console-app .console-skip-link:focus{transform:none}
+.console-app #console-main:focus{outline:none}
+.console-app .trend-card .chart-wrap{height:180px;min-height:180px;max-height:180px;overflow:hidden}
+.console-app .trend-card .chart-wrap svg{display:block;width:100%;height:100%;max-height:100%}
+.console-app .trend-card .chart-axis{font-size:10px;fill:#61748a}
+.console-app .trend-card .chart-caption{margin-top:10px;line-height:1.7;font-size:11px}
+.console-app .chart-heading-values{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.console-app #chart-latest{font-size:15px;color:#3268d8;font-weight:650;font-variant-numeric:tabular-nums;white-space:nowrap}
+.console-app .workspace>.trip-card{margin-top:18px}
+.console-app #trip-map{max-height:650px}
+.console-app #yard-map.map-labels-compact .car-group:not(.is-selected):not(:hover):not(:focus-visible) .car-id{display:none}
+.console-app .map-footer .map-label-note{display:block;font-size:10px;line-height:1.6;color:#65768b;margin:8px 0 0}
+.console-app .map-label-note[hidden]{display:none!important}
+.console-app .sensor-real-world summary{font-size:11px;line-height:1.7;color:#455e78}
+.console-app .sensor-real-world li,.console-app .sensor-real-world p{font-size:11px;line-height:1.8;color:#62748a}
+.console-app .header-nav a{font-size:12px}
+.console-app .map-navigation button{font-size:11px}
+.console-app .console-details>summary,.console-app .console-camera>summary{font-size:12px;line-height:1.6}
+@media(max-width:1370px){.console-app .header-nav a{font-size:11px}}
+@media(max-width:760px){.console-app .header-nav a{min-height:44px;font-size:11px}.console-app .zoom-controls button{min-width:36px;min-height:36px}.console-app .console-controls .segmented{height:42px}.console-app .console-controls .segmented button{min-height:36px}.console-app :is(select,input[type=number],input[type=search],input[type=text]){min-height:40px}.console-app .console-details>summary,.console-app .console-camera>summary,.console-app .proximity-details>summary{min-height:44px}.console-app #trip-map{max-height:none}.console-app .chart-heading-values{gap:6px}.console-app .trend-card .chart-heading{gap:9px;align-items:center;flex-wrap:wrap}}
+
+.console-app .console-workbench-grid{grid-template-areas:"yard inspector" "signals inspector" "fleet inspector" "tools inspector";grid-template-rows:auto auto auto auto}
+.console-app .console-workbench-grid>.yard-card{grid-area:yard}
+.console-app .console-workbench-grid>.console-inspector{grid-area:inspector}
+.console-app .console-workbench-grid>.trend-card{grid-area:signals}
+.console-app .console-workbench-grid>.fleet-card{grid-area:fleet}
+.console-app .console-workbench-grid>.console-test-tools{grid-area:tools}
+.console-app .console-workbench-grid>.fleet-card .fleet-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 18px;max-height:300px}
+.console-app .console-workbench-grid>.fleet-card .fleet-row{min-width:0}
+.console-app .console-workbench-grid>.fleet-card .production-buffer{display:grid;grid-template-columns:repeat(3,1fr)}
+@media(max-width:760px){.console-app .console-workbench-grid{grid-template-areas:"yard" "inspector" "signals" "fleet" "tools";grid-template-rows:auto}.console-app .console-workbench-grid>.fleet-card .fleet-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:420px){.console-app .console-workbench-grid>.fleet-card .fleet-list{grid-template-columns:1fr}}
+
+.console-app .header-nav{scrollbar-color:#647791 #202c3d;scrollbar-width:thin;overscroll-behavior-x:contain}
+.console-app .header-nav::-webkit-scrollbar{height:5px;background:#202c3d}
+.console-app .header-nav::-webkit-scrollbar-thumb{background:#647791;border-radius:4px}

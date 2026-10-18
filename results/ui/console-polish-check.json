@@ -1,0 +1,160 @@
+{
+  "status": "PASS",
+  "feature": "engineering_console_polish_v1",
+  "verified_at_utc": "2026-10-18T22:23:51.947516+00:00",
+  "regression_cases": 241,
+  "checks": [
+    {
+      "command": "node tests/frontend_braking_analysis.cjs",
+      "status": "PASS",
+      "cases": 20,
+      "output": "PASS bounded braking exposes actual speeds and margin without subtracting reaction twice\nPASS a stopping target is not an already stopped car\nPASS the step reaching zero is stopped even if its applied acceleration is negative\nPASS stationary and constant-speed phases use saved speeds rather than target state\nPASS no assigned stopping target preserves kinematics without inventing a zero margin\nPASS a negative reserve is preserved and never clipped to a reassuring zero\nPASS unknown and missing controllers do not produce diagnostics\nPASS missing or mistyped required scalars are not coerced into measurements\nPASS negative physical values and zero integration or deceleration are invalid\nPASS a missing, invalid or future telemetry time cannot validate the controller clock\nPASS six-decimal rounding is accepted in both independent physical identities\nPASS contradictory braking distance suppresses derived margin and utilization\nPASS contradictory acceleration is disclosed without replacing a received value\nPASS an original sensor clock mismatch is not presented as current or consistent\nPASS stale, faulty, held and caller-stale sensor observations remain retained\nPASS missing, unsampled and malformed sensor bundles leave kinematic freshness unknown\nPASS overflow in an otherwise finite physical identity cannot create derived Infinity\nPASS received zebra-braking frame retains six-decimal diagnostic rounding\nPASS received sensor-outage braking is retained evidence rather than fresh perception\nPASS the analyzer is deterministic, detached and does not mutate saved controller or sensor data\nPASS 20 received-braking diagnostic checks\n"
+    },
+    {
+      "command": "node tests/frontend_braking_panel.cjs",
+      "status": "PASS",
+      "cases": 11,
+      "output": "PASS both native panels have unique renderer targets and load the merged analyzer before app\nPASS a moving zebra-braking decision displays speeds, deceleration, reserve and accessible relative bar\nPASS stopping and acceleration labels follow reported motion rather than a waiting target\nPASS held replay observations keep historical numbers with explicit retained and gap notices\nPASS missing, malformed and future decisions clear all previous displayed measurements and bar label\nPASS contradictory diagnostics preserve reported speeds but suppress derived values and visual comparison\nPASS an unassigned stopping target keeps kinematics without inventing a limit, reserve or bar\nPASS negative model reserve remains signed and gets a distinct panel state without clipping geometry\nPASS live and archive use the same decision interpretation and maintain independent panel state\nPASS good to unavailable to good updates restore only the newest decision without mutating its input\nPASS the actual JSON download exports the same derived diagnostic and keeps raw observations even when unavailable\nPASS 11 received-braking panel integration checks\n"
+    },
+    {
+      "command": "node tests/frontend_decision_window.cjs",
+      "status": "PASS",
+      "cases": 29,
+      "output": "PASS empty and absent windows preserve explicit loaded-window scope\nPASS contiguous receipt-order decisions form one explicitly edge-bounded section\nPASS cruising and an actual zero-speed endpoint split observed braking\nPASS held duplicates extend receipt indices without inventing decision time or count\nPASS a fresh decision after a held copy extends the same contiguous section once\nPASS retained control evidence remains usable without claiming current sensors\nPASS unknown sensor freshness does not fabricate retained observations or invalidate control\nPASS unknown freshness counts distinct available clocks and may overlap retained receptions\nPASS the same held diagnostic across a gap forms disconnected locally counted sections\nPASS canonical control comparison ignores object key insertion order at every depth\nPASS a conflicting duplicate retroactively excludes its earliest extrema and section\nPASS a conflict in an additional received control field is not silently ignored\nPASS internally contradictory diagnostics stay identifiable but never become normal decisions\nPASS one mismatched sensor clock excludes all identical-control occurrences of its decision\nPASS malformed scalar diagnostics have a separate distinct invalid-clock count\nPASS missing controls and unknown sources never manufacture identifiable controller decisions\nPASS decision and telemetry clocks require finite nonnegative numbers without coercion\nPASS future decisions do not count or become navigation targets\nPASS explicit break, gap and positive numeric gap annotations split observations\nPASS sequence skips, repeats, reverse order and invalid sequence types split sections\nPASS nonincreasing receipt times split even an otherwise identical held decision\nPASS backward decision clocks split without silently sorting receipt order\nPASS sampling-period gaps use a bounded default and the explicit valid period\nPASS missing target remains null while signed negative reserves remain candidates\nPASS stationary decisions cannot hide a moving reserve with a misleading zero minimum\nPASS strongest actual braking includes a moving step reaching zero and excludes positive acceleration\nPASS extremum ties preserve the earliest receipt rather than sorting diagnostic clocks\nPASS invalid frames split sections and preserve exact original array indices\nPASS a 2000-row loaded window is deterministic, detached and does not mutate received data\nPASS 29 received-decision window checks\n"
+    },
+    {
+      "command": "node tests/frontend_decision_navigator.cjs",
+      "status": "PASS",
+      "cases": 14,
+      "output": "PASS navigator has unique native button targets and an explicit loaded-window scope\nPASS real loaded decisions populate signed minima and actual deceleration without changing source rows\nPASS exact receipt jumps pause playback and focus the historical perception heading without fetching\nPASS loading, stale identity, absent analysis and malformed indices cannot move or pause playback\nPASS previous and next select section starts in receipt order without wrapping or growing the window\nPASS previous braking section skips the current section when selected inside it\nPASS section navigation rejects non-directions and blocks cached actions during loading\nPASS native navigation state updates from cached summary and respects section boundaries and loading\nPASS empty and legacy windows expose no invented minimum or braking jump\nPASS a missing stopping target leaves the reserve action disabled while preserving reported braking\nPASS control-only archive rows can be inspected without claiming fresh sensor observations\nPASS reduced-motion preference prevents animated scroll while retaining keyboard focus\nPASS selection invalidation clears previous metrics and cannot leave enabled old decision controls\nPASS production lifecycle and button handlers use cached received-window actions\nPASS 14 received-decision navigator integration checks\n"
+    },
+    {
+      "command": "node tests/frontend_console_polish.cjs",
+      "status": "PASS",
+      "cases": 21,
+      "output": "PASS parallel inspector does not steal normal yard navigation\nPASS explicit inspector stays selected while its content covers the guide\nPASS scrolling below inspector selects the next main section\nPASS initial page above first section selects yard\nPASS gap between sections retains preceding main section\nPASS exact guide boundary selects the section\nPASS bottom of short final section selects it even when anchor cannot reach top\nPASS empty section list has a stable default\nPASS unknown hash does not create a missing active section\nPASS wide chart uses real width and fixed vertical coordinates\nPASS narrow chart keeps samples and axes inside its bounds\nPASS zero width before layout uses the stable default\nPASS chart identifies the selected car and last received speed\nPASS clearing car also clears plotted samples and last value\nPASS invalid samples do not become plotted zeroes\nPASS single sample keeps a finite chart\nPASS only trailing sixty seconds are plotted\nPASS sample gaps remain separate SVG subpaths\nPASS map scale follows height when a wide viewport letterboxes the SVG\nPASS map scale follows width when vertical space is abundant\nPASS map before layout keeps a finite aspect-preserving fallback\nPASS 21 console regressions\n"
+    }
+  ],
+  "total_cases": 336,
+  "source_sha256": {
+    "web/app.js": "8424ac973ed1956d106ca10d934d9d44c77df6378fe2ad0140464928fb84ef66",
+    "web/index.html": "6764a511f9a0b3a21ecb29904f8e364c80571177f842cbbb447842efac0f4ae8",
+    "web/perception-analysis.js": "dbd4e0ec9d75d36230045254265bd05741a0754d0525dd59ff6f2686e1457bd7",
+    "web/perception.css": "0f78bbb0aa6afba898d7c174ce8c78e1751533b0c59c1457d71c6459dba267e2",
+    "web/perception.js": "a3fee6d61890886e8c3c1c1d5540b5981e87adc3e7b7ff0fc107768d27e66722",
+    "web/style.css": "2d84da8a4005385faca166054c5f6792d095b4c838bc2217ed7331c105afe46a",
+    "tests/frontend_braking_analysis.cjs": "c21c66692cb6b6b85a2dd93990a4155eaabed53537087f4f819dc6b82f7c0d2d",
+    "tests/frontend_braking_panel.cjs": "c899fb94219223809e4f36dacffb065fbb4862a034dde7cab92895bc16f7f667",
+    "tests/frontend_decision_window.cjs": "fd426429797281bb9d0e9d2ea154d0a62193bda49478ac4d730dbfcb862b27c5",
+    "tests/frontend_decision_navigator.cjs": "8844d46ddcbb77be2c92959317ff5232b7d7161e508e55ab3c776459ad7c73b0",
+    "tests/frontend_console_polish.cjs": "097b529fb046c8a0c1a4e4f50177c500bae7788cd845e71ce85a1d73c081bec5",
+    "tests/frontend_navigation_v09.cjs": "cc2fd178873fe7a32354cd28e5bdb2b14385b02c86aac8ac917acaf552f0c2be",
+    "tests/frontend_replay_v10.cjs": "73baefd26813a5df2a60a78b0ff394eb3fd23f2cad9792b39fd873e510ad62fe",
+    "tests/frontend_mission_v11.cjs": "32347f3b2fa787b1be5058a8c2afa8b57b89c28f4d3438550803cbdc38de25a1",
+    "tests/frontend_transport_context_v15.cjs": "3d582b80913d97e8bf8acd05e17ff7a80b01f7af1e3c3dfc1531f046612316f8",
+    "tests/frontend_regressions.cjs": "7d5f8200cb3bc24c7802f38ea34468ace4341d0c97233a754fe8d28f7d4930b7",
+    "experiments/verify_console_polish.py": "af8191086e0a6d0a61f307358ec5cee30b7a2d9dea09d46f2bf77289ca175d1d",
+    "experiments/verify_frontend.py": "a24f1a3b16123aba2a8ae8560b91ef724ac30a55dba9610edecde0cf5e0341f2"
+  },
+  "sources_unchanged_during_run": true,
+  "base_report_sha256": "61eeacf35fbec5788ba819340841fdf93b1c58b9e398181c47d947dfe6018047",
+  "mqtt_archive": {
+    "sha256": "1a6d3b605707d4d7e1a8243ee1e604103d9bb03be1082546cf521934dfd20eac",
+    "scope": "Offline windows of previously received MQTT frames; no new broker campaign",
+    "frames": 2486,
+    "windows": [
+      {
+        "start_index": 0,
+        "schema_version": 1,
+        "scope": "loaded_received_window",
+        "frame_count": 2000,
+        "unique_decisions": 2000,
+        "duplicate_decisions": 0,
+        "unavailable_frames": 0,
+        "invalid_decisions": 0,
+        "inconsistent_decisions": 0,
+        "retained_decisions": 60,
+        "freshness_unknown_decisions": 0,
+        "braking_sections": [
+          {
+            "start_index": 7,
+            "end_index": 7,
+            "start_time_s": 0.75,
+            "end_time_s": 0.75,
+            "decision_count": 1,
+            "starts_at_window_edge": false,
+            "ends_at_window_edge": false
+          },
+          {
+            "start_index": 8,
+            "end_index": 8,
+            "start_time_s": 0.85,
+            "end_time_s": 0.85,
+            "decision_count": 1,
+            "starts_at_window_edge": false,
+            "ends_at_window_edge": false
+          },
+          {
+            "start_index": 9,
+            "end_index": 9,
+            "start_time_s": 0.95,
+            "end_time_s": 0.95,
+            "decision_count": 1,
+            "starts_at_window_edge": false,
+            "ends_at_window_edge": false
+          }
+        ],
+        "minimum_moving_reserve": {
+          "index": 134,
+          "decision_sim_time_s": 13.45,
+          "model_reserve_m": 1.2325
+        },
+        "strongest_braking": {
+          "index": 7,
+          "decision_sim_time_s": 0.75,
+          "applied_acceleration_m_s2": -2
+        }
+      },
+      {
+        "start_index": 2000,
+        "schema_version": 1,
+        "scope": "loaded_received_window",
+        "frame_count": 486,
+        "unique_decisions": 486,
+        "duplicate_decisions": 0,
+        "unavailable_frames": 0,
+        "invalid_decisions": 0,
+        "inconsistent_decisions": 0,
+        "retained_decisions": 0,
+        "freshness_unknown_decisions": 0,
+        "braking_sections": [
+          {
+            "start_index": 419,
+            "end_index": 435,
+            "start_time_s": 241.95,
+            "end_time_s": 243.55,
+            "decision_count": 17,
+            "starts_at_window_edge": false,
+            "ends_at_window_edge": false
+          }
+        ],
+        "minimum_moving_reserve": {
+          "index": 435,
+          "decision_sim_time_s": 243.55,
+          "model_reserve_m": 0.013902
+        },
+        "strongest_braking": {
+          "index": 420,
+          "decision_sim_time_s": 242.05,
+          "applied_acceleration_m_s2": -1.929673
+        }
+      }
+    ]
+  },
+  "limitations": [
+    "Each summary covers only its own loaded receipt window.",
+    "Disconnected braking sections are observations, not total-trip event counts or durations.",
+    "Moving model reserve does not establish physical safety.",
+    "Browser rendering and native exact-row navigation are verified separately."
+  ]
+}

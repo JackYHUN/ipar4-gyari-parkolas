@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "prepared_at_utc": "2026-10-18T22:02:38.304262+00:00",
-  "status": "PREPARED_CONSOLE_REDESIGN_UPDATE",
+  "prepared_at_utc": "2026-10-18T22:23:52.824120+00:00",
+  "status": "PREPARED_CONSOLE_POLISH_UPDATE",
   "source_root_relative": "projekt",
   "repository_root_relative": "output/repository/ipar4-gyari-parkolas",
   "network_publication_performed": false,
@@ -122,17 +122,17 @@
       "path": "web/app.js",
       "kind": "source",
       "source_relative": "web/app.js",
-      "source_sha256": "f19bb3f10f42fa702b83eddb32c18b38fb061d654bf361a48c1c793dd4713b2e",
-      "sha256": "f19bb3f10f42fa702b83eddb32c18b38fb061d654bf361a48c1c793dd4713b2e",
-      "size_bytes": 250205
+      "source_sha256": "8424ac973ed1956d106ca10d934d9d44c77df6378fe2ad0140464928fb84ef66",
+      "sha256": "8424ac973ed1956d106ca10d934d9d44c77df6378fe2ad0140464928fb84ef66",
+      "size_bytes": 253125
     },
     {
       "path": "web/index.html",
       "kind": "source",
       "source_relative": "web/index.html",
-      "source_sha256": "7dd837066f5eaa8b31d13dacdde77fabca91a6c25b0508d89a744d28357525d8",
-      "sha256": "7dd837066f5eaa8b31d13dacdde77fabca91a6c25b0508d89a744d28357525d8",
-      "size_bytes": 71914
+      "source_sha256": "6764a511f9a0b3a21ecb29904f8e364c80571177f842cbbb447842efac0f4ae8",
+      "sha256": "6764a511f9a0b3a21ecb29904f8e364c80571177f842cbbb447842efac0f4ae8",
+      "size_bytes": 72325
     },
     {
       "path": "web/perception-analysis.js",
@@ -162,9 +162,9 @@
       "path": "web/style.css",
       "kind": "source",
       "source_relative": "web/style.css",
-      "source_sha256": "1417a4260ed69f7ff72d628a3fde8cbf7a3ed4a49dd14c2cf0f3dc07d96bc2d6",
-      "sha256": "1417a4260ed69f7ff72d628a3fde8cbf7a3ed4a49dd14c2cf0f3dc07d96bc2d6",
-      "size_bytes": 592129
+      "source_sha256": "2d84da8a4005385faca166054c5f6792d095b4c838bc2217ed7331c105afe46a",
+      "sha256": "2d84da8a4005385faca166054c5f6792d095b4c838bc2217ed7331c105afe46a",
+      "size_bytes": 596324
     },
     {
       "path": "tests/__init__.py",
@@ -226,9 +226,9 @@
       "path": "tests/frontend_regressions.cjs",
       "kind": "source",
       "source_relative": "tests/frontend_regressions.cjs",
-      "source_sha256": "9d6698a754a28303c5775f7faf8c8a65243c4552890fe2383accb88509ab390f",
-      "sha256": "9d6698a754a28303c5775f7faf8c8a65243c4552890fe2383accb88509ab390f",
-      "size_bytes": 10577
+      "source_sha256": "7d5f8200cb3bc24c7802f38ea34468ace4341d0c97233a754fe8d28f7d4930b7",
+      "sha256": "7d5f8200cb3bc24c7802f38ea34468ace4341d0c97233a754fe8d28f7d4930b7",
+      "size_bytes": 11551
     },
     {
       "path": "tests/frontend_replay_v10.cjs",
@@ -1811,8 +1811,8 @@
       "kind": "generated_public_documentation",
       "source_relative": null,
       "source_sha256": null,
-      "sha256": "3e7d7feb19aa4edd4db50f43a247a8fb924c15bf102f310dc691167c62568578",
-      "size_bytes": 13469
+      "sha256": "923e8b006f9fc2d725690caf752feb30fb52822a38c6899e2b1f86ed39fb39af",
+      "size_bytes": 14336
     },
     {
       "path": "results/course-verification-v18/compact-index.json",
@@ -2047,9 +2047,9 @@
       "path": "design-qa.md",
       "kind": "documentation",
       "source_relative": "design-qa.md",
-      "source_sha256": "d0488680bf64e18b62d2e768e57329f5b6b8c1439c55bd5e322b94c03f6e1014",
-      "sha256": "d0488680bf64e18b62d2e768e57329f5b6b8c1439c55bd5e322b94c03f6e1014",
-      "size_bytes": 5685
+      "source_sha256": "03c5c259e882fe434ca2b8c0afd1b42b90675c11a54db89e267108e88d774f3f",
+      "sha256": "03c5c259e882fe434ca2b8c0afd1b42b90675c11a54db89e267108e88d774f3f",
+      "size_bytes": 8516
     },
     {
       "path": "results/ui/console-redesign-check.json",
@@ -2314,6 +2314,190 @@
       "source_sha256": "e78029bd18ca7968c5ac749d50b4de9bc5628128c96170587d09d5c2dd17c21f",
       "sha256": "e78029bd18ca7968c5ac749d50b4de9bc5628128c96170587d09d5c2dd17c21f",
       "size_bytes": 586980
+    },
+    {
+      "path": "tests/frontend_console_polish.cjs",
+      "kind": "source",
+      "source_relative": "tests/frontend_console_polish.cjs",
+      "source_sha256": "097b529fb046c8a0c1a4e4f50177c500bae7788cd845e71ce85a1d73c081bec5",
+      "sha256": "097b529fb046c8a0c1a4e4f50177c500bae7788cd845e71ce85a1d73c081bec5",
+      "size_bytes": 6620
+    },
+    {
+      "path": "experiments/verify_console_polish.py",
+      "kind": "source",
+      "source_relative": "experiments/verify_console_polish.py",
+      "source_sha256": "af8191086e0a6d0a61f307358ec5cee30b7a2d9dea09d46f2bf77289ca175d1d",
+      "sha256": "af8191086e0a6d0a61f307358ec5cee30b7a2d9dea09d46f2bf77289ca175d1d",
+      "size_bytes": 4697
+    },
+    {
+      "path": "docs/FELULETI_HIBAJAVITASOK.md",
+      "kind": "documentation",
+      "source_relative": "docs/FELULETI_HIBAJAVITASOK.md",
+      "source_sha256": "0024ae461176a181d467d4a689a391123479c5accc11f85592cee3074f348b1b",
+      "sha256": "0024ae461176a181d467d4a689a391123479c5accc11f85592cee3074f348b1b",
+      "size_bytes": 5024
+    },
+    {
+      "path": "results/ui/console-polish-check.json",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/console-polish-check.json",
+      "source_sha256": "4e60023f5292bf0b17c1677f5be7a69948d2185fbff454dd3099d62442c4c53c",
+      "sha256": "4e60023f5292bf0b17c1677f5be7a69948d2185fbff454dd3099d62442c4c53c",
+      "size_bytes": 14085
+    },
+    {
+      "path": "results/ui/console-polish-regressions.json",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/console-polish-regressions.json",
+      "source_sha256": "61eeacf35fbec5788ba819340841fdf93b1c58b9e398181c47d947dfe6018047",
+      "sha256": "61eeacf35fbec5788ba819340841fdf93b1c58b9e398181c47d947dfe6018047",
+      "size_bytes": 30437
+    },
+    {
+      "path": "results/ui/console-polish/00-chart-overflow-before.png",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/console-polish/00-chart-overflow-before.png",
+      "source_sha256": "dc953020488420fe282b03acbb061713ec370ad76e0557bec405f93071b612a0",
+      "sha256": "dc953020488420fe282b03acbb061713ec370ad76e0557bec405f93071b612a0",
+      "size_bytes": 121070
+    },
+    {
+      "path": "results/ui/console-polish/01-yard-before.png",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/console-polish/01-yard-before.png",
+      "source_sha256": "80965fb36829b41d12135a3684448a6244142ce0e32721314033d90f430ee05e",
+      "sha256": "80965fb36829b41d12135a3684448a6244142ce0e32721314033d90f430ee05e",
+      "size_bytes": 132042
+    },
+    {
+      "path": "results/ui/console-polish/02-trip-before.png",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/console-polish/02-trip-before.png",
+      "source_sha256": "e6db9cec886669d48b4320bc76bc12fd8b9be840fb1f43d56558e2b29b6483e3",
+      "sha256": "e6db9cec886669d48b4320bc76bc12fd8b9be840fb1f43d56558e2b29b6483e3",
+      "size_bytes": 79568
+    },
+    {
+      "path": "results/ui/console-polish/03-loaded-trip-before.png",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/console-polish/03-loaded-trip-before.png",
+      "source_sha256": "65a07b393ae9f05ee9dea5db08394edb268852f1a21cce5ffce704a017d178ed",
+      "sha256": "65a07b393ae9f05ee9dea5db08394edb268852f1a21cce5ffce704a017d178ed",
+      "size_bytes": 135603
+    },
+    {
+      "path": "results/ui/console-polish/04-mobile-inspector-before.png",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/console-polish/04-mobile-inspector-before.png",
+      "source_sha256": "e6b5a711a5660c3668cfa1c9b4c15e3b11edc841b8ebb4bdc93bdadc22b9ee2c",
+      "sha256": "e6b5a711a5660c3668cfa1c9b4c15e3b11edc841b8ebb4bdc93bdadc22b9ee2c",
+      "size_bytes": 38305
+    },
+    {
+      "path": "results/ui/console-polish/05-chart-after.png",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/console-polish/05-chart-after.png",
+      "source_sha256": "c752c90aa4a62032e678752d4c4c30cb59627b2172c5f76abc74531586388657",
+      "sha256": "c752c90aa4a62032e678752d4c4c30cb59627b2172c5f76abc74531586388657",
+      "size_bytes": 119761
+    },
+    {
+      "path": "results/ui/console-polish/06-trip-after.png",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/console-polish/06-trip-after.png",
+      "source_sha256": "b9b2287ab50a0d212357ca4b14ef5659da50d055b7e73efc0b47ef9cd711dfc8",
+      "sha256": "b9b2287ab50a0d212357ca4b14ef5659da50d055b7e73efc0b47ef9cd711dfc8",
+      "size_bytes": 116757
+    },
+    {
+      "path": "results/ui/console-polish/07-wide-after.png",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/console-polish/07-wide-after.png",
+      "source_sha256": "9547a23fdb8dd104bc2247083d2022031ed664fc92ce764647f11c656855a35e",
+      "sha256": "9547a23fdb8dd104bc2247083d2022031ed664fc92ce764647f11c656855a35e",
+      "size_bytes": 148429
+    },
+    {
+      "path": "results/ui/console-polish/08-loaded-trip-after.png",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/console-polish/08-loaded-trip-after.png",
+      "source_sha256": "48e776f04c1770bb667d49a468bc2c4b29b10d28b2d0b977055c14dda93ce724",
+      "sha256": "48e776f04c1770bb667d49a468bc2c4b29b10d28b2d0b977055c14dda93ce724",
+      "size_bytes": 128175
+    },
+    {
+      "path": "results/ui/console-polish/09-archive-braking-after.png",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/console-polish/09-archive-braking-after.png",
+      "source_sha256": "79360ffbd9b87e8b83c2d17713cddee0b9b4ae70625ba5869a14e48f1761ed66",
+      "sha256": "79360ffbd9b87e8b83c2d17713cddee0b9b4ae70625ba5869a14e48f1761ed66",
+      "size_bytes": 110243
+    },
+    {
+      "path": "results/ui/console-polish/10-mobile-inspector-after.png",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/console-polish/10-mobile-inspector-after.png",
+      "source_sha256": "2014aca8a880e2bf613a42415ea3f8191fb9dbe331551fb7d80f7e835ea036b3",
+      "sha256": "2014aca8a880e2bf613a42415ea3f8191fb9dbe331551fb7d80f7e835ea036b3",
+      "size_bytes": 38255
+    },
+    {
+      "path": "results/ui/console-polish/11-mobile-yard-after.png",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/console-polish/11-mobile-yard-after.png",
+      "source_sha256": "4085d8638a5616576a54817349ea6150869c1425aef23a99e00a53716379bb22",
+      "sha256": "4085d8638a5616576a54817349ea6150869c1425aef23a99e00a53716379bb22",
+      "size_bytes": 41722
+    },
+    {
+      "path": "results/ui/console-polish/12-tablet-after.png",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/console-polish/12-tablet-after.png",
+      "source_sha256": "e82a25409857d9a9f0507e391e9225bbe88f131b384ebbcaac5d45b16d9f6bd8",
+      "sha256": "e82a25409857d9a9f0507e391e9225bbe88f131b384ebbcaac5d45b16d9f6bd8",
+      "size_bytes": 101815
+    },
+    {
+      "path": "results/ui/console-polish/13-desktop-after.png",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/console-polish/13-desktop-after.png",
+      "source_sha256": "84828678840d88d57355d9723be1040c1e443aad91cf689a53727c0040ee186b",
+      "sha256": "84828678840d88d57355d9723be1040c1e443aad91cf689a53727c0040ee186b",
+      "size_bytes": 134278
+    },
+    {
+      "path": "results/ui/console-polish/browser-check.json",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/console-polish/browser-check.json",
+      "source_sha256": "5da472d78a888cb4063c3ec074e81ded9cd815199aa59a765d18b8041fb072b6",
+      "sha256": "5da472d78a888cb4063c3ec074e81ded9cd815199aa59a765d18b8041fb072b6",
+      "size_bytes": 3004
+    },
+    {
+      "path": "results/ui/console-polish/comparison-mobile.png",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/console-polish/comparison-mobile.png",
+      "source_sha256": "41e57ae8b4bfd057d6a41982becb793628f1f698c80b743c2c1865ac4b755a06",
+      "sha256": "41e57ae8b4bfd057d6a41982becb793628f1f698c80b743c2c1865ac4b755a06",
+      "size_bytes": 361944
+    },
+    {
+      "path": "results/ui/console-polish/comparison-trip.png",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/console-polish/comparison-trip.png",
+      "source_sha256": "cb560fb941149d4dc7128a670335a61518d1d31f031470a01750d7a334a4f34c",
+      "sha256": "cb560fb941149d4dc7128a670335a61518d1d31f031470a01750d7a334a4f34c",
+      "size_bytes": 338901
+    },
+    {
+      "path": "results/ui/console-polish/structure-check.json",
+      "kind": "feature-evidence",
+      "source_relative": "results/ui/console-polish/structure-check.json",
+      "source_sha256": "cc1be3bb8cd1f0684c79a10d47fe268e556081257953810bb49240b8cfa93fc4",
+      "sha256": "cc1be3bb8cd1f0684c79a10d47fe268e556081257953810bb49240b8cfa93fc4",
+      "size_bytes": 2277
     }
   ],
   "omissions": [
@@ -3114,6 +3298,6 @@
     "personal_release_packaging_scripts": "Six legacy package verification scripts omitted; measured core sources unmodified."
   },
   "measurement_archive_in_public_snapshot": "data/course-comparison-v18.zip",
-  "feature": "engineering_console_redesign_v1",
+  "feature": "engineering_console_polish_v1",
   "course_reference_commit": "f625cfe5e85cf5a8a28943704e7e025b89b7b0a4"
 }
