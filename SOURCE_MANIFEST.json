@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "prepared_at_utc": "2026-10-18T22:23:52.824120+00:00",
-  "status": "PREPARED_CONSOLE_POLISH_UPDATE",
+  "prepared_at_utc": "2026-10-19T18:53:09.105363+00:00",
+  "status": "PREPARED_TOPIC_DOCUMENTATION_UPDATE",
   "source_root_relative": "projekt",
   "repository_root_relative": "output/repository/ipar4-gyari-parkolas",
   "network_publication_performed": false,
@@ -1811,8 +1811,8 @@
       "kind": "generated_public_documentation",
       "source_relative": null,
       "source_sha256": null,
-      "sha256": "923e8b006f9fc2d725690caf752feb30fb52822a38c6899e2b1f86ed39fb39af",
-      "size_bytes": 14336
+      "sha256": "ba427a5a708354c81e5023cc7fd2aa1e2f5654dfac62f98e024be6062039655c",
+      "size_bytes": 14633
     },
     {
       "path": "results/course-verification-v18/compact-index.json",
@@ -2498,6 +2498,22 @@
       "source_sha256": "cc1be3bb8cd1f0684c79a10d47fe268e556081257953810bb49240b8cfa93fc4",
       "sha256": "cc1be3bb8cd1f0684c79a10d47fe268e556081257953810bb49240b8cfa93fc4",
       "size_bytes": 2277
+    },
+    {
+      "path": "docs/TEMAVALASZTAS.md",
+      "kind": "documentation",
+      "source_relative": "docs/TEMAVALASZTAS.md",
+      "source_sha256": "40218ca7c98e220046a0e2ac36ecab6c5b02cd863ba2907a32caf26d4ce71897",
+      "sha256": "40218ca7c98e220046a0e2ac36ecab6c5b02cd863ba2907a32caf26d4ce71897",
+      "size_bytes": 2729
+    },
+    {
+      "path": "docs/sablon/temavalaszto-adatlap.docx",
+      "kind": "documentation",
+      "source_relative": "docs/sablon/temavalaszto-adatlap.docx",
+      "source_sha256": "50904f74316c5c5b699f096346850ab4da012939e5a72d61855927f23901fb9a",
+      "sha256": "50904f74316c5c5b699f096346850ab4da012939e5a72d61855927f23901fb9a",
+      "size_bytes": 13702
     }
   ],
   "omissions": [
@@ -3299,5 +3315,6 @@
   },
   "measurement_archive_in_public_snapshot": "data/course-comparison-v18.zip",
   "feature": "engineering_console_polish_v1",
-  "course_reference_commit": "f625cfe5e85cf5a8a28943704e7e025b89b7b0a4"
+  "course_reference_commit": "f625cfe5e85cf5a8a28943704e7e025b89b7b0a4",
+  "documentation_update": "course_topic_proposal_and_blank_form"
 }

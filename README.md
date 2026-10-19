@@ -1,5 +1,9 @@
 # Ipar 4.0 – gyári készjármű-parkolási szimulátor
 
+## Témaválasztó adatlap
+
+A beadandóhoz a [témaválasztási szöveg és az újra kitölthető Word-sablon](docs/TEMAVALASZTAS.md) is elérhető. A nyilvános változat személyes adatokat nem tartalmaz; a leírás a hat autós, tizenhat parkolóhelyes mérési referenciamodellre épül.
+
 ## Felületi hibajavítások és olvashatóság
 
 A sebességgrafikon a saját keretén belül marad, megnevezi a kiválasztott autót és az utolsó fogadott sebességet. Az útelőzmény teljes szélességű; a navigáció a kézi görgetést is követi. Javult a mobilos sorrend, a célterületek mérete, a billentyűs belépés és a széles térkép jelöléseinek méretezése. A hatótávfelirat a térképen belül marad, kicsinyítéskor kevesebb az egymásra kerülő azonosító.
